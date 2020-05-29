@@ -1,0 +1,20 @@
+---
+##################################################################################################################
+# MQTT Switch
+# The mqtt switch platform lets you control your MQTT enabled switches.
+#
+# URL: https://www.home-assistant.io/integrations/switch.mqtt/
+#
+# Device: NodeMCU E44EC2 (front-door-multisensor)
+# EntityID: switch.hall_multisensor_siren
+##################################################################################################################
+platform: mqtt
+name: "Hall MultiSensor Siren"
+icon: "mdi:bell-circle"
+state_topic: "E44EC2/sensor/siren"
+command_topic: "cmnd/E44EC2/siren"
+availability_topic: "E44EC2/status"
+qos: 1
+payload_on: "ON"
+payload_off: "OFF"
+retain: true

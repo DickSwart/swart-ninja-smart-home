@@ -1,0 +1,11 @@
+---
+##################################################################################################################
+# Deluge Switch
+# The deluge switch platform allows you to control your Deluge client from within Home Assistant.
+#
+# URL: https://www.home-assistant.io/components/switch.deluge/
+##################################################################################################################
+platform: deluge
+host: 192.168.1.214
+username: !secret deluge_daemon_username
+password: !secret deluge_daemon_password

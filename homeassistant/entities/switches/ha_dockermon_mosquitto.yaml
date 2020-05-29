@@ -1,0 +1,16 @@
+---
+##################################################################################################################
+# RESTful Switch
+# The rest switch platform allows you to control a given endpoint that supports a RESTful API.
+#
+# URL: https://www.home-assistant.io/integrations/switch.rest/
+#
+# HA Dockermon: https://github.com/philhawthorne/ha-dockermon
+# EntityID: switch.ha_dockermon_mosquitto
+##############################################################################################
+platform: rest
+resource: http://192.168.1.213:8126/container/mosquitto
+name: "HA Dockermon Mosquitto"
+body_on: '{"state": "unpause"}'
+body_off: '{"state": "pause"}'
+is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

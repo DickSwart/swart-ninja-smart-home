@@ -1,0 +1,17 @@
+---
+##################################################################################################################
+# MQTT Switch
+# The mqtt switch platform lets you control your MQTT enabled switches.
+#
+# Device: smart_fish_tank_01
+# URL: https://www.home-assistant.io/integrations/switch.mqtt/
+##################################################################################################################
+platform: mqtt
+name: Living Room Fish Tank Filter
+availability_topic: "E41B0E/status"
+state_topic: "E41B0E/relay01/state"
+command_topic: "cmnd/E41B0E/relay01/set"
+qos: 1
+payload_on: "ON"
+payload_off: "OFF"
+retain: true

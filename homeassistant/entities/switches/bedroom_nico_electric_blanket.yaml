@@ -1,0 +1,21 @@
+---
+##################################################################################################################
+# MQTT Switch
+# The mqtt switch platform lets you control your MQTT enabled switches.
+#
+# URL: https://www.home-assistant.io/integrations/switch.mqtt/
+#
+# Device: Sonoff POW 374EE5
+# EntityID: switch.bedroom_nico_electric_blanket
+##################################################################################################################
+platform: mqtt
+name: "Bedroom Nico Electric Blanket"
+state_topic: "stat/sonoff_374EE5/POWER"
+command_topic: "cmnd/sonoff_374EE5/POWER"
+availability_topic: "tele/sonoff_374EE5/LWT"
+qos: 1
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+retain: false

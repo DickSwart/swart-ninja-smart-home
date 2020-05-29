@@ -1,0 +1,21 @@
+---
+##################################################################################################################
+# MQTT Switch
+# The mqtt switch platform lets you control your MQTT enabled switches.
+#
+# URL: https://www.home-assistant.io/integrations/switch.mqtt/
+#
+# Device: Sonoff POW 374EE6
+# EntityID: switch.ender_3_pow
+##################################################################################################################
+platform: mqtt
+name: "Ender 3 (POW)"
+state_topic: "stat/sonoff_pow_374EE6/POWER"
+command_topic: "cmnd/sonoff_pow_374EE6/POWER"
+availability_topic: "tele/sonoff_pow_374EE6/LWT"
+qos: 1
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+retain: false

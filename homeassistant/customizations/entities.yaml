@@ -1,0 +1,128 @@
+---
+# Tile
+device_tracker.tile_478ab17cb091cbbe:
+  icon: mdi:wallet
+  friendly_name: Tile - Dick Wallet
+device_tracker.tile_cc9e13f7316c95e3:
+  icon: mdi:key-variant
+  friendly_name: Tile - Dick Keys
+device_tracker.tile_p_759fde38d9095d53f18cc3a15b8a12a7:
+  icon: mdi:cellphone-iphone
+  friendly_name: Tile - Dick iPhone
+
+# Z-Wave USB Stick
+zwave.aeon_labs_zw090_z_stick_gen5_au:
+  friendly_name: Z-Stick Gen5
+
+# Z-Wave Nano Dimmer - Bathroom
+zwave.bathroom_zw111_nano_dimmer:
+  friendly_name: Bathroom Nano Dimmer
+light.bathroom_zw111_nano_dimmer:
+  friendly_name: Bathroom Nano Dimmer
+  icon: mdi:ceiling-light
+sensor.bathroom_zw111_nano_dimmer_power:
+  friendly_name: Bathroom Nano Dimmer Power
+sensor.bathroom_zw111_nano_dimmer_voltage:
+  friendly_name: Bathroom Nano Dimmer Voltage
+sensor.bathroom_zw111_nano_dimmer_current:
+  friendly_name: Bathroom Nano Dimmer Current
+sensor.bathroom_zw111_nano_dimmer_energy:
+  friendly_name: Bathroom Nano Dimmer Energy
+sensor.bathroom_zw111_nano_dimmer_previous_reading:
+  friendly_name: Bathroom Nano Dimmer Previous Reading
+
+# Z-Wave Nano Dimmer - Hall
+zwave.hall_zw111_nano_dimmer:
+  friendly_name: Hall Nano Dimmer
+light.hall_zw111_nano_dimmer:
+  friendly_name: Hall Nano Dimmer
+  icon: mdi:ceiling-light
+sensor.hall_zw111_nano_dimmer_power:
+  friendly_name: Hall Nano Dimmer Power
+sensor.hall_zw111_nano_dimmer_voltage:
+  friendly_name: Hall Nano Dimmer Voltage
+sensor.hall_zw111_nano_dimmer_current:
+  friendly_name: Hall Nano Dimmer Current
+sensor.hall_zw111_nano_dimmer_energy:
+  friendly_name: Hall Nano Dimmer Energy
+sensor.hall_zw111_nano_dimmer_previous_reading:
+  friendly_name: Hall Nano Dimmer Previous Reading
+
+# Z-Wave MultiSensor - Office
+zwave.office_zw100_multisensor:
+  friendly_name: Office MultiSensor MultiSensor
+sensor.office_zw100_multisensor_luminance:
+  friendly_name: Office MultiSensor Luminance
+sensor.office_zw100_multisensor_humidity:
+  friendly_name: Office MultiSensor Humidity
+sensor.office_zw100_multisensor_temperature:
+  friendly_name: Office MultiSensor Temperature
+sensor.office_zw100_multisensor_ultraviolet:
+  friendly_name: Office MultiSensor Ultraviolet
+  icon: mdi:white-balance-sunny
+binary_sensor.office_zw100_multisensor_motion:
+  friendly_name: Office MultiSensor Motion
+  device_class: motion
+
+# Z-Wave MultiSensor - Man Cave Kitchen
+zwave.man_cave_kitchen_zw100_multisensor:
+  friendly_name: Man Cave Kitchen MultiSensor
+sensor.man_cave_kitchen_zw100_multisensor_luminance:
+  friendly_name: Man Cave Kitchen MultiSensor Luminance
+sensor.man_cave_kitchen_zw100_multisensor_humidity:
+  friendly_name: Man Cave Kitchen MultiSensor Humidity
+sensor.man_cave_kitchen_zw100_multisensor_temperature:
+  friendly_name: Man Cave Kitchen MultiSensor Temperature
+sensor.man_cave_kitchen_zw100_multisensor_ultraviolet:
+  friendly_name: Man Cave Kitchen MultiSensor Ultraviolet
+  icon: mdi:white-balance-sunny
+binary_sensor.man_cave_kitchen_zw100_multisensor_motion:
+  friendly_name: Man Cave Kitchen MultiSensor Motion
+  device_class: motion
+
+# Person
+person.dick:
+  entity_picture: /local/images/misc/dick.jpg
+person.tamara:
+  entity_picture: /local/images/misc/tamara.jpg
+
+light.man_cave_kitchen_ceiling_one:
+  icon: mdi:track-light
+light.man_cave_kitchen_ceiling_two:
+  icon: mdi:track-light
+light.living_room_mood:
+  icon: mdi:globe-light
+light.living_room_television:
+  icon: mdi:led-strip-variant
+light.backyard:
+  icon: mdi:coach-lamp
+
+camera.byc:
+  friendly_name: Backyard
+camera.dec:
+  friendly_name: Deck
+camera.drc:
+  friendly_name: Dining Room
+camera.fdc:
+  friendly_name: Front Door
+camera.hlc:
+  friendly_name: Hall
+camera.hsc:
+  friendly_name: House Side
+camera.lrc:
+  friendly_name: Living Room
+camera.mcc:
+  friendly_name: Man Cave
+camera.ofc:
+  friendly_name: Office
+
+switch.living_room_cupboard_plug_one:
+  friendly_name: "Living Room Cupboard Plug One"
+  icon: mdi:power-socket-au
+switch.living_room_cupboard_plug_two:
+  friendly_name: "Living Room Cupboard Plug Two"
+  icon: mdi:power-socket-au
+switch.ender_3:
+  icon: mdi:printer-3d
+switch.work_station:
+  icon: mdi:soldering-iron

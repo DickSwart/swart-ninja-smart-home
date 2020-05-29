@@ -1,0 +1,22 @@
+---
+"sensor.*_humidity":
+  icon: mdi:water-percent
+"sensor.*_luminance":
+  icon: mdi:theme-light-dark
+"sensor.*_wifi":
+  icon: mdi:wifi
+
+"device_tracker.life360_*":
+  entity_picture: /local/images/misc/life360.png
+"device_tracker.unifi_*":
+  icon: mdi:access-point-network
+
+"light.*ceiling*":
+  icon: mdi:ceiling-light
+"light.*multisensor*":
+  icon: mdi:alarm-light
+
+"switch.*electric_blanket*":
+  icon: mdi:bed-empty
+"switch.unifi_*":
+  icon: mdi:network

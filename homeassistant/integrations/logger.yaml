@@ -1,0 +1,15 @@
+---
+##################################################################################################################
+# Logger
+# The logger integration lets you define the level of logging activities in Home Assistant.
+#
+# URL: https://www.home-assistant.io/components/logger/
+##################################################################################################################
+logger:
+  default: info
+  logs:
+    homeassistant.components.zwave: error
+    homeassistant.components.python_script: debug
+    homeassistant.components.life360: debug
+    custom_components.mitsubishi: debug
+    custom_components.deepstack_object: debug

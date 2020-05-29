@@ -1,0 +1,9 @@
+---
+##################################################################################################################
+# Mobile App
+# The Mobile App integration allows Home Assistant mobile apps to easily integrate with Home Assistant.
+#
+# URL: https://www.home-assistant.io/integrations/mobile_app/
+# Home Assistant Companion: https://companion.home-assistant.io/
+##################################################################################################################
+mobile_app: ~

@@ -1,0 +1,30 @@
+---
+##################################################################################################################
+# Lovelace
+# Lovelace is the Home Assistant user interface. It’s a fast, customizable and powerful way for users to
+# manage their homes, working on mobile or desktop.
+#
+# URL: https://www.home-assistant.io/lovelace/
+# URL: https://www.home-assistant.io/lovelace/yaml-mode/
+##################################################################################################################
+lovelace:
+  mode: yaml
+  resources:
+    - url: /local/custom_cards/invisible-card/invisible-card.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
+      type: module
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+    - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
+      type: module
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
+    - url: /hacsfiles/custom-header/custom-header.js
+      type: module

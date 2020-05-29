@@ -1,0 +1,17 @@
+---
+##################################################################################################################
+# Alexa Media Player Custom Component
+# This is a custom component to allow control of Amazon Alexa devices in Homeassistant using the
+# unofficial Alexa API. Please note this mimics the Alexa app but Amazon may cut off access at anytime.
+#
+# URL: https://github.com/custom-components/alexa_media_player
+##################################################################################################################
+alexa_media:
+  accounts:
+    - email: !secret amazon_email
+      password: !secret amazon_password
+      url: amazon.com
+      exclude_devices:
+        - "This Device"
+        - "DickSwart's Alexa Apps"
+        - "Bose QuietComfort 35 Series II"

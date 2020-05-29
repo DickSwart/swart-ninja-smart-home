@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Zero-configuration networking (zeroconf)
+# The zeroconf integration will scan the network for supported devices and services.
+#
+# URL: https://www.home-assistant.io/integrations/zeroconf/
+##################################################################################################################
+zeroconf: ~

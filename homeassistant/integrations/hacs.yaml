@@ -1,0 +1,14 @@
+---
+##################################################################################################################
+# HACS (Home Assistant Community Store)
+# HACS gives you a powerful UI to handle downloads of all your custom needs.
+#
+# URL: https://hacs.xyz/
+##################################################################################################################
+hacs:
+  token: !secret github_hacs_access_token
+  sidepanel_title: "HACS"
+  sidepanel_icon: hacs:hacs
+  appdaemon: true
+  netdaemon: true
+  experimental: true

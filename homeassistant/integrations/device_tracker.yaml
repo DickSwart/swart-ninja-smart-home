@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Device Tracker
+# The device tracker allows you to track devices in Home Assistant.
+#
+# URL: https://www.home-assistant.io/components/device_tracker/
+##################################################################################################################
+device_tracker: !include_dir_list ../entities/device_trackers

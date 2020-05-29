@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# FFmpeg
+# The ffmpeg integration allows other Home Assistant integrations to process video and audio streams.
+#
+# URL: https://www.home-assistant.io/integrations/ffmpeg/
+##################################################################################################################
+ffmpeg: ~

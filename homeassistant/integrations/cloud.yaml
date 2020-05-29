@@ -1,0 +1,37 @@
+---
+##################################################################################################################
+# Home Assistant Cloud
+# The Home Assistant Cloud allows you to quickly integrate your local Home Assistant with various cloud services
+# like Amazon Alexa and Google Assistant.
+#
+# URL: https://www.home-assistant.io/integrations/http/
+##################################################################################################################
+cloud:
+  # Customize the Amazon Alexa integration with the Nabu Casa Cloud
+  alexa:
+    # Optional entity specific configuration for Alexa.
+    # These are loaded from a separate directory.
+    entity_config: !include_dir_merge_named ../assistants/alexa
+    # Filters for entities to include/exclude from Alexa.
+    filter:
+      include_entities:
+        - climate.living_room
+        - climate.man_cave
+        - cover.office_door_system_e449d3_cover
+        - light.bathroom_zw111_nano_dimmer
+        - light.bedroom_max_ceiling
+        - light.bedroom_nico_ceiling
+        - light.dining_room_ceiling
+        - light.hall_zw111_nano_dimmer
+        - light.kitchen_ceiling
+        - light.kitchen_side
+        - light.living_room_ceiling
+        - light.living_room_mood
+        - light.man_cave_ceiling
+        - light.man_cave_kitchen_ceiling_one
+        - light.man_cave_kitchen_ceiling_two
+        - light.office_ceiling
+        - switch.bedroom_master_electric_blanket_dick
+        - switch.bedroom_master_electric_blanket_tamara
+        - switch.bedroom_max_electric_blanket
+        - switch.bedroom_nico_electric_blanket

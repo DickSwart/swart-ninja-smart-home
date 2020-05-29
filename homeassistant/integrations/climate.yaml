@@ -1,0 +1,9 @@
+---
+##################################################################################################################
+# Climate
+# The Climate integration allows you to control and monitor HVAC (heating, ventilating,
+# and air conditioning) devices and thermostats.
+#
+# URL: https://www.home-assistant.io/components/climate/
+##################################################################################################################
+climate: !include_dir_list ../entities/climates

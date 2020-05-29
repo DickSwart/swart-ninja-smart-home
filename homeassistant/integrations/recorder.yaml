@@ -1,0 +1,11 @@
+---
+##################################################################################################################
+# Recorder
+# The recorder integration is responsible for storing details in a database, which then are handled
+# by the history integration.
+#
+# URL: https://www.home-assistant.io/integrations/recorder/
+##################################################################################################################
+recorder:
+  db_url: !secret recorder_db_url
+  purge_keep_days: 7

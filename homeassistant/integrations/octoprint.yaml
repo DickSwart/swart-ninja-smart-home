@@ -1,0 +1,12 @@
+---
+##################################################################################################################
+# OctoPrint
+# OctoPrint is a web interface for your 3D printer. This is the main integration to integrate OctoPrint sensors.
+#
+# URL: https://www.home-assistant.io/components/octoprint/
+##################################################################################################################
+octoprint:
+  host: 192.168.1.210
+  api_key: !secret api_key_octoPrint
+  bed: true
+  number_of_tools: 1

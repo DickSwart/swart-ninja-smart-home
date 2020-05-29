@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Notifications
+# The notify integration makes it possible to send notifications to a wide variety of platforms.
+#
+# URL: https://www.home-assistant.io/integrations/notify/
+##################################################################################################################
+notify: !include_dir_list ../entities/notifiers

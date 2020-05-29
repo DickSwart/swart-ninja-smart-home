@@ -1,0 +1,10 @@
+---
+##################################################################################################################
+# HTTP
+# The http integration serves all files and data required for the Home Assistant frontend.
+#
+# URL: https://www.home-assistant.io/integrations/http/
+##################################################################################################################
+http:
+  # Only listen to incoming requests on specific IP/host.
+  server_host: "192.168.1.213"

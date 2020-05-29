@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Person
+# The person integration allows connecting device tracker entities to one or more person entities.
+#
+# URL: https://www.home-assistant.io/integrations/person/
+##################################################################################################################
+person: ~

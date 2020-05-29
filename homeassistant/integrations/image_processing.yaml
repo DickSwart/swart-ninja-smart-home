@@ -1,0 +1,9 @@
+---
+##################################################################################################################
+# Image Processing
+# Image processing enables Home Assistant to process images from cameras.
+# Only camera entities are supported as sources.
+#
+# URL: https://www.home-assistant.io/integrations/image_processing
+##################################################################################################################
+image_processing: !include_dir_list ../entities/image_processors

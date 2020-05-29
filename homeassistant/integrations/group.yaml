@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Group
+# Groups allow the user to combine multiple entities into one.
+#
+# URL: https://www.home-assistant.io/integrations/group/
+##################################################################################################################
+group: !include_dir_merge_named ../entities/groups

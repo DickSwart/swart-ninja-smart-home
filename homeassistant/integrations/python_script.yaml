@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Python Scripts
+# This integration allows you to write Python scripts that are exposed as services in Home Assistant.
+#
+# URL: https://www.home-assistant.io/integrations/python_script
+##################################################################################################################
+python_script: ~

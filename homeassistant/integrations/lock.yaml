@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Lock
+# Keeps track which locks are in your environment, their state and allows you to control them.
+#
+# URL: https://www.home-assistant.io/integrations/lock/
+##################################################################################################################
+lock: !include_dir_list ../entities/locks

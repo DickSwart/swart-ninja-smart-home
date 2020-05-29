@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Stream
+# The stream integration provides a way to proxy live streams through Home Assistant.
+#
+# URL: https://www.home-assistant.io/integrations/stream/
+##################################################################################################################
+stream: ~

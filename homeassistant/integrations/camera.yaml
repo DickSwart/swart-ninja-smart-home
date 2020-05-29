@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Camera
+# The camera integration allows you to use IP cameras with Home Assistant.
+#
+# URL: https://www.home-assistant.io/integrations/camera/
+##################################################################################################################
+camera: !include_dir_list ../entities/cameras

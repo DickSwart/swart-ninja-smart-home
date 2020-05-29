@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Scenes
+# You can create scenes that capture the states you want certain entities to be.
+#
+# URL: https://www.home-assistant.io/integrations/scene
+##################################################################################################################
+scene: !include ../scenes.yaml

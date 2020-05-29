@@ -1,0 +1,15 @@
+---
+##############################################################################################
+# MQTT Binary Sensor
+# The mqtt binary sensor platform uses an MQTT message received to set the binary sensor’s
+# state to on or off.
+#
+# URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
+#
+# EntityID: binary_sensor.kitchen_motionsensor_motion
+##############################################################################################
+platform: mqtt
+name: Kitchen MotionSensor Motion
+state_topic: "4C86CF/sensor/motion"
+availability_topic: "4C86CF/status"
+device_class: motion

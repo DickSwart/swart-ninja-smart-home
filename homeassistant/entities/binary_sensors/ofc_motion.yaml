@@ -1,0 +1,17 @@
+---
+##############################################################################################
+# MQTT Binary Sensor
+# The mqtt binary sensor platform uses an MQTT message received to set the binary sensor’s
+# state to on or off.
+#
+# URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
+#
+# Device: Office IP Camera
+# EntityID: binary_sensor.ofc_motion
+##############################################################################################
+platform: mqtt
+name: OFC Motion
+state_topic: "BlueIris/OFC/MOTION"
+payload_on: "ON"
+payload_off: "OFF"
+device_class: motion

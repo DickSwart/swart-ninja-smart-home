@@ -1,0 +1,15 @@
+---
+##############################################################################################
+# MQTT Binary Sensor
+# The mqtt binary sensor platform uses an MQTT message received to set the binary sensor’s
+# state to on or off.
+#
+# URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
+#
+# EntityID: binary_sensor.man_cave_multisensor_motion
+##############################################################################################
+platform: mqtt
+name: Man Cave MultiSensor Motion
+state_topic: "535210/sensor/motion"
+availability_topic: "535210/status"
+device_class: motion

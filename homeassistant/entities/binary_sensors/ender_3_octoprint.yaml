@@ -1,0 +1,14 @@
+---
+##############################################################################################
+# Ping (ICMP) - Binary Sensor
+# The ping binary sensor platform allows you to use ping to send ICMP echo requests.
+#
+# URL: https://www.home-assistant.io/integrations/ping/#binary-sensor
+#
+# EntityID: binary_sensor.ender_3_octoprint
+##############################################################################################
+platform: ping
+name: "Ender 3 OctoPrint"
+host: 192.168.1.210
+count: 2
+scan_interval: 30

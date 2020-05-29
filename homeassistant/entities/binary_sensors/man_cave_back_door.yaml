@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# MQTT Binary Sensor
+# The mqtt binary sensor platform uses an MQTT message received to set the binary sensor’s
+# state to on or off.
+#
+# URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
+#
+# Device: D1 Mini 14C243 door-window-sensor
+# EntityID: binary_sensor.man_cave_back_door
+##############################################################################################
+platform: mqtt
+name: Man Cave Back Door
+state_topic: "14C243/sensor/door01"
+availability_topic: "14C243/status"
+device_class: door

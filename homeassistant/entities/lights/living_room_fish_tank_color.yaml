@@ -1,0 +1,23 @@
+---
+##################################################################################################################
+# MQTT Light
+# The mqtt light platform lets you control your MQTT enabled lights through one of the supported message
+# schemas, default, json or template.
+#
+# Device: smart_fish_tank_01
+# URL: https://www.home-assistant.io/integrations/light.mqtt/
+#
+# EntityID: light.living_room_fish_tank_color
+##################################################################################################################
+platform: mqtt
+name: "Living Room Fish Tank Color"
+availability_topic: "E41B0E/status"
+state_topic: "E41B0E/color-light/power"
+command_topic: "cmnd/E41B0E/color-light/power"
+brightness_state_topic: "E41B0E/color-light/brightness"
+brightness_command_topic: "cmnd/E41B0E/color-light/brightness"
+rgb_command_topic: "cmnd/E41B0E/color-light/color"
+rgb_state_topic: "E41B0E/color-light/color"
+payload_on: "ON"
+payload_off: "OFF"
+retain: true

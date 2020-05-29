@@ -1,0 +1,21 @@
+---
+##################################################################################################################
+# MQTT Light
+# The mqtt light platform lets you control your MQTT enabled lights through one of the supported message
+# schemas, default, json or template.
+#
+# URL: https://www.home-assistant.io/integrations/light.mqtt/
+#
+# EntityID: light.kitchen_side
+##################################################################################################################
+platform: mqtt
+name: "Kitchen Side"
+state_topic: "stat/sonoff_17FEDB/POWER"
+command_topic: "cmnd/sonoff_17FEDB/POWER"
+availability_topic: "tele/sonoff_17FEDB/LWT"
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+qos: 1
+retain: false

@@ -1,0 +1,21 @@
+---
+##################################################################################################################
+# MQTT Light
+# The mqtt light platform lets you control your MQTT enabled lights through one of the supported message
+# schemas, default, json or template.
+#
+# URL: https://www.home-assistant.io/integrations/light.mqtt/
+#
+# EntityID: light.bedroom_nico_ceiling
+##################################################################################################################
+platform: mqtt
+name: "Bedroom Nico Ceiling"
+state_topic: "stat/shelly1_22F3C2/POWER"
+command_topic: "cmnd/shelly1_22F3C2/POWER"
+availability_topic: "tele/shelly1_22F3C2/LWT"
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+qos: 1
+retain: false

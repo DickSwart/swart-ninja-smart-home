@@ -1,0 +1,36 @@
+---
+##################################################################################################################
+# MQTT Light
+# The mqtt light platform lets you control your MQTT enabled lights through one of the supported message
+# schemas, default, json or template.
+#
+# URL: https://www.home-assistant.io/integrations/light.mqtt/
+#
+# EntityID: light.living_room_television
+##################################################################################################################
+platform: mqtt
+schema: json
+name: "Living Room Television"
+state_topic: "53474A/light/state"
+command_topic: "53474A/light/set"
+availability_topic: "53474A/status"
+effect: true
+effect_list:
+  - none
+  - candy cane
+  - confetti
+  - cyclon rainbow
+  - fire
+  - glitter
+  - juggle
+  - lightning
+  - police all
+  - police one
+  - rainbow
+  - ripple
+  - sinelon
+  - twinkle
+brightness: true
+rgb: true
+optimistic: false
+qos: 0

@@ -1,0 +1,14 @@
+---
+##################################################################################################################
+# Light Group
+# The group light platform lets you combine multiple lights into one entity.
+#
+# URL: https://www.home-assistant.io/integrations/light.group/
+#
+# EntityID: light.alarm_lights_group
+##################################################################################################################
+platform: group
+name: "Alarm Lights Group"
+entities:
+  - light.outside_lights
+  - light.bedroom_master_ceiling

@@ -1,0 +1,21 @@
+---
+##################################################################################################################
+# MQTT Light
+# The mqtt light platform lets you control your MQTT enabled lights through one of the supported message
+# schemas, default, json or template.
+#
+# URL: https://www.home-assistant.io/integrations/light.mqtt/
+#
+# EntityID: light.office_ceiling
+##################################################################################################################
+platform: mqtt
+availability_topic: "tele/shelly1_500703/LWT"
+command_topic: "cmnd/shelly1_500703/POWER"
+name: "Office Ceiling"
+payload_available: "Online"
+payload_not_available: "Offline"
+payload_off: "OFF"
+payload_on: "ON"
+qos: 1
+retain: false
+state_topic: "stat/shelly1_500703/POWER"

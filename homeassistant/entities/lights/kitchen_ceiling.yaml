@@ -1,0 +1,21 @@
+---
+##################################################################################################################
+# MQTT Light
+# The mqtt light platform lets you control your MQTT enabled lights through one of the supported message
+# schemas, default, json or template.
+#
+# URL: https://www.home-assistant.io/integrations/light.mqtt/
+#
+# EntityID: light.kitchen_ceiling
+##################################################################################################################
+platform: mqtt
+name: "Kitchen Ceiling"
+state_topic: "stat/sonoff_6B1A4E/POWER"
+command_topic: "cmnd/sonoff_6B1A4E/POWER"
+availability_topic: "tele/sonoff_6B1A4E/LWT"
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+qos: 1
+retain: false

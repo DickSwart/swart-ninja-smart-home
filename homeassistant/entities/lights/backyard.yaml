@@ -1,0 +1,22 @@
+---
+##################################################################################################################
+# MQTT Light
+# The mqtt light platform lets you control your MQTT enabled lights through one of the supported message
+# schemas, default, json or template.
+#
+# URL: https://www.home-assistant.io/integrations/light.mqtt/
+#
+# Device: Zemismart KS-811 3 Gang Switch - button 2
+# EntityID: light.backyard
+##################################################################################################################
+platform: mqtt
+name: "Backyard"
+state_topic: "stat/ks811_48A182/POWER2"
+command_topic: "cmnd/ks811_48A182/POWER2"
+availability_topic: "tele/ks811_48A182/LWT"
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+qos: 1
+retain: false

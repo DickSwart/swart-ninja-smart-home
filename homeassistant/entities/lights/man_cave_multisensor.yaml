@@ -1,0 +1,21 @@
+---
+##################################################################################################################
+# MQTT Light
+# The mqtt light platform lets you control your MQTT enabled lights through one of the supported message
+# schemas, default, json or template.
+#
+# URL: https://www.home-assistant.io/integrations/light.mqtt/
+#
+# Device: MultiSensor 05 - 535210
+# EntityID: light.man_cave_multisensor
+##################################################################################################################
+platform: mqtt
+availability_topic: "535210/status"
+brightness: true
+command_topic: "535210/light/set"
+name: "Man Cave MultiSensor"
+optimistic: false
+qos: 0
+rgb: true
+schema: json
+state_topic: "535210/light/state"

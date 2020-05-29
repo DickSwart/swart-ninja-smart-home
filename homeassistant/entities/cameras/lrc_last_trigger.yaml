@@ -1,0 +1,13 @@
+---
+##############################################################################################
+# Local File
+# The local_file camera platform allows you to integrate an image file from disk into
+# Home Assistant as a camera.
+#
+# URL: https://www.home-assistant.io/integrations/local_file/
+#
+# EntityID: camera.lrc_last_trigger
+##############################################################################################
+platform: local_file
+file_path: /config/www/images/camera_snapshots/snapshot_lrc.jpg
+name: "LRC Last Trigger"

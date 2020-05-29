@@ -1,6 +1,7 @@
 ---
 id: 3d313801-78b3-404f-9351-9c52cc28730d
 alias: System Release Notification
+description: Send notification if new release abailable.
 initial_state: true
 trigger:
   - platform: state

@@ -9,5 +9,5 @@
 # EntityID: camera.mcc_last_trigger
 ##############################################################################################
 platform: local_file
-file_path: /config/www/images/camera_snapshots/snapshot_mcc.jpg
+file_path: /config/www/images/camera_snapshots/deepstack_object_mcc_latest.jpg
 name: "MCC Last Trigger"

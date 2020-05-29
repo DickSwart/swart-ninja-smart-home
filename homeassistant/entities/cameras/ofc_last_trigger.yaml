@@ -9,5 +9,5 @@
 # EntityID: camera.ofc_last_trigger
 ##############################################################################################
 platform: local_file
-file_path: /config/www/images/camera_snapshots/snapshot_ofc.jpg
+file_path: /config/www/images/camera_snapshots/deepstack_object_ofc_latest.jpg
 name: "OFC Last Trigger"

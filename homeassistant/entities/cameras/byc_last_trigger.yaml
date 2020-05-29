@@ -9,5 +9,5 @@
 # EntityID: camera.byc_last_trigger
 ##############################################################################################
 platform: local_file
-file_path: /config/www/images/camera_snapshots/snapshot_byc.jpg
+file_path: /config/www/images/camera_snapshots/deepstack_object_byc_latest.jpg
 name: "BYC Last Trigger"

@@ -9,5 +9,5 @@
 # EntityID: camera.hsc_last_trigger
 ##############################################################################################
 platform: local_file
-file_path: /config/www/images/camera_snapshots/snapshot_hsc.jpg
+file_path: /config/www/images/camera_snapshots/deepstack_object_hsc_latest.jpg
 name: "HSC Last Trigger"

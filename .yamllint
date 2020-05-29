@@ -4,6 +4,7 @@ ignore: |
   homeassistant/ip_bans.yaml
   homeassistant/automations.yaml
   homeassistant/scenes.yaml
+  homeassistant/scripts.yaml
   homeassistant/themes/
 rules:
   braces:

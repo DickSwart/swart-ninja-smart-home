@@ -17,9 +17,11 @@ action:
     data_template:
       title: 🆕Release
       message:
-        "Home Assistant {{ states('sensor.version_available') }} is available (current version {{states('sensor.version_current')}}).\n\n
+        "Home Assistant {{ states('sensor.version_available') }} is available
+        (current version {{states('sensor.version_current')}}).\n\n
         Release notes: {{state_attr('binary_sensor.updater', 'release_notes')}}"
   - service: notify.telegram_chat_id_swart_ninja_smart_home_group
     data_template:
       title: 🆕 Release
-      message: "Home Assistant {{ states('sensor.version_available') }} is available. You are on version {{states('sensor.version_current')}}."
+      message: "Home Assistant {{ states('sensor.version_available') }} is available.
+      You are on version {{states('sensor.version_current')}}."

@@ -1,0 +1,98 @@
+{
+    "data": {
+        "items": [
+            {
+                "icon": "mdi:account-alert",
+                "id": "house_mode_guest",
+                "name": "Guest Mode"
+            },
+            {
+                "icon": "mdi:shield-home",
+                "id": "house_mode_away",
+                "name": "Away Mode"
+            },
+            {
+                "icon": "mdi:airplane",
+                "id": "house_mode_holiday",
+                "name": "Holiday Mode"
+            },
+            {
+                "icon": "mdi:speaker-wireless",
+                "id": "notifications_audio",
+                "name": "Audio Notifications"
+            },
+            {
+                "icon": "mdi:cellphone-wireless",
+                "id": "notifications_text",
+                "name": "Text Notifications"
+            },
+            {
+                "icon": "mdi:map-marker-up",
+                "id": "presence_location_away_dick",
+                "name": "Dick - Away (Override)"
+            },
+            {
+                "icon": "mdi:map-marker-up",
+                "id": "presence_location_away_tamara",
+                "name": "Tamara - Away (Override)"
+            },
+            {
+                "icon": "mdi:head-lightbulb-outline",
+                "id": "bathroom_automated_lights",
+                "name": "Bathroom Automated Lights"
+            },
+            {
+                "icon": "mdi:head-lightbulb-outline",
+                "id": "hall_automated_lights",
+                "name": "Hall Automated Lights"
+            },
+            {
+                "icon": "mdi:head-lightbulb-outline",
+                "id": "kitchen_automated_lights",
+                "name": "Kitchen Automated Lights"
+            },
+            {
+                "icon": "mdi:head-lightbulb-outline",
+                "id": "living_room_automated_lights",
+                "name": "Living Room Automated Lights"
+            },
+            {
+                "icon": "mdi:sleep",
+                "id": "routine_kids_bedtime",
+                "name": "Routine Kids Bedtime"
+            },
+            {
+                "icon": "mdi:shower-head",
+                "id": "routine_kids_shower_time",
+                "name": "Routine Kids Shower Time"
+            },
+            {
+                "icon": "mdi:cctv",
+                "id": "blue_iris",
+                "name": "Blue Iris"
+            },
+            {
+                "icon": "mdi:head-lightbulb-outline",
+                "id": "man_cave_automated_lights",
+                "name": "Man Cave Automated Lights"
+            },
+            {
+                "icon": "mdi:head-lightbulb-outline",
+                "id": "man_cave_kitchen_automated_lights",
+                "name": "Man Cave Kitchen Automated Lights"
+            },
+            {
+                "icon": "mdi:head-lightbulb-outline",
+                "id": "dining_room_automated_lights",
+                "name": "Dining Room Automated Lights"
+            },
+            {
+                "icon": "mdi:school",
+                "id": "routine_kids_home_school",
+                "name": "Routine Kids Home School"
+            }
+        ]
+    },
+    "key": "input_boolean",
+    "version": 1
+}

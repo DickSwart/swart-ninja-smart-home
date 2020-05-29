@@ -1,0 +1,22 @@
+{
+    "data": {
+        "items": [
+            {
+                "has_date": false,
+                "has_time": true,
+                "icon": "mdi:account-clock",
+                "id": "kids_bedtime_school_nights",
+                "name": "Kids Bedtime School Nights"
+            },
+            {
+                "has_date": false,
+                "has_time": true,
+                "icon": "mdi:account-clock-outline",
+                "id": "kids_bedtime_other_nights",
+                "name": "Kids Bedtime Other Nights"
+            }
+        ]
+    },
+    "key": "input_datetime",
+    "version": 1
+}

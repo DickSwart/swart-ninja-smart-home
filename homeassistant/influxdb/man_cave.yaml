@@ -1,0 +1,29 @@
+---
+##############################################################################################
+# InfluxDB include entities
+# Configure which integrations should be included in recordings to InfluxDB.
+# If set, all other entities will not be recorded to InfluxDB. Values set by the exclude
+# lists will take precedence.
+#
+# URL: https://www.home-assistant.io/integrations/influxdb/#include
+##############################################################################################
+- binary_sensor.man_cave_back_door
+- binary_sensor.man_cave_kitchen_zw100_multisensor_motion
+- binary_sensor.man_cave_multisensor_motion
+- binary_sensor.man_cave_stairs_door
+- binary_sensor.mcc_motion
+- sensor.man_cave_kitchen_zw100_multisensor_humidity
+- sensor.man_cave_kitchen_zw100_multisensor_luminance
+- sensor.man_cave_kitchen_zw100_multisensor_temperature
+- sensor.man_cave_multisensor_humidity
+- sensor.man_cave_multisensor_luminance
+- sensor.man_cave_multisensor_temperature
+- sensor.man_cave_multisensor_wifi
+- sensor.man_cave_temperature
+
+# Ender 3
+- sensor.ender_3_current
+- sensor.ender_3_energy
+- sensor.ender_3_power_factor
+- sensor.ender_3_power
+- sensor.ender_3_voltage

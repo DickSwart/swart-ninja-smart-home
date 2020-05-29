@@ -1,0 +1,20 @@
+---
+##############################################################################################
+# InfluxDB include entities
+# Configure which integrations should be included in recordings to InfluxDB.
+# If set, all other entities will not be recorded to InfluxDB. Values set by the exclude
+# lists will take precedence.
+#
+# URL: https://www.home-assistant.io/integrations/influxdb/#include
+##############################################################################################
+- binary_sensor.bathroom_multisensor_e44e60_door
+- binary_sensor.bathroom_multisensor_e44e60_motion
+- sensor.bathroom_zw111_nano_dimmer_current
+- sensor.bathroom_zw111_nano_dimmer_energy
+- sensor.bathroom_zw111_nano_dimmer_power
+- sensor.bathroom_zw111_nano_dimmer_voltage
+- sensor.bathroom_multisensor_e44e60_humidity
+- sensor.bathroom_multisensor_e44e60_luminance
+- sensor.bathroom_multisensor_e44e60_realfeel
+- sensor.bathroom_multisensor_e44e60_temperature
+- sensor.bathroom_multisensor_e44e60_wifi_signal_strength

@@ -1,0 +1,27 @@
+---
+##############################################################################################
+# InfluxDB include entities
+# Configure which integrations should be included in recordings to InfluxDB.
+# If set, all other entities will not be recorded to InfluxDB. Values set by the exclude
+# lists will take precedence.
+#
+# URL: https://www.home-assistant.io/integrations/influxdb/#include
+##############################################################################################
+# Backyard camera motion
+- binary_sensor.byc_motion
+
+# House side camera motion
+- binary_sensor.hsc_motion
+
+# Front door camera motion
+- binary_sensor.fdc_motion
+
+# Deck camera motion
+- binary_sensor.dec_motion
+
+# Dark sky
+- sensor.dark_sky_apparent_temperature
+- sensor.dark_sky_cloud_coverage
+- sensor.dark_sky_humidity
+- sensor.dark_sky_temperature
+- sensor.dark_sky_wind_speed

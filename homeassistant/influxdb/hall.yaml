@@ -1,0 +1,17 @@
+---
+##############################################################################################
+# InfluxDB include entities
+# Configure which integrations should be included in recordings to InfluxDB.
+# If set, all other entities will not be recorded to InfluxDB. Values set by the exclude
+# lists will take precedence.
+#
+# URL: https://www.home-assistant.io/integrations/influxdb/#include
+##############################################################################################
+- binary_sensor.hall_motion
+- binary_sensor.hall_multisensor_door
+- binary_sensor.hall_multisensor_motion
+- binary_sensor.hlc_motion
+- sensor.hall_multisensor_humidity
+- sensor.hall_multisensor_luminance
+- sensor.hall_multisensor_wifi
+- sensor.hall_multisensor_temperature

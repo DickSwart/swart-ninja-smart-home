@@ -10,12 +10,12 @@
 # EntityID: light.man_cave_multisensor
 ##################################################################################################################
 platform: mqtt
-availability_topic: "535210/status"
+availability_topic: 535210/status
 brightness: true
-command_topic: "535210/light/set"
-name: "Man Cave MultiSensor"
+command_topic: 535210/light/set
+name: Man Cave MultiSensor
 optimistic: false
 qos: 0
 rgb: true
 schema: json
-state_topic: "535210/light/state"
+state_topic: 535210/light/state

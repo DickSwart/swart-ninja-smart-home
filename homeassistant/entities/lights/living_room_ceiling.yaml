@@ -10,13 +10,13 @@
 # EntityID: light.living_room_ceiling
 ##################################################################################################################
 platform: mqtt
-name: "Living Room Ceiling"
-state_topic: "stat/ks811_721BEC/POWER1"
-command_topic: "cmnd/ks811_721BEC/POWER1"
-availability_topic: "tele/ks811_721BEC/LWT"
+name: Living Room Ceiling
+state_topic: stat/ks811_721BEC/POWER1
+command_topic: cmnd/ks811_721BEC/POWER1
+availability_topic: tele/ks811_721BEC/LWT
 payload_on: "ON"
 payload_off: "OFF"
-payload_available: "Online"
-payload_not_available: "Offline"
+payload_available: Online
+payload_not_available: Offline
 qos: 1
 retain: false

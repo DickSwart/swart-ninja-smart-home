@@ -79,7 +79,7 @@ rules:
   quoted-strings:
     level: warning
     required: only-when-needed
-    extra-allowed: [^http://, ^https://, ^mysql://]
+    extra-allowed: [^http://, ^https://, ^mysql://, ^docker://]
     extra-required: [QUOTED]
     quote-type: double
     ignore: |

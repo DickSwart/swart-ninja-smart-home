@@ -9,13 +9,13 @@
 # EntityID: light.man_cave_kitchen_ceiling_two
 ##################################################################################################################
 platform: mqtt
-name: "Man Cave Kitchen Ceiling Two"
-availability_topic: "tele/sonoff_0F6E67/LWT"
-command_topic: "cmnd/sonoff_0F6E67/POWER"
-payload_available: "Online"
-payload_not_available: "Offline"
+name: Man Cave Kitchen Ceiling Two
+availability_topic: tele/sonoff_0F6E67/LWT
+command_topic: cmnd/sonoff_0F6E67/POWER
+payload_available: Online
+payload_not_available: Offline
 payload_off: "OFF"
 payload_on: "ON"
 qos: 1
 retain: false
-state_topic: "stat/sonoff_0F6E67/POWER"
+state_topic: stat/sonoff_0F6E67/POWER

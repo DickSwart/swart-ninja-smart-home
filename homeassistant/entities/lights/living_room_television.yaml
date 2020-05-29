@@ -10,10 +10,10 @@
 ##################################################################################################################
 platform: mqtt
 schema: json
-name: "Living Room Television"
-state_topic: "53474A/light/state"
-command_topic: "53474A/light/set"
-availability_topic: "53474A/status"
+name: Living Room Television
+state_topic: 53474A/light/state
+command_topic: 53474A/light/set
+availability_topic: 53474A/status
 effect: true
 effect_list:
   - none

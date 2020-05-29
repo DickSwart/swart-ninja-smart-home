@@ -12,7 +12,7 @@ influxdb:
   database: home_assistant
 
   # Authentication credentials.
-  username: !secret influxdb_username
+  username: hass
   password: !secret influxdb_password
 
   # Set this to allow the integration to retry if there was a network error when transmitting data.

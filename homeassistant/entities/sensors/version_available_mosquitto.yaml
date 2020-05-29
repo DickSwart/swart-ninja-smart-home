@@ -5,6 +5,8 @@
 # an application, or a web service.
 #
 # URL: https://www.home-assistant.io/integrations/rest/
+#
+# EntityID: sensor.version_available_mosquitto
 ##############################################################################################
 platform: rest
 name: version_available_mosquitto

@@ -78,7 +78,7 @@ rules:
   quoted-strings:
     level: warning
     required: only-when-needed
-    extra-allowed: [^http(s?)://, ^ftp://]
+    extra-allowed: [^http://, ^https://, ^ftp://]
     extra-required: [QUOTED]
     quote-type: double
 

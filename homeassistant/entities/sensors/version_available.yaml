@@ -4,8 +4,10 @@
 # The version sensor platform that can display the current Home Assistant versions.
 #
 # URL: https://www.home-assistant.io/integrations/version/
+#
+# EntityID: sensor.version_available
 ##############################################################################################
 platform: version
-name: version_available
+name: Version Available
 source: docker
 image: qemux86-64

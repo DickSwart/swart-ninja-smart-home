@@ -1,0 +1,2 @@
+---
+shutdown_retropi: ssh retropi 'sudo shutdown now -h' ;echo $?

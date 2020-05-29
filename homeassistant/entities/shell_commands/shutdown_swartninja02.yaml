@@ -1,0 +1,2 @@
+---
+shutdown_swartninja02: ssh sn02 'sudo shutdown now -h' ;echo $?

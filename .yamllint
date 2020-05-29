@@ -6,6 +6,7 @@ ignore: |
   homeassistant/scenes.yaml
   homeassistant/scripts.yaml
   homeassistant/themes/
+  .yamllint
 rules:
   braces:
     level: error

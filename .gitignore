@@ -1,0 +1,66 @@
+# Generic ignores
+*.log
+*.db
+*.db-shm
+*.db-wal
+*.pyc
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+__pycache__
+.env
+
+# Directory (contents) ignores
+homeassistant/.cloud
+homeassistant/.storage
+homeassistant/deps
+homeassistant/custom_components
+homeassistant/netdaemon
+homeassistant/www/community
+homeassistant/www/images/camera_snapshots
+homeassistant/.ssh/*
+.vscode/
+
+# Specific file ignores
+homeassistant/.config_entries.json
+homeassistant/.homekit.state
+homeassistant/.ios.conf
+homeassistant/.spotify-token-cache
+homeassistant/.tradfri_psk.conf
+homeassistant/.uuid
+homeassistant/core
+homeassistant/html5_push_registrations.conf
+homeassistant/ip_bans.yaml
+homeassistant/known_devices.yaml
+homeassistant/options.xml
+homeassistant/OZW_Log.txt
+homeassistant/pyozw.sqlite
+homeassistant/secrets.yaml
+homeassistant/zwcfg_*
+homeassistant/zwscene.xml
+homeassistant/.dick_swart_me_com.tile.conf
+homeassistant/webostv.conf
+homeassistant/google_calendars.yaml
+homeassistant/.google.token
+homeassistant/scripts/scripts.yaml
+
+# Specific keeps
+!.gitkeep
+!homeassistant/.ssh/config
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+
+# TEMP
+grafana/*
+influxdb/*
+mariadb/*
+mosquitto/*
+nodered/*
+*.disable
+homeassistant/lovelace
+homeassistant/themes
+

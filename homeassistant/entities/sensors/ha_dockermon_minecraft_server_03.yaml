@@ -7,11 +7,11 @@
 # URL: https://www.home-assistant.io/integrations/rest/
 #
 # HA Dockermon: https://github.com/philhawthorne/ha-dockermon
-# EntityID: sensor.ha_dockermon_minecraft_server_02
+# EntityID: sensor.ha_dockermon_minecraft_server_03
 ##############################################################################################
 platform: rest
-name: HA Dockermon Minecraft Server 02
-resource: "http://192.168.1.213:8126/container/minecraft-server-02"
+name: HA Dockermon Minecraft Server 03
+resource: "http://192.168.1.213:8126/container/minecraft-server-03"
 value_template: "{{ value_json.status }}"
 json_attributes:
   - state

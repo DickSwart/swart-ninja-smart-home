@@ -9,8 +9,8 @@
 # EntityID: switch.ha_dockermon_minecraft_server_02
 ##############################################################################################
 platform: rest
-resource: http://192.168.1.213:8126/container/minecraft-server-02
-name: "HA Dockermon Minecraft Server 02"
+name: HA Dockermon Minecraft Server 02
+resource: "http://192.168.1.213:8126/container/minecraft-server-02"
 body_on: '{"state": "unpause"}'
 body_off: '{"state": "pause"}'
 is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

@@ -13,11 +13,14 @@ sensors:
   is_cold:
     friendly_name: "Is it cold?"
     value_template: >-
-      {{ ( (states('sensor.dark_sky_temperature')|float < 13) or (states('sensor.bedrooms_temperature')|float < 17.5) ) }}
+      {{ ( (states('sensor.dark_sky_temperature')|float < 13) or
+      (states('sensor.bedrooms_temperature')|float < 17.5) ) }}
     icon_template: >-
-      {% if ( (states('sensor.dark_sky_temperature') | float < 5 ) or (states('sensor.bedrooms_temperature') | float < 10) ) %}
+      {% if ( (states('sensor.dark_sky_temperature') | float < 5 ) or
+      (states('sensor.bedrooms_temperature') | float < 10) ) %}
         mdi:snowflake-alert
-      {% elif ( (states('sensor.dark_sky_temperature')|float < 13) or (states('sensor.bedrooms_temperature')|float < 17.5) ) %}
+      {% elif ( (states('sensor.dark_sky_temperature')|float < 13) or
+      (states('sensor.bedrooms_temperature')|float < 17.5) ) %}
         mdi:snowflake
       {% else %}
         mdi:weather-sunny

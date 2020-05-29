@@ -1,3 +1,4 @@
+---
 ##############################################################################################
 # Template Binary Sensor
 # The template platform supports binary sensors which get their values from other entities.

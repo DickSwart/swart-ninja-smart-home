@@ -1,0 +1,10 @@
+---
+##################################################################################################################
+# Tile
+# The tile platform allows Home Assistant to utilize Tile® Bluetooth trackers.
+#
+# URL: https://www.home-assistant.io/integrations/tile/
+##################################################################################################################
+platform: tile
+username: !secret tile_email
+password: !secret tile_password

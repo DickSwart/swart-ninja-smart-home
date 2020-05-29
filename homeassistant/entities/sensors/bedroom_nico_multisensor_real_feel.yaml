@@ -1,0 +1,14 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# EntityID: sensor.bedroom_nico_multisensor_real_feel
+##############################################################################################
+platform: mqtt
+name: "Bedroom Nico MultiSensor Real Feel"
+state_topic: "532B98/sensor/realfeel"
+unit_of_measurement: "°C"
+availability_topic: "532B98/status"

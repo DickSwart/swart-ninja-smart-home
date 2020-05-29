@@ -1,0 +1,36 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+##############################################################################################
+platform: template
+sensors:
+  bedrooms_temperature:
+    friendly_name: "Bedrooms temperature"
+    unit_of_measurement: "°C"
+    value_template: >-
+      {% set max = states('sensor.bedroom_max_multisensor_temperature') | float %}
+      {% set nico = states('sensor.bedroom_nico_multisensor_temperature') | float %}
+      {% set master = states('sensor.bedroom_master_multisensor_temperature') | float %}
+      {% set maxTemp  = float(max) | round(2) if max and max > -30 and max < 50 else null %}
+      {% set nicoTemp  = float(nico) | round(2) if nico and nico > -30 and nico < 50 else null %}
+      {% set masterTemp  = float(master) | round(2) if master and master > -30 and master < 50 else null %}
+      {% if maxTemp and masterTemp and nicoTemp -%}
+        {{ ((maxTemp + masterTemp + nicoTemp) / 3) | round(2) }}
+      {%- elif maxTemp and nicoTemp -%}
+        {{ ((maxTemp + nicoTemp) / 2) | round(2) }}
+      {%- elif maxTemp and masterTemp -%}
+        {{ ((maxTemp + masterTemp) / 2) | round(2) }}
+      {%- elif masterTemp and nicoTemp -%}
+        {{ ((masterTemp + nicoTemp ) / 2) | round(2) }}
+      {%- elif nicoTemp -%}
+        {{ nicoTemp | round(2) }}
+      {%- elif maxTemp -%}
+        {{ maxTemp | round(2) }}
+      {%- elif masterTemp -%}
+        {{ masterTemp | round(2) }}
+      {%- else -%}
+        0.0
+      {%- endif %}

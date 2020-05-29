@@ -1,0 +1,12 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+##############################################################################################
+platform: mqtt
+name: "version_current_mosquitto"
+icon: mdi:package-up
+state_topic: "$SYS/broker/version"
+value_template: "{{ value | regex_findall_index('(\\d+\\.\\d+\\.\\d+)') }}"

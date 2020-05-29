@@ -1,0 +1,14 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# EntityID: sensor.bedroom_max_electric_blanket_power
+##############################################################################################
+platform: mqtt
+name: "Bedroom Max Electric Blanket Power"
+state_topic: "tele/sonoff_EA5999/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Power"] }}'
+unit_of_measurement: "W"

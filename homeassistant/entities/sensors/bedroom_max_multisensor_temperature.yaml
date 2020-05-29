@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# EntityID: sensor.bedroom_max_multisensor_temperature
+##############################################################################################
+platform: mqtt
+name: "Bedroom Max MultiSensor Temperature"
+state_topic: "53499B/sensor/temperature"
+unit_of_measurement: "°C"
+availability_topic: "53499B/status"
+payload_available: "online"
+payload_not_available: "offline"

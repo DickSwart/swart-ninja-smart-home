@@ -1,0 +1,9 @@
+---
+##############################################################################################
+# Version
+# The version sensor platform that can display the current Home Assistant versions.
+#
+# URL: https://www.home-assistant.io/integrations/version/
+##############################################################################################
+platform: version
+name: version_current

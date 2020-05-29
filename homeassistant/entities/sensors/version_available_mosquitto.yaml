@@ -1,0 +1,24 @@
+---
+##############################################################################################
+# RESTful
+# The rest sensor platform is consuming a given endpoint which is exposed by a RESTful API of a device,
+# an application, or a web service.
+#
+# URL: https://www.home-assistant.io/integrations/rest/
+##############################################################################################
+platform: rest
+name: version_available_mosquitto
+resource: "https://registry.hub.docker.com/v2/repositories/library/eclipse-mosquitto/tags"
+scan_interval: 1800
+value_template: >-
+  {% set results = value_json.results %}
+  {%-set res-%}
+  {%-set pipe = joiner('|')-%}
+  {% for result in results if not result.name | regex_search("[a-z]",ignorecase=TRUE) -%}
+    {{ pipe()}}{{result.name}}
+  {% else %}
+    -1
+  {% endfor -%}
+  {% endset -%}
+  {% set res = res.split('|')|list -%}
+  {{res[0]}}

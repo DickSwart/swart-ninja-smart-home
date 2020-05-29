@@ -1,0 +1,17 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# Device: NodeMCU E44EC2 (front-door-multisensor)
+# EntityID: sensor.hall_multisensor_humidity
+##############################################################################################
+platform: mqtt
+name: "Hall MultiSensor Humidity"
+state_topic: "E44EC2/sensor/humidity"
+unit_of_measurement: "%"
+availability_topic: "E44EC2/status"
+payload_available: "online"
+payload_not_available: "offline"

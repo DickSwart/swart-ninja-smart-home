@@ -1,0 +1,12 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# EntityID: sensor.blue_iris_state
+##############################################################################################
+platform: mqtt
+name: "Blue Iris State"
+state_topic: "BlueIris/app"

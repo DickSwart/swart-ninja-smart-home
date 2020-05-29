@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# EntityID: sensor.bedroom_master_multisensor_luminance
+##############################################################################################
+platform: mqtt
+name: "Bedroom Master MultiSensor Luminance"
+state_topic: "534E79/sensor/lux"
+unit_of_measurement: "LUX"
+availability_topic: "534E79/status"
+payload_available: "online"
+payload_not_available: "offline"

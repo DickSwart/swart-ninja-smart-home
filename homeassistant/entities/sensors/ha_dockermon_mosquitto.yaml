@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# RESTful
+# The rest sensor platform is consuming a given endpoint which is exposed by a RESTful API of a device,
+# an application, or a web service.
+#
+# URL: https://www.home-assistant.io/integrations/rest/
+#
+# EntityID: sensor.ha_dockermon_mosquitto
+##############################################################################################
+platform: rest
+name: ha_dockermon_mosquitto
+resource: http://192.168.1.213:8126/container/mosquitto
+value_template: "{{ value_json.status }}"
+json_attributes:
+  - state

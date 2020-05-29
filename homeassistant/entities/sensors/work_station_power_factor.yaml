@@ -1,0 +1,13 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# EntityID: sensor.work_station_power_factor
+##############################################################################################
+platform: mqtt
+name: "Work Station Power Factor"
+state_topic: "tele/sonoff_pow_374EAA/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Factor"] }}'

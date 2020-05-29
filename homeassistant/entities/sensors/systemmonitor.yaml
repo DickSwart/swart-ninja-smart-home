@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# System Monitor
+# The systemmonitor sensor platform allows you to monitor disk usage, memory usage, CPU usage, and running processes.
+#
+# URL: https://www.home-assistant.io/components/sensor.systemmonitor/
+#
+# EntityID: sensor.TODO
+##############################################################################################
+platform: systemmonitor
+resources:
+  # - type: processor_use
+  - type: disk_use_percent
+    arg: /
+  - type: memory_use_percent
+  - type: last_boot

@@ -1,0 +1,13 @@
+---
+##################################################################################################################
+# Google Translate Text-to-Speech
+# The google_translate text-to-speech platform uses the unofficial Google Translate Text-to-Speech
+# engine to read a text with natural sounding voices.
+#
+# URL: https://www.home-assistant.io/integrations/google_translate/
+##################################################################################################################
+platform: google_translate
+language: "en"
+cache: true
+cache_dir: /tmp/tts
+time_memory: 300

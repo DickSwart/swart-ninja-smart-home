@@ -1,0 +1,11 @@
+---
+description: Send notification on Home Assistant stop
+alias: System Shutdown Notification
+id: be6a1f7a-dbfa-41c2-af55-319a08256dd5
+trigger:
+  - platform: homeassistant
+    event: shutdown
+action:
+  - service: notify.telegram_chat_id_swart_ninja_smart_home_group
+    data:
+      message: 👋 Home Assistant is shutting down... Bye!

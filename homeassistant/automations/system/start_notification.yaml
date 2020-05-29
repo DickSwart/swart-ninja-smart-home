@@ -1,0 +1,11 @@
+---
+description: Send notification on Home Assistant start
+alias: System Start Notification
+id: 8139bdb7-2ba3-44f6-8c36-066401aa7825
+trigger:
+  platform: homeassistant
+  event: start
+action:
+  - service: notify.telegram_chat_id_swart_ninja_smart_home_group
+    data:
+      message: 🥳 Home Assistant is starting up again.

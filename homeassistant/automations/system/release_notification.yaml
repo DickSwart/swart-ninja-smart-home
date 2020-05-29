@@ -1,0 +1,25 @@
+---
+id: 3d313801-78b3-404f-9351-9c52cc28730d
+alias: System Release Notification
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: binary_sensor.updater
+    from: "off"
+    to: "on"
+  - platform: homeassistant
+    event: start
+condition:
+  - condition: template
+    value_template: "{{ states('sensor.version_current') != states('sensor.version_available') }}"
+action:
+  - service: persistent_notification.create
+    data_template:
+      title: 🆕Release
+      message:
+        "Home Assistant {{ states('sensor.version_available') }} is available (current version {{states('sensor.version_current')}}).\n\n
+        Release notes: {{state_attr('binary_sensor.updater', 'release_notes')}}"
+  - service: notify.telegram_chat_id_swart_ninja_smart_home_group
+    data_template:
+      title: 🆕 Release
+      message: "Home Assistant {{ states('sensor.version_available') }} is available. You are on version {{states('sensor.version_current')}}."

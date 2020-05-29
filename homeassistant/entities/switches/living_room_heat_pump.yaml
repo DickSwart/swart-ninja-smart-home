@@ -10,7 +10,7 @@
 platform: template
 switches:
   living_room_heat_pump:
-    friendly_name: "Living Room Heat Pump"
+    friendly_name: 'Living Room Heat Pump'
     icon_template: mdi:air-conditioner
     value_template: "{{ is_state('climate.living_room','heat') or is_state('climate.living_room','cool') or is_state('climate.living_room','auto')  or is_state('climate.living_room','fan_only') }}"
     turn_on:

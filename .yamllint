@@ -41,7 +41,8 @@ rules:
     level: error
     present: true
     ignore: |
-      config/known_devices.yaml
+      homeassistant/known_devices.yaml
+      homeassistant/lovelace/templates/*.yaml
   empty-lines:
     level: error
     max: 1

@@ -1,0 +1,17 @@
+---
+name: Living Room Television
+host: 192.168.20.200
+turn_on_action:
+  service: wake_on_lan.send_magic_packet
+  data:
+    mac: !secret living_room_tv_mac
+    broadcast_address: 192.168.20.2
+customize:
+  sources:
+    - Plex
+    - Netflix
+    - YouTube
+    - "Apple TV"
+    - "Amazon Prime Video"
+    - "TVNZ OnDemand"
+    - "Freeview On Demand"

@@ -1,0 +1,12 @@
+---
+##############################################################################################
+# Zone
+# Zones allow you to specify certain regions on earth (for now).
+#
+# URL: https://www.home-assistant.io/integrations/zone/
+##############################################################################################
+name: "Shopping New World Tawa"
+latitude: -41.169847
+longitude: 174.825986
+radius: 152.4
+icon: mdi:shopping

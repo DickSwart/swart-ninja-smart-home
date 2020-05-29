@@ -1,0 +1,12 @@
+---
+##############################################################################################
+# Zone
+# Zones allow you to specify certain regions on earth (for now).
+#
+# URL: https://www.home-assistant.io/integrations/zone/
+##############################################################################################
+name: "Primary School"
+latitude: !secret lat_primary_school
+longitude: !secret long_primary_school
+radius: 150.0
+icon: mdi:school

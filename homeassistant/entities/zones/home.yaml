@@ -1,0 +1,12 @@
+---
+##############################################################################################
+# Zone
+# Zones allow you to specify certain regions on earth (for now).
+#
+# URL: https://www.home-assistant.io/integrations/zone/
+##############################################################################################
+name: Home
+latitude: !secret lat_home
+longitude: !secret long_home
+radius: 163.49
+icon: mdi:home

@@ -52,7 +52,7 @@ homeassistant/scripts/scripts.yaml
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
+!.stubs/.env
 
 # TEMP
 grafana/*
@@ -62,5 +62,4 @@ mosquitto/*
 nodered/*
 *.disable
 homeassistant/lovelace
-homeassistant/themes
 

@@ -1,5 +1,7 @@
 # Swart Ninja Smart Home
 
+![Home Assistant CI](https://github.com/DickSwart/swart-ninja-smart-home/workflows/Home%20Assistant%20CI/badge.svg)
+
 ## Devices
 
 I have compiled a list of divices used in my smart home. I added links to AliExpress where I could.

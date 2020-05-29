@@ -1,0 +1,10 @@
+---
+##############################################################################################
+# Alexa Media Player Custom Component
+# This is a custom component to allow control of Amazon Alexa devices in Homeassistant using the unofficial Alexa API.
+# Please note this mimics the Alexa app but Amazon may cut off access at anytime.
+#
+# URL: https://github.com/custom-components/alexa_media_player/wiki/Configuration%3A-Notification-Component
+##############################################################################################
+platform: alexa_media
+name: alexa_media

@@ -1,0 +1,6 @@
+---
+shutdown_octoprint:
+  url: http://{{ip}}/api/system/commands/core/shutdown
+  method: POST
+  headers:
+    X-Api-Key: !secret api_key_octoPrint

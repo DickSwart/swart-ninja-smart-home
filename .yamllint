@@ -75,3 +75,10 @@ rules:
     level: error
   truthy:
     level: error
+  quoted-strings:
+    level: warning
+    required: only-when-needed
+    extra-allowed: [^http(s?):\/\/, ^ftp:\/\/]
+    extra-required: [QUOTED]
+    quote-type: double
+

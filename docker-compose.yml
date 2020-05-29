@@ -6,7 +6,7 @@ services:
     container_name: homeassistant
     image: homeassistant/home-assistant
     labels:
-      - "com.centurylinklabs.watchtower.enable=false"
+      - com.centurylinklabs.watchtower.enable=false
     environment:
       TZ: ${TZ}
     devices:
@@ -31,11 +31,11 @@ services:
       - ~/docker/swart-ninja-smart-home/mosquitto/data:/mosquitto/data
       - ~/docker/swart-ninja-smart-home/mosquitto/log/mosquitto.log:/mosquitto/log/mosquitto.log
     labels:
-      - "com.centurylinklabs.watchtower.enable=false"
+      - com.centurylinklabs.watchtower.enable=false
     restart: always
     ports:
-      - "1883:1883"
-      - "9001:9001"
+      - 1883:1883
+      - 9001:9001
 
   influxdb:
     container_name: influxdb
@@ -63,7 +63,7 @@ services:
     image: bianjp/mariadb-alpine:latest
     restart: always
     ports:
-      - "3306:3306/tcp"
+      - 3306:3306/tcp
     volumes:
       - ~/docker/swart-ninja-smart-home/mariadb/config:/etc/mysql/conf.d
       - ~/docker/swart-ninja-smart-home/mariadb/data:/var/lib/mysql

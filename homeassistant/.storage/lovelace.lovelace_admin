@@ -1,0 +1,541 @@
+{
+    "data": {
+        "config": {
+            "title": "Admin",
+            "views": [
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "automation.system_release_notification",
+                                    "name": "Send notification if new release abailable"
+                                },
+                                {
+                                    "entity": "automation.system_shutdown_notification",
+                                    "name": "Send notification on Home Assistant stop"
+                                },
+                                {
+                                    "entity": "automation.system_start_notification",
+                                    "name": "Send notification on Home Assistant start"
+                                },
+                                {
+                                    "entity": "automation.system_start_set_theme",
+                                    "name": "Set theme on Home Assistant start"
+                                }
+                            ],
+                            "title": "System",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_boolean.bathroom_automated_lights",
+                                    "icon": "mdi:shower",
+                                    "name": "Bathroom"
+                                },
+                                {
+                                    "entity": "input_boolean.hall_automated_lights",
+                                    "icon": "mdi:highway",
+                                    "name": "Hall"
+                                },
+                                {
+                                    "entity": "input_boolean.dining_room_automated_lights",
+                                    "icon": "mdi:silverware-fork-knife",
+                                    "name": "Dining Room"
+                                },
+                                {
+                                    "entity": "input_boolean.man_cave_kitchen_automated_lights",
+                                    "icon": "mdi:pac-man",
+                                    "name": "Man Cave Kitchen"
+                                },
+                                {
+                                    "entity": "input_boolean.man_cave_automated_lights",
+                                    "icon": "mdi:pac-man",
+                                    "name": "Man Cave"
+                                },
+                                {
+                                    "entity": "input_boolean.living_room_automated_lights",
+                                    "icon": "mdi:sofa",
+                                    "name": "Living Room"
+                                },
+                                {
+                                    "entity": "input_boolean.kitchen_automated_lights",
+                                    "icon": "mdi:fridge",
+                                    "name": "Kitchen"
+                                }
+                            ],
+                            "title": "Lights Automation's",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:robot",
+                    "path": "automation",
+                    "title": "Automation"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_datetime.kids_bedtime_school_nights",
+                                    "name": "School nights"
+                                },
+                                {
+                                    "entity": "input_datetime.kids_bedtime_other_nights",
+                                    "name": "Other nights"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Kids Bed Times",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_boolean.routine_kids_home_school"
+                                },
+                                {
+                                    "entity": "input_boolean.routine_kids_bedtime"
+                                },
+                                {
+                                    "entity": "input_boolean.routine_kids_shower_time"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Kids Routines",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_boolean.notifications_text"
+                                },
+                                {
+                                    "entity": "input_boolean.notifications_audio"
+                                },
+                                {
+                                    "entity": "switch.doorbell_chime",
+                                    "name": "Doorbell Chime"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "System",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_boolean.presence_location_away_dick"
+                                },
+                                {
+                                    "entity": "input_boolean.presence_location_away_tamara"
+                                }
+                            ],
+                            "title": "Presence Detection",
+                            "type": "entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "alarm_control_panel.alexa_guard_68602",
+                                    "states": [
+                                        "arm_home",
+                                        "arm_away"
+                                    ],
+                                    "type": "alarm-panel"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "input_boolean.house_alarm_silent"
+                                        },
+                                        {
+                                            "entity": "input_boolean.house_alarm_loud"
+                                        },
+                                        {
+                                            "entity": "light.alarm_lights_group"
+                                        }
+                                    ],
+                                    "show_header_toggle": false,
+                                    "type": "entities"
+                                }
+                            ],
+                            "title": "Alarm",
+                            "type": "custom:vertical-stack-in-card"
+                        }
+                    ],
+                    "icon": "mdi:settings",
+                    "path": "settings",
+                    "title": "Settings"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.byc_motion",
+                                    "name": "Backyard"
+                                },
+                                {
+                                    "entity": "binary_sensor.dec_motion",
+                                    "name": "Deck"
+                                },
+                                {
+                                    "entity": "binary_sensor.drc_motion",
+                                    "name": "Dining Room"
+                                },
+                                {
+                                    "entity": "binary_sensor.fdc_motion",
+                                    "name": "Front Door"
+                                },
+                                {
+                                    "entity": "binary_sensor.hlc_motion",
+                                    "name": "Hall"
+                                },
+                                {
+                                    "entity": "binary_sensor.hsc_motion",
+                                    "name": "House Side"
+                                },
+                                {
+                                    "entity": "binary_sensor.lrc_motion",
+                                    "name": "Living Room"
+                                },
+                                {
+                                    "entity": "binary_sensor.mcc_motion",
+                                    "name": "Man Cave"
+                                },
+                                {
+                                    "entity": "binary_sensor.ofc_motion",
+                                    "name": "Office"
+                                }
+                            ],
+                            "title": "Camera Triggers",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.byc_ai_motion",
+                                    "name": "Backyard"
+                                },
+                                {
+                                    "entity": "binary_sensor.dec_ai_motion",
+                                    "name": "Deck"
+                                },
+                                {
+                                    "entity": "binary_sensor.drc_ai_motion",
+                                    "name": "Dining Room"
+                                },
+                                {
+                                    "entity": "binary_sensor.fdc_ai_motion",
+                                    "name": "Front Door"
+                                },
+                                {
+                                    "entity": "binary_sensor.hlc_ai_motion",
+                                    "name": "Hall"
+                                },
+                                {
+                                    "entity": "binary_sensor.hsc_ai_motion",
+                                    "name": "House Side"
+                                },
+                                {
+                                    "entity": "binary_sensor.lrc_ai_motion",
+                                    "name": "Living Room"
+                                },
+                                {
+                                    "entity": "binary_sensor.mcc_ai_motion",
+                                    "name": "Man Cave"
+                                },
+                                {
+                                    "entity": "binary_sensor.ofc_ai_motion",
+                                    "name": "Office"
+                                }
+                            ],
+                            "title": "AI",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.presence_anyone_home",
+                                "binary_sensor.is_cold",
+                                "binary_sensor.school_today",
+                                "binary_sensor.school_tomorrow",
+                                "binary_sensor.workday_today",
+                                "binary_sensor.workday_tomorrow",
+                                "binary_sensor.dark_outside"
+                            ],
+                            "title": "Automation's Sensors",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:alert-decagram",
+                    "path": "senors",
+                    "title": "Senors"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "aspect_ratio": "0%",
+                            "entity": "camera.byc_last_trigger",
+                            "show_state": false,
+                            "type": "picture-entity"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "entity": "camera.dec_last_trigger",
+                            "show_state": false,
+                            "type": "picture-entity"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "entity": "camera.drc_last_trigger",
+                            "show_state": false,
+                            "type": "picture-entity"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "entity": "camera.fdc_last_trigger",
+                            "show_state": false,
+                            "type": "picture-entity"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "entity": "camera.hlc_last_trigger",
+                            "show_state": false,
+                            "type": "picture-entity"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "entity": "camera.hsc_last_trigger",
+                            "show_state": false,
+                            "type": "picture-entity"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "entity": "camera.lrc_last_trigger",
+                            "show_state": false,
+                            "type": "picture-entity"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "entity": "camera.mcc_last_trigger",
+                            "show_state": false,
+                            "type": "picture-entity"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "entity": "camera.ofc_last_trigger",
+                            "show_state": false,
+                            "type": "picture-entity"
+                        }
+                    ],
+                    "icon": "mdi:test-tube",
+                    "panel": false,
+                    "path": "lab",
+                    "title": "Lab"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "binary_sensor.updater",
+                                            "name": "Released Version"
+                                        },
+                                        {
+                                            "entity": "sensor.version_current",
+                                            "name": "Current Version"
+                                        },
+                                        {
+                                            "entity": "sensor.version_available",
+                                            "name": "Available Version"
+                                        },
+                                        {
+                                            "entity": "sensor.last_boot"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.remote_ui"
+                                        }
+                                    ],
+                                    "title": "Home Assistant",
+                                    "type": "entities"
+                                },
+                                "break",
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.ha_dockermon_mosquitto",
+                                            "name": "Uptime"
+                                        },
+                                        {
+                                            "entity": "sensor.version_current_mosquitto",
+                                            "name": "Current Version"
+                                        },
+                                        {
+                                            "entity": "sensor.version_available_mosquitto",
+                                            "name": "Available Version"
+                                        },
+                                        {
+                                            "entity": "switch.ha_dockermon_mosquitto",
+                                            "name": "Pause / Run"
+                                        }
+                                    ],
+                                    "title": "Mosquitto",
+                                    "type": "entities"
+                                },
+                                "break",
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.ha_dockermon_influxdb"
+                                        },
+                                        {
+                                            "entity": "switch.ha_dockermon_influxdb",
+                                            "name": "Pause / Run"
+                                        }
+                                    ],
+                                    "title": "InfluxDB",
+                                    "type": "entities"
+                                },
+                                "break",
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.ha_dockermon_minecraft_server_01",
+                                            "name": "Uptime"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.minecraft_server_01_status",
+                                            "name": "Status"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_01_latency_time",
+                                            "name": "Latency Time"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_01_players_max",
+                                            "name": "Max Players"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_01_players_online",
+                                            "name": "Players Online"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_01_protocol_version",
+                                            "name": "Protocol Version"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_01_version",
+                                            "name": "Version"
+                                        },
+                                        {
+                                            "entity": "switch.ha_dockermon_minecraft_server_01",
+                                            "name": "Pause / Run"
+                                        }
+                                    ],
+                                    "title": "Minecraft Server 01",
+                                    "type": "entities"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.ha_dockermon_minecraft_server_02",
+                                            "name": "Uptime"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.minecraft_server_02_status",
+                                            "name": "Status"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_02_latency_time",
+                                            "name": "Latency Time"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_02_players_max",
+                                            "name": "Max Players"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_02_players_online",
+                                            "name": "Players Online"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_02_protocol_version",
+                                            "name": "Protocol Version"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_02_version",
+                                            "name": "Version"
+                                        },
+                                        {
+                                            "entity": "switch.ha_dockermon_minecraft_server_02",
+                                            "name": "Pause / Run"
+                                        }
+                                    ],
+                                    "title": "Minecraft Server 02",
+                                    "type": "entities"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.ha_dockermon_minecraft_server_03",
+                                            "name": "Uptime"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.minecraft_server_03_status",
+                                            "name": "Status"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_03_latency_time",
+                                            "name": "Latency Time"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_03_players_max",
+                                            "name": "Max Players"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_03_players_online",
+                                            "name": "Players Online"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_03_protocol_version",
+                                            "name": "Protocol Version"
+                                        },
+                                        {
+                                            "entity": "sensor.minecraft_server_03_version",
+                                            "name": "Version"
+                                        },
+                                        {
+                                            "entity": "switch.ha_dockermon_minecraft_server_03",
+                                            "name": "Pause / Run"
+                                        }
+                                    ],
+                                    "title": "Minecraft Server 03",
+                                    "type": "entities"
+                                }
+                            ],
+                            "layout": "vertical",
+                            "type": "custom:layout-card"
+                        }
+                    ],
+                    "icon": "mdi:docker",
+                    "panel": true,
+                    "path": "docker",
+                    "title": "Docker"
+                }
+            ]
+        }
+    },
+    "key": "lovelace.lovelace_admin",
+    "version": 1
+}

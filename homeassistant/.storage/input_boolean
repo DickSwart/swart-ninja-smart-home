@@ -90,6 +90,16 @@
                 "icon": "mdi:school",
                 "id": "routine_kids_home_school",
                 "name": "Routine Kids Home School"
+            },
+            {
+                "icon": "mdi:alarm-note-off",
+                "id": "house_alarm_silent",
+                "name": "Silent Alarm"
+            },
+            {
+                "icon": "mdi:alarm-note",
+                "id": "house_alarm_loud",
+                "name": "Loud Alarm"
             }
         ]
     },

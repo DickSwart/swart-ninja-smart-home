@@ -13,7 +13,7 @@ __pycache__
 
 # Directory (contents) ignores
 homeassistant/.cloud
-homeassistant/.storage
+homeassistant/.storage/*
 homeassistant/deps
 homeassistant/custom_components
 homeassistant/netdaemon
@@ -48,18 +48,21 @@ homeassistant/scripts/scripts.yaml
 # Specific keeps
 !.gitkeep
 !homeassistant/.ssh/config
+!homeassistant/.storage/input_*
+!homeassistant/.storage/lovelace*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 !.stubs/.env
 
+
 # TEMP
 grafana/*
 influxdb/*
 mariadb/*
 mosquitto/*
-nodered/*
+nodered
 *.disable
-homeassistant/lovelace
+# homeassistant/lovelace
 

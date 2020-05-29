@@ -6,6 +6,7 @@ ignore: |
   homeassistant/scenes.yaml
   homeassistant/scripts.yaml
   homeassistant/themes/
+  homeassistant/lovelace/scratch_pad.yaml
 
 rules:
   braces:

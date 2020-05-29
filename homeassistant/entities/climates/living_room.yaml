@@ -1,0 +1,13 @@
+---
+##################################################################################################################
+# Mitsubishi ECHONET Climate Component for Home Assistant
+# A Home Assistant custom component for use with ECHONET enabled Mitsubishi HVAC systems
+# using the MAC-568IF-E WiFi Adaptor.
+#
+# URL: https://github.com/scottyphillips/mitsubishi_hass
+#
+# EntityID: climate.living_room
+##################################################################################################################
+platform: mitsubishi
+name: Living Room
+ip_address: 192.168.20.222

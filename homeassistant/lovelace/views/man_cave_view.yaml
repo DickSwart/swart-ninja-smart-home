@@ -1,0 +1,271 @@
+---
+title: Man cave
+icon: "mdi:pac-man"
+panel: true
+path: man_cave
+cards:
+  - type: "custom:layout-card"
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../templates/heading.yaml
+            - title: <ha-icon icon="mdi:pac-man"></ha-icon> Man cave
+
+          - title: Man Cave
+            type: picture-glance
+            camera_image: camera.mcc
+            camera_view: live
+            entities:
+              - binary_sensor.mcc_motion
+
+          - type: horizontal-stack
+            cards:
+              - title: Backyard
+                type: picture-glance
+                camera_image: camera.byc
+                camera_view: live
+                entities:
+                  - binary_sensor.byc_motion
+              - title: House Side
+                type: picture-glance
+                camera_image: camera.hsc
+                camera_view: live
+                entities:
+                  - binary_sensor.hsc_motion
+
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.ender_3_octoprint
+                state: "on"
+            card:
+              type: picture-glance
+              camera_image: camera.octoprint
+              entities: []
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - name: Ceiling
+                type: "custom:button-card"
+                entity: light.man_cave_ceiling
+              - entity: light.man_cave_kitchen_ceiling_one
+                icon: "mdi:track-light"
+                name: Kitchen One
+                type: "custom:button-card"
+              - entity: light.man_cave_kitchen_ceiling_two
+                name: Kitchen Two
+                type: "custom:button-card"
+
+          - type: horizontal-stack
+            cards:
+              - entity: switch.ender_3
+                type: "custom:button-card"
+              - entity: switch.work_station
+                type: "custom:button-card"
+
+          - type: horizontal-stack
+            cards:
+              - entity: binary_sensor.man_cave_motion
+                name: Motion
+                template: motion_sensor_btn
+                type: "custom:button-card"
+              - entity: binary_sensor.man_cave_back_door
+                name: Back
+                template: door_sensor_btn
+                type: "custom:button-card"
+              - entity: binary_sensor.man_cave_stairs_door
+                name: Stairs
+                template: door_sensor_btn
+                type: "custom:button-card"
+
+      - break
+
+      - name: Heat Pump
+        entity: climate.man_cave
+        type: thermostat
+        hvac:
+          attribute: operation_mode
+          states:
+            Auto: auto
+            Cooling: cool
+            Fan_only: fan_only
+            Heating: heat
+            "Off": "off"
+
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            font_size: 75
+            line_width: 3
+            entities:
+              - color: var(--dark-primary-color)
+                entity: sensor.man_cave_temperature
+                name: Temperature
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:mini-graph-card"
+                font_size: 75
+                line_color: var(--complement-color-one)
+                line_width: 3
+                entities:
+                  - entity: sensor.man_cave_multisensor_humidity
+                    name: Humidity
+
+              - type: "custom:mini-graph-card"
+                font_size: 75
+                line_color: var(--complement-color-two)
+                line_width: 3
+                entities:
+                  - entity: sensor.man_cave_multisensor_luminance
+                    name: Luminance
+
+      - entity: media_player.man_cave_volumio
+        type: custom:mini-media-player
+        artwork: cover
+        hide:
+          icon: true
+          power: true
+        shortcuts:
+          columns: 4
+          buttons:
+            - icon: mdi:power
+              type: service
+              id: rest_command.genius_swhf51_3000_command
+              data:
+                command: POWER
+            - icon: mdi:volume-minus
+              type: service
+              id: rest_command.genius_swhf51_3000_command
+              data:
+                command: VOL-
+            - icon: mdi:volume-plus
+              type: service
+              id: rest_command.genius_swhf51_3000_command
+              data:
+                command: VOL+
+            - icon: mdi:volume-off
+              type: service
+              id: rest_command.genius_swhf51_3000_command
+              data:
+                command: MUTE
+
+      - break
+
+      - title: Other
+        show_header_toggle: false
+        type: entities
+        entities:
+          - entity: input_boolean.man_cave_automated_lights
+          - entity: input_boolean.man_cave_kitchen_automated_lights
+          - head: zwave.man_cave_kitchen_zw100_multisensor
+            items:
+              - entity: binary_sensor.man_cave_kitchen_zw100_multisensor_motion
+                name: Motion
+              - entity: sensor.man_cave_kitchen_zw100_multisensor_humidity
+                name: Humidity
+              - entity: sensor.man_cave_kitchen_zw100_multisensor_luminance
+                name: Luminance
+              - entity: sensor.man_cave_kitchen_zw100_multisensor_temperature
+                name: Temperature
+              - entity: sensor.man_cave_kitchen_zw100_multisensor_ultraviolet
+                name: Ultraviolet
+            type: "custom:fold-entity-row"
+          - head: media_player.man_cave_echo_dot
+            items:
+              - entity: switch.man_cave_echo_dot_do_not_disturb_switch
+                name: Do not disturb
+              - entity: sensor.man_cave_echo_dot_next_alarm
+                name: Next alarm
+              - entity: sensor.man_cave_echo_dot_next_reminder
+                name: Next reminder
+              - entity: sensor.man_cave_echo_dot_next_timer
+                name: Next timer
+              - entity: switch.man_cave_echo_dot_repeat_switch
+                name: Repeat
+              - entity: switch.man_cave_echo_dot_shuffle_switch
+                name: Shuffle
+            type: "custom:fold-entity-row"
+          - head: binary_sensor.ender_3_octoprint
+            items:
+              - entity: sensor.octoprint_actual_tool0_temp
+                name: Extruder temperature (Actual)
+              - entity: sensor.octoprint_target_tool0_temp
+                name: Extruder temperature (Target)
+              - entity: sensor.octoprint_actual_bed_temp
+                name: Bed temperature (Actual)
+              - entity: sensor.octoprint_target_bed_temp
+                name: Bed temperature (Target)
+              - entity: sensor.octoprint_time_elapsed
+                name: Time elapsed
+              - entity: sensor.octoprint_time_remaining
+                name: Time remaining
+              - entity: sensor.octoprint_current_state
+                name: Print state
+              - entity: sensor.octoprint_job_percentage
+                name: Print Percentage
+              - entity: binary_sensor.octoprint_printing
+                name: Printing
+              - entity: binary_sensor.octoprint_printing_error
+                name: Errors
+            type: "custom:fold-entity-row"
+          - head: light.man_cave_multisensor
+            type: "custom:fold-entity-row"
+            entities:
+              - entity: binary_sensor.man_cave_multisensor_motion
+                name: Motion
+              - entity: sensor.man_cave_multisensor_temperature
+                name: Temperature
+              - entity: sensor.man_cave_multisensor_real_feel
+                name: Real Feel
+              - entity: sensor.man_cave_multisensor_humidity
+                name: Humidity
+              - entity: sensor.man_cave_multisensor_luminance
+                name: Luminance
+              - entity: sensor.man_cave_multisensor_wifi
+                name: WiFi
+          - head: switch.computer_desk
+            type: "custom:fold-entity-row"
+            entities:
+              - entity: sensor.computer_desk_current
+                name: Current
+              - entity: sensor.computer_desk_energy
+                name: Energy
+              - entity: sensor.computer_desk_power
+                name: Power
+              - entity: sensor.computer_desk_power_factor
+                name: Power factor
+              - entity: sensor.computer_desk_voltage
+                name: Voltage
+          - head: switch.work_station
+            type: "custom:fold-entity-row"
+            entities:
+              - entity: sensor.work_station_current
+                name: Current
+              - entity: sensor.work_station_energy
+                name: Energy
+              - entity: sensor.work_station_power
+                name: Power
+              - entity: sensor.work_station_power_factor
+                name: Power factor
+              - entity: sensor.work_station_voltage
+                name: Voltage
+          - head: switch.ender_3
+            type: "custom:fold-entity-row"
+            entities:
+              - entity: switch.ender_3_pow
+              - entity: sensor.ender_3_pow_current
+                name: Current
+              - entity: sensor.ender_3_pow_energy
+                name: Energy
+              - entity: sensor.ender_3_pow_power
+                name: Power
+              - entity: sensor.ender_3_pow_power_factor
+                name: Power factor
+              - entity: sensor.ender_3_pow_voltage
+                name: Voltage
+
+

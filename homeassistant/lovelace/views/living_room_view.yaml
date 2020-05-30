@@ -1,3 +1,4 @@
+---
 title: Living Room
 icon: "mdi:sofa"
 panel: true
@@ -8,34 +9,17 @@ cards:
     cards:
       - type: vertical-stack
         cards:
-          - type: markdown
-            content: |
-              # <ha-icon icon="mdi:sofa"></ha-icon> Living Room
-            style: |
-              ha-card {
-                box-shadow: none;
-                background: none;
-                border-radius: 0;
-                border-bottom: 1px solid var(--primary-color);
-              }
-              ha-card > ha-markdown {
-                padding-left: 0
-              }
-              ha-icon {
-                color: var(--primary-color);
-              }
-              h1 {
-                font-size: 2em;
-                font-weight: 400;
-                font-family: var(--paper-font-title_-_font-family);
-              }
+          - !include
+            - ../templates/heading.yaml
+            - title: <ha-icon icon="mdi:sofa"></ha-icon> Living Room
+
           - camera_image: camera.lrc
             camera_view: live
             entities:
               - binary_sensor.lrc_motion
-              # - sensor.blue_iris_triggered_lrc
             title: Living Room
             type: picture-glance
+
           - camera_image: camera.dec
             camera_view: live
             entities:

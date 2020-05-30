@@ -84,7 +84,7 @@ background: var(--background-image)
 views:
   - !include lovelace/views/dashboard_view.yaml
   - !include lovelace/views/living_room_view.yaml
-  # - !include lovelace/views/man_cave_view.yaml
+  - !include lovelace/views/man_cave_view.yaml
   # - !include lovelace/views/office_view.yaml
   # - !include lovelace/views/hall_view.yaml
   # - !include lovelace/views/bathroom_view.yaml

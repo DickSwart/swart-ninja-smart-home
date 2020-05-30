@@ -87,7 +87,7 @@ views:
   - !include lovelace/views/man_cave_view.yaml
   - !include lovelace/views/office_view.yaml
   - !include lovelace/views/hall_view.yaml
-  # - !include lovelace/views/bathroom_view.yaml
+  - !include lovelace/views/bathroom_view.yaml
   # - !include lovelace/views/dining_room_view.yaml
   # - !include lovelace/views/kitchen_view.yaml
   - !include lovelace/views/master_bedroom_view.yaml

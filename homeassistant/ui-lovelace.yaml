@@ -90,6 +90,6 @@ views:
   # - !include lovelace/views/bathroom_view.yaml
   # - !include lovelace/views/dining_room_view.yaml
   # - !include lovelace/views/kitchen_view.yaml
-  # - !include lovelace/views/master_bedroom_view.yaml
+  - !include lovelace/views/master_bedroom_view.yaml
   - !include lovelace/views/nico_bedroom_view.yaml
   - !include lovelace/views/max_bedroom_view.yaml

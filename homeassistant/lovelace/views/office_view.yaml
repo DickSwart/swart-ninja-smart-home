@@ -1,0 +1,210 @@
+---
+title: Office
+icon: "mdi:desktop-tower-monitor"
+panel: true
+path: office
+visible:
+  - user: 7d15022a12ef4ca0a18a84419893635d
+cards:
+  - type: "custom:layout-card"
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../templates/heading.yaml
+            - title: <ha-icon icon="mdi:desktop-tower-monitor"></ha-icon> Office
+
+          - camera_image: camera.ofc
+            camera_view: live
+            entities:
+              - binary_sensor.ofc_motion
+            title: Office
+            type: picture-glance
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - name: Ceiling
+                type: "custom:button-card"
+                entity: light.office_ceiling
+                hold_action:
+                  action: more-info
+
+              - name: Door Lock
+                color: auto
+                entity: lock.office_door_system_e449d3_lock
+                hold_action:
+                  action: more-info
+                lock:
+                  duration: 300
+                  enabled: >-
+                    [[[ return
+                    states["binary_sensor.office_door_system_e449d3_door"].state
+                    == "on"; ]]]
+                  unlock: hold
+                state:
+                  - color: var(--dark-primary-color)
+                    icon: "mdi:lock"
+                    value: locked
+                  - color: var(--accent-color)
+                    icon: "mdi:lock-open"
+                    value: unlocked
+                tap_action:
+                  action: toggle
+                type: "custom:button-card"
+              - entity: binary_sensor.office_door_system_e449d3_door
+                name: Door
+                template: door_sensor_btn
+                type: "custom:button-card"
+
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../templates/sub_heading.yaml
+            - title: Door Control
+          - type: custom:vertical-stack-in-card
+            horizontal: true
+            cards:
+              - entity: cover.office_door_system_e449d3_cover
+                icon: "mdi:arrow-left-circle"
+                lock:
+                  duration: 300
+                  enabled: >-
+                    [[[ return
+                    states["binary_sensor.office_door_system_e449d3_door"].state
+                    == "off"; ]]]
+                  unlock: hold
+                name: Close
+                show_icon: true
+                show_name: true
+                state:
+                  - color: var(--disabled-text-color)
+                    operator: template
+                    value: |
+                      [[[
+                        return states['cover.office_door_system_e449d3_cover'].attributes
+                        && (states['cover.office_door_system_e449d3_cover'].attributes.current_position == 0)
+                      ]]]
+                tap_action:
+                  action: call-service
+                  service: cover.close_cover
+                  service_data:
+                    entity_id: cover.office_door_system_e449d3_cover
+                type: "custom:button-card"
+              - entity: cover.office_door_system_e449d3_cover
+                icon: "mdi:stop-circle"
+                name: Stop
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: call-service
+                  service: cover.stop_cover
+                  service_data:
+                    entity_id: cover.office_door_system_e449d3_cover
+                type: "custom:button-card"
+              - entity: cover.office_door_system_e449d3_cover
+                icon: "mdi:arrow-right-circle"
+                lock:
+                  duration: 300
+                  enabled: >-
+                    [[[ return
+                    states["lock.office_door_system_e449d3_lock"].state
+                    == "locked"; ]]]
+                  unlock: hold
+                name: Open
+                show_icon: true
+                show_name: true
+                state:
+                  - color: var(--disabled-text-color)
+                    operator: template
+                    value: |
+                      [[[
+                        return (states['cover.office_door_system_e449d3_cover'].attributes &&
+                        (states['cover.office_door_system_e449d3_cover'].attributes.current_position == 100)) ||
+                        states["lock.office_door_system_e449d3_lock"].state == "locked"
+                      ]]]
+                tap_action:
+                  action: call-service
+                  service: cover.open_cover
+                  service_data:
+                    entity_id: cover.office_door_system_e449d3_cover
+                type: "custom:button-card"
+
+      - break
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - entity: sensor.cpu_temp
+                max: 100
+                min: 0
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 60
+                title: CPU Temp
+                type: gauge
+                unit_of_measurement: °C
+              - entity: sensor.cpu_speed
+                max: 100
+                min: 0
+                severity:
+                  green: 0
+                  yellow: 40
+                  red: 50
+                title: CPU Usage
+                type: gauge
+
+          - type: horizontal-stack
+            cards:
+              - entity: sensor.memory_use_percent
+                max: 100
+                min: 0
+                name: RAM Used
+                severity:
+                  green: 0
+                  yellow: 40
+                  red: 70
+                type: gauge
+              - entity: sensor.disk_use_percent
+                max: 100
+                min: 0
+                name: Disk Used
+                severity:
+                  green: 0
+                  yellow: 40
+                  red: 70
+                type: gauge
+
+      - break
+
+      - type: vertical-stack
+        cards:
+          - name: Temperature
+            type: "custom:mini-graph-card"
+            font_size: 75
+            line_color: var(--dark-primary-color)
+            line_width: 3
+            entities:
+              - sensor.office_zw100_multisensor_temperature
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:mini-graph-card"
+                font_size: 75
+                line_color: var(--complement-color-one)
+                line_width: 3
+                entities:
+                  - entity: sensor.office_zw100_multisensor_humidity
+                    name: Humidity
+
+              - type: "custom:mini-graph-card"
+                font_size: 75
+                line_color: var(--complement-color-two)
+                line_width: 3
+                entities:
+                  - entity: sensor.office_zw100_multisensor_luminance
+                    name: Luminance

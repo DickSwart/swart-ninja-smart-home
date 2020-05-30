@@ -43,7 +43,7 @@ button_card_templates:
     layout: name_state
     styles:
       card:
-        - background-color: var(--primary-background-color)
+        - background: none
         - box-shadow: none
       icon:
         - color: var(--dark-primary-color)
@@ -85,7 +85,7 @@ views:
   - !include lovelace/views/dashboard_view.yaml
   - !include lovelace/views/living_room_view.yaml
   - !include lovelace/views/man_cave_view.yaml
-  # - !include lovelace/views/office_view.yaml
+  - !include lovelace/views/office_view.yaml
   # - !include lovelace/views/hall_view.yaml
   # - !include lovelace/views/bathroom_view.yaml
   # - !include lovelace/views/dining_room_view.yaml

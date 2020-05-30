@@ -32,3 +32,5 @@ lovelace:
       type: module
     - url: /hacsfiles/custom-header/custom-header.js
       type: module
+    - url: /hacsfiles/lovelace-state-switch/state-switch.js
+      type: module

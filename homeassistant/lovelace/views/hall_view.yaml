@@ -1,0 +1,112 @@
+icon: "mdi:highway"
+panel: true
+path: hall
+title: Hall
+cards:
+  - type: "custom:layout-card"
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../templates/heading.yaml
+            - title: <ha-icon icon="mdi:highway"></ha-icon> Hall
+
+          - title: Hall
+            type: picture-glance
+            camera_image: camera.hlc
+            camera_view: live
+            entities:
+              - binary_sensor.lrc_motion
+          - title: Front Door
+            type: picture-glance
+            camera_image: camera.fdc
+            camera_view: live
+            entities:
+              - binary_sensor.fdc_motion
+
+      - break
+
+      - type: vertical-stack
+        cards:
+          - name: Ceiling
+            type: light
+            entity: light.hall_zw111_nano_dimmer
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: motion_sensor_btn
+                entity: binary_sensor.hall_motion
+              - type: "custom:button-card"
+                template: door_sensor_btn
+                entity: binary_sensor.hall_multisensor_door
+
+      - break
+
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            font_size: 75
+            line_width: 3
+            entities:
+              - name: Temperature
+                color: var(--light-primary-color)
+                entity: sensor.hall_multisensor_temperature
+              - name: Real feel
+                color: var(--dark-primary-color)
+                entity: sensor.hall_multisensor_real_feel
+          - type: horizontal-stack
+            cards:
+              - type: "custom:mini-graph-card"
+                font_size: 75
+                line_color: var(--complement-color-one)
+                line_width: 4
+                entities:
+                  - entity: sensor.hall_multisensor_humidity
+                    name: Humidity
+              - type: "custom:mini-graph-card"
+                font_size: 75
+                line_color: var(--complement-color-two)
+                line_width: 4
+                entities:
+                  - entity: sensor.hall_multisensor_luminance
+                    name: Luminance
+
+      - break
+
+      - title: MultiSensor
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.hall_multisensor_door
+            name: Door
+          - entity: sensor.hall_multisensor_temperature
+            name: Temperature
+          - entity: sensor.hall_multisensor_real_feel
+            name: Real feel
+          - entity: sensor.hall_multisensor_humidity
+            name: Humidity
+          - entity: sensor.hall_multisensor_luminance
+            name: Luminance
+          - entity: switch.hall_multisensor_siren
+            name: Siren
+          - entity: sensor.hall_multisensor_wifi
+            name: WiFi
+
+      - title: Hall ZW111 Nano Dimmer
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: zwave.hall_zw111_nano_dimmer
+          - entity: light.hall_zw111_nano_dimmer
+            name: Light
+          - entity: sensor.hall_zw111_nano_dimmer_current
+            name: Current
+          - entity: sensor.hall_zw111_nano_dimmer_energy
+            name: Energy
+          - entity: sensor.hall_zw111_nano_dimmer_power
+            name: Power
+          - entity: sensor.hall_zw111_nano_dimmer_previous_reading
+            name: Previous reading
+          - entity: sensor.hall_zw111_nano_dimmer_voltage
+            name: Voltage

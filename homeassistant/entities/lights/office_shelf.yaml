@@ -6,13 +6,13 @@
 #
 # URL: https://www.home-assistant.io/integrations/light.mqtt/
 #
-# Device: Zemismart KS-811 3 Gang Switch (Button 1)
+# Device: Zemismart KS-811 3 Gang Switch (Button 2)
 # EntityID: light.office_ceiling
 ##################################################################################################################
 platform: mqtt
-name: Office Ceiling
-state_topic: stat/ks811_485539/POWER1
-command_topic: cmnd/ks811_485539/POWER1
+name: Office Shelf
+state_topic: stat/ks811_485539/POWER2
+command_topic: cmnd/ks811_485539/POWER2
 availability_topic: tele/ks811_485539/LWT
 payload_on: "ON"
 payload_off: "OFF"

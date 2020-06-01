@@ -10,6 +10,6 @@
 ##############################################################################################
 platform: mqtt
 name: doorbell
-state_topic: "A579B6/sensor/doorbell"
-availability_topic: "A579B6/status"
+state_topic: A579B6/sensor/doorbell
+availability_topic: A579B6/status
 device_class: sound

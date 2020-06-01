@@ -10,6 +10,6 @@
 ##############################################################################################
 platform: mqtt
 name: Kitchen MultiSensor Motion
-state_topic: "52FAE3/sensor/motion"
-availability_topic: "52FAE3/status"
+state_topic: 52FAE3/sensor/motion
+availability_topic: 52FAE3/status
 device_class: motion

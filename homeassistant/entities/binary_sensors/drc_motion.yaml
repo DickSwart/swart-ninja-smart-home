@@ -11,7 +11,7 @@
 ##############################################################################################
 platform: mqtt
 name: DRC Motion
-state_topic: "BlueIris/DRC/MOTION"
+state_topic: BlueIris/DRC/MOTION
 payload_on: "ON"
 payload_off: "OFF"
 device_class: motion

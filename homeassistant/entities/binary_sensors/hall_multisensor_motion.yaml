@@ -10,7 +10,7 @@
 # EntityID: binary_sensor.hall_multisensor_motion
 ##############################################################################################
 platform: mqtt
-name: "Hall MultiSensor Motion"
-state_topic: "E44EC2/sensor/motion"
-availability_topic: "E44EC2/status"
+name: Hall MultiSensor Motion
+state_topic: E44EC2/sensor/motion
+availability_topic: E44EC2/status
 device_class: motion

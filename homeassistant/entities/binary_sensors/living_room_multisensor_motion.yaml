@@ -10,6 +10,6 @@
 ##############################################################################################
 platform: mqtt
 name: Living Room MultiSensor Motion
-state_topic: "536310/sensor/motion"
-availability_topic: "536310/status"
+state_topic: 536310/sensor/motion
+availability_topic: 536310/status
 device_class: motion

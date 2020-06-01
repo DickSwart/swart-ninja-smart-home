@@ -8,6 +8,6 @@
 # EntityID: binary_sensor.workday_today
 ##############################################################################################
 platform: workday
-name: "Workday Today"
+name: Workday Today
 country: NZ
 province: WGN

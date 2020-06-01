@@ -11,7 +11,7 @@
 platform: template
 sensors:
   dark_outside:
-    friendly_name: "Dark Outside"
+    friendly_name: Dark Outside
     value_template: >-
       {% set sun_elevation = state_attr('sun.sun', 'elevation') | int | default(0) %}
       {% set cloud_coverage = states('sensor.dark_sky_cloud_coverage') | int | default(0) %}

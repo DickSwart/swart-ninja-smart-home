@@ -8,7 +8,7 @@
 # EntityID: binary_sensor.workday_tomorrow
 ##############################################################################################
 platform: workday
-name: "Workday Tomorrow"
+name: Workday Tomorrow
 country: NZ
 province: WGN
 days_offset: 1

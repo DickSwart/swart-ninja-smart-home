@@ -10,6 +10,6 @@
 ##############################################################################################
 platform: mqtt
 name: Kitchen MotionSensor Motion
-state_topic: "4C86CF/sensor/motion"
-availability_topic: "4C86CF/status"
+state_topic: 4C86CF/sensor/motion
+availability_topic: 4C86CF/status
 device_class: motion

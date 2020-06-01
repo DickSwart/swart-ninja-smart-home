@@ -10,7 +10,7 @@
 # EntityID: binary_sensor.hall_multisensor_door
 ##############################################################################################
 platform: mqtt
-name: "Hall MultiSensor Door"
-state_topic: "E44EC2/sensor/door"
-availability_topic: "E44EC2/status"
+name: Hall MultiSensor Door
+state_topic: E44EC2/sensor/door
+availability_topic: E44EC2/status
 device_class: door

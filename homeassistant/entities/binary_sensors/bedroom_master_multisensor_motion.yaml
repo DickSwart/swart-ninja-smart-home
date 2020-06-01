@@ -9,7 +9,7 @@
 # EntityID: binary_sensor.bedroom_master_multisensor_motion
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Master MultiSensor Motion"
-state_topic: "534E79/sensor/motion"
-availability_topic: "534E79/status"
+name: Bedroom Master MultiSensor Motion
+state_topic: 534E79/sensor/motion
+availability_topic: 534E79/status
 device_class: motion

@@ -10,6 +10,6 @@
 ##############################################################################################
 platform: mqtt
 name: Bedroom Nico MultiSensor Motion
-state_topic: "532B98/sensor/motion"
-availability_topic: "532B98/status"
+state_topic: 532B98/sensor/motion
+availability_topic: 532B98/status
 device_class: motion

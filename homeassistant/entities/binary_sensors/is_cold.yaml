@@ -11,7 +11,7 @@
 platform: template
 sensors:
   is_cold:
-    friendly_name: "Is it cold?"
+    friendly_name: Is it cold?
     value_template: >-
       {{ ( (states('sensor.dark_sky_temperature')|float < 13) or
       (states('sensor.bedrooms_temperature')|float < 17.5) ) }}

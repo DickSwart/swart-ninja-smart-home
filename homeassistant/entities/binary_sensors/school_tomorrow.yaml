@@ -11,7 +11,7 @@
 platform: template
 sensors:
   school_tomorrow:
-    friendly_name: "School Tomorrow"
+    friendly_name: School Tomorrow
     value_template: >-
       {% set sh_start_date = (as_timestamp(state_attr('calendar.hass_calendar_school_holidays', 'start_time'))) | float | default(0) %}
       {% set sh_end_date = (as_timestamp(state_attr('calendar.hass_calendar_school_holidays', 'end_time'))) | float | default(0) %}

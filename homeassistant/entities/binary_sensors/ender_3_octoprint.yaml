@@ -8,7 +8,7 @@
 # EntityID: binary_sensor.ender_3_octoprint
 ##############################################################################################
 platform: ping
-name: "Ender 3 OctoPrint"
+name: Ender 3 OctoPrint
 host: 192.168.1.210
 count: 2
 scan_interval: 30

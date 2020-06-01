@@ -6,13 +6,12 @@
 #
 # URL: https://www.home-assistant.io/integrations/binary_sensor.template
 #
-# EntityID: binary_sensor.living_room_motion
+# EntityID: binary_sensor.dining_room_motion
 ##############################################################################################
 platform: template
 sensors:
-  living_room_motion:
-    friendly_name: Living Room Motion
+  man_cave_motion:
+    friendly_name: Dining Room Motion
     device_class: motion
     value_template: >-
-      {{ is_state('binary_sensor.living_room_multisensor_motion', 'on')
-          or is_state('binary_sensor.lrc_ai_motion', 'on') }}
+      {{ is_state('binary_sensor.drc_ai_motion', 'on') }}

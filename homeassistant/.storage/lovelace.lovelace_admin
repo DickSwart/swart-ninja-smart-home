@@ -337,16 +337,159 @@
                             "type": "picture-entity"
                         }
                     ],
-                    "icon": "mdi:test-tube",
+                    "icon": "mdi:cctv",
                     "panel": false,
-                    "path": "lab",
-                    "title": "Lab"
+                    "path": "cctv-last-triggered",
+                    "title": ""
                 },
                 {
                     "badges": [],
                     "cards": [
                         {
                             "cards": [
+                                {
+                                    "direction": "up",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.glances_used_percent",
+                                            "name": "SSD"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_mnt_media01_used_percent",
+                                            "name": "Media 01"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_mnt_media02_used_percent",
+                                            "name": "Media 02"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_mnt_media03_used_percent",
+                                            "name": "Media 03"
+                                        }
+                                    ],
+                                    "height": "100px",
+                                    "max": 100,
+                                    "min": 0,
+                                    "positions": {
+                                        "icon": "inside",
+                                        "title": "inside",
+                                        "value": "inside"
+                                    },
+                                    "severity": [
+                                        {
+                                            "color": "#3cff00",
+                                            "from": 0,
+                                            "to": 30
+                                        },
+                                        {
+                                            "color": "#ccff00",
+                                            "from": 30,
+                                            "to": 40
+                                        },
+                                        {
+                                            "color": "#f1f505",
+                                            "from": 40,
+                                            "to": 50
+                                        },
+                                        {
+                                            "color": "#f7da00",
+                                            "from": 50,
+                                            "to": 60
+                                        },
+                                        {
+                                            "color": "#edac09",
+                                            "from": 60,
+                                            "to": 70
+                                        },
+                                        {
+                                            "color": "#ffa408",
+                                            "from": 70,
+                                            "to": 80
+                                        },
+                                        {
+                                            "color": "#ff5e08",
+                                            "from": 80,
+                                            "to": 90
+                                        },
+                                        {
+                                            "color": "#ed0909",
+                                            "from": 90,
+                                            "to": 100
+                                        }
+                                    ],
+                                    "show_icon": true,
+                                    "stack": "horizontal",
+                                    "tap_action": "none",
+                                    "title": "Disk Used %",
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "direction": "up",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.glances_free",
+                                            "max": 208.910555,
+                                            "min": 0,
+                                            "name": "SSD"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_mnt_media01_free",
+                                            "max": 2622.273751,
+                                            "min": 0,
+                                            "name": "Media 01"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_mnt_media02_free",
+                                            "max": 3496.68134,
+                                            "min": 0,
+                                            "name": "Media 02"
+                                        },
+                                        {
+                                            "entity": "sensor.glances_mnt_media03_free",
+                                            "max": 2622.273751,
+                                            "min": 0,
+                                            "name": "Media 03"
+                                        }
+                                    ],
+                                    "height": "100px",
+                                    "positions": {
+                                        "icon": "inside",
+                                        "title": "inside",
+                                        "value": "inside"
+                                    },
+                                    "severity": [
+                                        {
+                                            "color": "#fa0505",
+                                            "from": 0,
+                                            "to": 700
+                                        },
+                                        {
+                                            "color": "#de4314",
+                                            "from": 700,
+                                            "to": 800
+                                        },
+                                        {
+                                            "color": "#d1861d",
+                                            "from": 800,
+                                            "to": 900
+                                        },
+                                        {
+                                            "color": "#d4c11c",
+                                            "from": 900,
+                                            "to": 1000
+                                        },
+                                        {
+                                            "color": "#64c91c",
+                                            "from": 1001,
+                                            "to": 3500
+                                        }
+                                    ],
+                                    "show_icon": true,
+                                    "stack": "horizontal",
+                                    "tap_action": "none",
+                                    "title": "Disk Space Free",
+                                    "type": "custom:bar-card"
+                                },
                                 {
                                     "entities": [
                                         {
@@ -638,6 +781,136 @@
                             "show_header_toggle": false,
                             "title": "Systems",
                             "type": "entities"
+                        },
+                        {
+                            "aggregate_func": "max",
+                            "entities": [
+                                {
+                                    "entity": "sensor.glances_ram_used",
+                                    "line_color": "var(--complement-color-one)",
+                                    "name": "System"
+                                },
+                                {
+                                    "entity": "sensor.glances_containers_ram_used",
+                                    "line_color": "var(--complement-color-two)",
+                                    "name": "Containers"
+                                }
+                            ],
+                            "font_size_header": 9,
+                            "hours_to_show": 7,
+                            "line_width": 2,
+                            "name": "RAM Usage",
+                            "points_per_hour": 10,
+                            "show": {
+                                "average": true,
+                                "extrema": true
+                            },
+                            "smoothing": false,
+                            "type": "custom:mini-graph-card",
+                            "update_interval": 30
+                        },
+                        {
+                            "aggregate_func": "max",
+                            "entities": [
+                                {
+                                    "entity": "sensor.glances_cpu_used",
+                                    "line_color": "\"#14ff8d\"",
+                                    "name": "System"
+                                },
+                                {
+                                    "entity": "sensor.glances_containers_cpu_used",
+                                    "line_color": "\"#fff\"",
+                                    "name": "Containers"
+                                }
+                            ],
+                            "font_size_header": 9,
+                            "hours_to_show": 7,
+                            "line_width": 2,
+                            "name": "CPU Usage",
+                            "points_per_hour": 10,
+                            "show": {
+                                "average": true,
+                                "extrema": true
+                            },
+                            "smoothing": false,
+                            "type": "custom:mini-graph-card",
+                            "update_interval": 30
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "aggregate_func": "max",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.glances_cpu_used",
+                                                    "line_color": "\"#14ff8d\"",
+                                                    "name": "System"
+                                                },
+                                                {
+                                                    "entity": "sensor.glances_containers_cpu_used",
+                                                    "line_color": "\"#2814ff\"",
+                                                    "name": "Containers"
+                                                }
+                                            ],
+                                            "font_size": 65,
+                                            "font_size_header": 9,
+                                            "hours_to_show": 7,
+                                            "line_width": 2,
+                                            "name": "CPU Usage",
+                                            "points_per_hour": 10,
+                                            "show": {
+                                                "average": true,
+                                                "extrema": true
+                                            },
+                                            "smoothing": false,
+                                            "style": "ha-card {\n  background: var(--paper-card-background-color);\n  color: var(--primary-text-color);\n  border-radius: var(--border-radius);\n  box-shadow: var(--box-shadow)\n}\n",
+                                            "type": "custom:mini-graph-card",
+                                            "update_interval": 30
+                                        },
+                                        {
+                                            "aggregate_func": "max",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.glances_ram_used",
+                                                    "line_color": "\"#14ff8d\"",
+                                                    "name": "System"
+                                                },
+                                                {
+                                                    "entity": "sensor.glances_containers_ram_used",
+                                                    "line_color": "\"#2814ff\"",
+                                                    "name": "Containers"
+                                                }
+                                            ],
+                                            "font_size": 65,
+                                            "font_size_header": 9,
+                                            "hours_to_show": 7,
+                                            "line_width": 2,
+                                            "name": "RAM Usage",
+                                            "points_per_hour": 10,
+                                            "show": {
+                                                "average": true,
+                                                "extrema": true
+                                            },
+                                            "smoothing": false,
+                                            "style": "ha-card {\n  background: var(--paper-card-background-color);\n  color: var(--primary-text-color);\n  border-radius: var(--border-radius);\n  box-shadow: var(--box-shadow)\n}\n",
+                                            "type": "custom:mini-graph-card",
+                                            "update_interval": 30
+                                        }
+                                    ],
+                                    "parameters": {
+                                        "pagination": {
+                                            "dynamicBullets": true,
+                                            "type": "bullets"
+                                        },
+                                        "spaceBetween": 8,
+                                        "touchEventsTarget": "container"
+                                    },
+                                    "type": "custom:swipe-card"
+                                }
+                            ],
+                            "type": "horizontal-stack"
                         }
                     ],
                     "path": "todo",

@@ -128,6 +128,7 @@ cards:
           - entity: light.man_cave_ceiling
           - entity: light.man_cave_kitchen_ceiling_one
           - entity: light.man_cave_kitchen_ceiling_two
+          - entity: light.man_cave_bathroom_ceiling
           - entity: light.office_ceiling
           - entity: switch.man_cave_heat_pump
           - entity: switch.living_room_heat_pump

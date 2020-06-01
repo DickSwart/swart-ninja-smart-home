@@ -1,4 +1,5 @@
 ---
+# docker-compose pull
 # docker-compose up -d  --remove-orphans
 version: "3.7"
 services:

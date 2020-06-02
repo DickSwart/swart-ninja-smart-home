@@ -1,3 +1,4 @@
+---
 title: Dashboard
 path: dashboard
 icon: mdi:view-dashboard
@@ -17,14 +18,14 @@ cards:
               - device_tracker.life360_dick_swart
               - device_tracker.tile_478ab17cb091cbbe
               - device_tracker.tile_cc9e13f7316c95e3
-            type: 'custom:fold-entity-row'
+            type: "custom:fold-entity-row"
           - head: sensor.presence_location_tamara
             items:
               - input_boolean.presence_location_away_tamara
               - device_tracker.tamara_iphone
               - device_tracker.unifi_tamara_iphonex
               - device_tracker.life360_tamara
-            type: 'custom:fold-entity-row'
+            type: "custom:fold-entity-row"
           - type: divider
           - input_boolean.house_mode_away
           - input_boolean.house_mode_guest
@@ -38,15 +39,15 @@ cards:
 
           - cards:
               - name: Ceiling
-                type: 'custom:button-card'
+                type: "custom:button-card"
                 color: auto
                 entity: light.bedroom_master_ceiling
               - name: Tamara
-                type: 'custom:button-card'
+                type: "custom:button-card"
                 color: auto
                 entity: switch.bedroom_master_electric_blanket_tamara
               - name: Dick
-                type: 'custom:button-card'
+                type: "custom:button-card"
                 color: auto
                 entity: switch.bedroom_master_electric_blanket_dick
             type: horizontal-stack
@@ -60,7 +61,7 @@ cards:
           - type: horizontal-stack
             cards:
               - name: Ceiling
-                type: 'custom:button-card'
+                type: "custom:button-card"
                 color: auto
                 entity: light.bedroom_nico_ceiling
 
@@ -69,10 +70,10 @@ cards:
                 hold_action:
                   action: more-info
                 name: Bed
-                type: 'custom:button-card'
+                type: "custom:button-card"
 
               - name: LED
-                type: 'custom:button-card'
+                type: "custom:button-card"
                 color: auto
                 entity: light.bedroom_nico_multisensor
 
@@ -85,7 +86,7 @@ cards:
           - type: horizontal-stack
             cards:
               - name: Ceiling
-                type: 'custom:button-card'
+                type: "custom:button-card"
                 color: auto
                 entity: light.bedroom_max_ceiling
 
@@ -94,10 +95,10 @@ cards:
                 hold_action:
                   action: more-info
                 name: Bed
-                type: 'custom:button-card'
+                type: "custom:button-card"
 
               - name: LED
-                type: 'custom:button-card'
+                type: "custom:button-card"
                 color: auto
                 entity: light.bedroom_max_multisensor
 
@@ -106,7 +107,7 @@ cards:
       - type: entity-filter
         show_empty: false
         state_filter:
-          - 'on'
+          - "on"
         card:
           title: It's on
           type: entities

@@ -96,6 +96,8 @@ light.living_room_television:
   icon: mdi:led-strip-variant
 light.backyard:
   icon: mdi:coach-lamp
+light.kitchen_cupboard:
+  icon: mdi:led-strip-variant
 
 camera.byc:
   friendly_name: Backyard

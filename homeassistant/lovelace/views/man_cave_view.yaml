@@ -270,5 +270,3 @@ cards:
                 name: Power factor
               - entity: sensor.ender_3_pow_voltage
                 name: Voltage
-
-

@@ -1,101 +1,101 @@
+---
 icon: "mdi:fridge"
 panel: true
 path: kitchen
 title: Kitchen
 cards:
-  - cards:
-      - cards:
-          - color_type: label-card
-            name: Kitchen
-            template: header_button
-            type: "custom:button-card"
-          - cards:
-              - entity: light.kitchen_main_light
+  - type: "custom:layout-card"
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../templates/heading.yaml
+            - title: <ha-icon icon="mdi:fridge"></ha-icon> Kitchen
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - entity: light.kitchen_ceiling
                 hold_action:
                   action: more-info
-                icon: "mdi:ceiling-light"
-                name: Main
+                # icon: "mdi:ceiling-light"
+                name: Ceiling
                 type: "custom:button-card"
-              - entity: light.kitchen_side_light
+              - entity: light.kitchen_side
                 hold_action:
                   action: more-info
-                icon: "mdi:track-light"
+                # icon: "mdi:track-light"
                 name: Side
                 type: "custom:button-card"
               - entity: binary_sensor.kitchen_motion
                 template: motion_sensor_btn
                 type: "custom:button-card"
-            type: horizontal-stack
-          - entity: light.kitchen_cupboard_lights
+
+          - entity: light.kitchen_cupboard
             name: Cupboards
             type: light
-        type: vertical-stack
-      - entities:
-          - input_boolean.kitchen_automated_lights
-          - head: binary_sensor.kitchen_multisensor_connectivity
-            items:
-              - entity: light.kitchen_multisensor
-                name: LED
-              - entity: binary_sensor.kitchen_multisensor_motion
-                name: Motion
-              - entity: sensor.kitchen_multisensor_temperature
-                name: Temperature
-              - entity: sensor.kitchen_multisensor_real_feel
-                name: Real feel
-              - entity: sensor.kitchen_multisensor_humidity
-                name: Humidity
-              - entity: sensor.kitchen_multisensor_luminance
-                name: LED
-              - entity: sensor.kitchen_multisensor_wifi
-                name: WiFi
-            type: "custom:fold-entity-row"
-          - head: binary_sensor.kitchen_motionsensor_connectivity
-            items:
-              - entity: light.kitchen_cupboard_lights
-                name: Cupboard LED
-              - entity: binary_sensor.kitchen_motionsensor_motion
-                name: Motion
-              - entity: sensor.kitchen_motionsensor_wifi
-                name: WiFi
-            type: "custom:fold-entity-row"
-        type: entities
+
       - break
-      - cards:
-          - entities:
-              - color: var(--primary-color)
-                entity: sensor.kitchen_multisensor_temperature
-                name: Temperature
-              - color: var(--dark-primary-color)
-                entity: sensor.kitchen_multisensor_real_feel
-                name: Real feel
+
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
             font_size: 75
             line_width: 3
-            type: "custom:mini-graph-card"
-          - cards:
-              - entities:
+            entities:
+              - name: Temperature
+                color: var(--light-primary-color)
+                entity: sensor.kitchen_multisensor_temperature
+              - name: Real feel
+                color: var(--dark-primary-color)
+                entity: sensor.kitchen_multisensor_real_feel
+          - type: horizontal-stack
+            cards:
+              - type: "custom:mini-graph-card"
+                font_size: 75
+                line_color: var(--complement-color-one)
+                line_width: 4
+                entities:
                   - entity: sensor.kitchen_multisensor_humidity
                     name: Humidity
+              - type: "custom:mini-graph-card"
                 font_size: 75
-                line_color: "#035A4B"
+                line_color: var(--complement-color-two)
                 line_width: 4
-                type: "custom:mini-graph-card"
-              - entities:
+                entities:
                   - entity: sensor.kitchen_multisensor_luminance
                     name: Luminance
-                font_size: 75
-                line_color: "#8F3C04"
-                line_width: 4
-                type: "custom:mini-graph-card"
-            type: horizontal-stack
-        type: vertical-stack
-      - entities:
-          - binary_sensor.kitchen_motionsensor_connectivity
-          - binary_sensor.kitchen_motionsensor_motion
-          - binary_sensor.kitchen_multisensor_connectivity
-          - binary_sensor.kitchen_multisensor_motion
-          - light.kitchen_multisensor
-          - sensor.kitchen_motionsensor_wifi
-          - sensor.kitchen_multisensor_wifi
-        type: "custom:invisible-card"
-    layout: vertical
-    type: "custom:layout-card"
+
+      - break
+
+      - title: MultiSensor
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: light.kitchen_multisensor
+            name: LED
+          - entity: binary_sensor.kitchen_multisensor_motion
+            name: Motion
+          - entity: sensor.kitchen_multisensor_temperature
+            name: Temperature
+          - entity: sensor.kitchen_multisensor_real_feel
+            name: Real feel
+          - entity: sensor.kitchen_multisensor_humidity
+            name: Humidity
+          - entity: sensor.kitchen_multisensor_luminance
+            name: LED
+          - entity: sensor.kitchen_multisensor_wifi
+            name: WiFi
+
+      - title: Motion & Cupboard
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: light.kitchen_cupboard
+            name: Cupboard LED
+          - entity: binary_sensor.kitchen_motionsensor_motion
+            name: Motion
+          - entity: sensor.kitchen_motionsensor_wifi
+            name: WiFi

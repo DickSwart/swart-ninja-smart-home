@@ -23,6 +23,22 @@ services:
       - influxdb
       - mariadb
 
+  mariadb:
+    container_name: mariadb
+    image: bianjp/mariadb-alpine:latest
+    restart: always
+    ports:
+      - 3306:3306/tcp
+    volumes:
+      - ~/docker/swart-ninja-smart-home/mariadb/config:/etc/mysql/conf.d
+      - ~/docker/swart-ninja-smart-home/mariadb/data:/var/lib/mysql
+    environment:
+      TZ: ${TZ}
+      MYSQL_ROOT_PASSWORD: ${MARIADB_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: homeassistant
+      MYSQL_USER: hass
+      MYSQL_PASSWORD: ${MARIADB_MYSQL_HASS_PASSWORD}
+
   mosquitto:
     container_name: mosquitto
     image: eclipse-mosquitto
@@ -59,21 +75,17 @@ services:
       INFLUXDB_READ_USER_PASSWORD: ${INFLUXDB_GRAFANA_USER_PASSWORD}
     command: -config /etc/influxdb/influxdb.conf
 
-  mariadb:
-    container_name: mariadb
-    image: bianjp/mariadb-alpine:latest
+  chronograf:
+    container_name: chronograf
+    image: chronograf
     restart: always
-    ports:
-      - 3306:3306/tcp
     volumes:
-      - ~/docker/swart-ninja-smart-home/mariadb/config:/etc/mysql/conf.d
-      - ~/docker/swart-ninja-smart-home/mariadb/data:/var/lib/mysql
-    environment:
-      TZ: ${TZ}
-      MYSQL_ROOT_PASSWORD: ${MARIADB_MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: homeassistant
-      MYSQL_USER: hass
-      MYSQL_PASSWORD: ${MARIADB_MYSQL_HASS_PASSWORD}
+      - chronograf_data:/var/lib/chronograf
+    ports:
+      - 10000:10000
+      - 8888:8888
+    links:
+      - influxdb
 
   grafana:
     container_name: grafana
@@ -135,3 +147,4 @@ services:
 
 volumes:
   deepstack:
+  chronograf_data:

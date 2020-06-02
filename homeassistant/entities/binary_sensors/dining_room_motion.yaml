@@ -10,7 +10,7 @@
 ##############################################################################################
 platform: template
 sensors:
-  man_cave_motion:
+  dining_room_motion:
     friendly_name: Dining Room Motion
     device_class: motion
     value_template: >-

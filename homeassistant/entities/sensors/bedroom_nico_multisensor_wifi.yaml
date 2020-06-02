@@ -8,9 +8,9 @@
 # EntityID: sensor.bedroom_nico_multisensor_wifi
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Nico MultiSensor WiFi"
-state_topic: "532B98/sensor/wifi"
+name: Bedroom Nico MultiSensor WiFi
+state_topic: 532B98/sensor/wifi
 unit_of_measurement: "%"
-availability_topic: "532B98/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: 532B98/status
+payload_available: online
+payload_not_available: offline

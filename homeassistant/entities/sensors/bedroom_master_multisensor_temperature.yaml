@@ -8,9 +8,9 @@
 # EntityID: sensor.bedroom_master_multisensor_temperature
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Master MultiSensor Temperature"
-state_topic: "534E79/sensor/temperature"
-unit_of_measurement: "°C"
-availability_topic: "534E79/status"
-payload_available: "online"
-payload_not_available: "offline"
+name: Bedroom Master MultiSensor Temperature
+state_topic: 534E79/sensor/temperature
+unit_of_measurement: °C
+availability_topic: 534E79/status
+payload_available: online
+payload_not_available: offline

@@ -8,9 +8,9 @@
 # EntityID: sensor.man_cave_multisensor_temperature
 ##############################################################################################
 platform: mqtt
-name: "Man Cave MultiSensor Temperature"
-state_topic: "535210/sensor/temperature"
-unit_of_measurement: "°C"
-availability_topic: "535210/status"
-payload_available: "online"
-payload_not_available: "offline"
+name: Man Cave MultiSensor Temperature
+state_topic: 535210/sensor/temperature
+unit_of_measurement: °C
+availability_topic: 535210/status
+payload_available: online
+payload_not_available: offline

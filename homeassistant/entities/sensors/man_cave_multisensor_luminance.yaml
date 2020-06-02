@@ -8,9 +8,9 @@
 # EntityID: sensor.man_cave_multisensor_luminance
 ##############################################################################################
 platform: mqtt
-name: "Man Cave MultiSensor Luminance"
-state_topic: "535210/sensor/lux"
-unit_of_measurement: "LUX"
-availability_topic: "535210/status"
-payload_available: "online"
-payload_not_available: "offline"
+name: Man Cave MultiSensor Luminance
+state_topic: 535210/sensor/lux
+unit_of_measurement: LUX
+availability_topic: 535210/status
+payload_available: online
+payload_not_available: offline

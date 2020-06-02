@@ -7,8 +7,8 @@
 ##############################################################################################
 platform: mqtt
 name: Kitchen MultiSensor WiFi
-state_topic: "52FAE3/sensor/wifi"
+state_topic: 52FAE3/sensor/wifi
 unit_of_measurement: "%"
-availability_topic: "52FAE3/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: 52FAE3/status
+payload_available: online
+payload_not_available: offline

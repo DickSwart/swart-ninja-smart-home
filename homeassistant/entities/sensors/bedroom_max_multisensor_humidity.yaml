@@ -8,9 +8,9 @@
 # EntityID: sensor.bedroom_max_multisensor_humidity
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Max MultiSensor Humidity"
-state_topic: "53499B/sensor/humidity"
+name: Bedroom Max MultiSensor Humidity
+state_topic: 53499B/sensor/humidity
 unit_of_measurement: "%"
-availability_topic: "53499B/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: 53499B/status
+payload_available: online
+payload_not_available: offline

@@ -7,6 +7,6 @@
 ##############################################################################################
 platform: mqtt
 name: Kitchen MultiSensor Humidity
-state_topic: "52FAE3/sensor/humidity"
+state_topic: 52FAE3/sensor/humidity
 unit_of_measurement: "%"
-availability_topic: "52FAE3/status"
+availability_topic: 52FAE3/status

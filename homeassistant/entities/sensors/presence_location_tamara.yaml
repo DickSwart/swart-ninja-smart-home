@@ -8,8 +8,8 @@
 platform: template
 sensors:
   presence_location_tamara:
-    friendly_name: "Tamara"
-    entity_picture_template: "/local/images/misc/tamara.jpg"
+    friendly_name: Tamara
+    entity_picture_template: /local/images/misc/tamara.jpg
     value_template: >-
       {% if is_state('input_boolean.presence_location_away_tamara', 'on') %}
         Away (Override)

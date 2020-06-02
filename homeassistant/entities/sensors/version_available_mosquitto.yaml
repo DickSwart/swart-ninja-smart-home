@@ -9,14 +9,14 @@
 # EntityID: sensor.version_available_mosquitto
 ##############################################################################################
 platform: rest
-name: version_available_mosquitto
-resource: "https://registry.hub.docker.com/v2/repositories/library/eclipse-mosquitto/tags"
+name: Version Available Mosquitto
+resource: https://registry.hub.docker.com/v2/repositories/library/eclipse-mosquitto/tags
 scan_interval: 1800
 value_template: >-
   {% set results = value_json.results %}
   {%-set res-%}
   {%-set pipe = joiner('|')-%}
-  {% for result in results if not result.name | regex_search("[a-z]",ignorecase=TRUE) -%}
+  {% for result in results if not result.name | regex_search([a-z],ignorecase=TRUE) -%}
     {{ pipe()}}{{result.name}}
   {% else %}
     -1

@@ -9,9 +9,9 @@
 # EntityID: sensor.hall_multisensor_wifi
 ##############################################################################################
 platform: mqtt
-name: "Hall MultiSensor WiFi"
-state_topic: "E44EC2/sensor/wifi"
+name: Hall MultiSensor WiFi
+state_topic: E44EC2/sensor/wifi
 unit_of_measurement: "%"
-availability_topic: "E44EC2/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: E44EC2/status
+payload_available: online
+payload_not_available: offline

@@ -8,9 +8,9 @@
 # EntityID: sensor.bedroom_master_multisensor_humidity
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Master MultiSensor Humidity"
-state_topic: "534E79/sensor/humidity"
+name: Bedroom Master MultiSensor Humidity
+state_topic: 534E79/sensor/humidity
 unit_of_measurement: "%"
-availability_topic: "534E79/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: 534E79/status
+payload_available: online
+payload_not_available: offline

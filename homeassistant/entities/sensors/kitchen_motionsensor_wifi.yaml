@@ -7,8 +7,8 @@
 ##############################################################################################
 platform: mqtt
 name: Kitchen MotionSensor WiFi
-state_topic: "4C86CF/sensor/wifi"
+state_topic: 4C86CF/sensor/wifi
 unit_of_measurement: "%"
-availability_topic: "4C86CF/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: 4C86CF/status
+payload_available: online
+payload_not_available: offline

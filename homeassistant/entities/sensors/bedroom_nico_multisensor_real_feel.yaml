@@ -8,7 +8,7 @@
 # EntityID: sensor.bedroom_nico_multisensor_real_feel
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Nico MultiSensor Real Feel"
-state_topic: "532B98/sensor/realfeel"
-unit_of_measurement: "°C"
-availability_topic: "532B98/status"
+name: Bedroom Nico MultiSensor Real Feel
+state_topic: 532B98/sensor/realfeel
+unit_of_measurement: °C
+availability_topic: 532B98/status

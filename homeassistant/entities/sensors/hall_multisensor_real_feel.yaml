@@ -9,9 +9,9 @@
 # EntityID: sensor.hall_multisensor_real_feel
 ##############################################################################################
 platform: mqtt
-name: "Hall MultiSensor Real Feel"
-state_topic: "E44EC2/sensor/realfeel"
-unit_of_measurement: "°C"
-availability_topic: "E44EC2/status"
-payload_available: "online"
-payload_not_available: "offline"
+name: Hall MultiSensor Real Feel
+state_topic: E44EC2/sensor/realfeel
+unit_of_measurement: °C
+availability_topic: E44EC2/status
+payload_available: online
+payload_not_available: offline

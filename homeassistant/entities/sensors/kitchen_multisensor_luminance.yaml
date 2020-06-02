@@ -7,6 +7,6 @@
 ##############################################################################################
 platform: mqtt
 name: Kitchen MultiSensor Luminance
-state_topic: "52FAE3/sensor/lux"
-unit_of_measurement: "LUX"
-availability_topic: "52FAE3/status"
+state_topic: 52FAE3/sensor/lux
+unit_of_measurement: LUX
+availability_topic: 52FAE3/status

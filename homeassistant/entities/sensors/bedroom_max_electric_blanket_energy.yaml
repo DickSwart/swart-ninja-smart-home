@@ -8,7 +8,7 @@
 # EntityID: sensor.bedroom_max_electric_blanket_energy
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Max Electric Blanket Energy"
-state_topic: "tele/sonoff_EA5999/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Today"] }}'
-unit_of_measurement: "kWh"
+name: Bedroom Max Electric Blanket Energy
+state_topic: tele/sonoff_EA5999/SENSOR
+value_template: "{{ value_json[ENERGY][Today] }}"
+unit_of_measurement: kWh

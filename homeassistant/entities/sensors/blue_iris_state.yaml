@@ -8,5 +8,5 @@
 # EntityID: sensor.blue_iris_state
 ##############################################################################################
 platform: mqtt
-name: "Blue Iris State"
-state_topic: "BlueIris/app"
+name: Blue Iris State
+state_topic: BlueIris/app

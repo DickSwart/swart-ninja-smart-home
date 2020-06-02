@@ -9,9 +9,9 @@
 # EntityID: sensor.hall_multisensor_luminance
 ##############################################################################################
 platform: mqtt
-name: "Hall MultiSensor Luminance"
-state_topic: "E44EC2/sensor/lux"
-unit_of_measurement: "LUX"
-availability_topic: "E44EC2/status"
-payload_available: "online"
-payload_not_available: "offline"
+name: Hall MultiSensor Luminance
+state_topic: E44EC2/sensor/lux
+unit_of_measurement: LUX
+availability_topic: E44EC2/status
+payload_available: online
+payload_not_available: offline

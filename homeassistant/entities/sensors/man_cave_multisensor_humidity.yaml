@@ -8,9 +8,9 @@
 # EntityID: sensor.man_cave_multisensor_humidity
 ##############################################################################################
 platform: mqtt
-name: "Man Cave MultiSensor Humidity"
-state_topic: "535210/sensor/humidity"
+name: Man Cave MultiSensor Humidity
+state_topic: 535210/sensor/humidity
 unit_of_measurement: "%"
-availability_topic: "535210/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: 535210/status
+payload_available: online
+payload_not_available: offline

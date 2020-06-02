@@ -11,7 +11,7 @@
 ##############################################################################################
 platform: rest
 name: HA Dockermon Deepstack
-resource: "http://192.168.1.213:8126/container/deepstack"
+resource: http://192.168.1.213:8126/container/deepstack
 value_template: "{{ value_json.status }}"
 json_attributes:
   - state

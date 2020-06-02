@@ -8,9 +8,9 @@
 # EntityID: sensor.bedroom_max_multisensor_luminance
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Max MultiSensor Luminance"
-state_topic: "53499B/sensor/lux"
-unit_of_measurement: "LUX"
-availability_topic: "53499B/status"
-payload_available: "online"
-payload_not_available: "offline"
+name: Bedroom Max MultiSensor Luminance
+state_topic: 53499B/sensor/lux
+unit_of_measurement: LUX
+availability_topic: 53499B/status
+payload_available: online
+payload_not_available: offline

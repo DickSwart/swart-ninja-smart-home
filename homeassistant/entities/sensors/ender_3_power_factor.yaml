@@ -9,6 +9,6 @@
 # EntityID: sensor.ender_3_pow_power_factor
 ##############################################################################################
 platform: mqtt
-name: "Ender 3 (POW) Power Factor"
-state_topic: "tele/sonoff_pow_374EE6/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Factor"] }}'
+name: Ender 3 (POW) Power Factor
+state_topic: tele/sonoff_pow_374EE6/SENSOR
+value_template: "{{ value_json[ENERGY][Factor] }}"

@@ -9,9 +9,9 @@
 # EntityID: sensor.hall_multisensor_humidity
 ##############################################################################################
 platform: mqtt
-name: "Hall MultiSensor Humidity"
-state_topic: "E44EC2/sensor/humidity"
+name: Hall MultiSensor Humidity
+state_topic: E44EC2/sensor/humidity
 unit_of_measurement: "%"
-availability_topic: "E44EC2/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: E44EC2/status
+payload_available: online
+payload_not_available: offline

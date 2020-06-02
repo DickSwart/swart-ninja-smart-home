@@ -8,7 +8,7 @@
 # EntityID: sensor.version_current_mosquitto
 ##############################################################################################
 platform: mqtt
-name: 'Version Current Mosquitto'
+name: Version Current Mosquitto
 icon: mdi:package-up
-state_topic: '$SYS/broker/version'
+state_topic: $SYS/broker/version
 value_template: "{{ value | regex_findall_index('(\\d+\\.\\d+\\.\\d+)') }}"

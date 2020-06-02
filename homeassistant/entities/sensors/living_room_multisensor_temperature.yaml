@@ -7,6 +7,6 @@
 ##############################################################################################
 platform: mqtt
 name: Living Room MultiSensor Temperature
-state_topic: "536310/sensor/temperature"
-unit_of_measurement: "°C"
-availability_topic: "536310/status"
+state_topic: 536310/sensor/temperature
+unit_of_measurement: °C
+availability_topic: 536310/status

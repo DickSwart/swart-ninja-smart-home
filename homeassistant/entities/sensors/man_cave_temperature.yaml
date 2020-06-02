@@ -10,9 +10,9 @@
 platform: template
 sensors:
   man_cave_temperature:
-    friendly_name: "Man Cave Temperature"
+    friendly_name: Man Cave Temperature
     device_class: temperature
-    unit_of_measurement: "°C"
+    unit_of_measurement: °C
     value_template: >-
       {% set hp = state_attr('climate.man_cave' , 'current_temperature') | float %}
       {% set ms = states('sensor.man_cave_multisensor_temperature') | float %}

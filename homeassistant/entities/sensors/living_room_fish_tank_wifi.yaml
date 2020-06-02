@@ -8,8 +8,8 @@
 ##############################################################################################
 platform: mqtt
 name: Living Room Fish Tank WiFi
-state_topic: "E41B0E/sensor/wifi"
+state_topic: E41B0E/sensor/wifi
 unit_of_measurement: "%"
-availability_topic: "E41B0E/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: E41B0E/status
+payload_available: online
+payload_not_available: offline

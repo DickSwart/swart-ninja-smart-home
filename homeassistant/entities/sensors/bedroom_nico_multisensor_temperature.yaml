@@ -8,7 +8,7 @@
 # EntityID: sensor.bedroom_nico_multisensor_temperature
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Nico MultiSensor Temperature"
-state_topic: "532B98/sensor/temperature"
-unit_of_measurement: "°C"
-availability_topic: "532B98/status"
+name: Bedroom Nico MultiSensor Temperature
+state_topic: 532B98/sensor/temperature
+unit_of_measurement: °C
+availability_topic: 532B98/status

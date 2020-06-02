@@ -8,9 +8,9 @@
 # EntityID: sensor.bedroom_max_multisensor_wifi
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Max MultiSensor WiFi"
-state_topic: "53499B/sensor/wifi"
+name: Bedroom Max MultiSensor WiFi
+state_topic: 53499B/sensor/wifi
 unit_of_measurement: "%"
-availability_topic: "53499B/status"
-payload_available: "online"
-payload_not_available: "offline"
+availability_topic: 53499B/status
+payload_available: online
+payload_not_available: offline

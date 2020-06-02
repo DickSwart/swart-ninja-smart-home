@@ -10,8 +10,8 @@
 platform: template
 sensors:
   presence_location_dick:
-    friendly_name: "Dick"
-    entity_picture_template: "/local/images/misc/dick.jpg"
+    friendly_name: Dick
+    entity_picture_template: /local/images/misc/dick.jpg
     value_template: >-
       {% if is_state('input_boolean.presence_location_away_dick', 'on') %}
         Away (Override)

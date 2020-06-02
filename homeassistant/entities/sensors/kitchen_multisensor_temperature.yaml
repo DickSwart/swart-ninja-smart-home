@@ -7,6 +7,6 @@
 ##############################################################################################
 platform: mqtt
 name: Kitchen MultiSensor Temperature
-state_topic: "52FAE3/sensor/temperature"
-unit_of_measurement: "°C"
-availability_topic: "52FAE3/status"
+state_topic: 52FAE3/sensor/temperature
+unit_of_measurement: °C
+availability_topic: 52FAE3/status

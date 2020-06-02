@@ -8,9 +8,9 @@
 # EntityID: sensor.man_cave_multisensor_real_feel
 ##############################################################################################
 platform: mqtt
-name: "Man Cave MultiSensor Real Feel"
-state_topic: "535210/sensor/realfeel"
-unit_of_measurement: "°C"
-availability_topic: "535210/status"
-payload_available: "online"
-payload_not_available: "offline"
+name: Man Cave MultiSensor Real Feel
+state_topic: 535210/sensor/realfeel
+unit_of_measurement: °C
+availability_topic: 535210/status
+payload_available: online
+payload_not_available: offline

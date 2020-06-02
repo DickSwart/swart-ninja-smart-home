@@ -9,7 +9,7 @@
 # EntityID: sensor.ender_3_pow_voltage
 ##############################################################################################
 platform: mqtt
-name: "Ender 3 (POW) Voltage"
-state_topic: "tele/sonoff_pow_374EE6/SENSOR"
-unit_of_measurement: "V"
-value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+name: Ender 3 (POW) Voltage
+state_topic: tele/sonoff_pow_374EE6/SENSOR
+unit_of_measurement: V
+value_template: "{{ value_json[ENERGY][Voltage] }}"

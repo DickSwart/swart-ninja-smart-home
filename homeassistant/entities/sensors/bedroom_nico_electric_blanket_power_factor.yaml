@@ -8,6 +8,6 @@
 # EntityID: sensor.bedroom_nico_electric_blanket_power_factor
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Nico Electric Blanket Power Factor"
-state_topic: "tele/sonoff_374EE5/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Factor"] }}'
+name: Bedroom Nico Electric Blanket Power Factor
+state_topic: tele/sonoff_374EE5/SENSOR
+value_template: "{{ value_json[ENERGY][Factor] }}"

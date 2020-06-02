@@ -8,8 +8,8 @@
 platform: template
 sensors:
   bedrooms_temperature:
-    friendly_name: "Bedrooms temperature"
-    unit_of_measurement: "°C"
+    friendly_name: Bedrooms temperature
+    unit_of_measurement: °C
     value_template: >-
       {% set max = states('sensor.bedroom_max_multisensor_temperature') | float %}
       {% set nico = states('sensor.bedroom_nico_multisensor_temperature') | float %}

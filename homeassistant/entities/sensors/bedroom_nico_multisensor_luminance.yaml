@@ -8,7 +8,7 @@
 # EntityID: sensor.bedroom_nico_multisensor_luminance
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Nico MultiSensor Luminance"
-state_topic: "532B98/sensor/lux"
-unit_of_measurement: "LUX"
-availability_topic: "532B98/status"
+name: Bedroom Nico MultiSensor Luminance
+state_topic: 532B98/sensor/lux
+unit_of_measurement: LUX
+availability_topic: 532B98/status

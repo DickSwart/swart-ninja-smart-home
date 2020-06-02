@@ -9,7 +9,7 @@
 # EntityID: sensor.ender_3_pow_energy
 ##############################################################################################
 platform: mqtt
-name: "Ender 3 (POW) Energy"
-state_topic: "tele/sonoff_pow_374EE6/SENSOR"
-unit_of_measurement: "kWh"
-value_template: '{{ value_json["ENERGY"]["Today"] }}'
+name: Ender 3 (POW) Energy
+state_topic: tele/sonoff_pow_374EE6/SENSOR
+unit_of_measurement: kWh
+value_template: "{{ value_json[ENERGY][Today] }}"

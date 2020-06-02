@@ -8,7 +8,7 @@
 # EntityID: sensor.bedroom_nico_multisensor_humidity
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Nico MultiSensor Humidity"
-state_topic: "532B98/sensor/humidity"
+name: Bedroom Nico MultiSensor Humidity
+state_topic: 532B98/sensor/humidity
 unit_of_measurement: "%"
-availability_topic: "532B98/status"
+availability_topic: 532B98/status

@@ -6,7 +6,7 @@
 # URL: https://www.home-assistant.io/integrations/template
 ##############################################################################################
 platform: mqtt
-name: "computer_desk_power"
-state_topic: "tele/sonoff_pow_EA9DBF/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Power"] }}'
-unit_of_measurement: "W"
+name: computer_desk_power
+state_topic: tele/sonoff_pow_EA9DBF/SENSOR
+value_template: "{{ value_json[ENERGY][Power] }}"
+unit_of_measurement: W

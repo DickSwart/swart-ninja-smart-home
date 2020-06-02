@@ -8,9 +8,9 @@
 # EntityID: sensor.bedroom_max_multisensor_real_feel
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Max MultiSensor Real Feel"
-state_topic: "53499B/sensor/realfeel"
-unit_of_measurement: "°C"
-availability_topic: "53499B/status"
-payload_available: "online"
-payload_not_available: "offline"
+name: Bedroom Max MultiSensor Real Feel
+state_topic: 53499B/sensor/realfeel
+unit_of_measurement: °C
+availability_topic: 53499B/status
+payload_available: online
+payload_not_available: offline

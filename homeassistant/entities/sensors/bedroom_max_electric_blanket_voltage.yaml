@@ -8,7 +8,7 @@
 # EntityID: sensor.bedroom_max_electric_blanket_voltage
 ##############################################################################################
 platform: mqtt
-name: "Bedroom Max Electric Blanket Voltage"
-state_topic: "tele/sonoff_EA5999/SENSOR"
-value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
-unit_of_measurement: "V"
+name: Bedroom Max Electric Blanket Voltage
+state_topic: tele/sonoff_EA5999/SENSOR
+value_template: "{{ value_json[ENERGY][Voltage] }}"
+unit_of_measurement: V

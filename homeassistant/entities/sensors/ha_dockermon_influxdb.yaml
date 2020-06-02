@@ -11,7 +11,7 @@
 ##############################################################################################
 platform: rest
 name: HA Dockermon InfluxDB
-resource: "http://192.168.1.213:8126/container/influxdb"
+resource: http://192.168.1.213:8126/container/influxdb
 value_template: "{{ value_json.status }}"
 json_attributes:
   - state

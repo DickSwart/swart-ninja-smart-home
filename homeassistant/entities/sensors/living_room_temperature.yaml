@@ -10,9 +10,9 @@
 platform: template
 sensors:
   living_room_temperature:
-    friendly_name: "Living room: Temperature"
+    friendly_name: Living Room Temperature
     device_class: temperature
-    unit_of_measurement: "°C"
+    unit_of_measurement: °C
     value_template: >-
       {% set hp = state_attr('climate.living_room' , 'current_temperature') | float %}
       {% set ms = states('sensor.living_room_multisensor_temperature') | float %}

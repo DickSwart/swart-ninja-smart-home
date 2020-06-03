@@ -11,4 +11,4 @@
 platform: mqtt
 name: Ender 3 (POW) Power Factor
 state_topic: tele/sonoff_pow_374EE6/SENSOR
-value_template: "{{ value_json[ENERGY][Factor] }}"
+value_template: '{{ value_json["ENERGY"]["Factor"] }}'

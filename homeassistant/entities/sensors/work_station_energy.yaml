@@ -10,5 +10,5 @@
 platform: mqtt
 name: Work Station Energy
 state_topic: tele/sonoff_pow_374EAA/SENSOR
-value_template: "{{ value_json[ENERGY][Today] }}"
+value_template: '{{ value_json["ENERGY"]["Today"] }}'
 unit_of_measurement: kWh

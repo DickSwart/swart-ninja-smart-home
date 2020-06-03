@@ -10,5 +10,5 @@
 platform: mqtt
 name: Work Station Current
 state_topic: tele/sonoff_pow_374EAA/SENSOR
-value_template: "{{ value_json[ENERGY][Current] }}"
+value_template: '{{ value_json["ENERGY"]["Current"] }}'
 unit_of_measurement: A

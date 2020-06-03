@@ -8,5 +8,5 @@
 platform: mqtt
 name: computer_desk_energy
 state_topic: tele/sonoff_pow_EA9DBF/SENSOR
-value_template: "{{ value_json[ENERGY][Today] }}"
+value_template: '{{ value_json["ENERGY"]["Today"] }}'
 unit_of_measurement: kWh

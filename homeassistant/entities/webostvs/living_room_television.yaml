@@ -8,10 +8,10 @@ turn_on_action:
     broadcast_address: 192.168.20.2
 customize:
   sources:
-    - Plex
+    - Plexs
     - Netflix
     - YouTube
-    - "Apple TV"
-    - "Amazon Prime Video"
-    - "TVNZ OnDemand"
-    - "Freeview On Demand"
+    - Apple TV
+    - Amazon Prime Video
+    - TVNZ OnDemand
+    - Freeview On Demand

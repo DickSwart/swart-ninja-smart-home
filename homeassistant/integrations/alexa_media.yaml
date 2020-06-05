@@ -12,6 +12,6 @@ alexa_media:
       password: !secret amazon_password
       url: amazon.com
       exclude_devices:
-        - "This Device"
-        - "DickSwart's Alexa Apps"
-        - "Bose QuietComfort 35 Series II"
+        - This Device
+        - DickSwart's Alexa Apps
+        - Bose QuietComfort 35 Series II

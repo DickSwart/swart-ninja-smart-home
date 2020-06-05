@@ -1,0 +1,515 @@
+---
+custom_header:
+  compact_mode: true
+  button_text:
+    options: "{{ hours24 }}:{{ minutesLZ }}"
+
+title: Admin
+views:
+  - !include lovelace/views/automations.yaml
+  - badges: []
+    cards:
+      - entities:
+          - entity: input_datetime.kids_bedtime_school_nights
+            name: School nights
+          - entity: input_datetime.kids_bedtime_other_nights
+            name: Other nights
+        show_header_toggle: false
+        title: Kids Bed Times
+        type: entities
+      - entities:
+          - entity: input_boolean.routine_kids_home_school
+          - entity: input_boolean.routine_kids_bedtime
+          - entity: input_boolean.routine_kids_shower_time
+        show_header_toggle: false
+        title: Kids Routines
+        type: entities
+      - entities:
+          - entity: input_boolean.notifications_text
+          - entity: input_boolean.notifications_audio
+          - entity: switch.doorbell_chime
+            name: Doorbell Chime
+        show_header_toggle: false
+        title: System
+        type: entities
+      - entities:
+          - entity: input_boolean.presence_location_away_dick
+          - entity: input_boolean.presence_location_away_tamara
+        title: Presence Detection
+        type: entities
+      - cards:
+          - entity: alarm_control_panel.alexa_guard_68602
+            states:
+              - arm_home
+              - arm_away
+            type: alarm-panel
+          - type: divider
+          - entities:
+              - entity: input_boolean.house_alarm_silent
+              - entity: input_boolean.house_alarm_loud
+              - entity: light.alarm_lights_group
+            show_header_toggle: false
+            type: entities
+        title: Alarm
+        type: 'custom:vertical-stack-in-card'
+    icon: 'mdi:settings'
+    path: settings
+    title: Settings
+  - badges: []
+    cards:
+      - entities:
+          - entity: binary_sensor.byc_motion
+            name: Backyard
+          - entity: binary_sensor.dec_motion
+            name: Deck
+          - entity: binary_sensor.drc_motion
+            name: Dining Room
+          - entity: binary_sensor.fdc_motion
+            name: Front Door
+          - entity: binary_sensor.hlc_motion
+            name: Hall
+          - entity: binary_sensor.hsc_motion
+            name: House Side
+          - entity: binary_sensor.lrc_motion
+            name: Living Room
+          - entity: binary_sensor.mcc_motion
+            name: Man Cave
+          - entity: binary_sensor.ofc_motion
+            name: Office
+        title: Camera Triggers
+        type: entities
+      - entities:
+          - entity: binary_sensor.byc_ai_motion
+            name: Backyard
+          - entity: binary_sensor.dec_ai_motion
+            name: Deck
+          - entity: binary_sensor.drc_ai_motion
+            name: Dining Room
+          - entity: binary_sensor.fdc_ai_motion
+            name: Front Door
+          - entity: binary_sensor.hlc_ai_motion
+            name: Hall
+          - entity: binary_sensor.hsc_ai_motion
+            name: House Side
+          - entity: binary_sensor.lrc_ai_motion
+            name: Living Room
+          - entity: binary_sensor.mcc_ai_motion
+            name: Man Cave
+          - entity: binary_sensor.ofc_ai_motion
+            name: Office
+        title: AI
+        type: entities
+      - entities:
+          - binary_sensor.presence_anyone_home
+          - binary_sensor.is_cold
+          - binary_sensor.school_today
+          - binary_sensor.school_tomorrow
+          - binary_sensor.workday_today
+          - binary_sensor.workday_tomorrow
+          - binary_sensor.dark_outside
+        title: Automation's Sensors
+        type: entities
+    icon: 'mdi:alert-decagram'
+    path: senors
+    title: Senors
+  - badges: []
+    cards:
+      - aspect_ratio: 0%
+        entity: camera.byc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.dec_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.drc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.fdc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.hlc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.hsc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.lrc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.mcc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.ofc_last_trigger
+        show_state: false
+        type: picture-entity
+    icon: 'mdi:cctv'
+    panel: false
+    path: cctv-last-triggered
+    title: ''
+  - badges: []
+    cards:
+      - cards:
+          - direction: up
+            entities:
+              - entity: sensor.glances_used_percent
+                name: SSD
+              - entity: sensor.glances_mnt_media01_used_percent
+                name: Media 01
+              - entity: sensor.glances_mnt_media02_used_percent
+                name: Media 02
+              - entity: sensor.glances_mnt_media03_used_percent
+                name: Media 03
+            height: 100px
+            max: 100
+            min: 0
+            positions:
+              icon: inside
+              title: inside
+              value: inside
+            severity:
+              - color: '#3cff00'
+                from: 0
+                to: 30
+              - color: '#ccff00'
+                from: 30
+                to: 40
+              - color: '#f1f505'
+                from: 40
+                to: 50
+              - color: '#f7da00'
+                from: 50
+                to: 60
+              - color: '#edac09'
+                from: 60
+                to: 70
+              - color: '#ffa408'
+                from: 70
+                to: 80
+              - color: '#ff5e08'
+                from: 80
+                to: 90
+              - color: '#ed0909'
+                from: 90
+                to: 100
+            show_icon: true
+            stack: horizontal
+            tap_action: none
+            title: Disk Used %
+            type: 'custom:bar-card'
+          - direction: up
+            entities:
+              - entity: sensor.glances_free
+                max: 208.910555
+                min: 0
+                name: SSD
+              - entity: sensor.glances_mnt_media01_free
+                max: 2622.273751
+                min: 0
+                name: Media 01
+              - entity: sensor.glances_mnt_media02_free
+                max: 3496.68134
+                min: 0
+                name: Media 02
+              - entity: sensor.glances_mnt_media03_free
+                max: 2622.273751
+                min: 0
+                name: Media 03
+            height: 100px
+            positions:
+              icon: inside
+              title: inside
+              value: inside
+            severity:
+              - color: '#fa0505'
+                from: 0
+                to: 700
+              - color: '#de4314'
+                from: 700
+                to: 800
+              - color: '#d1861d'
+                from: 800
+                to: 900
+              - color: '#d4c11c'
+                from: 900
+                to: 1000
+              - color: '#64c91c'
+                from: 1001
+                to: 3500
+            show_icon: true
+            stack: horizontal
+            tap_action: none
+            title: Disk Space Free
+            type: 'custom:bar-card'
+          - entities:
+              - entity: binary_sensor.updater
+                name: Released Version
+              - entity: sensor.version_current
+                name: Current Version
+              - entity: sensor.version_available
+                name: Available Version
+              - entity: sensor.last_boot
+              - entity: binary_sensor.remote_ui
+            title: Home Assistant
+            type: entities
+          - break
+          - entities:
+              - entity: sensor.ha_dockermon_mosquitto
+                name: Uptime
+              - entity: sensor.version_current_mosquitto
+                name: Current Version
+              - entity: sensor.version_available_mosquitto
+                name: Available Version
+              - entity: switch.ha_dockermon_mosquitto
+                name: Pause / Run
+            title: Mosquitto
+            type: entities
+          - break
+          - entities:
+              - entity: sensor.ha_dockermon_influxdb
+              - entity: switch.ha_dockermon_influxdb
+                name: Pause / Run
+            title: InfluxDB
+            type: entities
+          - break
+          - entities:
+              - entity: sensor.ha_dockermon_minecraft_server_01
+                name: Uptime
+              - entity: binary_sensor.minecraft_server_01_status
+                name: Status
+              - entity: sensor.minecraft_server_01_latency_time
+                name: Latency Time
+              - entity: sensor.minecraft_server_01_players_max
+                name: Max Players
+              - entity: sensor.minecraft_server_01_players_online
+                name: Players Online
+              - entity: sensor.minecraft_server_01_protocol_version
+                name: Protocol Version
+              - entity: sensor.minecraft_server_01_version
+                name: Version
+              - entity: switch.ha_dockermon_minecraft_server_01
+                name: Pause / Run
+            title: Minecraft Server 01
+            type: entities
+          - entities:
+              - entity: sensor.ha_dockermon_minecraft_server_02
+                name: Uptime
+              - entity: binary_sensor.minecraft_server_02_status
+                name: Status
+              - entity: sensor.minecraft_server_02_latency_time
+                name: Latency Time
+              - entity: sensor.minecraft_server_02_players_max
+                name: Max Players
+              - entity: sensor.minecraft_server_02_players_online
+                name: Players Online
+              - entity: sensor.minecraft_server_02_protocol_version
+                name: Protocol Version
+              - entity: sensor.minecraft_server_02_version
+                name: Version
+              - entity: switch.ha_dockermon_minecraft_server_02
+                name: Pause / Run
+            title: Minecraft Server 02
+            type: entities
+          - entities:
+              - entity: sensor.ha_dockermon_minecraft_server_03
+                name: Uptime
+              - entity: binary_sensor.minecraft_server_03_status
+                name: Status
+              - entity: sensor.minecraft_server_03_latency_time
+                name: Latency Time
+              - entity: sensor.minecraft_server_03_players_max
+                name: Max Players
+              - entity: sensor.minecraft_server_03_players_online
+                name: Players Online
+              - entity: sensor.minecraft_server_03_protocol_version
+                name: Protocol Version
+              - entity: sensor.minecraft_server_03_version
+                name: Version
+              - entity: switch.ha_dockermon_minecraft_server_03
+                name: Pause / Run
+            title: Minecraft Server 03
+            type: entities
+        layout: vertical
+        type: 'custom:layout-card'
+    icon: 'mdi:docker'
+    panel: true
+    path: docker
+    title: Docker
+  - badges: []
+    cards:
+      - entities:
+          - head:
+              label: Home Assistant
+              type: section
+            items:
+              - sensor.version_available
+              - sensor.version_current
+              - sensor.last_boot
+              - binary_sensor.remote_ui
+            type: 'custom:fold-entity-row'
+          - head: sensor.ha_dockermon_mosquitto
+            items:
+              - sensor.mosquitto_current_version
+              - sensor.mosquitto_docker_latest_image_build
+              - entity: switch.ha_dockermon_mosquitto
+                name: pause / run
+            type: 'custom:fold-entity-row'
+          - head: sensor.ha_dockermon_influxdb
+            items:
+              - entity: switch.ha_dockermon_influxdb
+                name: pause / run
+            type: 'custom:fold-entity-row'
+          - head: sensor.ha_dockermon_minecraft_server_01
+            items:
+              - sensor.swartninja01_vanilla_latency_time
+              - sensor.swartninja01_vanilla_players_max
+              - sensor.swartninja01_vanilla_players_online
+              - sensor.swartninja01_vanilla_protocol_version
+              - sensor.swartninja01_vanilla_version
+              - binary_sensor.swartninja01_vanilla_status
+              - entity: switch.ha_dockermon_minecraft_server_01
+                name: pause / run
+            type: 'custom:fold-entity-row'
+          - head: zwave.aeon_labs_zw090_z_stick_gen5_au
+            items:
+              - zwave.bathroom_multisensor_zw100
+              - zwave.office_zw100_multisensor_zw100
+              - zwave.hall_downlights
+              - zwave.bathroom_downlights
+            type: 'custom:fold-entity-row'
+          - head: binary_sensor.swartninja02_connectivity
+            items:
+              - entity: script.shutdown_swartninja02
+                name: Shutdown
+              - switch.deluge_switch
+              - sensor.deluge_down_speed
+              - sensor.deluge_up_speed
+              - sensor.deluge_status
+            type: 'custom:fold-entity-row'
+          - head: binary_sensor.swartninja03_connectivity
+            items:
+              - entity: sensor.blue_iris_state
+              - input_boolean.blue_iris
+            type: 'custom:fold-entity-row'
+          - head: sensor.office_door_system_e449d3_availability
+            items:
+              - binary_sensor.office_door_system_e449d3_door
+              - sensor.office_door_system_e449d3_wifi_signal_strength
+              - lock.office_door_system_e449d3_lock
+              - cover.office_door_system_e449d3_cover
+              - switch.office_door_system_e449d3_siren
+            type: 'custom:fold-entity-row'
+        show_header_toggle: false
+        title: Systems
+        type: entities
+      - aggregate_func: max
+        entities:
+          - entity: sensor.glances_ram_used
+            line_color: var(--complement-color-one)
+            name: System
+          - entity: sensor.glances_containers_ram_used
+            line_color: var(--complement-color-two)
+            name: Containers
+        font_size_header: 9
+        hours_to_show: 7
+        line_width: 2
+        name: RAM Usage
+        points_per_hour: 10
+        show:
+          average: true
+          extrema: true
+        smoothing: false
+        type: 'custom:mini-graph-card'
+        update_interval: 30
+      - aggregate_func: max
+        entities:
+          - entity: sensor.glances_cpu_used
+            line_color: '"#14ff8d"'
+            name: System
+          - entity: sensor.glances_containers_cpu_used
+            line_color: '"#fff"'
+            name: Containers
+        font_size_header: 9
+        hours_to_show: 7
+        line_width: 2
+        name: CPU Usage
+        points_per_hour: 10
+        show:
+          average: true
+          extrema: true
+        smoothing: false
+        type: 'custom:mini-graph-card'
+        update_interval: 30
+      - cards:
+          - cards:
+              - aggregate_func: max
+                entities:
+                  - entity: sensor.glances_cpu_used
+                    line_color: '"#14ff8d"'
+                    name: System
+                  - entity: sensor.glances_containers_cpu_used
+                    line_color: '"#2814ff"'
+                    name: Containers
+                font_size: 65
+                font_size_header: 9
+                hours_to_show: 7
+                line_width: 2
+                name: CPU Usage
+                points_per_hour: 10
+                show:
+                  average: true
+                  extrema: true
+                smoothing: false
+                style: |
+                  ha-card {
+                    background: var(--paper-card-background-color);
+                    color: var(--primary-text-color);
+                    border-radius: var(--border-radius);
+                    box-shadow: var(--box-shadow)
+                  }
+                type: 'custom:mini-graph-card'
+                update_interval: 30
+              - aggregate_func: max
+                entities:
+                  - entity: sensor.glances_ram_used
+                    line_color: '"#14ff8d"'
+                    name: System
+                  - entity: sensor.glances_containers_ram_used
+                    line_color: '"#2814ff"'
+                    name: Containers
+                font_size: 65
+                font_size_header: 9
+                hours_to_show: 7
+                line_width: 2
+                name: RAM Usage
+                points_per_hour: 10
+                show:
+                  average: true
+                  extrema: true
+                smoothing: false
+                style: |
+                  ha-card {
+                    background: var(--paper-card-background-color);
+                    color: var(--primary-text-color);
+                    border-radius: var(--border-radius);
+                    box-shadow: var(--box-shadow)
+                  }
+                type: 'custom:mini-graph-card'
+                update_interval: 30
+            parameters:
+              pagination:
+                dynamicBullets: true
+                type: bullets
+              spaceBetween: 8
+              touchEventsTarget: container
+            type: 'custom:swipe-card'
+        type: horizontal-stack
+    path: todo
+    title: TODO

@@ -96,7 +96,7 @@ cards:
             Cooling: cool
             Fan_only: fan_only
             Heating: heat
-            Off: off
+            Off: "off"
 
       - type: vertical-stack
         cards:

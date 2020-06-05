@@ -35,7 +35,7 @@ cards:
 
       - type: vertical-stack
         cards:
-          - type: "custom:mini-graph-card"
+          - type: custom:mini-graph-card
             font_size: 75
             line_width: 3
             entities:
@@ -47,14 +47,14 @@ cards:
                 entity: sensor.bedroom_nico_multisensor_real_feel
           - type: horizontal-stack
             cards:
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-one)
                 line_width: 4
                 entities:
                   - entity: sensor.bedroom_nico_multisensor_humidity
                     name: Humidity
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-two)
                 line_width: 4

@@ -22,8 +22,8 @@ lovelace:
       type: module
     - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
       type: module
-    - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
-      type: module
+    # - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
+    #   type: module
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
@@ -38,3 +38,12 @@ lovelace:
       type: module
     - url: /hacsfiles/swipe-card/swipe-card.js
       type: module
+  # Add more dashboards
+  dashboards:
+    lovelace-admin: # Needs to contain a hyphen (-)
+      mode: yaml
+      filename: ui-lovelace-admin.yaml
+      title: Admin
+      icon: mdi:account-lock
+      show_in_sidebar: true
+      require_admin: true

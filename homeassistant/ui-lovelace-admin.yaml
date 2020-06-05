@@ -175,28 +175,28 @@ views:
               title: inside
               value: inside
             severity:
-              - color: #3cff00
+              - color: "#3cff00"
                 from: 0
                 to: 30
-              - color: #ccff00
+              - color: "#ccff00"
                 from: 30
                 to: 40
-              - color: #f1f505
+              - color: "#f1f505"
                 from: 40
                 to: 50
-              - color: #f7da00
+              - color: "#f7da00"
                 from: 50
                 to: 60
-              - color: #edac09
+              - color: "#edac09"
                 from: 60
                 to: 70
-              - color: #ffa408
+              - color: "#ffa408"
                 from: 70
                 to: 80
-              - color: #ff5e08
+              - color: "#ff5e08"
                 from: 80
                 to: 90
-              - color: #ed0909
+              - color: "#ed0909"
                 from: 90
                 to: 100
             show_icon: true
@@ -228,19 +228,19 @@ views:
               title: inside
               value: inside
             severity:
-              - color: #fa0505
+              - color: "#fa0505"
                 from: 0
                 to: 700
-              - color: #de4314
+              - color: "#de4314"
                 from: 700
                 to: 800
-              - color: #d1861d
+              - color: "#d1861d"
                 from: 800
                 to: 900
-              - color: #d4c11c
+              - color: "#d4c11c"
                 from: 900
                 to: 1000
-              - color: #64c91c
+              - color: "#64c91c"
                 from: 1001
                 to: 3500
             show_icon: true

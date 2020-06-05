@@ -11,6 +11,6 @@
 platform: rest
 name: HA Dockermon Deepstack
 resource: "http://192.168.1.213:8126/container/deepstack"
-body_on: '{"state": "unpause"}'
-body_off: '{"state": "pause"}'
+body_on: "{\"state\": \"unpause\"}"
+body_off: "{\"state\": \"pause\"}"
 is_on_template: "{{ value_json is not none and value_json.state == 'running' }}"

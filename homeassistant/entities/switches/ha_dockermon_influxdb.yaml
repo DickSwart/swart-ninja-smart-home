@@ -10,7 +10,7 @@
 ##############################################################################################
 platform: rest
 name: HA Dockermon InfluxDB
-resource: http://192.168.1.213:8126/container/influxdb
+resource: "http://192.168.1.213:8126/container/influxdb"
 body_on: '{state: start}'
 body_off: '{state: stop}'
-is_on_template: '{{ value_json is not none and value_json.state == running }}'
+is_on_template: "{{ value_json is not none and value_json.state == running }}"

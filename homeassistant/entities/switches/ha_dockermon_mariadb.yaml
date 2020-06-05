@@ -10,7 +10,7 @@
 ##############################################################################################
 platform: rest
 name: HA Dockermon MariaDB
-resource: http://192.168.1.213:8126/container/mariadb
-body_on: '{state: unpause}'
-body_off: '{state: pause}'
-is_on_template: '{{ value_json is not none and value_json.state == running }}'
+resource: "http://192.168.1.213:8126/container/mariadb"
+body_on: "{state: unpause}"
+body_off: "{state: pause}"
+is_on_template: "{{ value_json is not none and value_json.state == running }}"

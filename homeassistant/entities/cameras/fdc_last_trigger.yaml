@@ -10,4 +10,4 @@
 ##############################################################################################
 platform: local_file
 file_path: /config/www/images/camera_snapshots/deepstack_object_fdc_latest.jpg
-name: "FDC Last Trigger"
+name: FDC Last Trigger

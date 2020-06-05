@@ -10,4 +10,4 @@
 ##############################################################################################
 platform: local_file
 file_path: /config/www/images/camera_snapshots/deepstack_object_hlc_latest.jpg
-name: "HLC Last Trigger"
+name: HLC Last Trigger

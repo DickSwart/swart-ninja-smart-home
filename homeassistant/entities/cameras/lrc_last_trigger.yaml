@@ -10,4 +10,4 @@
 ##############################################################################################
 platform: local_file
 file_path: /config/www/images/camera_snapshots/deepstack_object_lrc_latest.jpg
-name: "LRC Last Trigger"
+name: LRC Last Trigger

@@ -10,4 +10,4 @@
 ##############################################################################################
 platform: local_file
 file_path: /config/www/images/camera_snapshots/deepstack_object_hsc_latest.jpg
-name: "HSC Last Trigger"
+name: HSC Last Trigger

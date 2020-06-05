@@ -10,4 +10,4 @@
 ##############################################################################################
 platform: local_file
 file_path: /config/www/images/camera_snapshots/deepstack_object_ofc_latest.jpg
-name: "OFC Last Trigger"
+name: OFC Last Trigger

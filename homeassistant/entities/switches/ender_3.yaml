@@ -10,8 +10,8 @@
 platform: template
 switches:
   ender_3:
-    friendly_name: "Ender 3"
-    value_template: "{{ is_state('binary_sensor.ender_3_octoprint','on') }}"
+    friendly_name: Ender 3
+    value_template: {{ is_state('binary_sensor.ender_3_octoprint','on') }}
     turn_on:
       service: switch.turn_on
       entity_id: switch.ender_3_pow

@@ -9,13 +9,13 @@
 # EntityID: switch.bedroom_master_electric_blanket_tamara
 ##################################################################################################################
 platform: mqtt
-name: "Bedroom Master Electric Blanket Tamara"
-state_topic: "stat/D1Mini_14B847/POWER1"
-command_topic: "cmnd/D1Mini_14B847/POWER1"
-availability_topic: "tele/D1Mini_14B847/LWT"
+name: Bedroom Master Electric Blanket Tamara
+state_topic: stat/D1Mini_14B847/POWER1
+command_topic: cmnd/D1Mini_14B847/POWER1
+availability_topic: tele/D1Mini_14B847/LWT
 qos: 1
 payload_on: "ON"
 payload_off: "OFF"
-payload_available: "Online"
-payload_not_available: "Offline"
+payload_available: Online
+payload_not_available: Offline
 retain: false

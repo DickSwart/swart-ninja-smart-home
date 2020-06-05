@@ -9,13 +9,13 @@
 # EntityID: switch.work_station
 ##################################################################################################################
 platform: mqtt
-name: "Work Station"
-state_topic: "stat/sonoff_pow_374EAA/POWER"
-command_topic: "cmnd/sonoff_pow_374EAA/POWER"
-availability_topic: "tele/sonoff_pow_374EAA/LWT"
+name: Work Station
+state_topic: stat/sonoff_pow_374EAA/POWER
+command_topic: cmnd/sonoff_pow_374EAA/POWER
+availability_topic: tele/sonoff_pow_374EAA/LWT
 qos: 1
 payload_on: "ON"
 payload_off: "OFF"
-payload_available: "Online"
-payload_not_available: "Offline"
+payload_available: Online
+payload_not_available: Offline
 retain: false

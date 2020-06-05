@@ -9,13 +9,13 @@
 # EntityID: switch.bedroom_max_electric_blanket
 ##################################################################################################################
 platform: mqtt
-name: "Bedroom Max Electric Blanket"
-state_topic: "stat/sonoff_EA5999/POWER"
-command_topic: "cmnd/sonoff_EA5999/POWER"
-availability_topic: "tele/sonoff_EA5999/LWT"
+name: Bedroom Max Electric Blanket
+state_topic: stat/sonoff_EA5999/POWER
+command_topic: cmnd/sonoff_EA5999/POWER
+availability_topic: tele/sonoff_EA5999/LWT
 qos: 1
 payload_on: "ON"
 payload_off: "OFF"
-payload_available: "Online"
-payload_not_available: "Offline"
+payload_available: Online
+payload_not_available: Offline
 retain: false

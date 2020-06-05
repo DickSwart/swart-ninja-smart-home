@@ -9,13 +9,13 @@
 # EntityID: switch.computer_desk
 ##################################################################################################################
 platform: mqtt
-name: "Computer Desk"
-state_topic: "stat/sonoff_pow_EA9DBF/POWER"
-command_topic: "cmnd/sonoff_pow_EA9DBF/POWER"
-availability_topic: "tele/sonoff_pow_EA9DBF/LWT"
+name: Computer Desk
+state_topic: stat/sonoff_pow_EA9DBF/POWER
+command_topic: cmnd/sonoff_pow_EA9DBF/POWER
+availability_topic: tele/sonoff_pow_EA9DBF/LWT
 qos: 1
 payload_on: "ON"
 payload_off: "OFF"
-payload_available: "Online"
-payload_not_available: "Offline"
+payload_available: Online
+payload_not_available: Offline
 retain: false

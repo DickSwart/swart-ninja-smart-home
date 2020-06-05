@@ -10,10 +10,10 @@
 # EntityID: light.kitchen_multisensor
 ##################################################################################################################
 platform: mqtt
-name: "Kitchen MultiSensor"
-state_topic: "52FAE3/light/state"
-command_topic: "52FAE3/light/set"
-availability_topic: "52FAE3/status"
+name: Kitchen MultiSensor
+state_topic: 52FAE3/light/state
+command_topic: 52FAE3/light/set
+availability_topic: 52FAE3/status
 schema: json
 brightness: true
 rgb: true

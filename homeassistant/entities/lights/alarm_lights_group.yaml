@@ -8,7 +8,7 @@
 # EntityID: light.alarm_lights_group
 ##################################################################################################################
 platform: group
-name: "Alarm Lights Group"
+name: Alarm Lights Group
 entities:
   - light.outside_lights
   - light.bedroom_master_ceiling

@@ -9,13 +9,13 @@
 # EntityID: light.bedroom_max_ceiling
 ##################################################################################################################
 platform: mqtt
-name: "Bedroom Max Ceiling"
-state_topic: "stat/sonoff_184F03/POWER"
-command_topic: "cmnd/sonoff_184F03/POWER"
-availability_topic: "tele/sonoff_184F03/LWT"
+name: Bedroom Max Ceiling
+state_topic: stat/sonoff_184F03/POWER
+command_topic: cmnd/sonoff_184F03/POWER
+availability_topic: tele/sonoff_184F03/LWT
 payload_on: "ON"
 payload_off: "OFF"
-payload_available: "Online"
-payload_not_available: "Offline"
+payload_available: Online
+payload_not_available: Offline
 qos: 1
 retain: false

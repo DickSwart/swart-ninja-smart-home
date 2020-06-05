@@ -10,10 +10,10 @@
 ##################################################################################################################
 platform: mqtt
 schema: json
-name: "Bedroom Nico MultiSensor"
-state_topic: "532B98/light/state"
-command_topic: "532B98/light/set"
-availability_topic: "532B98/status"
+name: Bedroom Nico MultiSensor
+state_topic: 532B98/light/state
+command_topic: 532B98/light/set
+availability_topic: 532B98/status
 brightness: true
 rgb: true
 optimistic: false

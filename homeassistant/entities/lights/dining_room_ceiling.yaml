@@ -10,13 +10,13 @@
 # EntityID: light.dining_room_ceiling
 ##################################################################################################################
 platform: mqtt
-name: "Dining Room Ceiling"
-state_topic: "stat/ks811_48A182/POWER1"
-command_topic: "cmnd/ks811_48A182/POWER1"
-availability_topic: "tele/ks811_48A182/LWT"
+name: Dining Room Ceiling
+state_topic: stat/ks811_48A182/POWER1
+command_topic: cmnd/ks811_48A182/POWER1
+availability_topic: tele/ks811_48A182/LWT
 payload_on: "ON"
 payload_off: "OFF"
-payload_available: "Online"
-payload_not_available: "Offline"
+payload_available: Online
+payload_not_available: Offline
 qos: 1
 retain: false

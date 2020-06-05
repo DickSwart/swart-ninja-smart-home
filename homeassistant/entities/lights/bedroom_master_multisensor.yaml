@@ -9,10 +9,10 @@
 # EntityID: light.bedroom_master_multisensor
 ##################################################################################################################
 platform: mqtt
-name: "Bedroom Master MultiSensor"
-state_topic: "534E79/light/state"
-command_topic: "534E79/light/set"
-availability_topic: "534E79/status"
+name: Bedroom Master MultiSensor
+state_topic: 534E79/light/state
+command_topic: 534E79/light/set
+availability_topic: 534E79/status
 schema: json
 brightness: true
 rgb: true

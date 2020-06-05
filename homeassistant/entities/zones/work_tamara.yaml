@@ -5,7 +5,7 @@
 #
 # URL: https://www.home-assistant.io/integrations/zone/
 ##############################################################################################
-name: "Work Tamara"
+name: Work Tamara
 latitude: !secret lat_tamara_work
 longitude: !secret long_tamara_work
 radius: 76.2

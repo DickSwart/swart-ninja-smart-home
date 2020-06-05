@@ -5,7 +5,7 @@
 #
 # URL: https://www.home-assistant.io/integrations/zone/
 ##############################################################################################
-name: "Train Station - Tawa"
+name: Train Station - Tawa
 latitude: -41.1692982
 longitude: 174.8283818
 radius: 76.2

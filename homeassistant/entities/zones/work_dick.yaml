@@ -5,7 +5,7 @@
 #
 # URL: https://www.home-assistant.io/integrations/zone/
 ##############################################################################################
-name: "Work Dick"
+name: Work Dick
 latitude: !secret lat_dick_work
 longitude: !secret long_dick_work
 radius: 76.2

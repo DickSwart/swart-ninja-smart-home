@@ -38,7 +38,7 @@ cards:
           - type: conditional
             conditions:
               - entity: binary_sensor.ender_3_octoprint
-                state: on
+                state: "on"
             card:
               type: picture-glance
               camera_image: camera.octoprint
@@ -96,7 +96,7 @@ cards:
             Cooling: cool
             Fan_only: fan_only
             Heating: heat
-            Off: "off"
+            "Off": "off"
 
       - type: vertical-stack
         cards:

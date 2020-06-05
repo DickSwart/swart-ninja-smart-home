@@ -25,5 +25,5 @@ action:
     data_template:
       title: 🆕 Release
       message:
-        "Home Assistant {{ states('sensor.version_available') }} is available.
-        You are on version {{states('sensor.version_current')}}."
+        Home Assistant {{ states('sensor.version_available') }} is available.
+        You are on version {{states('sensor.version_current')}}.

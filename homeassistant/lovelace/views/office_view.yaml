@@ -41,8 +41,8 @@ cards:
                   duration: 300
                   enabled: >-
                     [[[ return
-                    states[binary_sensor.office_door_system_e449d3_door].state
-                    == on; ]]]
+                    states['binary_sensor.office_door_system_e449d3_door'].state
+                    == "on"; ]]]
                   unlock: hold
                 state:
                   - color: var(--dark-primary-color)
@@ -73,8 +73,8 @@ cards:
                   duration: 300
                   enabled: >-
                     [[[ return
-                    states[binary_sensor.office_door_system_e449d3_door].state
-                    == off; ]]]
+                    states['binary_sensor.office_door_system_e449d3_door'].state
+                    == "off"; ]]]
                   unlock: hold
                 name: Close
                 show_icon: true
@@ -110,8 +110,8 @@ cards:
                   duration: 300
                   enabled: >-
                     [[[ return
-                    states[lock.office_door_system_e449d3_lock].state
-                    == locked; ]]]
+                    states['lock.office_door_system_e449d3_lock'].state
+                    == "locked"; ]]]
                   unlock: hold
                 name: Open
                 show_icon: true
@@ -123,7 +123,7 @@ cards:
                       [[[
                         return (states['cover.office_door_system_e449d3_cover'].attributes &&
                         (states['cover.office_door_system_e449d3_cover'].attributes.current_position == 100)) ||
-                        states[lock.office_door_system_e449d3_lock].state == locked
+                        states['lock.office_door_system_e449d3_lock'].state == "locked"
                       ]]]
                 tap_action:
                   action: call-service

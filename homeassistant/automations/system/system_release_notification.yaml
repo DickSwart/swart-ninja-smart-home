@@ -24,5 +24,4 @@ action:
   - service: notify.telegram_chat_id_swart_ninja_smart_home_group
     data_template:
       title: 🆕 Release
-      message: "Home Assistant {{ states('sensor.version_available') }} is available.
-      You are on version {{states('sensor.version_current')}}."
+      message: "Home Assistant {{ states('sensor.version_available') }} is available. You are on version {{states('sensor.version_current')}}."

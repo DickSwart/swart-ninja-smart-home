@@ -38,9 +38,8 @@ lovelace:
       type: module
     - url: /hacsfiles/swipe-card/swipe-card.js
       type: module
-  # Add more dashboards
   dashboards:
-    lovelace-admin: # Needs to contain a hyphen (-)
+    lovelace-admin:
       mode: yaml
       filename: ui-lovelace-admin.yaml
       title: Admin

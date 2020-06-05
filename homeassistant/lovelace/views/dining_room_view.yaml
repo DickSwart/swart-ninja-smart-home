@@ -1,10 +1,10 @@
 ---
 title: Dining Room
-icon: "mdi:silverware-fork-knife"
+icon: mdi:silverware-fork-knife
 path: dining_room
 panel: true
 cards:
-  - type: "custom:layout-card"
+  - type: custom:layout-card
     layout: vertical
     cards:
       - type: vertical-stack
@@ -23,13 +23,13 @@ cards:
       - type: horizontal-stack
         cards:
           - name: Ceiling
-            type: "custom:button-card"
+            type: custom:button-card
             hold_action:
               action: more-info
             entity: light.dining_room_ceiling
 
           - name: Backyard
-            type: "custom:button-card"
+            type: custom:button-card
             hold_action:
               action: more-info
             entity: light.backyard

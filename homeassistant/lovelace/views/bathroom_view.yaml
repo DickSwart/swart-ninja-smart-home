@@ -1,10 +1,10 @@
 ---
-icon: "mdi:shower"
+icon: mdi:shower
 panel: true
 path: bathroom
 title: Bathroom
 cards:
-  - type: "custom:layout-card"
+  - type: custom:layout-card
     layout: vertical
     cards:
       - type: vertical-stack
@@ -21,9 +21,9 @@ cards:
           - type: horizontal-stack
             cards:
               - name: Fan
-                type: "custom:button-card"
+                type: custom:button-card
                 entity: fan.bathroom
-              - type: "custom:button-card"
+              - type: custom:button-card
                 template: motion_sensor_btn
                 entity: binary_sensor.bathroom_multisensor_e44e60_motion
 
@@ -31,7 +31,7 @@ cards:
 
       - type: vertical-stack
         cards:
-          - type: "custom:mini-graph-card"
+          - type: custom:mini-graph-card
             font_size: 75
             line_width: 3
             entities:
@@ -43,14 +43,14 @@ cards:
                 entity: sensor.bathroom_multisensor_e44e60_realfeel
           - type: horizontal-stack
             cards:
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-one)
                 line_width: 4
                 entities:
                   - entity: sensor.bathroom_multisensor_e44e60_humidity
                     name: Humidity
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-two)
                 line_width: 4

@@ -1,10 +1,10 @@
 ---
-icon: "mdi:human-male-female"
+icon: mdi:human-male-female
 panel: true
 path: bedroom_master
 title: Master bedroom
 cards:
-  - type: "custom:layout-card"
+  - type: custom:layout-card
     layout: vertical
     cards:
       - type: vertical-stack
@@ -14,7 +14,7 @@ cards:
             - title: <ha-icon icon="mdi:human-male-female"></ha-icon> Master bedroom
 
           - entity: light.bedroom_master_ceiling
-            icon: "mdi:ceiling-light"
+            icon: mdi:ceiling-light
             name: Main
             type: light
 
@@ -27,14 +27,14 @@ cards:
                 type: entity-button
                 entity: switch.bedroom_master_electric_blanket_dick
               - entity: binary_sensor.bedroom_master_multisensor_motion
-                type: "custom:button-card"
+                type: custom:button-card
                 template: motion_sensor_btn
 
       - break
 
       - type: vertical-stack
         cards:
-          - type: "custom:mini-graph-card"
+          - type: custom:mini-graph-card
             font_size: 75
             line_width: 3
             entities:
@@ -46,14 +46,14 @@ cards:
                 entity: sensor.bedroom_master_multisensor_real_feel
           - type: horizontal-stack
             cards:
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-one)
                 line_width: 4
                 entities:
                   - entity: sensor.bedroom_master_multisensor_humidity
                     name: Humidity
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-two)
                 line_width: 4
@@ -90,4 +90,4 @@ cards:
           - entity: light.bedroom_master
           - entity: binary_sensor.bedroom_master_multisensor_connectivity
           - entity: sensor.bedroom_master_multisensor_wifi
-        type: "custom:invisible-card"
+        type: custom:invisible-card

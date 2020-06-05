@@ -1,10 +1,10 @@
 ---
-icon: "mdi:highway"
+icon: mdi:highway
 panel: true
 path: hall
 title: Hall
 cards:
-  - type: "custom:layout-card"
+  - type: custom:layout-card
     layout: vertical
     cards:
       - type: vertical-stack
@@ -35,10 +35,10 @@ cards:
             entity: light.hall_zw111_nano_dimmer
           - type: horizontal-stack
             cards:
-              - type: "custom:button-card"
+              - type: custom:button-card
                 template: motion_sensor_btn
                 entity: binary_sensor.hall_motion
-              - type: "custom:button-card"
+              - type: custom:button-card
                 template: door_sensor_btn
                 entity: binary_sensor.hall_multisensor_door
 
@@ -46,7 +46,7 @@ cards:
 
       - type: vertical-stack
         cards:
-          - type: "custom:mini-graph-card"
+          - type: custom:mini-graph-card
             font_size: 75
             line_width: 3
             entities:
@@ -58,14 +58,14 @@ cards:
                 entity: sensor.hall_multisensor_real_feel
           - type: horizontal-stack
             cards:
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-one)
                 line_width: 4
                 entities:
                   - entity: sensor.hall_multisensor_humidity
                     name: Humidity
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-two)
                 line_width: 4

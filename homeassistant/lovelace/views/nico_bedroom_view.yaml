@@ -1,10 +1,10 @@
 ---
 title: Nico bedroom
-icon: 'mdi:alpha-n-box'
+icon: mdi:alpha-n-box
 panel: true
 path: nico_bedroom
 cards:
-  - type: 'custom:layout-card'
+  - type: custom:layout-card
     layout: vertical
     cards:
       - type: vertical-stack

@@ -18,14 +18,14 @@ cards:
               - device_tracker.life360_dick_swart
               - device_tracker.tile_478ab17cb091cbbe
               - device_tracker.tile_cc9e13f7316c95e3
-            type: "custom:fold-entity-row"
+            type: custom:fold-entity-row
           - head: sensor.presence_location_tamara
             items:
               - input_boolean.presence_location_away_tamara
               - device_tracker.tamara_iphone
               - device_tracker.unifi_tamara_iphonex
               - device_tracker.life360_tamara
-            type: "custom:fold-entity-row"
+            type: custom:fold-entity-row
           - type: divider
           - input_boolean.house_mode_away
           - input_boolean.house_mode_guest
@@ -39,15 +39,15 @@ cards:
 
           - cards:
               - name: Ceiling
-                type: "custom:button-card"
+                type: custom:button-card
                 color: auto
                 entity: light.bedroom_master_ceiling
               - name: Tamara
-                type: "custom:button-card"
+                type: custom:button-card
                 color: auto
                 entity: switch.bedroom_master_electric_blanket_tamara
               - name: Dick
-                type: "custom:button-card"
+                type: custom:button-card
                 color: auto
                 entity: switch.bedroom_master_electric_blanket_dick
             type: horizontal-stack
@@ -61,7 +61,7 @@ cards:
           - type: horizontal-stack
             cards:
               - name: Ceiling
-                type: "custom:button-card"
+                type: custom:button-card
                 color: auto
                 entity: light.bedroom_nico_ceiling
 
@@ -70,10 +70,10 @@ cards:
                 hold_action:
                   action: more-info
                 name: Bed
-                type: "custom:button-card"
+                type: custom:button-card
 
               - name: LED
-                type: "custom:button-card"
+                type: custom:button-card
                 color: auto
                 entity: light.bedroom_nico_multisensor
 
@@ -86,7 +86,7 @@ cards:
           - type: horizontal-stack
             cards:
               - name: Ceiling
-                type: "custom:button-card"
+                type: custom:button-card
                 color: auto
                 entity: light.bedroom_max_ceiling
 
@@ -95,10 +95,10 @@ cards:
                 hold_action:
                   action: more-info
                 name: Bed
-                type: "custom:button-card"
+                type: custom:button-card
 
               - name: LED
-                type: "custom:button-card"
+                type: custom:button-card
                 color: auto
                 entity: light.bedroom_max_multisensor
 
@@ -136,65 +136,3 @@ cards:
           - entity: switch.living_room_cupboard_plug_one
           - entity: switch.living_room_cupboard_plug_two
           - entity: fan.bathroom
-      # - type: vertical-stack
-      #   cards:
-      #     - type: horizontal-stack
-      #       cards:
-      #         - entities:
-      #             - sensor.upstairs_temperature
-      #           font_size: 75
-      #           line_color: var(--secondary-color)
-      #           line_width: 8
-      #           name: Upstairs
-      #           type: "custom:mini-graph-card"
-      #         - entities:
-      #             - sensor.bedrooms_temperature
-      #           font_size: 75
-      #           line_color: var(--secondary-color)
-      #           line_width: 8
-      #           name: Bedrooms
-      #           type: "custom:mini-graph-card"
-      #     - type: horizontal-stack
-      #       cards:
-      #         - entities:
-      #             - sensor.man_cave_temperature
-      #           font_size: 75
-      #           line_color: var(--secondary-color)
-      #           line_width: 8
-      #           name: Man cave
-      #           type: "custom:mini-graph-card"
-      #         - entities:
-      #             - sensor.dark_sky_temperature
-      #           font_size: 75
-      #           line_color: var(--secondary-color)
-      #           line_width: 8
-      #           name: Outside
-      #           type: "custom:mini-graph-card"
-      # - entity: weather.dark_sky
-      #   type: weather-forecast
-      # - break
-      # - type: entity-filter
-      #   show_empty: false
-      #   state_filter:
-      #     - home
-      #     - "on"
-      #   card:
-      #     columns: 4
-      #     show_state: false
-      #     title: Running Systems
-      #     type: glance
-      #   entities:
-      #     - entity: device_tracker.swartninja01
-      #     - entity: device_tracker.swartninja02
-      #     - entity: device_tracker.swartninja03
-      #     - entity: device_tracker.retropie
-      #     - entity: device_tracker.printer_hp_envy_5020
-      #     - entity: device_tracker.xbox_one_man_cave
-      #     - entity: device_tracker.tv_panasonic_th55fx740z
-      #     - entity: device_tracker.tv_sony_kdl43w660f
-      # - name: Calendar
-      #   type: "custom:atomic-calendar-revive"
-      #   entities:
-      #     - calendar.hass_calendar
-      #     - calendar.hampton_hill_school_calendar
-      #     - calendar.holidays_in_new_zealand

@@ -1,10 +1,10 @@
 ---
-icon: "mdi:fridge"
+icon: mdi:fridge
 panel: true
 path: kitchen
 title: Kitchen
 cards:
-  - type: "custom:layout-card"
+  - type: custom:layout-card
     layout: vertical
     cards:
       - type: vertical-stack
@@ -20,18 +20,18 @@ cards:
               - entity: light.kitchen_ceiling
                 hold_action:
                   action: more-info
-                # icon: "mdi:ceiling-light"
+                # icon: mdi:ceiling-light
                 name: Ceiling
-                type: "custom:button-card"
+                type: custom:button-card
               - entity: light.kitchen_side
                 hold_action:
                   action: more-info
-                # icon: "mdi:track-light"
+                # icon: mdi:track-light
                 name: Side
-                type: "custom:button-card"
+                type: custom:button-card
               - entity: binary_sensor.kitchen_motion
                 template: motion_sensor_btn
-                type: "custom:button-card"
+                type: custom:button-card
 
           - entity: light.kitchen_cupboard
             name: Cupboards
@@ -41,7 +41,7 @@ cards:
 
       - type: vertical-stack
         cards:
-          - type: "custom:mini-graph-card"
+          - type: custom:mini-graph-card
             font_size: 75
             line_width: 3
             entities:
@@ -53,14 +53,14 @@ cards:
                 entity: sensor.kitchen_multisensor_real_feel
           - type: horizontal-stack
             cards:
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-one)
                 line_width: 4
                 entities:
                   - entity: sensor.kitchen_multisensor_humidity
                     name: Humidity
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-two)
                 line_width: 4

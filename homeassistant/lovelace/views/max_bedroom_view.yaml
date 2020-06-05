@@ -1,10 +1,10 @@
 ---
 title: Max bedroom
-icon: 'mdi:alpha-m-box'
+icon: mdi:alpha-m-box
 panel: true
 path: max_bedroom
 cards:
-  - type: 'custom:layout-card'
+  - type: custom:layout-card
     layout: vertical
     cards:
       - type: vertical-stack
@@ -24,7 +24,7 @@ cards:
 
           - cards:
               - entity: light.bedroom_max_multisensor
-                icon: 'mdi:ampersand'
+                icon: mdi:ampersand
                 name: MultiSensor
                 type: entity-button
             type: horizontal-stack
@@ -42,7 +42,7 @@ cards:
                 name: Real feel
             font_size: 75
             line_width: 3
-            type: 'custom:mini-graph-card'
+            type: custom:mini-graph-card
           - cards:
               - entities:
                   - entity: sensor.bedroom_max_multisensor_humidity
@@ -50,14 +50,14 @@ cards:
                 font_size: 75
                 line_color: var(--complement-color-one)
                 line_width: 3
-                type: 'custom:mini-graph-card'
+                type: custom:mini-graph-card
               - entities:
                   - entity: sensor.bedroom_max_multisensor_luminance
                     name: Luminance
                 font_size: 75
                 line_color: var(--complement-color-two)
                 line_width: 3
-                type: 'custom:mini-graph-card'
+                type: custom:mini-graph-card
             type: horizontal-stack
 
       - break

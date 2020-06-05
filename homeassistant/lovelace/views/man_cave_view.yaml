@@ -1,10 +1,10 @@
 ---
 title: Man cave
-icon: "mdi:pac-man"
+icon: mdi:pac-man
 panel: true
 path: man_cave
 cards:
-  - type: "custom:layout-card"
+  - type: custom:layout-card
     layout: vertical
     cards:
       - type: vertical-stack
@@ -38,7 +38,7 @@ cards:
           - type: conditional
             conditions:
               - entity: binary_sensor.ender_3_octoprint
-                state: "on"
+                state: on
             card:
               type: picture-glance
               camera_image: camera.octoprint
@@ -49,40 +49,40 @@ cards:
           - type: horizontal-stack
             cards:
               - name: Ceiling
-                type: "custom:button-card"
+                type: custom:button-card
                 entity: light.man_cave_ceiling
               - entity: light.man_cave_kitchen_ceiling_one
-                icon: "mdi:track-light"
+                icon: mdi:track-light
                 name: Kitchen One
-                type: "custom:button-card"
+                type: custom:button-card
               - entity: light.man_cave_kitchen_ceiling_two
                 name: Kitchen Two
-                type: "custom:button-card"
+                type: custom:button-card
 
           - type: horizontal-stack
             cards:
               - entity: light.man_cave_bathroom_ceiling
                 name: Bathroom
-                type: "custom:button-card"
+                type: custom:button-card
               - entity: switch.ender_3
-                type: "custom:button-card"
+                type: custom:button-card
               - entity: switch.work_station
-                type: "custom:button-card"
+                type: custom:button-card
 
           - type: horizontal-stack
             cards:
               - entity: binary_sensor.man_cave_motion
                 name: Motion
                 template: motion_sensor_btn
-                type: "custom:button-card"
+                type: custom:button-card
               - entity: binary_sensor.man_cave_back_door
                 name: Back
                 template: door_sensor_btn
-                type: "custom:button-card"
+                type: custom:button-card
               - entity: binary_sensor.man_cave_stairs_door
                 name: Stairs
                 template: door_sensor_btn
-                type: "custom:button-card"
+                type: custom:button-card
 
       - break
 
@@ -96,11 +96,11 @@ cards:
             Cooling: cool
             Fan_only: fan_only
             Heating: heat
-            "Off": "off"
+            Off: off
 
       - type: vertical-stack
         cards:
-          - type: "custom:mini-graph-card"
+          - type: custom:mini-graph-card
             font_size: 75
             line_width: 3
             entities:
@@ -110,7 +110,7 @@ cards:
 
           - type: horizontal-stack
             cards:
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-one)
                 line_width: 3
@@ -118,7 +118,7 @@ cards:
                   - entity: sensor.man_cave_multisensor_humidity
                     name: Humidity
 
-              - type: "custom:mini-graph-card"
+              - type: custom:mini-graph-card
                 font_size: 75
                 line_color: var(--complement-color-two)
                 line_width: 3
@@ -176,7 +176,7 @@ cards:
                 name: Temperature
               - entity: sensor.man_cave_kitchen_zw100_multisensor_ultraviolet
                 name: Ultraviolet
-            type: "custom:fold-entity-row"
+            type: custom:fold-entity-row
           - head: media_player.man_cave_echo_dot
             items:
               - entity: switch.man_cave_echo_dot_do_not_disturb_switch
@@ -191,7 +191,7 @@ cards:
                 name: Repeat
               - entity: switch.man_cave_echo_dot_shuffle_switch
                 name: Shuffle
-            type: "custom:fold-entity-row"
+            type: custom:fold-entity-row
           - head: binary_sensor.ender_3_octoprint
             items:
               - entity: sensor.octoprint_actual_tool0_temp
@@ -214,9 +214,9 @@ cards:
                 name: Printing
               - entity: binary_sensor.octoprint_printing_error
                 name: Errors
-            type: "custom:fold-entity-row"
+            type: custom:fold-entity-row
           - head: light.man_cave_multisensor
-            type: "custom:fold-entity-row"
+            type: custom:fold-entity-row
             entities:
               - entity: binary_sensor.man_cave_multisensor_motion
                 name: Motion
@@ -231,7 +231,7 @@ cards:
               - entity: sensor.man_cave_multisensor_wifi
                 name: WiFi
           - head: switch.computer_desk
-            type: "custom:fold-entity-row"
+            type: custom:fold-entity-row
             entities:
               - entity: sensor.computer_desk_current
                 name: Current
@@ -244,7 +244,7 @@ cards:
               - entity: sensor.computer_desk_voltage
                 name: Voltage
           - head: switch.work_station
-            type: "custom:fold-entity-row"
+            type: custom:fold-entity-row
             entities:
               - entity: sensor.work_station_current
                 name: Current
@@ -257,7 +257,7 @@ cards:
               - entity: sensor.work_station_voltage
                 name: Voltage
           - head: switch.ender_3
-            type: "custom:fold-entity-row"
+            type: custom:fold-entity-row
             entities:
               - entity: switch.ender_3_pow
               - entity: sensor.ender_3_pow_current

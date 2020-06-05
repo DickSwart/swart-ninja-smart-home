@@ -10,4 +10,4 @@
 platform: mqtt
 name: Bedroom Max Electric Blanket Power Factor
 state_topic: tele/sonoff_EA5999/SENSOR
-value_template: '{{ value_json["ENERGY"]["Factor"] }}'
+value_template: "{{ value_json['ENERGY']['Factor'] }}"

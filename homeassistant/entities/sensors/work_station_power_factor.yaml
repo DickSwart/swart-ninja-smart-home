@@ -10,4 +10,4 @@
 platform: mqtt
 name: Work Station Power Factor
 state_topic: tele/sonoff_pow_374EAA/SENSOR
-value_template: '{{ value_json["ENERGY"]["Factor"] }}'
+value_template: "{{ value_json['ENERGY']['Factor'] }}"

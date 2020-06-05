@@ -12,4 +12,4 @@ platform: mqtt
 name: Ender 3 (POW) Current
 state_topic: tele/sonoff_pow_374EE6/SENSOR
 unit_of_measurement: A
-value_template: '{{ value_json["ENERGY"]["Current"] }}'
+value_template: "{{ value_json['ENERGY']['Current'] }}"

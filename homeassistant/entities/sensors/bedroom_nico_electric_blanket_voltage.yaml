@@ -10,5 +10,5 @@
 platform: mqtt
 name: Bedroom Nico Electric Blanket Voltage
 state_topic: tele/sonoff_374EE5/SENSOR
-value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+value_template: "{{ value_json['ENERGY']['Voltage'] }}"
 unit_of_measurement: V

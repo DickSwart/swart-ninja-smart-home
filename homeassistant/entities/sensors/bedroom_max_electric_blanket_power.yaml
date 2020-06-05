@@ -10,5 +10,5 @@
 platform: mqtt
 name: Bedroom Max Electric Blanket Power
 state_topic: tele/sonoff_EA5999/SENSOR
-value_template: '{{ value_json["ENERGY"]["Power"] }}'
+value_template: "{{ value_json['ENERGY']['Power'] }}"
 unit_of_measurement: W

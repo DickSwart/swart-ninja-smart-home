@@ -2,7 +2,7 @@
 title: Living Room
 icon: mdi:sofa
 panel: true
-path: living_room
+path: living-room
 cards:
   - type: custom:layout-card
     layout: vertical

@@ -9,18 +9,21 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - type: vertical-stack
-        cards:
-          - !include
-            - ../templates/heading.yaml
-            - title: <ha-icon icon="mdi:desktop-tower-monitor"></ha-icon> Office
 
-          - camera_image: camera.ofc
+      - !include
+        - ../templates/heading.yaml
+        - title: <ha-icon icon="mdi:desktop-tower-monitor"></ha-icon> Office
+
+      - type: custom:state-switch
+        entity: user
+        states:
+          Dick:
+            title: Office
+            type: picture-glance
+            camera_image: camera.ofc
             camera_view: live
             entities:
               - binary_sensor.ofc_motion
-            title: Office
-            type: picture-glance
 
       - type: vertical-stack
         cards:
@@ -54,9 +57,21 @@ cards:
                 tap_action:
                   action: toggle
                 type: custom:button-card
+
+
+          - type: horizontal-stack
+            cards:
               - entity: binary_sensor.office_door_system_e449d3_door
                 name: Door
                 template: door_sensor_btn
+                type: custom:button-card
+              - entity: binary_sensor.office_window_one
+                name: Window
+                template: window_sensor_btn
+                type: custom:button-card
+              - entity: binary_sensor.office_window_two
+                name: Window
+                template: window_sensor_btn
                 type: custom:button-card
 
       - type: vertical-stack
@@ -131,53 +146,6 @@ cards:
                   service_data:
                     entity_id: cover.office_door_system_e449d3_cover
                 type: custom:button-card
-
-      - break
-
-      - type: vertical-stack
-        cards:
-          - type: horizontal-stack
-            cards:
-              - entity: sensor.cpu_temp
-                max: 100
-                min: 0
-                severity:
-                  green: 0
-                  yellow: 45
-                  red: 60
-                title: CPU Temp
-                type: gauge
-                unit_of_measurement: °C
-              - entity: sensor.cpu_speed
-                max: 100
-                min: 0
-                severity:
-                  green: 0
-                  yellow: 40
-                  red: 50
-                title: CPU Usage
-                type: gauge
-
-          - type: horizontal-stack
-            cards:
-              - entity: sensor.memory_use_percent
-                max: 100
-                min: 0
-                name: RAM Used
-                severity:
-                  green: 0
-                  yellow: 40
-                  red: 70
-                type: gauge
-              - entity: sensor.disk_use_percent
-                max: 100
-                min: 0
-                name: Disk Used
-                severity:
-                  green: 0
-                  yellow: 40
-                  red: 70
-                type: gauge
 
       - break
 

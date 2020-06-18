@@ -1,0 +1,174 @@
+---
+title: System
+path: admin-system
+icon: mdi:desktop-tower-monitor
+panel: true
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+
+      - title: Home Assistant
+        type: glance
+        entities:
+          - entity: sensor.version_current
+            name: Version
+          - entity: sensor.uptime
+          - entity: binary_sensor.remote_ui
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                name: CPU
+                unit: '%'
+                entity: sensor.glances_cpu_used
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
+              - type: gauge
+                name: Temp
+                unit: '°C'
+                entity: sensor.cpu_temp
+                severity:
+                  green: 0
+                  yellow: 60
+                  red: 85
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                name: RAM
+                unit: '%'
+                entity: sensor.glances_ram_used_percent
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
+              - type: gauge
+                name: Swap
+                unit: '%'
+                entity: sensor.glances_swap_used_percent
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
+
+      - break
+      - type: custom:swipe-card
+        parameters:
+          spaceBetween: 8
+          touchEventsTarget: 'container'
+          pagination:
+            type: 'bullets'
+            dynamicBullets: true
+        cards:
+          - name: CPU Usage
+            type: custom:mini-graph-card
+            aggregate_func: max
+            font_size_header: 10
+            hours_to_show: 7
+            line_width: 2
+            points_per_hour: 10
+            smoothing: false
+            update_interval: 30
+            show:
+              average: true
+              extrema: true
+            entities:
+              - entity: sensor.glances_cpu_used
+                color: var(--complement-color-one)
+                name: System
+              - entity: sensor.glances_containers_cpu_used
+                color: var(--complement-color-two)
+                name: Containers
+
+          - name: RAM Usage
+            type: custom:mini-graph-card
+            aggregate_func: max
+            font_size_header: 10
+            hours_to_show: 7
+            line_width: 2
+            points_per_hour: 10
+            smoothing: false
+            update_interval: 30
+            show:
+              average: true
+              extrema: true
+            entities:
+              - entity: sensor.glances_ram_used
+                color: var(--complement-color-one)
+                name: System
+              - entity: sensor.glances_containers_ram_used
+                color: var(--complement-color-two)
+                name: Containers
+
+      - title: Disk Usage
+        type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:bar-card
+            style: |
+              .card-content {
+                padding-bottom: 0;
+              }
+            direction: up
+            height: 100px
+            max: 100
+            min: 0
+            positions:
+              icon: inside
+              title: inside
+              value: inside
+            severity:
+              - color: "#2DAD4B"
+                from: 0
+                to: 30
+              - color: "#2AA246"
+                from: 30
+                to: 40
+              - color: "#FFAE03"
+                from: 40
+                to: 50
+              - color: "#CC8B00"
+                from: 50
+                to: 60
+              - color: "#D37209"
+                from: 60
+                to: 70
+              - color: "#D95812"
+                from: 70
+                to: 80
+              - color: "#E52424"
+                from: 80
+                to: 90
+              - color: "#C91818"
+                from: 90
+                to: 100
+            show_icon: true
+            stack: horizontal
+            tap_action: none
+            entities:
+              - entity: sensor.glances_used_percent
+                name: SSD
+              - entity: sensor.glances_mnt_media01_used_percent
+                name: Media 01
+              - entity: sensor.glances_mnt_media02_used_percent
+                name: Media 02
+              - entity: sensor.glances_mnt_media03_used_percent
+                name: Media 03
+          - title: free space
+            type: entities
+            style: |
+              .card-header {
+                padding-top: 0;
+              }
+            entities:
+              - entity: sensor.glances_free
+                name: SSD
+              - entity: sensor.glances_mnt_media01_free
+                name: Media 01
+              - entity: sensor.glances_mnt_media02_free
+                name: Media 02
+              - entity: sensor.glances_mnt_media03_free
+                name: Media 03

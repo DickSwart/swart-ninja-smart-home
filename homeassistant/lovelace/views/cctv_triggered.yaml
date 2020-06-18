@@ -1,0 +1,48 @@
+---
+title: CCTV
+path: admin-cctv-last-triggered
+icon: mdi:cctv
+panel: true
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - aspect_ratio: 0%
+        entity: camera.byc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.dec_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.drc_last_trigger
+        show_state: false
+        type: picture-entity
+      - break
+      - aspect_ratio: 0%
+        entity: camera.fdc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.hlc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.hsc_last_trigger
+        show_state: false
+        type: picture-entity
+      - break
+      - aspect_ratio: 0%
+        entity: camera.lrc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.mcc_last_trigger
+        show_state: false
+        type: picture-entity
+      - aspect_ratio: 0%
+        entity: camera.ofc_last_trigger
+        show_state: false
+        type: picture-entity
+

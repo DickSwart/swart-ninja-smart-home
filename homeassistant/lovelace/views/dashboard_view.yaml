@@ -14,7 +14,7 @@ cards:
             items:
               - input_boolean.presence_location_away_dick
               - device_tracker.dick_iphone
-              - device_tracker.unifi_dick_iphone11pro
+              - device_tracker.dick_iphone_11_pro
               - device_tracker.life360_dick_swart
               - device_tracker.tile_478ab17cb091cbbe
               - device_tracker.tile_cc9e13f7316c95e3
@@ -23,13 +23,104 @@ cards:
             items:
               - input_boolean.presence_location_away_tamara
               - device_tracker.tamara_iphone
-              - device_tracker.unifi_tamara_iphonex
+              - device_tracker.tamara_iphone_x
               - device_tracker.life360_tamara
             type: custom:fold-entity-row
           - type: divider
           - input_boolean.house_mode_away
           - input_boolean.house_mode_guest
           - input_boolean.house_mode_holiday
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - name: Living Room
+                type: custom:button-card
+                color: var(--dark-primary-color)
+                color_type: card
+                icon: mdi:sofa
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/living-room/
+              - name: Dining Room
+                type: custom:button-card
+                color: var(--dark-primary-color)
+                color_type: card
+                icon: mdi:silverware-fork-knife
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/dining-room/
+              - name: Hall
+                type: custom:button-card
+                color: var(--dark-primary-color)
+                color_type: card
+                icon: mdi:highway
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/hall/
+          - type: horizontal-stack
+            cards:
+              - name: Kitchen
+                type: custom:button-card
+                color: var(--dark-primary-color)
+                color_type: card
+                icon: mdi:fridge
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/kitchen/
+              - name: Bathroom
+                type: custom:button-card
+                color: var(--dark-primary-color)
+                color_type: card
+                icon: mdi:shower
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/bathroom/
+              - name: Man cave
+                type: custom:button-card
+                color: var(--dark-primary-color)
+                color_type: card
+                icon: mdi:pac-man
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/man-cave/
+
+
+      - type: entity-filter
+        show_empty: false
+        state_filter:
+          - "on"
+        card:
+          title: It's on
+          type: entities
+        entities:
+          - entity: light.backyard
+          - entity: light.bathroom_zw111_nano_dimmer
+          - entity: light.bedroom_master_ceiling
+          - entity: light.bedroom_max_ceiling
+          - entity: light.bedroom_nico_ceiling
+          - entity: light.dining_room_ceiling
+          - entity: light.front_door_ceiling
+          - entity: light.hall_zw111_nano_dimmer
+          - entity: light.kitchen_ceiling
+          - entity: light.kitchen_side
+          - entity: light.living_room_ceiling
+          - entity: light.living_room_fish_tank
+          - entity: light.living_room_fish_tank_color
+          - entity: light.living_room_television
+          - entity: light.man_cave_ceiling
+          - entity: light.man_cave_kitchen_ceiling_one
+          - entity: light.man_cave_kitchen_ceiling_two
+          - entity: light.man_cave_bathroom_ceiling
+          - entity: light.office_ceiling
+          - entity: switch.man_cave_heat_pump
+          - entity: switch.living_room_heat_pump
+          - entity: switch.living_room_cupboard_plug_one
+          - entity: switch.living_room_cupboard_plug_two
+          - entity: fan.bathroom
+
+      - break
 
       - type: vertical-stack
         cards:
@@ -102,37 +193,7 @@ cards:
                 color: auto
                 entity: light.bedroom_max_multisensor
 
-      - break
 
-      - type: entity-filter
-        show_empty: false
-        state_filter:
-          - "on"
-        card:
-          title: It's on
-          type: entities
-        entities:
-          - entity: light.backyard
-          - entity: light.bathroom_zw111_nano_dimmer
-          - entity: light.bedroom_master_ceiling
-          - entity: light.bedroom_max_ceiling
-          - entity: light.bedroom_nico_ceiling
-          - entity: light.dining_room_ceiling
-          - entity: light.front_door_ceiling
-          - entity: light.hall_zw111_nano_dimmer
-          - entity: light.kitchen_ceiling
-          - entity: light.kitchen_side
-          - entity: light.living_room_ceiling
-          - entity: light.living_room_fish_tank
-          - entity: light.living_room_fish_tank_color
-          - entity: light.living_room_television
-          - entity: light.man_cave_ceiling
-          - entity: light.man_cave_kitchen_ceiling_one
-          - entity: light.man_cave_kitchen_ceiling_two
-          - entity: light.man_cave_bathroom_ceiling
-          - entity: light.office_ceiling
-          - entity: switch.man_cave_heat_pump
-          - entity: switch.living_room_heat_pump
-          - entity: switch.living_room_cupboard_plug_one
-          - entity: switch.living_room_cupboard_plug_two
-          - entity: fan.bathroom
+
+
+

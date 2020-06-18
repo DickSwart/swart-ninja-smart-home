@@ -1,7 +1,7 @@
 ---
 title: Dining Room
 icon: mdi:silverware-fork-knife
-path: dining_room
+path: dining-room
 panel: true
 cards:
   - type: custom:layout-card

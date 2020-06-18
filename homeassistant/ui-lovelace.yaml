@@ -60,6 +60,30 @@ button_card_templates:
         styles:
           icon:
             - color: var(--dark-primary-color)
+  window_sensor_btn:
+    color_type: card
+    name: Door
+    show_state: true
+    layout: name_state
+    styles:
+      card:
+        - background: none
+        - box-shadow: none
+      icon:
+        - color: var(--dark-primary-color)
+    state:
+      - value: "on"
+        icon: mdi:window-open-variant
+        styles:
+          icon:
+            - color: var(--accent-color)
+          name:
+            - color: var(--primary-text-color)
+      - operator: default
+        icon: mdi:window-closed-variant
+        styles:
+          icon:
+            - color: var(--dark-primary-color)
   alt_buttons:
     styles:
       card:

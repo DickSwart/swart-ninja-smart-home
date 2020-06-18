@@ -24,7 +24,6 @@ cards:
 
           - cards:
               - entity: light.bedroom_max_multisensor
-                icon: mdi:ampersand
                 name: MultiSensor
                 type: entity-button
             type: horizontal-stack

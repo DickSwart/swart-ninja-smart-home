@@ -2,15 +2,6 @@
     "data": {
         "items": [
             {
-                "icon": "mdi:account-lock",
-                "id": "lovelace_admin",
-                "mode": "storage",
-                "require_admin": true,
-                "show_in_sidebar": true,
-                "title": "Admin",
-                "url_path": "lovelace-admin"
-            },
-            {
                 "icon": "mdi:view-dashboard-variant",
                 "id": "all_unmanaged",
                 "mode": "storage",

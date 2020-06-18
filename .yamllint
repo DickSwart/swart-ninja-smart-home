@@ -78,7 +78,7 @@ rules:
   truthy:
     level: error
   quoted-strings:
-    level: warning
+    level: error
     required: only-when-needed
     extra-allowed: [^http://, ^https://, ^mysql://, ^docker://]
     extra-required: [QUOTED]

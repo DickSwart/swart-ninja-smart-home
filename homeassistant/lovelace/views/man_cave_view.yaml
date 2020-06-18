@@ -2,7 +2,7 @@
 title: Man cave
 icon: mdi:pac-man
 panel: true
-path: man_cave
+path: man-cave
 cards:
   - type: custom:layout-card
     layout: vertical

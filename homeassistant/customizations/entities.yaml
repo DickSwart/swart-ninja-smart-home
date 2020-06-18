@@ -99,6 +99,9 @@ light.backyard:
 light.kitchen_cupboard:
   icon: mdi:led-strip-variant
 
+light.bedroom_max_multisensor:
+  icon: mdi:ampersand
+
 camera.byc:
   friendly_name: Backyard
 camera.dec:

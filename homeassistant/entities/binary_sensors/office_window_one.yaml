@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# MQTT Binary Sensor
+# The mqtt binary sensor platform uses an MQTT message received to set the binary sensor’s
+# state to on or off.
+#
+# Device: D1 Mini 14C243 door-window-sensor
+# URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
+#
+# EntityID: binary_sensor.office_window_one
+##############################################################################################
+platform: mqtt
+name: Office Window One
+state_topic: 14C243/sensor/door03
+availability_topic: 14C243/status
+device_class: window

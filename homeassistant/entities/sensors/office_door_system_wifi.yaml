@@ -1,0 +1,18 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# Device: NodeMCU E449D3 office_door_system
+# EntityID: sensor.office_door_system_wifi
+##############################################################################################
+platform: mqtt
+unique_id: office_door_system_e449d3_wifi
+name: Office Door System WiFi
+state_topic: E449D3/wifi/state
+unit_of_measurement: "%"
+availability_topic: E449D3/availability/state
+payload_available: online
+payload_not_available: offline

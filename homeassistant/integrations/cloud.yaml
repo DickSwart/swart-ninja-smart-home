@@ -17,7 +17,7 @@ cloud:
       include_entities:
         - climate.living_room
         - climate.man_cave
-        - cover.office_door_system_e449d3_cover
+        - cover.office_door_system_cover
         - light.bathroom_zw111_nano_dimmer
         - light.bedroom_max_ceiling
         - light.bedroom_nico_ceiling

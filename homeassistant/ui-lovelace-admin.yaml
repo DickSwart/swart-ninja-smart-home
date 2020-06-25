@@ -143,11 +143,11 @@ views:
             type: custom:fold-entity-row
           - head: sensor.office_door_system_e449d3_availability
             items:
-              - binary_sensor.office_door_system_e449d3_door
-              - sensor.office_door_system_e449d3_wifi_signal_strength
-              - lock.office_door_system_e449d3_lock
-              - cover.office_door_system_e449d3_cover
-              - switch.office_door_system_e449d3_siren
+              - binary_sensor.office_door_system_door
+              - sensor.office_door_system_wifi
+              - lock.office_door_system_lock
+              - cover.office_door_system_cover
+              - switch.office_door_system_siren
             type: custom:fold-entity-row
         show_header_toggle: false
         title: Systems

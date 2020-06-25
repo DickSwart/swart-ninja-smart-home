@@ -1,0 +1,32 @@
+---
+##############################################################################################
+# MQTT Cover
+# The mqtt cover platform allows you to control an MQTT cover
+# (such as blinds, a rollershutter or a garage door).
+#
+# URL: https://www.home-assistant.io/integrations/cover.mqtt/
+#
+# Device: NodeMCU E449D3 office_door_system
+# EntityID: cover.office_door_system_cover
+##############################################################################################
+platform: mqtt
+unique_id: office_door_system_e449d3_cover
+name: Office Door System Cover
+device_class: door
+state_topic: E449D3/cover/state
+command_topic: E449D3/cover/set
+position_topic: E449D3/cover/position/state
+set_position_topic: E449D3/cover/position/set
+availability_topic: E449D3/availability/state
+payload_available: online
+payload_not_available: offline
+payload_close: CLOSE
+payload_open: OPEN
+payload_stop: STOP
+position_closed: 0
+position_open: 29
+state_closed: closed
+state_closing: closing
+state_open: open
+state_opening: opening
+retain: true

@@ -37,14 +37,14 @@ cards:
 
               - name: Door Lock
                 color: auto
-                entity: lock.office_door_system_e449d3_lock
+                entity: lock.office_door_system_lock
                 hold_action:
                   action: more-info
                 lock:
                   duration: 300
                   enabled: >-
                     [[[ return
-                    states['binary_sensor.office_door_system_e449d3_door'].state
+                    states['binary_sensor.office_door_system_door'].state
                     == "on"; ]]]
                   unlock: hold
                 state:
@@ -61,7 +61,7 @@ cards:
 
           - type: horizontal-stack
             cards:
-              - entity: binary_sensor.office_door_system_e449d3_door
+              - entity: binary_sensor.office_door_system_door
                 name: Door
                 template: door_sensor_btn
                 type: custom:button-card
@@ -82,13 +82,13 @@ cards:
           - type: custom:vertical-stack-in-card
             horizontal: true
             cards:
-              - entity: cover.office_door_system_e449d3_cover
+              - entity: cover.office_door_system_cover
                 icon: mdi:arrow-left-circle
                 lock:
                   duration: 300
                   enabled: >-
                     [[[ return
-                    states['binary_sensor.office_door_system_e449d3_door'].state
+                    states['binary_sensor.office_door_system_door'].state
                     == "off"; ]]]
                   unlock: hold
                 name: Close
@@ -99,16 +99,16 @@ cards:
                     operator: template
                     value: |
                       [[[
-                        return states['cover.office_door_system_e449d3_cover'].attributes
-                        && (states['cover.office_door_system_e449d3_cover'].attributes.current_position == 0)
+                        return states['cover.office_door_system_cover'].attributes
+                        && (states['cover.office_door_system_cover'].attributes.current_position == 0)
                       ]]]
                 tap_action:
                   action: call-service
                   service: cover.close_cover
                   service_data:
-                    entity_id: cover.office_door_system_e449d3_cover
+                    entity_id: cover.office_door_system_cover
                 type: custom:button-card
-              - entity: cover.office_door_system_e449d3_cover
+              - entity: cover.office_door_system_cover
                 icon: mdi:stop-circle
                 name: Stop
                 show_icon: true
@@ -117,15 +117,15 @@ cards:
                   action: call-service
                   service: cover.stop_cover
                   service_data:
-                    entity_id: cover.office_door_system_e449d3_cover
+                    entity_id: cover.office_door_system_cover
                 type: custom:button-card
-              - entity: cover.office_door_system_e449d3_cover
+              - entity: cover.office_door_system_cover
                 icon: mdi:arrow-right-circle
                 lock:
                   duration: 300
                   enabled: >-
                     [[[ return
-                    states['lock.office_door_system_e449d3_lock'].state
+                    states['lock.office_door_system_lock'].state
                     == "locked"; ]]]
                   unlock: hold
                 name: Open
@@ -136,15 +136,15 @@ cards:
                     operator: template
                     value: |
                       [[[
-                        return (states['cover.office_door_system_e449d3_cover'].attributes &&
-                        (states['cover.office_door_system_e449d3_cover'].attributes.current_position == 100)) ||
-                        states['lock.office_door_system_e449d3_lock'].state == "locked"
+                        return (states['cover.office_door_system_cover'].attributes &&
+                        (states['cover.office_door_system_cover'].attributes.current_position == 100)) ||
+                        states['lock.office_door_system_lock'].state == "locked"
                       ]]]
                 tap_action:
                   action: call-service
                   service: cover.open_cover
                   service_data:
-                    entity_id: cover.office_door_system_e449d3_cover
+                    entity_id: cover.office_door_system_cover
                 type: custom:button-card
 
       - break
@@ -176,3 +176,36 @@ cards:
                 entities:
                   - entity: sensor.office_zw100_multisensor_luminance
                     name: Luminance
+      - break
+
+      - title: MultiSensor
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: zwave.office_zw100_multisensor
+            name: ZWave
+          - entity: binary_sensor.office_zw100_multisensor_motion
+            name: Motion
+          - entity: sensor.office_zw100_multisensor_temperature
+            name: Temperature
+          - entity: sensor.office_zw100_multisensor_humidity
+            name: Humidity
+          - entity: sensor.office_zw100_multisensor_ultraviolet
+            name: Ultraviolet
+          - entity: sensor.office_zw100_multisensor_luminance
+            name: Luminance
+
+      - title: Door System
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: cover.office_door_system_cover
+            name: Cover
+          - entity: lock.office_door_system_lock
+            name: Lock
+          - entity: binary_sensor.office_door_system_door
+            name: Door
+          - entity: switch.office_door_system_siren
+            name: Siren
+          - entity: sensor.office_door_system_wifi
+            name: WiFi

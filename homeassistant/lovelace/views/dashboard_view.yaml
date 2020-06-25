@@ -86,7 +86,6 @@ cards:
                   action: navigate
                   navigation_path: /lovelace/man-cave/
 
-
       - type: entity-filter
         show_empty: false
         state_filter:
@@ -192,8 +191,3 @@ cards:
                 type: custom:button-card
                 color: auto
                 entity: light.bedroom_max_multisensor
-
-
-
-
-

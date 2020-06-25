@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-cover.office_door_system_e449d3_cover:
+cover.office_door_system_cover:
   name: Office Door
   description: The office door.
   display_categories: DOOR

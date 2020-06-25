@@ -22,7 +22,7 @@ cards:
             cards:
               - type: gauge
                 name: CPU
-                unit: '%'
+                unit: "%"
                 entity: sensor.glances_cpu_used
                 severity:
                   green: 0
@@ -30,7 +30,7 @@ cards:
                   red: 85
               - type: gauge
                 name: Temp
-                unit: '°C'
+                unit: "°C"
                 entity: sensor.cpu_temp
                 severity:
                   green: 0
@@ -40,7 +40,7 @@ cards:
             cards:
               - type: gauge
                 name: RAM
-                unit: '%'
+                unit: "%"
                 entity: sensor.glances_ram_used_percent
                 severity:
                   green: 0
@@ -48,7 +48,7 @@ cards:
                   red: 85
               - type: gauge
                 name: Swap
-                unit: '%'
+                unit: "%"
                 entity: sensor.glances_swap_used_percent
                 severity:
                   green: 0
@@ -59,9 +59,9 @@ cards:
       - type: custom:swipe-card
         parameters:
           spaceBetween: 8
-          touchEventsTarget: 'container'
+          touchEventsTarget: container
           pagination:
-            type: 'bullets'
+            type: bullets
             dynamicBullets: true
         cards:
           - name: CPU Usage

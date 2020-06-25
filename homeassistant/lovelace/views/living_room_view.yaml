@@ -52,10 +52,10 @@ cards:
             cards:
               - name: Plug One
                 type: custom:button-card
-                entity: switch.living_room_cupboard_plug_one
+                entity: switch.living_room_cupboard_plug_01
               - name: Plug Two
                 type: custom:button-card
-                entity: switch.living_room_cupboard_plug_two
+                entity: switch.living_room_cupboard_plug_02
 
       - type: custom:mod-card
         style: |

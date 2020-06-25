@@ -121,11 +121,9 @@ camera.mcc:
 camera.ofc:
   friendly_name: Office
 
-switch.living_room_cupboard_plug_one:
-  friendly_name: Living Room Cupboard Plug One
+switch.living_room_cupboard_plug_01:
   icon: mdi:power-socket-au
-switch.living_room_cupboard_plug_two:
-  friendly_name: Living Room Cupboard Plug Two
+switch.living_room_cupboard_plug_02:
   icon: mdi:power-socket-au
 switch.ender_3:
   icon: mdi:printer-3d

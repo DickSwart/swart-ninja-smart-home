@@ -117,6 +117,7 @@ cards:
           - entity: switch.living_room_heat_pump
           - entity: switch.living_room_cupboard_plug_one
           - entity: switch.living_room_cupboard_plug_two
+          - entity: switch.office_heater
           - entity: fan.bathroom
 
       - break

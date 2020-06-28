@@ -98,6 +98,8 @@ light.backyard:
   icon: mdi:coach-lamp
 light.kitchen_cupboard:
   icon: mdi:led-strip-variant
+light.office_shelf:
+  icon: mdi:coach-lamp
 
 light.bedroom_max_multisensor:
   icon: mdi:ampersand
@@ -129,3 +131,5 @@ switch.ender_3:
   icon: mdi:printer-3d
 switch.work_station:
   icon: mdi:soldering-iron
+switch.office_heater:
+  icon: mdi:radiator

@@ -9,7 +9,6 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-
       - !include
         - ../templates/heading.yaml
         - title: <ha-icon icon="mdi:desktop-tower-monitor"></ha-icon> Office
@@ -34,30 +33,16 @@ cards:
                 entity: light.office_ceiling
                 hold_action:
                   action: more-info
-
-              - name: Door Lock
-                color: auto
-                entity: lock.office_door_system_lock
+              - name: Shelf
+                type: custom:button-card
+                entity: light.office_shelf
                 hold_action:
                   action: more-info
-                lock:
-                  duration: 300
-                  enabled: >-
-                    [[[ return
-                    states['binary_sensor.office_door_system_door'].state
-                    == "on"; ]]]
-                  unlock: hold
-                state:
-                  - color: var(--dark-primary-color)
-                    icon: mdi:lock
-                    value: locked
-                  - color: var(--accent-color)
-                    icon: mdi:lock-open
-                    value: unlocked
-                tap_action:
-                  action: toggle
+              - name: Heater
                 type: custom:button-card
-
+                entity: switch.office_heater
+                hold_action:
+                  action: more-info
 
           - type: horizontal-stack
             cards:
@@ -79,73 +64,155 @@ cards:
           - !include
             - ../templates/sub_heading.yaml
             - title: Door Control
-          - type: custom:vertical-stack-in-card
-            horizontal: true
-            cards:
-              - entity: cover.office_door_system_cover
-                icon: mdi:arrow-left-circle
-                lock:
-                  duration: 300
-                  enabled: >-
-                    [[[ return
-                    states['binary_sensor.office_door_system_door'].state
-                    == "off"; ]]]
-                  unlock: hold
-                name: Close
-                show_icon: true
-                show_name: true
-                state:
-                  - color: var(--disabled-text-color)
-                    operator: template
-                    value: |
-                      [[[
-                        return states['cover.office_door_system_cover'].attributes
-                        && (states['cover.office_door_system_cover'].attributes.current_position == 0)
-                      ]]]
-                tap_action:
-                  action: call-service
-                  service: cover.close_cover
-                  service_data:
-                    entity_id: cover.office_door_system_cover
-                type: custom:button-card
-              - entity: cover.office_door_system_cover
-                icon: mdi:stop-circle
-                name: Stop
-                show_icon: true
-                show_name: true
-                tap_action:
-                  action: call-service
-                  service: cover.stop_cover
-                  service_data:
-                    entity_id: cover.office_door_system_cover
-                type: custom:button-card
-              - entity: cover.office_door_system_cover
-                icon: mdi:arrow-right-circle
-                lock:
-                  duration: 300
-                  enabled: >-
-                    [[[ return
-                    states['lock.office_door_system_lock'].state
-                    == "locked"; ]]]
-                  unlock: hold
-                name: Open
-                show_icon: true
-                show_name: true
-                state:
-                  - color: var(--disabled-text-color)
-                    operator: template
-                    value: |
-                      [[[
-                        return (states['cover.office_door_system_cover'].attributes &&
-                        (states['cover.office_door_system_cover'].attributes.current_position == 100)) ||
-                        states['lock.office_door_system_lock'].state == "locked"
-                      ]]]
-                tap_action:
-                  action: call-service
-                  service: cover.open_cover
-                  service_data:
-                    entity_id: cover.office_door_system_cover
-                type: custom:button-card
+          - type: custom:state-switch
+            entity: binary_sensor.office_door_system_door
+            default: "on"
+            states:
+              "on":
+                type: horizontal-stack
+                cards:
+                  - entity: cover.office_door_system_cover
+                    icon: mdi:arrow-left-circle
+                    lock:
+                      duration: 300
+                      enabled: >-
+                        [[[ return
+                        states['binary_sensor.office_door_system_door'].state
+                        == "off"; ]]]
+                      unlock: hold
+                    name: Close
+                    show_icon: true
+                    show_name: true
+                    state:
+                      - color: var(--disabled-text-color)
+                        operator: template
+                        value: |
+                          [[[
+                            return states['cover.office_door_system_cover'].attributes
+                            && (states['cover.office_door_system_cover'].attributes.current_position == 0)
+                          ]]]
+                    tap_action:
+                      action: call-service
+                      service: cover.close_cover
+                      service_data:
+                        entity_id: cover.office_door_system_cover
+                    type: custom:button-card
+                  - entity: cover.office_door_system_cover
+                    icon: mdi:stop-circle
+                    name: Stop
+                    show_icon: true
+                    show_name: true
+                    tap_action:
+                      action: call-service
+                      service: cover.stop_cover
+                      service_data:
+                        entity_id: cover.office_door_system_cover
+                    type: custom:button-card
+                  - entity: cover.office_door_system_cover
+                    icon: mdi:arrow-right-circle
+                    lock:
+                      duration: 300
+                      enabled: >-
+                        [[[ return
+                        states['lock.office_door_system_lock'].state
+                        == "locked"; ]]]
+                      unlock: hold
+                    name: Open
+                    show_icon: true
+                    show_name: true
+                    state:
+                      - color: var(--disabled-text-color)
+                        operator: template
+                        value: |
+                          [[[
+                            return (states['cover.office_door_system_cover'].attributes &&
+                            (states['cover.office_door_system_cover'].attributes.current_position == 100)) ||
+                            states['lock.office_door_system_lock'].state == "locked"
+                          ]]]
+                    tap_action:
+                      action: call-service
+                      service: cover.open_cover
+                      service_data:
+                        entity_id: cover.office_door_system_cover
+                    type: custom:button-card
+              "off":
+                type: horizontal-stack
+                cards:
+                  - entity: cover.office_door_system_cover
+                    icon: mdi:arrow-left-circle
+                    lock:
+                      duration: 300
+                      enabled: >-
+                        [[[ return
+                        states['binary_sensor.office_door_system_door'].state
+                        == "off"; ]]]
+                      unlock: hold
+                    name: Close
+                    show_icon: true
+                    show_name: true
+                    state:
+                      - color: var(--disabled-text-color)
+                        operator: template
+                        value: |
+                          [[[
+                            return states['cover.office_door_system_cover'].attributes
+                            && (states['cover.office_door_system_cover'].attributes.current_position == 0)
+                          ]]]
+                    tap_action:
+                      action: call-service
+                      service: cover.close_cover
+                      service_data:
+                        entity_id: cover.office_door_system_cover
+                    type: custom:button-card
+                  - name: Door Lock
+                    color: auto
+                    entity: lock.office_door_system_lock
+                    hold_action:
+                      action: more-info
+                    lock:
+                      duration: 300
+                      enabled: >-
+                        [[[ return
+                        states['binary_sensor.office_door_system_door'].state
+                        == "on"; ]]]
+                      unlock: hold
+                    state:
+                      - color: var(--dark-primary-color)
+                        icon: mdi:lock
+                        value: locked
+                      - color: var(--accent-color)
+                        icon: mdi:lock-open
+                        value: unlocked
+                    tap_action:
+                      action: toggle
+                    type: custom:button-card
+                  - entity: cover.office_door_system_cover
+                    icon: mdi:arrow-right-circle
+                    lock:
+                      duration: 300
+                      enabled: >-
+                        [[[ return
+                        states['lock.office_door_system_lock'].state
+                        == "locked"; ]]]
+                      unlock: hold
+                    name: Open
+                    show_icon: true
+                    show_name: true
+                    state:
+                      - color: var(--disabled-text-color)
+                        operator: template
+                        value: |
+                          [[[
+                            return (states['cover.office_door_system_cover'].attributes &&
+                            (states['cover.office_door_system_cover'].attributes.current_position == 100)) ||
+                            states['lock.office_door_system_lock'].state == "locked"
+                          ]]]
+                    tap_action:
+                      action: call-service
+                      service: cover.open_cover
+                      service_data:
+                        entity_id: cover.office_door_system_cover
+                    type: custom:button-card
 
       - break
 
@@ -176,6 +243,7 @@ cards:
                 entities:
                   - entity: sensor.office_zw100_multisensor_luminance
                     name: Luminance
+
       - break
 
       - title: MultiSensor
@@ -209,3 +277,5 @@ cards:
             name: Siren
           - entity: sensor.office_door_system_wifi
             name: WiFi
+          - entity: script.1593069477081
+            name: Reset Script

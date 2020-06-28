@@ -7,7 +7,6 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-
       - title: Light Automations
         type: entities
         entities:
@@ -45,6 +44,29 @@ cards:
           - binary_sensor.dark_outside
           - entity: binary_sensor.updater
             name: Home Assistant Released Version
+
+      - title: Cameras
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: switch.byc
+            name: Backyard
+          - entity: switch.dec
+            name: Deck
+          - entity: switch.drc
+            name: Dining Room
+          - entity: switch.fdc
+            name: Front Door
+          - entity: switch.hlc
+            name: Hall
+          - entity: switch.hsc
+            name: House Side
+          - entity: switch.lrc
+            name: Living Room
+          - entity: switch.mcc
+            name: Man Cave
+          - entity: switch.ofc
+            name: Office
 
       - break
 

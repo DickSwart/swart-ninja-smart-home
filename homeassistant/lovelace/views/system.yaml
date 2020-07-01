@@ -30,7 +30,7 @@ cards:
                   red: 85
               - type: gauge
                 name: Temp
-                unit: "°C"
+                unit: °C
                 entity: sensor.cpu_temp
                 severity:
                   green: 0

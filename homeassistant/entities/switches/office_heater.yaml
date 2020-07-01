@@ -10,12 +10,12 @@
 
 platform: mqtt
 name: Office Heater
-state_topic: "stat/sonoff_324ADA/RESULT"
+state_topic: stat/sonoff_324ADA/RESULT
 value_template: "{{ value_json.POWER }}"
-command_topic: "cmnd/sonoff_324ADA/POWER"
+command_topic: cmnd/sonoff_324ADA/POWER
 payload_on: "ON"
 payload_off: "OFF"
-availability_topic: "tele/sonoff_324ADA/LWT"
+availability_topic: tele/sonoff_324ADA/LWT
 payload_available: Online
 payload_not_available: Offline
 qos: 1

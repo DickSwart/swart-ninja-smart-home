@@ -111,16 +111,6 @@ services:
       GF_SMTP_PASSWORD: ${EMAIL_FROM_PASSWORD}
       TZ: ${TZ}
 
-  ha_dockermon:
-    image: philhawthorne/ha-dockermon
-    container_name: ha_dockermon
-    restart: always
-    user: ${USER_ID}:${GROUP_ID}
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - 8126:8126
-
   deepstack:
     container_name: deepstack
     image: deepquestai/deepstack:latest

@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-switch.ha_dockermon_minecraft_server_02:
-  name: Minecraft Server Two
-  description: This is our war server, no rules.
+switch.docker_minecraft_server_03:
+  name: Minecraft Server Three
+  description: Disposable server.
   display_categories: SWITCH

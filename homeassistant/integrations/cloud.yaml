@@ -35,6 +35,6 @@ cloud:
         - switch.bedroom_master_electric_blanket_tamara
         - switch.bedroom_max_electric_blanket
         - switch.bedroom_nico_electric_blanket
-        - switch.ha_dockermon_minecraft_server_01
-        - switch.ha_dockermon_minecraft_server_02
-        - switch.ha_dockermon_minecraft_server_03
+        - switch.docker_minecraft_server_01
+        - switch.docker_minecraft_server_02
+        - switch.docker_minecraft_server_03

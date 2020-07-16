@@ -7,7 +7,6 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-
       - title: Home Assistant
         type: glance
         entities:
@@ -55,7 +54,22 @@ cards:
                   yellow: 45
                   red: 85
 
+      - title: Docker
+        show_header_toggle: false
+        type: entities
+        entities:
+          - entity: sensor.docker_mosquitto_state
+            name: Mosquitto
+          - entity: sensor.docker_nodered_state
+            name: Node-RED
+          - entity: sensor.docker_mariadb_state
+            name: MariaDB
+          - entity: sensor.docker_influxdb_state
+            name: InfluxDB
+          - entity: sensor.docker_deepstack_state
+            name: Deep Stack
       - break
+
       - type: custom:swipe-card
         parameters:
           spaceBetween: 8

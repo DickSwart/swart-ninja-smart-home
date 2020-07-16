@@ -1,0 +1,439 @@
+icon: mdi:docker
+panel: true
+path: docker
+title: Docker
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - title: swart-ninja-smart-home
+        show_header_toggle: false
+        type: entities
+        entities:
+          - head: switch.docker_homeassistant
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_homeassistant_image
+                name: Image
+              - entity: sensor.docker_homeassistant_state
+                name: State
+              - entity: sensor.docker_homeassistant_status
+                name: Status
+              - entity: sensor.docker_homeassistant_up_time
+                name: Up Time
+              - entity: sensor.docker_homeassistant_cpu
+                name: CPU
+              - entity: sensor.docker_homeassistant_memory
+                name: Memory
+              - entity: sensor.docker_homeassistant_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_homeassistant_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_homeassistant_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_homeassistant_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_homeassistant_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_mariadb
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_mariadb_image
+                name: Image
+              - entity: sensor.docker_mariadb_state
+                name: State
+              - entity: sensor.docker_mariadb_status
+                name: Status
+              - entity: sensor.docker_mariadb_up_time
+                name: Up Time
+              - entity: sensor.docker_mariadb_cpu
+                name: CPU
+              - entity: sensor.docker_mariadb_memory
+                name: Memory
+              - entity: sensor.docker_mariadb_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_mariadb_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_mariadb_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_mariadb_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_mariadb_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_mosquitto
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_mosquitto_image
+                name: Image
+              - entity: sensor.version_current_mosquitto
+                name: Current Version
+              - entity: sensor.docker_mosquitto_state
+                name: State
+              - entity: sensor.docker_mosquitto_status
+                name: Status
+              - entity: sensor.docker_mosquitto_up_time
+                name: Up Time
+              - entity: sensor.docker_mosquitto_cpu
+                name: CPU
+              - entity: sensor.docker_mosquitto_memory
+                name: Memory
+              - entity: sensor.docker_mosquitto_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_mosquitto_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_mosquitto_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_mosquitto_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_mosquitto_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_influxdb
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_influxdb_image
+                name: Image
+              - entity: sensor.docker_influxdb_state
+                name: State
+              - entity: sensor.docker_influxdb_status
+                name: Status
+              - entity: sensor.docker_influxdb_up_time
+                name: Up Time
+              - entity: sensor.docker_influxdb_cpu
+                name: CPU
+              - entity: sensor.docker_influxdb_memory
+                name: Memory
+              - entity: sensor.docker_influxdb_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_influxdb_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_influxdb_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_influxdb_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_influxdb_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_chronograf
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_chronograf_image
+                name: Image
+              - entity: sensor.docker_chronograf_state
+                name: State
+              - entity: sensor.docker_chronograf_status
+                name: Status
+              - entity: sensor.docker_chronograf_up_time
+                name: Up Time
+              - entity: sensor.docker_chronograf_cpu
+                name: CPU
+              - entity: sensor.docker_chronograf_memory
+                name: Memory
+              - entity: sensor.docker_chronograf_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_chronograf_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_chronograf_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_chronograf_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_chronograf_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_grafana
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_grafana_image
+                name: Image
+              - entity: sensor.docker_grafana_state
+                name: State
+              - entity: sensor.docker_grafana_status
+                name: Status
+              - entity: sensor.docker_grafana_up_time
+                name: Up Time
+              - entity: sensor.docker_grafana_cpu
+                name: CPU
+              - entity: sensor.docker_grafana_memory
+                name: Memory
+              - entity: sensor.docker_grafana_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_grafana_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_grafana_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_grafana_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_grafana_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_deepstack
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_deepstack_image
+                name: Image
+              - entity: sensor.docker_deepstack_state
+                name: State
+              - entity: sensor.docker_deepstack_status
+                name: Status
+              - entity: sensor.docker_deepstack_up_time
+                name: Up Time
+              - entity: sensor.docker_deepstack_cpu
+                name: CPU
+              - entity: sensor.docker_deepstack_memory
+                name: Memory
+              - entity: sensor.docker_deepstack_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_deepstack_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_deepstack_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_deepstack_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_deepstack_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_nodered
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_nodered_image
+                name: Image
+              - entity: sensor.docker_nodered_state
+                name: State
+              - entity: sensor.docker_nodered_status
+                name: Status
+              - entity: sensor.docker_nodered_up_time
+                name: Up Time
+              - entity: sensor.docker_nodered_cpu
+                name: CPU
+              - entity: sensor.docker_nodered_memory
+                name: Memory
+              - entity: sensor.docker_nodered_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_nodered_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_nodered_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_nodered_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_nodered_network_total_up
+                name: Network Speed - Total Up
+
+      - break
+      - title: media
+        show_header_toggle: false
+        type: entities
+        entities:
+          - head: switch.docker_plexmediaserver
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_plexmediaserver_image
+                name: Image
+              - entity: sensor.docker_plexmediaserver_state
+                name: State
+              - entity: sensor.docker_plexmediaserver_status
+                name: Status
+              - entity: sensor.docker_plexmediaserver_up_time
+                name: Up Time
+              - entity: sensor.docker_plexmediaserver_cpu
+                name: CPU
+              - entity: sensor.docker_plexmediaserver_memory
+                name: Memory
+              - entity: sensor.docker_plexmediaserver_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_plexmediaserver_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_plexmediaserver_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_plexmediaserver_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_plexmediaserver_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_xteve
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_xteve_image
+                name: Image
+              - entity: sensor.docker_xteve_state
+                name: State
+              - entity: sensor.docker_xteve_status
+                name: Status
+              - entity: sensor.docker_xteve_up_time
+                name: Up Time
+              - entity: sensor.docker_xteve_cpu
+                name: CPU
+              - entity: sensor.docker_xteve_memory
+                name: Memory
+              - entity: sensor.docker_xteve_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_xteve_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_xteve_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_xteve_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_xteve_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_sonarr
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_sonarr_image
+                name: Image
+              - entity: sensor.docker_sonarr_state
+                name: State
+              - entity: sensor.docker_sonarr_status
+                name: Status
+              - entity: sensor.docker_sonarr_up_time
+                name: Up Time
+              - entity: sensor.docker_sonarr_cpu
+                name: CPU
+              - entity: sensor.docker_sonarr_memory
+                name: Memory
+              - entity: sensor.docker_sonarr_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_sonarr_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_sonarr_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_sonarr_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_sonarr_network_total_up
+                name: Network Speed - Total Up
+          - head: switch.docker_radarr
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_radarr_image
+                name: Image
+              - entity: sensor.docker_radarr_state
+                name: State
+              - entity: sensor.docker_radarr_status
+                name: Status
+              - entity: sensor.docker_radarr_up_time
+                name: Up Time
+              - entity: sensor.docker_radarr_cpu
+                name: CPU
+              - entity: sensor.docker_radarr_memory
+                name: Memory
+              - entity: sensor.docker_radarr_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_radarr_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_radarr_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_radarr_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_radarr_network_total_up
+                name: Network Speed - Total Up
+      - break
+
+      - title: games
+        show_header_toggle: false
+        type: entities
+        entities:
+          - head: switch.docker_minecraft_server_01
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_minecraft_server_01_image
+                name: Image
+              - entity: sensor.docker_minecraft_server_01_state
+                name: State
+              - entity: sensor.docker_minecraft_server_01_status
+                name: Status
+              - entity: sensor.docker_minecraft_server_01_up_time
+                name: Up Time
+              - entity: sensor.docker_minecraft_server_01_cpu
+                name: CPU
+              - entity: sensor.docker_minecraft_server_01_memory
+                name: Memory
+              - entity: sensor.docker_minecraft_server_01_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_minecraft_server_01_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_minecraft_server_01_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_minecraft_server_01_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_minecraft_server_01_network_total_up
+                name: Network Speed - Total Up
+              - entity: binary_sensor.minecraft_server_01_status
+                name: Status
+              - entity: sensor.minecraft_server_01_latency_time
+                name: Latency Time
+              - entity: sensor.minecraft_server_01_players_max
+                name: Max Players
+              - entity: sensor.minecraft_server_01_players_online
+                name: Players Online
+              - entity: sensor.minecraft_server_01_protocol_version
+                name: Protocol Version
+              - entity: sensor.minecraft_server_01_version
+                name: Version
+
+          - head: switch.docker_minecraft_server_02
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_minecraft_server_02_image
+                name: Image
+              - entity: sensor.docker_minecraft_server_02_state
+                name: State
+              - entity: sensor.docker_minecraft_server_02_status
+                name: Status
+              - entity: sensor.docker_minecraft_server_02_up_time
+                name: Up Time
+              - entity: sensor.docker_minecraft_server_02_cpu
+                name: CPU
+              - entity: sensor.docker_minecraft_server_02_memory
+                name: Memory
+              - entity: sensor.docker_minecraft_server_02_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_minecraft_server_02_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_minecraft_server_02_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_minecraft_server_02_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_minecraft_server_02_network_total_up
+                name: Network Speed - Total Up
+              - entity: binary_sensor.minecraft_server_02_status
+                name: Status
+              - entity: sensor.minecraft_server_02_latency_time
+                name: Latency Time
+              - entity: sensor.minecraft_server_02_players_max
+                name: Max Players
+              - entity: sensor.minecraft_server_02_players_online
+                name: Players Online
+              - entity: sensor.minecraft_server_02_protocol_version
+                name: Protocol Version
+              - entity: sensor.minecraft_server_02_version
+                name: Version
+
+          - head: switch.docker_minecraft_server_03
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_minecraft_server_03_image
+                name: Image
+              - entity: sensor.docker_minecraft_server_03_state
+                name: State
+              - entity: sensor.docker_minecraft_server_03_status
+                name: Status
+              - entity: sensor.docker_minecraft_server_03_up_time
+                name: Up Time
+              - entity: sensor.docker_minecraft_server_03_cpu
+                name: CPU
+              - entity: sensor.docker_minecraft_server_03_memory
+                name: Memory
+              - entity: sensor.docker_minecraft_server_03_memory_percent
+                name: Memory Percent
+              - entity: sensor.docker_minecraft_server_03_network_speed_down
+                name: Network Speed - Down
+              - entity: sensor.docker_minecraft_server_03_network_speed_up
+                name: Network Speed - Up
+              - entity: sensor.docker_minecraft_server_03_network_total_down
+                name: Network Speed - Total Down
+              - entity: sensor.docker_minecraft_server_03_network_total_up
+                name: Network Speed - Total Up
+              - entity: binary_sensor.minecraft_server_03_status
+                name: Status
+              - entity: sensor.minecraft_server_03_latency_time
+                name: Latency Time
+              - entity: sensor.minecraft_server_03_players_max
+                name: Max Players
+              - entity: sensor.minecraft_server_03_players_online
+                name: Players Online
+              - entity: sensor.minecraft_server_03_protocol_version
+                name: Protocol Version
+              - entity: sensor.minecraft_server_03_version
+                name: Version

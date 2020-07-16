@@ -1,0 +1,46 @@
+---
+##################################################################################################################
+# Monitor Docker
+# The Monitor Docker allows you to monitor Docker and container statistics and turn on/off containers.
+# It can connected to the Docker daemon locally or remotely.
+#
+# URL: https://github.com/ualex73/monitor_docker
+##################################################################################################################
+monitor_docker:
+  - name: Docker
+    containers:
+      - chronograf
+      - deepstack
+      - duplicati
+      - grafana
+      - homeassistant
+      - influxdb
+      - mariadb
+      - minecraft-server-01
+      - minecraft-server-02
+      - minecraft-server-03
+      - mosquitto
+      - nodered
+      - plexmediaserver
+      - radarr
+      - sonarr
+      - unifi-controller
+      - xteve
+    rename:
+      chronograf: Chronograf
+      deepstack: Deep Stack
+      duplicati: Duplicati
+      grafana: Grafana
+      homeassistant: Home Assistant
+      influxdb: InfluxDB
+      mariadb: MariaDB
+      minecraft-server-01: Minecraft Server 01
+      minecraft-server-02: Minecraft Server 02
+      minecraft-server-03: Minecraft Server 03
+      mosquitto: Mosquitto
+      nodered: Node-RED
+      plexmediaserver: Plex Media Server
+      radarr: Radarr
+      sonarr: Sonarr
+      unifi-controller: UniFi Controller
+      xteve: Xteve

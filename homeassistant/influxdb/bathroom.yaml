@@ -7,14 +7,14 @@
 #
 # URL: https://www.home-assistant.io/integrations/influxdb/#include
 ##############################################################################################
-- binary_sensor.bathroom_multisensor_e44e60_door
-- binary_sensor.bathroom_multisensor_e44e60_motion
+- binary_sensor.bathroom_multisensor_door
+- binary_sensor.bathroom_multisensor_motion
 - sensor.bathroom_zw111_nano_dimmer_current
 - sensor.bathroom_zw111_nano_dimmer_energy
 - sensor.bathroom_zw111_nano_dimmer_power
 - sensor.bathroom_zw111_nano_dimmer_voltage
-- sensor.bathroom_multisensor_e44e60_humidity
-- sensor.bathroom_multisensor_e44e60_luminance
-- sensor.bathroom_multisensor_e44e60_realfeel
-- sensor.bathroom_multisensor_e44e60_temperature
-- sensor.bathroom_multisensor_e44e60_wifi_signal_strength
+- sensor.bathroom_multisensor_humidity
+- sensor.bathroom_multisensor_luminance
+- sensor.bathroom_multisensor_real_feel
+- sensor.bathroom_multisensor_temperature
+- sensor.bathroom_multisensor_wifi_signal_strength

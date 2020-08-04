@@ -133,3 +133,10 @@ switch.work_station:
   icon: mdi:soldering-iron
 switch.office_heater:
   icon: mdi:radiator
+
+cover.dining_room_corner_curtain:
+  device_class: curtain
+cover.living_room_sliding_door_curtain:
+  device_class: curtain
+cover.dining_room_small_window_curtain:
+  device_class: curtain

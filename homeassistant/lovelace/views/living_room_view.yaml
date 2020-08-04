@@ -48,6 +48,14 @@ cards:
               - name: TV
                 type: light
                 entity: light.living_room_television
+
+          - title: Curtains
+            type: entities
+            show_header_toggle: true
+            entities:
+              - entity: cover.living_room_sliding_door_curtain
+                # name: Bed light
+
           - type: horizontal-stack
             cards:
               - name: Plug One

@@ -192,3 +192,14 @@ cards:
                 type: custom:button-card
                 color: auto
                 entity: light.bedroom_max_multisensor
+
+          - title: Curtains
+            type: entities
+            show_header_toggle: true
+            entities:
+              - entity: cover.living_room_sliding_door_curtain
+                name: Living Room Sliding Door
+              - entity: cover.dining_room_small_window_curtain
+                name: Dining Room Small Window
+              - entity: cover.dining_room_corner_curtain
+                name: Dining Room Corner Window

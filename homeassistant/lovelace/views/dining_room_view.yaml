@@ -33,3 +33,12 @@ cards:
             hold_action:
               action: more-info
             entity: light.backyard
+
+      - title: Curtains
+        type: entities
+        show_header_toggle: true
+        entities:
+          - entity: cover.dining_room_small_window_curtain
+            name: Small Window
+          - entity: cover.dining_room_corner_curtain
+            name: Corner Window

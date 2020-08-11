@@ -1,1 +1,44 @@
-[]
+- id: "1597183006500"
+  alias: Open curtains 1 hour after sunrise
+  description: ""
+  trigger:
+    - event: sunrise
+      offset: 01:00:00
+      platform: sun
+  condition: []
+  action:
+    - device_id: 60e374b75a794ee68c0cd0a62852b7cc
+      domain: cover
+      entity_id: cover.dining_room_corner_curtain
+      type: open
+    - device_id: 01bb26662a05432f8263006d653b691b
+      domain: cover
+      entity_id: cover.dining_room_small_window_curtain
+      type: open
+    - device_id: 9e062b870f4f463d95eaedb41d083d69
+      domain: cover
+      entity_id: cover.living_room_sliding_door_curtain
+      type: open
+  mode: single
+- id: "1597183212870"
+  alias: Close curtains 30 min before sunset
+  description: ""
+  trigger:
+    - event: sunset
+      offset: -00:30:00
+      platform: sun
+  condition: []
+  action:
+    - device_id: 9e062b870f4f463d95eaedb41d083d69
+      domain: cover
+      entity_id: cover.living_room_sliding_door_curtain
+      type: close
+    - device_id: 60e374b75a794ee68c0cd0a62852b7cc
+      domain: cover
+      entity_id: cover.dining_room_corner_curtain
+      type: close
+    - device_id: 01bb26662a05432f8263006d653b691b
+      domain: cover
+      entity_id: cover.dining_room_small_window_curtain
+      type: close
+  mode: single

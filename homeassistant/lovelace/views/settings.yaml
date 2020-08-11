@@ -32,6 +32,15 @@ cards:
             icon: mdi:fridge
             name: Kitchen
 
+      - type: custom:layout-card
+        layout: vertical
+        cards:
+          - title: Curtains Automations
+            type: entities
+            entities:
+              - entity: automation.open_curtains_1_hour_after_sunrise
+              - entity: automation.close_curtains_30_min_before_sunset
+
       - title: Automation Sensors
         type: entities
         entities:

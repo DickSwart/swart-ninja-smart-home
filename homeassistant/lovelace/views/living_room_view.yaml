@@ -54,7 +54,7 @@ cards:
             show_header_toggle: true
             entities:
               - entity: cover.living_room_sliding_door_curtain
-                # name: Bed light
+                name: Sliding Door
 
           - type: horizontal-stack
             cards:

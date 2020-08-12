@@ -120,16 +120,19 @@ cards:
 
       - break
 
-      - entity: climate.living_room
-        type: thermostat
-        hvac:
-          attribute: operation_mode
-          states:
-            Auto: auto
-            Cooling: cool
-            Fan_only: fan_only
-            Heating: heat
-            "Off": "off"
+      - type: custom:simple-thermostat
+        entity: climate.living_room
+        step_layout: row
+        name: false
+        sensors:
+          - entity: sensor.living_room_multisensor_temperature
+            name: Multi-Sensor
+        control:
+          hvac:
+            auto: false
+            fan_only: false
+            heat_cool: false
+            dry: false
 
       - type: vertical-stack
         cards:

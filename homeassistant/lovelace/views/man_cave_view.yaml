@@ -86,17 +86,19 @@ cards:
 
       - break
 
-      - name: Heat Pump
+      - type: custom:simple-thermostat
         entity: climate.man_cave
-        type: thermostat
-        hvac:
-          attribute: operation_mode
-          states:
-            Auto: auto
-            Cooling: cool
-            Fan_only: fan_only
-            Heating: heat
-            "Off": "off"
+        step_layout: row
+        name: false
+        sensors:
+          - entity: sensor.man_cave_multisensor_temperature
+            name: Multi-Sensor
+        control:
+          hvac:
+            auto: false
+            fan_only: false
+            heat_cool: false
+            dry: false
 
       - type: vertical-stack
         cards:
@@ -163,8 +165,12 @@ cards:
         type: entities
         entities:
           - entity: input_boolean.man_cave_automated_lights
+            name: Automated Main Light
           - entity: input_boolean.man_cave_kitchen_automated_lights
-          - head: zwave.man_cave_kitchen_zw100_multisensor
+            name: Automated Kitchen Lights
+          - head:
+              entity: zwave.man_cave_kitchen_zw100_multisensor
+              name: Kitchen MultiSensor
             items:
               - entity: binary_sensor.man_cave_kitchen_zw100_multisensor_motion
                 name: Motion
@@ -192,30 +198,9 @@ cards:
               - entity: switch.man_cave_echo_dot_shuffle_switch
                 name: Shuffle
             type: custom:fold-entity-row
-          - head: binary_sensor.ender_3_octoprint
-            items:
-              - entity: sensor.octoprint_actual_tool0_temp
-                name: Extruder temperature (Actual)
-              - entity: sensor.octoprint_target_tool0_temp
-                name: Extruder temperature (Target)
-              - entity: sensor.octoprint_actual_bed_temp
-                name: Bed temperature (Actual)
-              - entity: sensor.octoprint_target_bed_temp
-                name: Bed temperature (Target)
-              - entity: sensor.octoprint_time_elapsed
-                name: Time elapsed
-              - entity: sensor.octoprint_time_remaining
-                name: Time remaining
-              - entity: sensor.octoprint_current_state
-                name: Print state
-              - entity: sensor.octoprint_job_percentage
-                name: Print Percentage
-              - entity: binary_sensor.octoprint_printing
-                name: Printing
-              - entity: binary_sensor.octoprint_printing_error
-                name: Errors
-            type: custom:fold-entity-row
-          - head: light.man_cave_multisensor
+          - head:
+              entity: light.man_cave_multisensor
+              name: MultiSensor
             type: custom:fold-entity-row
             entities:
               - entity: binary_sensor.man_cave_multisensor_motion
@@ -270,3 +255,26 @@ cards:
                 name: Power factor
               - entity: sensor.ender_3_pow_voltage
                 name: Voltage
+          - head: binary_sensor.ender_3_octoprint
+            items:
+              - entity: sensor.octoprint_actual_tool0_temp
+                name: Extruder temperature (Actual)
+              - entity: sensor.octoprint_target_tool0_temp
+                name: Extruder temperature (Target)
+              - entity: sensor.octoprint_actual_bed_temp
+                name: Bed temperature (Actual)
+              - entity: sensor.octoprint_target_bed_temp
+                name: Bed temperature (Target)
+              - entity: sensor.octoprint_time_elapsed
+                name: Time elapsed
+              - entity: sensor.octoprint_time_remaining
+                name: Time remaining
+              - entity: sensor.octoprint_current_state
+                name: Print state
+              - entity: sensor.octoprint_job_percentage
+                name: Print Percentage
+              - entity: binary_sensor.octoprint_printing
+                name: Printing
+              - entity: binary_sensor.octoprint_printing_error
+                name: Errors
+            type: custom:fold-entity-row

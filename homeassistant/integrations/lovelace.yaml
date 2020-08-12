@@ -22,8 +22,6 @@ lovelace:
       type: module
     - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
       type: module
-    # - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
-    #   type: module
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
@@ -37,6 +35,8 @@ lovelace:
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
     - url: /hacsfiles/swipe-card/swipe-card.js
+      type: module
+    - url: /hacsfiles/simple-thermostat/simple-thermostat.js?v=1
       type: module
   dashboards:
     lovelace-admin:

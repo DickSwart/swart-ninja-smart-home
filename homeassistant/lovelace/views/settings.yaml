@@ -140,3 +140,16 @@ cards:
           - entity: input_boolean.routine_kids_home_school
           - entity: input_boolean.routine_kids_bedtime
           - entity: input_boolean.routine_kids_shower_time
+
+      - title: Network Switches
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: switch.max_iphone_5s
+          - entity: switch.max_laptop
+          - entity: switch.max_laptop_2
+          - entity: switch.nico_iphone_5s
+          - entity: switch.nico_laptop
+          - entity: switch.nico_laptop_2
+          - entity: switch.man_cave_xbox_one
+          - entity: switch.man_cave_television

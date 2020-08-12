@@ -13,18 +13,26 @@ cards:
           - head: sensor.presence_location_dick
             items:
               - input_boolean.presence_location_away_dick
-              - device_tracker.dick_iphone
-              - device_tracker.dick_iphone_11_pro
-              - device_tracker.life360_dick_swart
-              - device_tracker.tile_478ab17cb091cbbe
-              - device_tracker.tile_cc9e13f7316c95e3
+              - entity: device_tracker.dick_iphone
+                secondary_info: last-changed
+              - entity: device_tracker.dick_iphone_11_pro
+                secondary_info: last-changed
+              - entity: device_tracker.life360_dick_swart
+                secondary_info: last-changed
+              - entity: device_tracker.tile_478ab17cb091cbbe
+                secondary_info: last-changed
+              - entity: device_tracker.tile_cc9e13f7316c95e3
+                secondary_info: last-changed
             type: custom:fold-entity-row
           - head: sensor.presence_location_tamara
             items:
               - input_boolean.presence_location_away_tamara
-              - device_tracker.tamara_iphone
-              - device_tracker.tamara_iphone_x
-              - device_tracker.life360_tamara
+              - entity: device_tracker.tamara_iphone
+                secondary_info: last-changed
+              - entity: device_tracker.tamara_iphone_x
+                secondary_info: last-changed
+              - entity: device_tracker.life360_tamara
+                secondary_info: last-changed
             type: custom:fold-entity-row
           - type: divider
           - input_boolean.house_mode_away

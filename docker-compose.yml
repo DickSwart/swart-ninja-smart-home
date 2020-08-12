@@ -41,7 +41,7 @@ services:
 
   mosquitto:
     container_name: mosquitto
-    image: eclipse-mosquitto
+    image: eclipse-mosquitto:1.6.10
     user: ${USER_ID}:${GROUP_ID}
     volumes:
       - ~/docker/swart-ninja-smart-home/mosquitto/config:/mosquitto/config

@@ -10,7 +10,7 @@
 platform: deepstack_object
 ip_address: 192.168.1.213
 port: 5000
-save_file_folder: ./config/www/images/camera_snapshots/
+save_file_folder: /config/www/images/camera_snapshots/
 targets:
   - person
 source:

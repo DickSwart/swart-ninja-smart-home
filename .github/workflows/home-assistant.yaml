@@ -34,8 +34,10 @@ jobs:
     steps:
       - name: Getting your configuration from GitHub
         uses: actions/checkout@v1
+      - name: Rename configuration folder
+        run: mv -R ./homeassistant ./config
       - name: Copy stub files into configuration folder
-        run: cp -R ./.stubs/* ./homeassistant
+        run: cp -R ./.stubs/* ./config
       - name: Home Assistant Version
         uses: "docker://homeassistant/home-assistant:stable"
         with:
@@ -44,4 +46,4 @@ jobs:
       - name: Home Assistant Check
         uses: "docker://homeassistant/home-assistant:stable"
         with:
-          args: python -m homeassistant --config ./homeassistant/ --script check_config --info all
+          args: python -m homeassistant --config ./config/ --script check_config --info all

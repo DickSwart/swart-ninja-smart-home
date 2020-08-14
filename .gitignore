@@ -17,7 +17,7 @@ homeassistant/.storage/*
 homeassistant/deps
 homeassistant/netdaemon
 homeassistant/www/community
-homeassistant/www/images/camera_snapshots
+homeassistant/www/images/camera_snapshots/*
 homeassistant/.ssh/*
 .vscode/
 

@@ -15,7 +15,6 @@ __pycache__
 homeassistant/.cloud
 homeassistant/.storage/*
 homeassistant/deps
-homeassistant/custom_components
 homeassistant/netdaemon
 homeassistant/www/community
 homeassistant/www/images/camera_snapshots

@@ -1,0 +1,9 @@
+{
+  "domain": "mitsubishi",
+  "name": "Mitsubishi HVAC with Echonet lite",
+  "documentation": "https://github.com/scottyphillips/mitsubishi_echonet",
+  "dependencies": [],
+  "codeowners": [],
+  "requirements": ["mitsubishi_echonet==0.3.1"],
+  "homeassistant": "0.96.0"
+}

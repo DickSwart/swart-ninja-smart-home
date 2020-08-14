@@ -37,6 +37,12 @@ cards:
             name: Cupboards
             type: light
 
+      - type: custom:mini-media-player
+        entity: media_player.kitchen_apple_tv
+        icon: mdi:apple
+        artwork: cover
+        name: Apple TV
+
       - break
 
       - type: vertical-stack

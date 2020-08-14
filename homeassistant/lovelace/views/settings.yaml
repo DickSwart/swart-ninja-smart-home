@@ -38,8 +38,9 @@ cards:
           - title: Curtains Automations
             type: entities
             entities:
-              - entity: automation.open_curtains_1_hour_after_sunrise
-              - entity: automation.close_curtains_30_min_before_sunset
+              - entity: automation.open_curtains_non_workdays
+              - entity: automation.open_curtains_workdays
+              - entity: automation.close_curtains
 
       - title: Automation Sensors
         type: entities
@@ -99,6 +100,7 @@ cards:
           - entity: input_boolean.notifications_audio
           - entity: switch.doorbell_chime
             name: Doorbell Chime
+          - input_text.alexa_actionable_notification
 
       - title: Presence Detection
         type: entities

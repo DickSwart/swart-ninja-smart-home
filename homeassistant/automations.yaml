@@ -1,44 +1,86 @@
-- id: "1597183006500"
-  alias: Open curtains 1 hour after sunrise
-  description: ""
+- id: '1597183006500'
+  alias: 'Curtains Open (Not Workday): 1 hour after sunrise'
+  description: ''
   trigger:
-    - event: sunrise
-      offset: 01:00:00
-      platform: sun
-  condition: []
+  - event: sunrise
+    offset: 01:00:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_today
+    state: 'off'
   action:
-    - device_id: 60e374b75a794ee68c0cd0a62852b7cc
-      domain: cover
-      entity_id: cover.dining_room_corner_curtain
-      type: open
-    - device_id: 01bb26662a05432f8263006d653b691b
-      domain: cover
-      entity_id: cover.dining_room_small_window_curtain
-      type: open
-    - device_id: 9e062b870f4f463d95eaedb41d083d69
-      domain: cover
-      entity_id: cover.living_room_sliding_door_curtain
-      type: open
+  - device_id: 60e374b75a794ee68c0cd0a62852b7cc
+    domain: cover
+    entity_id: cover.dining_room_corner_curtain
+    type: open
+  - device_id: 01bb26662a05432f8263006d653b691b
+    domain: cover
+    entity_id: cover.dining_room_small_window_curtain
+    type: open
+  - device_id: 9e062b870f4f463d95eaedb41d083d69
+    domain: cover
+    entity_id: cover.living_room_sliding_door_curtain
+    type: open
   mode: single
-- id: "1597183212870"
-  alias: Close curtains 30 min before sunset
-  description: ""
+- id: '1597183006501'
+  alias: 'Curtains Open (Workday ): 30 min after sunrise'
+  description: ''
   trigger:
-    - event: sunset
-      offset: -00:30:00
-      platform: sun
+  - event: sunrise
+    offset: 00:30:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_today
+    state: 'on'
+  action:
+  - device_id: 60e374b75a794ee68c0cd0a62852b7cc
+    domain: cover
+    entity_id: cover.dining_room_corner_curtain
+    type: open
+  - device_id: 01bb26662a05432f8263006d653b691b
+    domain: cover
+    entity_id: cover.dining_room_small_window_curtain
+    type: open
+  - device_id: 9e062b870f4f463d95eaedb41d083d69
+    domain: cover
+    entity_id: cover.living_room_sliding_door_curtain
+    type: open
+  mode: single
+- id: '1597183212870'
+  alias: 'Curtains Close: 30 min before sunset'
+  description: ''
+  trigger:
+  - event: sunset
+    offset: -00:30:00
+    platform: sun
   condition: []
   action:
-    - device_id: 9e062b870f4f463d95eaedb41d083d69
-      domain: cover
-      entity_id: cover.living_room_sliding_door_curtain
-      type: close
-    - device_id: 60e374b75a794ee68c0cd0a62852b7cc
-      domain: cover
-      entity_id: cover.dining_room_corner_curtain
-      type: close
-    - device_id: 01bb26662a05432f8263006d653b691b
-      domain: cover
-      entity_id: cover.dining_room_small_window_curtain
-      type: close
+  - device_id: 9e062b870f4f463d95eaedb41d083d69
+    domain: cover
+    entity_id: cover.living_room_sliding_door_curtain
+    type: close
+  - device_id: 60e374b75a794ee68c0cd0a62852b7cc
+    domain: cover
+    entity_id: cover.dining_room_corner_curtain
+    type: close
+  - device_id: 01bb26662a05432f8263006d653b691b
+    domain: cover
+    entity_id: cover.dining_room_small_window_curtain
+    type: close
+  mode: single
+- id: '1597291732289'
+  alias: Fix Office Door State
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  - entity_id: cover.office_door_system_cover
+    platform: state
+    to: unavailable
+  condition: []
+  action:
+  - data: {}
+    service: script.office_door_system_reset
   mode: single

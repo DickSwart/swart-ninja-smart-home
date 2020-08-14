@@ -277,5 +277,6 @@ cards:
             name: Siren
           - entity: sensor.office_door_system_wifi
             name: WiFi
-          - entity: script.1593069477081
+          - entity: script.office_door_system_reset
             name: Reset Script
+          - entity: automation.office_door_fix_state

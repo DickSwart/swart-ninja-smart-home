@@ -63,8 +63,11 @@ cards:
 
       - break
 
-      - entity: media_player.bedroom_master_apple_tv
-        type: media-control
+      - type: custom:mini-media-player
+        entity: media_player.bedroom_master_apple_tv
+        icon: mdi:apple
+        artwork: cover
+        name: Apple TV
 
       - title: MultiSensor
         type: entities

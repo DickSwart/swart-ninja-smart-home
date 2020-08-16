@@ -101,7 +101,7 @@ light.kitchen_cupboard:
 light.office_shelf:
   icon: mdi:coach-lamp
 
-light.bedroom_max_multisensor:
+light.ampersand_multisensor_light:
   icon: mdi:ampersand
 
 camera.byc:

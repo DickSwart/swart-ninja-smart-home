@@ -7,8 +7,6 @@
 #
 # URL: https://www.home-assistant.io/integrations/influxdb/#include
 ##############################################################################################
-- sensor.bedroom_max_multisensor_humidity
-- sensor.bedroom_max_multisensor_luminance
-- sensor.bedroom_max_multisensor_real_feel
-- sensor.bedroom_max_multisensor_temperature
-- sensor.bedroom_max_multisensor_wifi
+- sensor.ampersand_multisensor_humidity
+- sensor.ampersand_multisensor_luminance
+- sensor.ampersand_multisensor_temperature

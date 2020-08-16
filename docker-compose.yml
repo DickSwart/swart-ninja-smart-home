@@ -13,7 +13,7 @@ services:
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
     volumes:
-      - ~/docker/swart-ninja-smart-home/homeassistant:/config
+      - ~/docker/swart-ninja-smart-home/homeassistant/config:/config
       - ~/docker/swart-ninja-smart-home/homeassistant/.ssh:/root/.ssh
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
@@ -134,6 +134,21 @@ services:
       - 1880:1880
     environment:
       TZ: ${TZ}
+
+  esphome:
+    container_name: esphome
+    image: esphome/esphome
+    restart: always
+    network_mode: host
+    volumes:
+      - ~/docker/swart-ninja-smart-home/esphome:/config:rw
+    ports:
+      - 6052:6052
+      - 6123:6123
+    environment:
+      TZ: ${TZ}
+    depends_on:
+      - homeassistant
 
 volumes:
   deepstack:

@@ -6,7 +6,31 @@ panel: true
 cards:
   - type: custom:layout-card
     layout: vertical
+    column_width: [20%, 26%, 26%, 26%]
     cards:
+      - title: Cameras
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: switch.byc
+            name: Backyard
+          - entity: switch.dec
+            name: Deck
+          - entity: switch.drc
+            name: Dining Room
+          - entity: switch.fdc
+            name: Front Door
+          - entity: switch.hlc
+            name: Hall
+          - entity: switch.hsc
+            name: House Side
+          - entity: switch.lrc
+            name: Living Room
+          - entity: switch.mcc
+            name: Man Cave
+          - entity: switch.ofc
+            name: Office
+      - break
       - aspect_ratio: 0%
         entity: camera.byc_last_trigger
         show_state: false

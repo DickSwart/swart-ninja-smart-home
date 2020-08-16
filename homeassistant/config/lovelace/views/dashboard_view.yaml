@@ -199,7 +199,7 @@ cards:
               - name: LED
                 type: custom:button-card
                 color: auto
-                entity: light.bedroom_max_multisensor
+                entity: light.ampersand_multisensor_light
 
           - title: Curtains
             type: entities

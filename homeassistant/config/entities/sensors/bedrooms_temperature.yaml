@@ -11,7 +11,7 @@ sensors:
     friendly_name: Bedrooms temperature
     unit_of_measurement: °C
     value_template: >-
-      {% set max = states('sensor.bedroom_max_multisensor_temperature') | float %}
+      {% set max = states('sensor.ampersand_multisensor_temperature') | float %}
       {% set nico = states('sensor.bedroom_nico_multisensor_temperature') | float %}
       {% set master = states('sensor.bedroom_master_multisensor_temperature') | float %}
       {% set maxTemp  = float(max) | round(2) if max and max > -30 and max < 50 else null %}

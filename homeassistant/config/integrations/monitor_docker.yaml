@@ -26,6 +26,7 @@ monitor_docker:
       - sonarr
       - unifi-controller
       - xteve
+      - esphome
     rename:
       chronograf: Chronograf
       deepstack: Deep Stack
@@ -44,3 +45,4 @@ monitor_docker:
       sonarr: Sonarr
       unifi-controller: UniFi Controller
       xteve: Xteve
+      esphome: ESPHome

@@ -12,43 +12,43 @@ __pycache__
 .env
 
 # Directory (contents) ignores
-homeassistant/.cloud
-homeassistant/.storage/*
-homeassistant/deps
-homeassistant/netdaemon
-homeassistant/www/community
-homeassistant/www/images/camera_snapshots/*
+homeassistant/config/.cloud
+homeassistant/config/.storage/*
+homeassistant/config/deps
+homeassistant/config/netdaemon
+homeassistant/config/www/community
+homeassistant/config/www/images/camera_snapshots/*
 homeassistant/.ssh/*
 .vscode/
 
 # Specific file ignores
-homeassistant/.config_entries.json
-homeassistant/.homekit.state
-homeassistant/.ios.conf
-homeassistant/.spotify-token-cache
-homeassistant/.tradfri_psk.conf
-homeassistant/.uuid
-homeassistant/core
-homeassistant/html5_push_registrations.conf
-homeassistant/ip_bans.yaml
-homeassistant/known_devices.yaml
-homeassistant/options.xml
-homeassistant/OZW_Log.txt
-homeassistant/pyozw.sqlite
-homeassistant/secrets.yaml
-homeassistant/zwcfg_*
-homeassistant/zwscene.xml
-homeassistant/.dick_swart_me_com.tile.conf
-homeassistant/webostv.conf
-homeassistant/google_calendars.yaml
-homeassistant/.google.token
-homeassistant/scripts/scripts.yaml
+homeassistant/config/.config_entries.json
+homeassistant/config/.homekit.state
+homeassistant/config/.ios.conf
+homeassistant/config/.spotify-token-cache
+homeassistant/config/.tradfri_psk.conf
+homeassistant/config/.uuid
+homeassistant/config/core
+homeassistant/config/html5_push_registrations.conf
+homeassistant/config/ip_bans.yaml
+homeassistant/config/known_devices.yaml
+homeassistant/config/options.xml
+homeassistant/config/OZW_Log.txt
+homeassistant/config/pyozw.sqlite
+homeassistant/config/secrets.yaml
+homeassistant/config/zwcfg_*
+homeassistant/config/zwscene.xml
+homeassistant/config/.dick_swart_me_com.tile.conf
+homeassistant/config/webostv.conf
+homeassistant/config/google_calendars.yaml
+homeassistant/config/.google.token
+homeassistant/config/scripts/scripts.yaml
 
 # Specific keeps
 !.gitkeep
-!homeassistant/.ssh/config
-!homeassistant/.storage/input_*
-!homeassistant/.storage/lovelace*
+!homeassistant/config/.ssh/config
+!homeassistant/config/.storage/input_*
+!homeassistant/config/.storage/lovelace*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

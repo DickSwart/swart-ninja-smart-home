@@ -186,3 +186,18 @@ cards:
                 name: Media 02
               - entity: sensor.glances_mnt_media03_free
                 name: Media 03
+
+      - break
+
+      - title: Network Switches
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: switch.max_iphone_5s
+          - entity: switch.max_laptop
+          - entity: switch.max_laptop_2
+          - entity: switch.nico_iphone_5s
+          - entity: switch.nico_laptop
+          - entity: switch.nico_laptop_2
+          - entity: switch.man_cave_xbox_one
+          - entity: switch.man_cave_television

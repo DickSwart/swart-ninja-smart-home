@@ -1,18 +1,12 @@
 ---
 title: Labs
-path: admin-labs
 icon: mdi:test-tube
+path: admin-labs
 panel: true
 cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      # - title: Man Cave (Main Stream)
-      #   type: picture-entity
-      #   entity: camera.man_cave_mcc_profile000_mainstream
-      #   camera_view: live
-
-      - title: Man Cave (Sub Stream)
-        type: picture-entity
-        entity: camera.man_cave_mcc_profile001_substream
-        camera_view: live
+      - !include
+        - ../templates/heading.yaml
+        - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs

@@ -39,61 +39,6 @@ cards:
           - input_boolean.house_mode_guest
           - input_boolean.house_mode_holiday
 
-      - type: vertical-stack
-        cards:
-          - type: horizontal-stack
-            cards:
-              - name: Living Room
-                type: custom:button-card
-                color: var(--dark-primary-color)
-                color_type: card
-                icon: mdi:sofa
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/living-room/
-              - name: Dining Room
-                type: custom:button-card
-                color: var(--dark-primary-color)
-                color_type: card
-                icon: mdi:silverware-fork-knife
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/dining-room/
-              - name: Hall
-                type: custom:button-card
-                color: var(--dark-primary-color)
-                color_type: card
-                icon: mdi:highway
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/hall/
-          - type: horizontal-stack
-            cards:
-              - name: Kitchen
-                type: custom:button-card
-                color: var(--dark-primary-color)
-                color_type: card
-                icon: mdi:fridge
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/kitchen/
-              - name: Bathroom
-                type: custom:button-card
-                color: var(--dark-primary-color)
-                color_type: card
-                icon: mdi:shower
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/bathroom/
-              - name: Man cave
-                type: custom:button-card
-                color: var(--dark-primary-color)
-                color_type: card
-                icon: mdi:pac-man
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/man-cave/
-
       - type: entity-filter
         show_empty: false
         state_filter:
@@ -201,13 +146,81 @@ cards:
                 color: auto
                 entity: light.ampersand_multisensor_light
 
-          - title: Curtains
-            type: entities
-            show_header_toggle: true
-            entities:
-              - entity: cover.living_room_sliding_door_curtain
-                name: Living Room Sliding Door
-              - entity: cover.dining_room_small_window_curtain
-                name: Dining Room Small Window
-              - entity: cover.dining_room_corner_curtain
-                name: Dining Room Corner Window
+      - break
+
+      - title: Curtains
+        type: entities
+        show_header_toggle: false
+        entities:
+          - name: Living Room
+            icon: mdi:sofa
+            type: custom:cover-control-button-row
+            entity: cover.living_room_sliding_door_curtain
+            reverseButtons: true
+            customTheme: true
+            stopButtonColor: '#CF5C36'
+            buttonInactiveColor: var(--disabled-text-color)
+            isOpenedColor: var(--primary-color)
+            isClosedColor: var(--primary-color)
+            customOpenText: 'OPEN'
+            customStopText: 'STOP'
+            customCloseText: 'CLOSE'
+            style: |
+              button.position {
+                border: 1px solid var(--primary-background-color);
+              }
+          - name: Dining Room
+            icon: mdi:silverware-fork-knife
+            type: custom:cover-control-button-row
+            entity: cover.dining_room_curtains
+            reverseButtons: true
+            customTheme: true
+            stopButtonColor: '#CF5C36'
+            buttonInactiveColor: var(--disabled-text-color)
+            isOpenedColor: var(--primary-color)
+            isClosedColor: var(--primary-color)
+            customOpenText: 'OPEN'
+            customStopText: 'STOP'
+            customCloseText: 'CLOSE'
+            style: |
+              button.position {
+                border: 1px solid var(--primary-background-color);
+              }
+
+      - type: custom:mod-card
+        style: |
+          ha-card {
+            background: var(--card-background-color);
+
+          }
+        card:
+          type: vertical-stack
+          cards:
+            - type: custom:weather-card
+              entity: weather.dark_sky
+              name: Weather
+              style: |
+                ha-card {
+                  border-radius: var(--ha-card-border-radius) var(--ha-card-border-radius) 0 0;
+                  background: none;
+                  padding-bottom: 0 !important;
+                }
+            - type: entities
+              style: |
+                ha-card {
+                  background: none;
+
+                }
+                .card-content {
+                  padding-top: 0;
+                }
+                .card-content > div:first-of-type {
+                  border-top: 0.1em solid rgb(217, 217, 217);
+                }
+              entities:
+                - entity: sensor.house_temperature
+                  name: Inside
+                - entity: sensor.house_upstairs_temperature
+                  name: Upstairs
+                - entity: sensor.house_downstairs_temperature
+                  name: Downstairs

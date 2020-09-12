@@ -6,7 +6,7 @@ panel: true
 cards:
   - type: custom:layout-card
     layout: vertical
-    column_width: [20%, 26%, 26%, 26%]
+    column_width: [350, 525]
     cards:
       - title: Cameras
         type: entities

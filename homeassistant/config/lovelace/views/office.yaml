@@ -246,37 +246,59 @@ cards:
 
       - break
 
-      - title: MultiSensor
-        type: entities
+      - title: Other
         show_header_toggle: false
-        entities:
-          - entity: zwave.office_zw100_multisensor
-            name: ZWave
-          - entity: binary_sensor.office_zw100_multisensor_motion
-            name: Motion
-          - entity: sensor.office_zw100_multisensor_temperature
-            name: Temperature
-          - entity: sensor.office_zw100_multisensor_humidity
-            name: Humidity
-          - entity: sensor.office_zw100_multisensor_ultraviolet
-            name: Ultraviolet
-          - entity: sensor.office_zw100_multisensor_luminance
-            name: Luminance
-
-      - title: Door System
         type: entities
-        show_header_toggle: false
         entities:
-          - entity: cover.office_door_system_cover
-            name: Cover
-          - entity: lock.office_door_system_lock
-            name: Lock
-          - entity: binary_sensor.office_door_system_door
-            name: Door
-          - entity: switch.office_door_system_siren
-            name: Siren
-          - entity: sensor.office_door_system_wifi
-            name: WiFi
-          - entity: script.office_door_system_reset
-            name: Reset Script
-          - entity: automation.office_door_fix_state
+          - entity: input_boolean.office_automated_lights
+            name: Automated Main Light
+          - head:
+              entity: zwave.office_zw100_multisensor
+              name: MultiSensor
+            type: custom:fold-entity-row
+            entities:
+              - entity: zwave.office_zw100_multisensor
+                name: ZWave
+              - entity: binary_sensor.office_zw100_multisensor_motion
+                name: Motion
+              - entity: sensor.office_zw100_multisensor_temperature
+                name: Temperature
+              - entity: sensor.office_zw100_multisensor_humidity
+                name: Humidity
+              - entity: sensor.office_zw100_multisensor_ultraviolet
+                name: Ultraviolet
+              - entity: sensor.office_zw100_multisensor_luminance
+                name: Luminance
+          - head:
+              entity: cover.office_door_system_cover
+              name: Door System
+            type: custom:fold-entity-row
+            entities:
+              - entity: cover.office_door_system_cover
+                name: Cover
+              - entity: lock.office_door_system_lock
+                name: Lock
+              - entity: binary_sensor.office_door_system_door
+                name: Door
+              - entity: switch.office_door_system_siren
+                name: Siren
+              - entity: sensor.office_door_system_wifi
+                name: WiFi
+              - entity: script.office_door_system_reset
+                name: Reset Script
+              - entity: automation.office_door_fix_state
+          - head: media_player.living_room_echo_dot
+            items:
+              - entity: switch.living_room_echo_dot_do_not_disturb_switch
+                name: Do not disturb
+              - entity: sensor.living_room_echo_dot_next_alarm
+                name: Next alarm
+              - entity: sensor.living_room_echo_dot_next_reminder
+                name: Next reminder
+              - entity: sensor.living_room_echo_dot_next_timer
+                name: Next timer
+              - entity: switch.living_room_echo_dot_repeat_switch
+                name: Repeat
+              - entity: switch.living_room_echo_dot_shuffle_switch
+                name: Shuffle
+            type: custom:fold-entity-row

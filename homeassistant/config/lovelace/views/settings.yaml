@@ -37,7 +37,7 @@ cards:
         type: entities
         entities:
           - entity: automation.curtains_close
-          - entity: automation.curtains_close
+          - entity: automation.curtains_open
 
       - title: System Automations
         type: entities
@@ -50,10 +50,6 @@ cards:
             name: Send notification on Home Assistant start
           - entity: automation.system_start_set_theme
             name: Set theme on Home Assistant start
-
-
-
-
 
       - break
 

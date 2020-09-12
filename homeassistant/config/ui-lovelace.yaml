@@ -106,14 +106,14 @@ button_card_templates:
 title: SNSH
 background: var(--background-image)
 views:
-  - !include lovelace/views/dashboard_view.yaml
-  - !include lovelace/views/living_room_view.yaml
-  - !include lovelace/views/man_cave_view.yaml
-  - !include lovelace/views/office_view.yaml
-  - !include lovelace/views/hall_view.yaml
-  - !include lovelace/views/bathroom_view.yaml
-  - !include lovelace/views/dining_room_view.yaml
-  - !include lovelace/views/kitchen_view.yaml
-  - !include lovelace/views/master_bedroom_view.yaml
-  - !include lovelace/views/nico_bedroom_view.yaml
-  - !include lovelace/views/max_bedroom_view.yaml
+  - !include lovelace/views/dashboard.yaml
+  - !include lovelace/views/living_room.yaml
+  - !include lovelace/views/man_cave.yaml
+  - !include lovelace/views/office.yaml
+  - !include lovelace/views/hall.yaml
+  - !include lovelace/views/bathroom.yaml
+  - !include lovelace/views/dining_room.yaml
+  - !include lovelace/views/kitchen.yaml
+  - !include lovelace/views/master_bedroom.yaml
+  - !include lovelace/views/nico_bedroom.yaml
+  - !include lovelace/views/max_bedroom.yaml

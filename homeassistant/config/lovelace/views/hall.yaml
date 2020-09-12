@@ -42,8 +42,6 @@ cards:
                 template: door_sensor_btn
                 entity: binary_sensor.hall_multisensor_door
 
-      - break
-
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
@@ -75,6 +73,15 @@ cards:
 
       - break
 
+      - title: Doorbell
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: switch.doorbell_chime
+            name: Chime
+          - entity: binary_sensor.doorbell
+            name: Pressed
+
       - title: MultiSensor
         type: entities
         show_header_toggle: false
@@ -93,6 +100,8 @@ cards:
             name: Siren
           - entity: sensor.hall_multisensor_wifi
             name: WiFi
+
+      - break
 
       - title: Hall ZW111 Nano Dimmer
         type: entities

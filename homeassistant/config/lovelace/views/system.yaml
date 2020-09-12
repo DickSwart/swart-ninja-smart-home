@@ -68,6 +68,8 @@ cards:
             name: InfluxDB
           - entity: sensor.docker_deepstack_state
             name: Deep Stack
+          - entity: sensor.docker_esphome_state
+            name: ESPHome
       - break
 
       - type: custom:swipe-card
@@ -201,3 +203,33 @@ cards:
           - entity: switch.nico_laptop_2
           - entity: switch.man_cave_xbox_one
           - entity: switch.man_cave_television
+
+      - title: ZWave Network
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: zwave.aeon_labs_zw090_z_stick_gen5_au
+          - entity: zwave.bathroom_zw111_nano_dimmer
+          - entity: zwave.hall_zw111_nano_dimmer
+          - entity: zwave.man_cave_kitchen_zw100_multisensor
+          - entity: zwave.office_zw100_multisensor
+
+      - break
+
+      - title: Swart Ninja 02
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: script.shutdown_swartninja02
+            name: Shutdown
+          - switch.deluge_switch
+          - sensor.deluge_down_speed
+          - sensor.deluge_up_speed
+          - sensor.deluge_status
+
+      - title: Swart Ninja 03
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: sensor.blue_iris_state
+          - input_boolean.blue_iris

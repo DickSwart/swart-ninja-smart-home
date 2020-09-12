@@ -14,6 +14,10 @@ cards:
           - head: switch.docker_homeassistant
             type: custom:fold-entity-row
             items:
+              - entity: sensor.version_current
+                name: Current Version
+              - entity: sensor.version_available
+                name: Available Version
               - entity: sensor.docker_homeassistant_image
                 name: Image
               - entity: sensor.docker_homeassistant_state
@@ -28,14 +32,6 @@ cards:
                 name: Memory
               - entity: sensor.docker_homeassistant_memory_percent
                 name: Memory Percent
-              - entity: sensor.docker_homeassistant_network_speed_down
-                name: Network Speed - Down
-              - entity: sensor.docker_homeassistant_network_speed_up
-                name: Network Speed - Up
-              - entity: sensor.docker_homeassistant_network_total_down
-                name: Network Speed - Total Down
-              - entity: sensor.docker_homeassistant_network_total_up
-                name: Network Speed - Total Up
           - head: switch.docker_mariadb
             type: custom:fold-entity-row
             items:
@@ -213,6 +209,23 @@ cards:
                 name: Network Speed - Total Down
               - entity: sensor.docker_nodered_network_total_up
                 name: Network Speed - Total Up
+          - head: switch.docker_esphome
+            type: custom:fold-entity-row
+            items:
+              - entity: sensor.docker_esphome_image
+                name: Image
+              - entity: sensor.docker_esphome_state
+                name: State
+              - entity: sensor.docker_esphome_status
+                name: Status
+              - entity: sensor.docker_esphome_up_time
+                name: Up Time
+              - entity: sensor.docker_esphome_cpu
+                name: CPU
+              - entity: sensor.docker_esphome_memory
+                name: Memory
+              - entity: sensor.docker_esphome_memory_percent
+                name: Memory Percent
 
       - break
       - title: media
@@ -236,14 +249,6 @@ cards:
                 name: Memory
               - entity: sensor.docker_plexmediaserver_memory_percent
                 name: Memory Percent
-              - entity: sensor.docker_plexmediaserver_network_speed_down
-                name: Network Speed - Down
-              - entity: sensor.docker_plexmediaserver_network_speed_up
-                name: Network Speed - Up
-              - entity: sensor.docker_plexmediaserver_network_total_down
-                name: Network Speed - Total Down
-              - entity: sensor.docker_plexmediaserver_network_total_up
-                name: Network Speed - Total Up
           - head: switch.docker_xteve
             type: custom:fold-entity-row
             items:
@@ -261,14 +266,6 @@ cards:
                 name: Memory
               - entity: sensor.docker_xteve_memory_percent
                 name: Memory Percent
-              - entity: sensor.docker_xteve_network_speed_down
-                name: Network Speed - Down
-              - entity: sensor.docker_xteve_network_speed_up
-                name: Network Speed - Up
-              - entity: sensor.docker_xteve_network_total_down
-                name: Network Speed - Total Down
-              - entity: sensor.docker_xteve_network_total_up
-                name: Network Speed - Total Up
           - head: switch.docker_sonarr
             type: custom:fold-entity-row
             items:
@@ -438,3 +435,4 @@ cards:
                 name: Protocol Version
               - entity: sensor.minecraft_server_03_version
                 name: Version
+

@@ -51,7 +51,7 @@ cards:
 
           - title: Curtains
             type: entities
-            show_header_toggle: true
+            show_header_toggle: false
             entities:
               - entity: cover.living_room_sliding_door_curtain
                 name: Sliding Door

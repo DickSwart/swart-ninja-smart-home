@@ -20,5 +20,7 @@ homeassistant:
   customize_domain: !include customizations/domains.yaml
   customize_glob: !include customizations/globs.yaml
 
+  whitelist_external_dirs:
+      - /config/www/images/camera_snapshots
   # load packages
   packages: !include_dir_named integrations

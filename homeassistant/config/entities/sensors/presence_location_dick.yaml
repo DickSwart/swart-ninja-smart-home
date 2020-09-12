@@ -16,5 +16,5 @@ sensors:
       {% if is_state('input_boolean.presence_location_away_dick', 'on') %}
         Away (Override)
       {% else %}
-        {{ states('person.dick') | title }}
+        {{ states('person.dick') | replace("_", " ") | title }}
       {% endif %}

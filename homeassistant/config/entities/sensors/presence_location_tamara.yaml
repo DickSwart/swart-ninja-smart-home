@@ -14,5 +14,5 @@ sensors:
       {% if is_state('input_boolean.presence_location_away_tamara', 'on') %}
         Away (Override)
       {% else %}
-        {{ states('person.tamara') | title }}
+        {{ states('person.tamara') | replace("_", " ") | title }}
       {% endif %}

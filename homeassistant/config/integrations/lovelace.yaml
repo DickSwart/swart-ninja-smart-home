@@ -38,6 +38,10 @@ lovelace:
       type: module
     - url: /hacsfiles/simple-thermostat/simple-thermostat.js?v=1
       type: module
+    - url: /hacsfiles/cover-control-button-row/cover-control-button-row.js
+      type: module
+    - url: /hacsfiles/weather-card/weather-card.js
+      type: module
   dashboards:
     lovelace-admin:
       mode: yaml

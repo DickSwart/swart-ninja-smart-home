@@ -1,0 +1,37 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.presence_location_nico
+##############################################################################################
+platform: template
+sensors:
+  presence_location_nico:
+    friendly_name: Nico
+    entity_picture_template: /local/images/misc/nico.jpeg
+    value_template: >-
+      {% if is_state('input_boolean.presence_location_away_nico', 'on') %}
+        Away (Override)
+      {% else %}
+        {% if is_state('input_boolean.nico', 'on') %}
+          Home
+        {% else %}
+          Away
+        {% endif %}
+      {% endif %}
+
+## For Phone (When older)
+# platform: template
+# sensors:
+#   presence_location_nico:
+#     friendly_name: Nico
+#     entity_picture_template: /local/images/misc/nico.jpeg
+#     value_template: >-
+#       {% if is_state('input_boolean.presence_location_away_nico', 'on') %}
+#         Away (Override)
+#       {% else %}
+#         {{ states('person.nico') | replace("_", " ") | title }}
+#       {% endif %}

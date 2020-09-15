@@ -2,7 +2,7 @@
 title: Labs
 icon: mdi:test-tube
 path: admin-labs
-panel: true
+panel: false
 cards:
   - type: custom:layout-card
     layout: vertical
@@ -10,3 +10,5 @@ cards:
       - !include
         - ../templates/heading.yaml
         - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs
+
+

@@ -8,4 +8,4 @@
 # Create a hard link to the scripts file in the scripts folder, this will enable you to create
 # scripts from the frontend. e.g. ln config/scripts.yaml config/scripts/scripts.yaml
 ##################################################################################################################
-script: !include ../scripts.yaml
+script: !include_dir_named ../scripts

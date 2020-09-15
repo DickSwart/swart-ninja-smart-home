@@ -49,21 +49,67 @@ cards:
                 type: light
                 entity: light.living_room_television
 
-          - title: Curtains
-            type: entities
-            show_header_toggle: false
+      - title: Curtains
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: cover.living_room_sliding_door_curtain
+            name: Sliding Door
+
+      - type: horizontal-stack
+        cards:
+          - name: Plug One
+            type: custom:button-card
+            entity: switch.living_room_cupboard_plug_01
+          - name: Plug Two
+            type: custom:button-card
+            entity: switch.living_room_cupboard_plug_02
+
+      - break
+
+      - type: custom:simple-thermostat
+        entity: climate.living_room
+        step_layout: row
+        name: false
+        sensors:
+          - entity: sensor.living_room_multisensor_temperature
+            name: Multi-Sensor
+        control:
+          hvac:
+            auto: false
+            fan_only: false
+            heat_cool: false
+            dry: false
+
+      - type: vertical-stack
+        cards:
+          - name: Temperature
+            type: custom:mini-graph-card
+            font_size: 75
+            line_color: var(--dark-primary-color)
+            line_width: 3
             entities:
-              - entity: cover.living_room_sliding_door_curtain
-                name: Sliding Door
+              - sensor.living_room_temperature
 
           - type: horizontal-stack
             cards:
-              - name: Plug One
-                type: custom:button-card
-                entity: switch.living_room_cupboard_plug_01
-              - name: Plug Two
-                type: custom:button-card
-                entity: switch.living_room_cupboard_plug_02
+              - type: custom:mini-graph-card
+                font_size: 75
+                line_color: var(--complement-color-one)
+                line_width: 3
+                entities:
+                  - entity: sensor.living_room_multisensor_humidity
+                    name: Humidity
+
+              - type: custom:mini-graph-card
+                font_size: 75
+                line_color: var(--complement-color-two)
+                line_width: 3
+                entities:
+                  - entity: sensor.living_room_multisensor_luminance
+                    name: Luminance
+
+      - break
 
       - type: custom:mod-card
         style: |
@@ -118,46 +164,6 @@ cards:
                       max-width: calc(var(--mmp-unit) * 10);
                     }
 
-      - break
-
-      - type: custom:simple-thermostat
-        entity: climate.living_room
-        step_layout: row
-        name: false
-        sensors:
-          - entity: sensor.living_room_multisensor_temperature
-            name: Multi-Sensor
-        control:
-          hvac:
-            auto: false
-            fan_only: false
-            heat_cool: false
-            dry: false
-
-      - type: vertical-stack
-        cards:
-          - name: Temperature
-            type: custom:mini-graph-card
-            font_size: 75
-            line_color: var(--dark-primary-color)
-            line_width: 3
-            entities:
-              - sensor.living_room_temperature
-
-          - type: horizontal-stack
-            cards:
-              - type: custom:mini-graph-card
-                font_size: 75
-                line_color: var(--complement-color-one)
-                line_width: 3
-                entities:
-                  - entity: sensor.living_room_multisensor_humidity
-                    name: Humidity
-
-              - type: custom:mini-graph-card
-                font_size: 75
-                line_color: var(--complement-color-two)
-                line_width: 3
-                entities:
-                  - entity: sensor.living_room_multisensor_luminance
-                    name: Luminance
+      - type: media-control
+        name: Eco Dot
+        entity: media_player.living_room_echo_dot

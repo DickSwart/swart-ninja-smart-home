@@ -1,0 +1,37 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.presence_location_max
+##############################################################################################
+platform: template
+sensors:
+  presence_location_max:
+    friendly_name: Max
+    entity_picture_template: /local/images/misc/max.jpeg
+    value_template: >-
+      {% if is_state('input_boolean.presence_location_away_max', 'on') %}
+        Away (Override)
+      {% else %}
+        {% if is_state('input_boolean.max', 'on') %}
+          Home
+        {% else %}
+          Away
+        {% endif %}
+      {% endif %}
+
+## For Phone (When older)
+# platform: template
+# sensors:
+#   presence_location_max:
+#     friendly_name: max
+#     entity_picture_template: /local/images/misc/max.jpeg
+#     value_template: >-
+#       {% if is_state('input_boolean.presence_location_away_max', 'on') %}
+#         Away (Override)
+#       {% else %}
+#         {{ states('person.max') | replace("_", " ") | title }}
+#       {% endif %}

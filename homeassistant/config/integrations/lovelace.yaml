@@ -36,11 +36,13 @@ lovelace:
       type: module
     - url: /hacsfiles/swipe-card/swipe-card.js
       type: module
-    - url: /hacsfiles/simple-thermostat/simple-thermostat.js?v=1
+    - url: /hacsfiles/simple-thermostat/simple-thermostat.js
       type: module
     - url: /hacsfiles/cover-control-button-row/cover-control-button-row.js
       type: module
     - url: /hacsfiles/weather-card/weather-card.js
+      type: module
+    - url: /hacsfiles/scheduler-card/scheduler-card.js?v=0
       type: module
   dashboards:
     lovelace-admin:

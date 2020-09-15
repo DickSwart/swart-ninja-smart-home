@@ -1,8 +1,0 @@
----
-##################################################################################################################
-# HomeKit entity configuration
-# Configuration for specific entities. All subordinate keys are the corresponding entity ids to the domains.
-#
-# URL: https://www.home-assistant.io/integrations/homekit/#entity_config
-##################################################################################################################
-name: Living Room Curtains

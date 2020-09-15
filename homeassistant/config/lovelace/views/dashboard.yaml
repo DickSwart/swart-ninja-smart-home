@@ -25,6 +25,7 @@ cards:
                 secondary_info: last-changed
             type: custom:fold-entity-row
           - head: sensor.presence_location_tamara
+            type: custom:fold-entity-row
             items:
               - input_boolean.presence_location_away_tamara
               - entity: device_tracker.tamara_iphone
@@ -33,7 +34,21 @@ cards:
                 secondary_info: last-changed
               - entity: device_tracker.life360_tamara
                 secondary_info: last-changed
+          - head: sensor.presence_location_nico
             type: custom:fold-entity-row
+            items:
+              - input_boolean.nico
+              - input_boolean.presence_location_away_nico
+              - entity: device_tracker.nico_iphone_5s
+                secondary_info: last-changed
+          - head: sensor.presence_location_max
+            type: custom:fold-entity-row
+            items:
+              - input_boolean.max
+              - input_boolean.presence_location_away_max
+              - entity: device_tracker.max_iphone_5s
+                secondary_info: last-changed
+
           - type: divider
           - input_boolean.house_mode_away
           - input_boolean.house_mode_guest

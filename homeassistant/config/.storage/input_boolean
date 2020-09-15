@@ -105,6 +105,24 @@
                 "icon": "mdi:head-lightbulb-outline",
                 "id": "office_automated_lights",
                 "name": "Office Automated Lights"
+            },
+            {
+                "icon": "mdi:map-marker-up",
+                "id": "presence_location_away_max",
+                "name": "Max - Away (Override)"
+            },
+            {
+                "icon": "mdi:map-marker-up",
+                "id": "presence_location_away_nico",
+                "name": "Nico - Away (Override)"
+            },
+            {
+                "id": "nico",
+                "name": "Nico (Away / Home)"
+            },
+            {
+                "id": "max",
+                "name": "Max (Away / Home)"
             }
         ]
     },

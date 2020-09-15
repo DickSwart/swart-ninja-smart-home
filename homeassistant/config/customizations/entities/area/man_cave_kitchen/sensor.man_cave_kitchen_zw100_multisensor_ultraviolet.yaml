@@ -1,0 +1,4 @@
+---
+sensor.man_cave_kitchen_zw100_multisensor_ultraviolet:
+  friendly_name: Man Cave Kitchen MultiSensor Ultraviolet
+  icon: mdi:white-balance-sunny

@@ -1,0 +1,4 @@
+---
+sensor.office_zw100_multisensor_ultraviolet:
+  friendly_name: Office MultiSensor Ultraviolet
+  icon: mdi:white-balance-sunny

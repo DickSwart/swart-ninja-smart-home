@@ -15,12 +15,12 @@ homeassistant:
   internal_url: !secret internal_url
   unit_system: metric
 
-  # customizations
-  customize: !include customizations/entities.yaml
-  customize_domain: !include customizations/domains.yaml
-  customize_glob: !include customizations/globs.yaml
-
   whitelist_external_dirs:
       - /config/www/images/camera_snapshots
-  # load packages
+
+  customize: !include_dir_merge_named customizations/entities
+  customize_domain: !include_dir_merge_named customizations/domains
+  customize_glob: !include customizations/globs.yaml
+
+  # Load packages
   packages: !include_dir_named integrations

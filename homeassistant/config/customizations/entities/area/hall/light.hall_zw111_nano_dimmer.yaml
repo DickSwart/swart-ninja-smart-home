@@ -1,0 +1,4 @@
+---
+light.hall_zw111_nano_dimmer:
+  friendly_name: Hall Nano Dimmer
+  icon: mdi:ceiling-light

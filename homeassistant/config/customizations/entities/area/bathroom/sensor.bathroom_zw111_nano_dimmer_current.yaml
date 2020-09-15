@@ -1,0 +1,4 @@
+---
+# Z-Wave Nano Dimmer - Bathroom
+sensor.bathroom_zw111_nano_dimmer_current:
+  friendly_name: Bathroom Nano Dimmer Current

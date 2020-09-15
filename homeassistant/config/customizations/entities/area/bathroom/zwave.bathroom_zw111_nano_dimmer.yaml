@@ -1,0 +1,4 @@
+---
+# Z-Wave Nano Dimmer - Bathroom
+zwave.bathroom_zw111_nano_dimmer:
+  friendly_name: Bathroom Nano Dimmer

@@ -1,0 +1,7 @@
+---
+#
+# List of entities that is exposed to HomeKit/Siri
+# From area: Living Room
+#
+- climate.living_room
+- cover.living_room_sliding_door_curtain

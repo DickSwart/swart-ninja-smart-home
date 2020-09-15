@@ -13,11 +13,8 @@ homekit:
 
   # Configuration for specific entities. All subordinate keys are the corresponding entity
   # ids to the domains, e.g., alarm_control_panel.alarm.
-  entity_config: !include_dir_named ../assistants/siri
+  entity_config: !include_dir_named ../customizations/homekit
 
   # Filters for entities to be included/excluded from HomeKit.
   filter:
-    include_entities:
-      - climate.living_room
-      - climate.man_cave
-      - fan.bathroom
+    include_entities: !include_dir_merge_list ../homekit

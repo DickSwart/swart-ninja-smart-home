@@ -13,10 +13,14 @@ sensors:
   school_today:
     friendly_name: School Today
     value_template: >-
-      {% set sh_start_date = (as_timestamp(state_attr('calendar.hass_calendar_school_holidays', 'start_time'))) | float | default(0) %}
-      {% set sh_end_date = (as_timestamp(state_attr('calendar.hass_calendar_school_holidays', 'end_time'))) | float | default(0) %}
+      {% set sh_start_date =
+        (as_timestamp(state_attr('calendar.hass_calendar_school_holidays', 'start_time'))) | float | default(0) %}
+      {% set sh_end_date =
+        (as_timestamp(state_attr('calendar.hass_calendar_school_holidays', 'end_time'))) | float | default(0) %}
       {% set today_date = as_timestamp(now()) | float | default(0) %}
-      {% if ( ( (today_date >= sh_start_date) and (today_date <= sh_end_date)) or is_state('binary_sensor.workday_today', 'off')) %}
+      {% if ( ( (today_date >= sh_start_date) and
+        (today_date <= sh_end_date)) or
+        is_state('binary_sensor.workday_today', 'off')) %}
         false
       {% else %}
         true

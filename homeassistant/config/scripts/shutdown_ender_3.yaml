@@ -3,12 +3,12 @@ alias: Shutdown Ender 3
 sequence:
   - condition: and
     conditions:
-    - condition: state
-      entity_id: switch.ender_3_pow
-      state: "on"
-    - condition: state
-      entity_id: binary_sensor.octoprint_printing
-      state: "off"
+      - condition: state
+        entity_id: switch.ender_3_pow
+        state: "on"
+      - condition: state
+        entity_id: binary_sensor.octoprint_printing
+        state: "off"
   - service: rest_command.shutdown_octoprint
     data:
       ip: 192.168.1.210

@@ -37,7 +37,7 @@ jobs:
       - name: Rename configuration folder
         run: mv ./homeassistant/config ./config
       - name: Make fake snapshots folder
-        run: mkdir -p ./config/config/www/images/camera_snapshots
+        run: mkdir -p /config/www/images/camera_snapshots
       - name: Copy stub files into configuration folder
         run: cp -R ./homeassistant/.stubs/* ./config
       - name: Home Assistant Version

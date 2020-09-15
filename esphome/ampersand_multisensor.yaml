@@ -1,7 +1,8 @@
+---
 substitutions:
   devicename: ampersand_multisensor
   upper_devicename: Ampersand MultiSensor
-  
+
 esphome:
   name: $devicename
   platform: ESP8266
@@ -11,7 +12,7 @@ wifi:
   ssid: !secret wifi_ssid_hall_not
   password: !secret wifi_password_hall_not
   fast_connect: true
-  
+
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Ampersand Multisensor"
@@ -50,11 +51,11 @@ output:
   - platform: esp8266_pwm
     id: output_component1
     pin: D4
-    
+
 text_sensor:
   - platform: version
     name: ${upper_devicename} ESPHome version
-    
+
 # Enable logging
 logger:
 

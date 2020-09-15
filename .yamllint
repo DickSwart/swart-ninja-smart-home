@@ -7,7 +7,6 @@ ignore: |
   homeassistant/config/scripts.yaml
   homeassistant/config/themes/
   homeassistant/config/lovelace/scratch_pad.yaml
-  homeassistant/config/lovelace/templates/
 
 rules:
   braces:
@@ -44,8 +43,8 @@ rules:
     level: error
     present: true
     ignore: |
-      homeassistant/known_devices.yaml
-      homeassistant/lovelace/templates/*.yaml
+      homeassistant/config/known_devices.yaml
+      homeassistant/config/lovelace/templates/*.yaml
   empty-lines:
     level: error
     max: 1
@@ -66,7 +65,7 @@ rules:
       .github/support.yml
       .github/settings.yml
     level: warning
-    max: 135
+    max: 120
     allow-non-breakable-words: true
     allow-non-breakable-inline-mappings: true
   new-line-at-end-of-file:
@@ -78,11 +77,3 @@ rules:
     level: error
   truthy:
     level: error
-  quoted-strings:
-    level: error
-    required: only-when-needed
-    extra-allowed: [^http://, ^https://, ^mysql://, ^docker://]
-    extra-required: [QUOTED]
-    quote-type: double
-    ignore: |
-          .yamllint

@@ -173,13 +173,13 @@ cards:
             entity: cover.living_room_sliding_door_curtain
             reverseButtons: true
             customTheme: true
-            stopButtonColor: '#CF5C36'
+            stopButtonColor: "#CF5C36"
             buttonInactiveColor: var(--disabled-text-color)
             isOpenedColor: var(--primary-color)
             isClosedColor: var(--primary-color)
-            customOpenText: 'OPEN'
-            customStopText: 'STOP'
-            customCloseText: 'CLOSE'
+            customOpenText: OPEN
+            customStopText: STOP
+            customCloseText: CLOSE
             style: |
               button.position {
                 border: 1px solid var(--primary-background-color);
@@ -190,13 +190,13 @@ cards:
             entity: cover.dining_room_curtains
             reverseButtons: true
             customTheme: true
-            stopButtonColor: '#CF5C36'
+            stopButtonColor: "#CF5C36"
             buttonInactiveColor: var(--disabled-text-color)
             isOpenedColor: var(--primary-color)
             isClosedColor: var(--primary-color)
-            customOpenText: 'OPEN'
-            customStopText: 'STOP'
-            customCloseText: 'CLOSE'
+            customOpenText: OPEN
+            customStopText: STOP
+            customCloseText: CLOSE
             style: |
               button.position {
                 border: 1px solid var(--primary-background-color);

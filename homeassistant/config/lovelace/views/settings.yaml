@@ -32,7 +32,6 @@ cards:
             icon: mdi:fridge
             name: Kitchen
 
-
       - title: Curtains Automations
         type: entities
         entities:

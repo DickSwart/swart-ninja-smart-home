@@ -10,5 +10,3 @@ cards:
       - !include
         - ../templates/heading.yaml
         - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs
-
-

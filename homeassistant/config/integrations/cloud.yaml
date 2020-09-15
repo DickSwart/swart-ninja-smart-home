@@ -11,30 +11,9 @@ cloud:
   alexa:
     # Optional entity specific configuration for Alexa.
     # These are loaded from a separate directory.
-    entity_config: !include_dir_merge_named ../assistants/alexa
+    # entity_config: !include_dir_merge_named ../assistants/alexa
+    entity_config: !include_dir_merge_named ../customizations/alexa
+
     # Filters for entities to include/exclude from Alexa.
     filter:
-      include_entities:
-        - climate.living_room
-        - climate.man_cave
-        - cover.office_door_system_cover
-        - light.bathroom_zw111_nano_dimmer
-        - light.bedroom_max_ceiling
-        - light.bedroom_nico_ceiling
-        - light.dining_room_ceiling
-        - light.hall_zw111_nano_dimmer
-        - light.kitchen_ceiling
-        - light.kitchen_side
-        - light.living_room_ceiling
-        - light.living_room_mood
-        - light.man_cave_ceiling
-        - light.man_cave_kitchen_ceiling_one
-        - light.man_cave_kitchen_ceiling_two
-        - light.office_ceiling
-        - switch.bedroom_master_electric_blanket_dick
-        - switch.bedroom_master_electric_blanket_tamara
-        - switch.bedroom_max_electric_blanket
-        - switch.bedroom_nico_electric_blanket
-        - switch.docker_minecraft_server_01
-        - switch.docker_minecraft_server_02
-        - switch.docker_minecraft_server_03
+      include_entities: !include_dir_merge_list ../alexa

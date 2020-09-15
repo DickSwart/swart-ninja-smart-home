@@ -1,0 +1,6 @@
+---
+#
+# List of entities that is exposed to Alexa
+# From area: Hall
+#
+- light.hall_zw111_nano_dimmer

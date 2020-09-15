@@ -1,0 +1,7 @@
+---
+#
+# List of entities that is exposed to Alexa
+# From area: Bedroom Max
+#
+- light.bedroom_max_ceiling
+- switch.bedroom_max_electric_blanket

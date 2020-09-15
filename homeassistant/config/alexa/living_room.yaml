@@ -1,0 +1,9 @@
+---
+#
+# List of entities that is exposed to Alexa
+# From area: Living Room
+#
+- cover.living_room_sliding_door_curtain
+- light.living_room_ceiling
+- light.living_room_mood
+- climate.living_room

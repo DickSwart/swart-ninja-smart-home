@@ -3,8 +3,8 @@
 # List of entities that is exposed to Alexa
 # From area: Office
 #
+- cover.office_door_system_cover
 - light.office_ceiling
 - switch.docker_minecraft_server_01
 - switch.docker_minecraft_server_02
 - switch.docker_minecraft_server_03
-- cover.office_door_system_cover

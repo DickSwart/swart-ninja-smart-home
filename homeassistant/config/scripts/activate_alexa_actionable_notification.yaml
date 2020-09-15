@@ -17,6 +17,6 @@ sequence:
       value: '{"text": "{{ text }}", "event": "{{ event_id }}"}'
   - service: media_player.play_media
     data_template:
-      entity_id: '{{ alexa_device }}'
+      entity_id: "{{ alexa_device }}"
       media_content_type: skill
       media_content_id: amzn1.ask.skill.df209a6e-2901-4a1a-ae15-a117b627c368

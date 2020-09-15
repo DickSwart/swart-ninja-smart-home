@@ -1,7 +1,7 @@
 ---
 alias: Office Door System Reset
 sequence:
-  - data:
+  - service: mqtt.publish
+    data:
       payload: reset
       topic: E449D3/set
-    service: mqtt.publish

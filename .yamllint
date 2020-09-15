@@ -1,12 +1,12 @@
 ---
 ignore: |
-  homeassistant/custom_components/
-  homeassistant/ip_bans.yaml
-  homeassistant/automations.yaml
-  homeassistant/scenes.yaml
-  homeassistant/scripts.yaml
-  homeassistant/themes/
-  homeassistant/lovelace/scratch_pad.yaml
+  homeassistant/config/custom_components/
+  homeassistant/config/ip_bans.yaml
+  homeassistant/config/automations.yaml
+  homeassistant/config/scenes.yaml
+  homeassistant/config/scripts.yaml
+  homeassistant/config/themes/
+  homeassistant/config/lovelace/scratch_pad.yaml
 
 rules:
   braces:

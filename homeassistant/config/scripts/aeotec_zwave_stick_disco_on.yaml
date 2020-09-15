@@ -1,0 +1,5 @@
+---
+alias: Aeotec ZWave Stick Disco On
+description: Turn on disco led effect of the Aeotec ZWave Stick
+sequence:
+  - service: shell_command.aeotec_zwave_stick_disco_on

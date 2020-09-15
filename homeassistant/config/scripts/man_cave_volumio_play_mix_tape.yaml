@@ -1,0 +1,11 @@
+---
+alias: Play the mix tape playlist
+sequence:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.man_cave_volumio
+      source: MixTape
+  - service: media_player.shuffle_set
+    data:
+      entity_id: media_player.man_cave_volumio
+      shuffle: 'true'

@@ -1,0 +1,8 @@
+---
+alias: Call Electric Blankets on Event
+max: 10
+mode: parallel
+sequence:
+  - event: electric_blankets_on
+    event_data_template:
+      name: '{{ name }}'

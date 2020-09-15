@@ -1,86 +1,86 @@
 aeotec_zwave_stick_turn_off_disco_led_effect:
   alias: Aeotec ZWave Stick - Turn off disco led effect
   sequence:
-    - service: shell_command.aeotec_zwave_stick_disco_off
+  - service: shell_command.aeotec_zwave_stick_disco_off
 aeotec_zwave_stick_turn_on_disco_led_effect:
   alias: Aeotec ZWave Stick - Turn on disco led effect
   sequence:
-    - service: shell_command.aeotec_zwave_stick_disco_on
+  - service: shell_command.aeotec_zwave_stick_disco_on
 genius_speaker_power:
   alias: Genius speakers power
   sequence:
-    - service: rest_command.genius_swhf51_3000_command
-      data:
-        command: POWER
+  - service: rest_command.genius_swhf51_3000_command
+    data:
+      command: POWER
 genius_speaker_volume_mute:
   alias: Genius speakers mute
   sequence:
-    - service: rest_command.genius_swhf51_3000_command
-      data:
-        command: MUTE
+  - service: rest_command.genius_swhf51_3000_command
+    data:
+      command: MUTE
 man_cave_volumio_play_kids_music:
   alias: Play the kids music playlist
   sequence:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.man_cave_volumio
-        source: KidsMusic
-    - service: media_player.shuffle_set
-      data:
-        entity_id: media_player.man_cave_volumio
-        shuffle: 'true'
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.man_cave_volumio
+      source: KidsMusic
+  - service: media_player.shuffle_set
+    data:
+      entity_id: media_player.man_cave_volumio
+      shuffle: 'true'
 man_cave_volumio_play_mix_tape:
   alias: Play the mix tape playlist
   sequence:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.man_cave_volumio
-        source: MixTape
-    - service: media_player.shuffle_set
-      data:
-        entity_id: media_player.man_cave_volumio
-        shuffle: 'true'
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.man_cave_volumio
+      source: MixTape
+  - service: media_player.shuffle_set
+    data:
+      entity_id: media_player.man_cave_volumio
+      shuffle: 'true'
 shutdown_ender_3:
   alias: Shutdown Ender 3
   sequence:
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: switch.ender_3_pow
-          state: 'on'
-        - condition: state
-          entity_id: binary_sensor.octoprint_printing
-          state: 'off'
-    - service: rest_command.shutdown_octoprint
-      data:
-        ip: 192.168.1.210
-    - wait_template: "{{ is_state('binary_sensor.ender_3_octoprint', 'off') }}"
-      timeout: 00:05:00
-      continue_on_timeout: false
-    - delay: 00:00:05
-    - service: switch.turn_off
+  - condition: and
+    conditions:
+    - condition: state
       entity_id: switch.ender_3_pow
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.octoprint_printing
+      state: 'off'
+  - service: rest_command.shutdown_octoprint
+    data:
+      ip: 192.168.1.210
+  - wait_template: '{{ is_state(''binary_sensor.ender_3_octoprint'', ''off'') }}'
+    timeout: 00:05:00
+    continue_on_timeout: false
+  - delay: 00:00:05
+  - service: switch.turn_off
+    entity_id: switch.ender_3_pow
 shutdown_man_cave_volumio:
   alias: Shutdown Man Cave Volumio
   sequence:
-    - service: shell_command.shutdown_man_cave_volumio
+  - service: shell_command.shutdown_man_cave_volumio
 shutdown_retropi:
   alias: Shutdown RetroPi
   sequence:
-    - service: shell_command.shutdown_retropi
+  - service: shell_command.shutdown_retropi
 shutdown_swartninja02:
   alias: Shutdown SwartNinja02
   sequence:
-    - service: shell_command.shutdown_swartninja02
+  - service: shell_command.shutdown_swartninja02
 office_door_system_reset:
   alias: Office Door System Reset
   sequence:
-    - data:
-        payload: reset
-        topic: E449D3/set
-      service: mqtt.publish
+  - data:
+      payload: reset
+      topic: E449D3/set
+    service: mqtt.publish
 activate_alexa_actionable_notification:
-  description: "Activates an actionable notification on a specific echo device"
+  description: Activates an actionable notification on a specific echo device
   fields:
     text:
       description: The text you would like alexa to speak.
@@ -92,12 +92,20 @@ activate_alexa_actionable_notification:
       description: Alexa device you want to trigger
       example: media_player.bedroom_echo
   sequence:
-    - service: input_text.set_value
-      data_template:
-        entity_id: input_text.alexa_actionable_notification
-        value: '{"text": "{{ text }}", "event": "{{ event_id }}"}'
-    - service: media_player.play_media
-      data_template:
-        entity_id: '{{ alexa_device }}'
-        media_content_type: skill
-        media_content_id: amzn1.ask.skill.df209a6e-2901-4a1a-ae15-a117b627c368
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.alexa_actionable_notification
+      value: '{"text": "{{ text }}", "event": "{{ event_id }}"}'
+  - service: media_player.play_media
+    data_template:
+      entity_id: '{{ alexa_device }}'
+      media_content_type: skill
+      media_content_id: amzn1.ask.skill.df209a6e-2901-4a1a-ae15-a117b627c368
+electric_blankets_on_event:
+  alias: Call Electric Blankets on Event
+  max: 10
+  mode: parallel
+  sequence:
+  - event: electric_blankets_on
+    event_data_template:
+      name: '{{ name }}'

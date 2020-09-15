@@ -1,0 +1,4 @@
+---
+alias: Shutdown RetroPi
+sequence:
+  - service: shell_command.shutdown_retropi

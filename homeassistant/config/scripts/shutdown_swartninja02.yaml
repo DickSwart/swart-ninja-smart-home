@@ -1,0 +1,4 @@
+---
+alias: Shutdown SwartNinja02
+sequence:
+  - service: shell_command.shutdown_swartninja02

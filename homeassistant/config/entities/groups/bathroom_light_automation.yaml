@@ -1,0 +1,7 @@
+---
+bathroom_light_automation:
+  name: Bathroom Automated Lights
+  icon: mdi:head-lightbulb-outline
+  entities:
+    - automation.bathroom_light_on_motion
+    - automation.bathroom_light_off_motion

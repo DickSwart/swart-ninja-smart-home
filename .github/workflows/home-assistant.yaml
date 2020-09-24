@@ -28,24 +28,3 @@ jobs:
         continue-on-error: true
         with:
           args: remark --no-stdout --color --frail --use preset-lint-recommended .
-  home_assistant_stable:
-    runs-on: ubuntu-latest
-    needs: [yamllint, remarklint]
-    steps:
-      - name: Getting your configuration from GitHub
-        uses: actions/checkout@v1
-      - name: Rename configuration folder
-        run: mv ./homeassistant/config ./config
-      - name: Make fake snapshots folder
-        run: mkdir -p /config/www/images/camera_snapshots
-      - name: Copy stub files into configuration folder
-        run: cp -R ./homeassistant/.stubs/* ./config
-      - name: Home Assistant Version
-        uses: "docker://homeassistant/home-assistant:stable"
-        with:
-          args: |
-            python -m homeassistant --version
-      - name: Home Assistant Check
-        uses: "docker://homeassistant/home-assistant:stable"
-        with:
-          args: python -m homeassistant --config ./config/ --script check_config --info all

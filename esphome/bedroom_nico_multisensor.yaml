@@ -1,7 +1,7 @@
 ---
 substitutions:
-  devicename: ampersand_multisensor
-  friendly_devicename: Ampersand MultiSensor
+  devicename: bedroom_nico_multisensor
+  friendly_devicename: Bedroom Nico MultiSensor
 
 esphome:
   name: $devicename
@@ -17,10 +17,18 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: ${friendly_devicename}
-    password: "m4apKZcKrhV9"
+    ssid: $friendly_devicename
+    password: "9BNR89DIEtVG"
 
 captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
 
 sensor:
   - platform: dht
@@ -44,24 +52,30 @@ sensor:
   - platform: uptime
     name: ${friendly_devicename} uptime
 
-light:
-  - platform: monochromatic
-    name: ${friendly_devicename} Light
-    output: output_component1
+binary_sensor:
+  - platform: gpio
+    pin: D5
+    name: ${friendly_devicename} Motion
+    device_class: motion
 
 output:
   - platform: esp8266_pwm
-    id: output_component1
-    pin: D4
+    pin: D1
+    id: redgpio
+  - platform: esp8266_pwm
+    pin: D2
+    id: greengpio
+  - platform: esp8266_pwm
+    pin: D3
+    id: bluegpio
 
+light:
+  - platform: rgb
+    name: ${friendly_devicename} Light
+    red: redgpio
+    green: greengpio
+    blue: bluegpio
+    
 text_sensor:
   - platform: version
     name: ${friendly_devicename} ESPHome version
-
-# Enable logging
-logger:
-
-# Enable Home Assistant API
-api:
-
-ota:

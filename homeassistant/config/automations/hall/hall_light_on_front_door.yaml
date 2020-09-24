@@ -1,0 +1,20 @@
+---
+id: hall_light_on_front_door
+alias: Hall Light On Front Door
+description: Turn on hall light when front door open.
+trigger:
+  platform: state
+  entity_id: binary_sensor.hall_multisensor_door
+  to: 'on'
+condition:
+  - condition: numeric_state
+    entity_id: sensor.hall_multisensor_luminance
+    below: 51
+  - condition: state
+    entity_id: light.hall_zw111_nano_dimmer
+    state: 'off'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.hall_zw111_nano_dimmer
+      brightness: 255

@@ -1,0 +1,8 @@
+---
+hall_light_automation:
+  name: Hall Automated Lights
+  icon: mdi:head-lightbulb-outline
+  entities:
+    - automation.hall_light_on_motion
+    - automation.hall_light_off_motion
+    - automation.hall_light_on_front_door

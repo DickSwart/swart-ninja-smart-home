@@ -1,0 +1,25 @@
+---
+id: kitchen_light_on_motion
+alias: Kitchen Light On Motion
+description: Turn on kitchen light when there is movement
+trigger:
+  platform: state
+  entity_id: binary_sensor.kitchen_multisensor_motion
+  to: 'on'
+condition:
+  - condition: numeric_state
+    entity_id: sensor.kitchen_multisensor_luminance
+    below: 41
+action:
+  - choose:
+      # IF between midnight and 6am Dimmed
+      - conditions:
+          - condition: time
+            before: '06:01:00'
+        sequence:
+          - service: light.turn_on
+            entity_id: light.kitchen_side
+    # ELSE full brightness
+    default:
+      - service: light.turn_on
+        entity_id: light.kitchen_ceiling

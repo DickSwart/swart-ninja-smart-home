@@ -1,0 +1,15 @@
+---
+id: kitchen_side_light_off
+alias: Kitchen Side Light Off
+description: Turn off kitchen side light when ceiling light is turned on.
+trigger:
+  platform: state
+  entity_id: light.kitchen_ceiling
+  to: 'on'
+condition:
+  - condition: state
+    entity_id: light.kitchen_side
+    state: 'on'
+action:
+  - service: light.turn_off
+    entity_id: light.kitchen_side

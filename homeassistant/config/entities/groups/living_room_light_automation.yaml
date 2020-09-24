@@ -1,0 +1,7 @@
+---
+living_room_light_automation:
+  name: Living Room Automated Lights
+  icon: mdi:head-lightbulb-outline
+  entities:
+    - automation.living_room_light_on_motion
+    - automation.living_room_light_off_motion

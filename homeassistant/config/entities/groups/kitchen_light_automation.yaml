@@ -1,0 +1,11 @@
+---
+kitchen_light_automation:
+  name: Kitchen Automated Lights
+  icon: mdi:head-lightbulb-outline
+  entities:
+    - automation.kitchen_light_on_motion
+    - automation.kitchen_light_off_motion
+    - automation.kitchen_light_off_sun
+    - automation.kitchen_cupboard_light_on
+    - automation.kitchen_cupboard_light_off
+    - automation.kitchen_side_light_off

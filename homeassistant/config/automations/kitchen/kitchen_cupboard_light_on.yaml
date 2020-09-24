@@ -1,0 +1,18 @@
+---
+id: kitchen_cupboard_light_on
+alias: Kitchen Cupboard Light On
+description: Turn on kitchen cupboard light when ceiling light is turned off.
+trigger:
+  platform: state
+  entity_id: light.kitchen_ceiling
+  to: 'off'
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.kitchen_cupboard
+      brightness: 127
+      transition: 5

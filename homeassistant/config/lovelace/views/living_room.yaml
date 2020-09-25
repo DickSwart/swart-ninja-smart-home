@@ -163,6 +163,14 @@ cards:
                     :host > mmp-media-controls {
                       max-width: calc(var(--mmp-unit) * 10);
                     }
+            - type: conditional
+              conditions:
+                - entity: media_player.living_room_television
+                  state: "on"
+              card:
+                type: media-control
+                name: Plex
+                entity: media_player.living_room_tv_plex
 
       - type: media-control
         name: Eco Dot

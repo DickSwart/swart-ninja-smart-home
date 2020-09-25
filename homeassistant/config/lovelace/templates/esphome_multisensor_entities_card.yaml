@@ -18,7 +18,7 @@ entities:
 {% endif %}
 {% if show_door %}
   - entity: binary_sensor.{{ node_name }}_door
-    name: Motion
+    name: Door
 {% endif %}
   - entity: sensor.{{ node_name }}_temperature
     name: Temperature

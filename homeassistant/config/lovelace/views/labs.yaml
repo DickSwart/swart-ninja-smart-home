@@ -10,3 +10,14 @@ cards:
       - !include
         - ../templates/heading.yaml
         - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs
+
+  - type: entities
+    title: Entities card
+    show_header_toggle: false
+    header:
+      image: 'https://www.home-assistant.io/images/lovelace/header-footer/balloons-header.png'
+      type: picture
+    entities:
+      - entity: input_text.alexa_actionable_notification
+
+ #     {"text": "This is a test of the alexa actions custom skill. Did it work?", "event": "actionable.skill.test"}

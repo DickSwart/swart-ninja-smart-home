@@ -54,6 +54,12 @@ cards:
           - input_boolean.house_mode_guest
           - input_boolean.house_mode_holiday
 
+      - type: calendar
+        entities:
+          - calendar.holidays_in_new_zealand
+          - calendar.home_assistant
+          - calendar.school_events
+
       - type: entity-filter
         show_empty: false
         state_filter:

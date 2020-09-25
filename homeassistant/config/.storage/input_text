@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "key": "input_text",
+    "data": {
+        "items": [
+            {
+                "name": "Alexa Actionable Notification Holder",
+                "mode": "text",
+                "min": 0,
+                "max": 255,
+                "id": "alexa_actionable_notification"
+            }
+        ]
+    }
+}

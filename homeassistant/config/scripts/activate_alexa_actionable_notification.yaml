@@ -19,4 +19,4 @@ sequence:
     data_template:
       entity_id: "{{ alexa_device }}"
       media_content_type: skill
-      media_content_id: amzn1.ask.skill.df209a6e-2901-4a1a-ae15-a117b627c368
+      media_content_id: amzn1.ask.skill.f8ec16e7-aa7a-491f-93ac-1c32fb3c25f6

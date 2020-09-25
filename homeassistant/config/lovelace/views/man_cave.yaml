@@ -199,22 +199,28 @@ cards:
                 name: Shuffle
             type: custom:fold-entity-row
           - head:
-              entity: light.man_cave_multisensor
+              entity: binary_sensor.man_cave_multisensor_status
               name: MultiSensor
             type: custom:fold-entity-row
             entities:
+              - entity: light.man_cave_multisensor
+                name: LED
               - entity: binary_sensor.man_cave_multisensor_motion
                 name: Motion
               - entity: sensor.man_cave_multisensor_temperature
                 name: Temperature
-              - entity: sensor.man_cave_multisensor_real_feel
-                name: Real Feel
               - entity: sensor.man_cave_multisensor_humidity
                 name: Humidity
               - entity: sensor.man_cave_multisensor_luminance
                 name: Luminance
-              - entity: sensor.man_cave_multisensor_wifi
+              - entity: sensor.man_cave_multisensor_wifi_signal
                 name: WiFi
+              - entity: sensor.man_cave_multisensor_esphome_version
+                name: ESPHome Version
+              - entity: sensor.man_cave_multisensor_uptime
+                name: Uptime
+
+
           - head: switch.computer_desk
             type: custom:fold-entity-row
             entities:

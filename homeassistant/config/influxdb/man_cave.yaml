@@ -18,7 +18,7 @@
 - sensor.man_cave_multisensor_humidity
 - sensor.man_cave_multisensor_luminance
 - sensor.man_cave_multisensor_temperature
-- sensor.man_cave_multisensor_wifi
+- sensor.man_cave_multisensor_wifi_signal
 - sensor.man_cave_temperature
 
 # Ender 3

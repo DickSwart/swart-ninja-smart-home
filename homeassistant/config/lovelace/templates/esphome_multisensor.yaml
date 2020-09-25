@@ -1,0 +1,23 @@
+# lovelace_gen
+type: entities
+title: MultiSensor
+show_header_toggle: false
+entities:
+  - entity: light.{{ node_name }}
+    name: LED
+  - entity: binary_sensor.{{ node_name }}_motion
+    name: Motion
+  - entity: sensor.{{ node_name }}_temperature
+    name: Temperature
+  - entity: sensor.{{ node_name }}_humidity
+    name: Humidity
+  - entity: sensor.{{ node_name }}_luminance
+    name: Luminance
+  - entity: sensor.{{ node_name }}_wifi_signal
+    name: WiFi
+  - entity: binary_sensor.{{ node_name }}_status
+    name: Status
+  - entity: sensor.{{ node_name }}_uptime
+    name: Uptime
+  - entity: sensor.{{ node_name }}_esphome_version
+    name: ESPHome Version

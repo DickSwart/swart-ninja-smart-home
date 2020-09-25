@@ -64,24 +64,10 @@ cards:
 
       - break
 
-      - title: MultiSensor
-        type: entities
-        show_header_toggle: false
-        entities:
-          - entity: light.bedroom_nico_multisensor
-            name: LED
-          - entity: binary_sensor.bedroom_nico_multisensor_motion
-            name: Motion
-          - entity: sensor.bedroom_nico_multisensor_temperature
-            name: Temperature
-          - entity: sensor.bedroom_nico_multisensor_real_feel
-            name: Real feel
-          - entity: sensor.bedroom_nico_multisensor_humidity
-            name: Humidity
-          - entity: sensor.bedroom_nico_multisensor_luminance
-            name: LED
-          - entity: sensor.bedroom_nico_multisensor_wifi
-            name: WiFi
+      - !include
+        - ../templates/esphome_multisensor.yaml
+        - node_name: bedroom_nico_multisensor
+
       - title: Electric Blanket
         type: entities
         show_header_toggle: false

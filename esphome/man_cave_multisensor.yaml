@@ -44,7 +44,7 @@ output:
 
 light:
   - platform: rgb
-    name: ${device_verbose_name} Light
+    name: ${device_verbose_name}
     red: redgpio
     green: greengpio
     blue: bluegpio

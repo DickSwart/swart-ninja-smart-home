@@ -32,5 +32,5 @@ output:
 
 light:
   - platform: monochromatic
-    name: ${device_verbose_name} Light
+    name: ${device_verbose_name}
     output: output_component1

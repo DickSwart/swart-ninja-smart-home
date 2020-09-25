@@ -1,0 +1,29 @@
+# lovelace_gen
+type: vertical-stack
+cards:
+  - entities:
+      - name: Room Temperature
+        color: var(--light-primary-color)
+        entity: sensor.{{ node_name }}_temperature
+      - entity: sensor.dark_sky_temperature
+        color: var(--dark-primary-color)
+        name: Outside Temperature
+    font_size: 75
+    line_width: 3
+    type: custom:mini-graph-card
+  - cards:
+      - entities:
+          - entity: sensor.{{ node_name }}_humidity
+            name: Humidity
+        font_size: 75
+        line_color: var(--complement-color-one)
+        line_width: 3
+        type: custom:mini-graph-card
+      - entities:
+          - entity: sensor.{{ node_name }}_luminance
+            name: Luminance
+        font_size: 75
+        line_color: var(--complement-color-two)
+        line_width: 3
+        type: custom:mini-graph-card
+    type: horizontal-stack

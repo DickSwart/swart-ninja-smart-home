@@ -166,7 +166,7 @@ cards:
               - name: LED
                 type: custom:button-card
                 color: auto
-                entity: light.ampersand_multisensor_light
+                entity: light.ampersand_multisensor
 
       - break
 

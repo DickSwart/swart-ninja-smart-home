@@ -1,0 +1,50 @@
+substitutions:
+  node_name: bedroom_master_multisensor
+  device_verbose_name: Bedroom Master MultiSensor
+
+packages:
+  wifi: !include common/wifi.hall.yaml
+  device_base: !include common/nodemcu_base.yaml
+
+sensor:
+  - platform: dht
+    pin: D7
+    temperature:
+      name: ${device_verbose_name} Temperature
+    humidity:
+      name: ${device_verbose_name} Humidity
+      icon: mdi:water-percent
+    update_interval: 60s
+    model: DHT22
+  - platform: adc
+    pin: A0
+    name: ${device_verbose_name} Luminance
+    icon: mdi:theme-light-dark
+    unit_of_measurement: lux
+    filters:
+      - lambda: |-
+          return (x / 10000.0) * 2000000.0;
+
+binary_sensor:
+  - platform: gpio
+    pin: D5
+    name: ${device_verbose_name} Motion
+    device_class: motion
+
+output:
+  - platform: esp8266_pwm
+    pin: D1
+    id: redgpio
+  - platform: esp8266_pwm
+    pin: D2
+    id: greengpio
+  - platform: esp8266_pwm
+    pin: D3
+    id: bluegpio
+
+light:
+  - platform: rgb
+    name: ${device_verbose_name}
+    red: redgpio
+    green: greengpio
+    blue: bluegpio

@@ -31,29 +31,17 @@ cards:
       - break
 
       - !include
-        - ../templates/esphome_multisensor_graph.yaml
+        - ../templates/esphome_multisensor_graphs_card.yaml
         - node_name: ampersand_multisensor
 
       - break
 
-      - title: MultiSensor
-        type: entities
-        show_header_toggle: false
-        entities:
-          - entity: light.ampersand_multisensor
-            name: LED
-          - entity: sensor.ampersand_multisensor_temperature
-            name: Temperature
-          - entity: sensor.ampersand_multisensor_humidity
-            name: Humidity
-          - entity: sensor.ampersand_multisensor_luminance
-            name: Luminance
-          - entity: sensor.ampersand_multisensor_wifi_signal
-            name: WiFi
-          - entity: sensor.ampersand_multisensor_uptime
-            name: Uptime
-          - entity: sensor.ampersand_multisensor_esphome_version
-            name: ESPHome Version
+      - !include
+        - ../templates/esphome_multisensor_entities_card.yaml
+        - node_name: ampersand_multisensor
+          show_led: true
+          show_door: false
+          show_motion: false
 
       - title: Electric Blanket
         type: entities

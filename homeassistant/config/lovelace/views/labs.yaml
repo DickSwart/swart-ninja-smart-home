@@ -12,12 +12,15 @@ cards:
         - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs
 
       - !include
-        - ../templates/esphome_multisensor.yaml
+        - ../templates/esphome_multisensor_entities_card.yaml
         - node_name: man_cave_multisensor
 
       - !include
-        - ../templates/esphome_multisensor_graph.yaml
+        - ../templates/esphome_multisensor_graphs_card.yaml
         - node_name: man_cave_multisensor
+          show_led: true
+          show_door: false
+          show_motion: true
 
       - type: entities
         title: Entities card

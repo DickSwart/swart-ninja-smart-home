@@ -1,12 +1,25 @@
 # lovelace_gen
+# Available parameters:
+# node_name   (required)
+# show_led    (optional)
+# show_door   (optional)
+# show_motion (optional)
 type: entities
 title: MultiSensor
 show_header_toggle: false
 entities:
+{% if show_led %}
   - entity: light.{{ node_name }}
     name: LED
+{% endif %}
+{% if show_motion %}
   - entity: binary_sensor.{{ node_name }}_motion
     name: Motion
+{% endif %}
+{% if show_door %}
+  - entity: binary_sensor.{{ node_name }}_door
+    name: Motion
+{% endif %}
   - entity: sensor.{{ node_name }}_temperature
     name: Temperature
   - entity: sensor.{{ node_name }}_humidity

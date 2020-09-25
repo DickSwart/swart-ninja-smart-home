@@ -33,7 +33,7 @@ cards:
       - break
 
       - !include
-        - ../templates/esphome_multisensor_graph.yaml
+        - ../templates/esphome_multisensor_graphs_card.yaml
         - node_name: bedroom_master_multisensor
 
       - break
@@ -45,12 +45,9 @@ cards:
         name: Apple TV
 
       - !include
-        - ../templates/esphome_multisensor.yaml
+        - ../templates/esphome_multisensor_entities_card.yaml
         - node_name: bedroom_master_multisensor
+          show_led: true
+          show_door: false
+          show_motion: true
 
-      - entities:
-          - entity: light.bedroom_master_multisensor
-          - entity: light.bedroom_master
-          - entity: binary_sensor.bedroom_master_multisensor_connectivity
-          - entity: sensor.bedroom_master_multisensor_wifi
-        type: custom:invisible-card

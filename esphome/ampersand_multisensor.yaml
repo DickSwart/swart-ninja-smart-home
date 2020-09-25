@@ -1,67 +1,36 @@
----
 substitutions:
-  devicename: ampersand_multisensor
-  friendly_devicename: Ampersand MultiSensor
+  node_name: ampersand_multisensor
+  device_verbose_name: Ampersand MultiSensor
 
-esphome:
-  name: $devicename
-  platform: ESP8266
-  board: nodemcuv2
-
-wifi:
-  networks:
-    - ssid: !secret wifi_ssid_hall_not
-      password: !secret wifi_password_hall_not
-      bssid: !secret wifi_bssid_hall_ap
-      hidden: true
-
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
-  ap:
-    ssid: ${friendly_devicename}
-    password: "m4apKZcKrhV9"
-
-captive_portal:
+packages:
+  wifi: !include common/wifi.hall.yaml
+  device_base: !include common/nodemcu_base.yaml
 
 sensor:
   - platform: dht
     pin: D7
     temperature:
-      name: ${friendly_devicename} Temperature
+      name: ${device_verbose_name} Temperature
     humidity:
-      name: ${friendly_devicename} Humidity
+      name: ${device_verbose_name} Humidity
+      icon: mdi:water-percent
     update_interval: 60s
     model: DHT22
   - platform: adc
     pin: A0
-    name: ${friendly_devicename} Luminance
+    name: ${device_verbose_name} Luminance
+    icon: mdi:theme-light-dark
     unit_of_measurement: lux
     filters:
       - lambda: |-
           return (x / 10000.0) * 2000000.0;
-  - platform: wifi_signal
-    name: ${friendly_devicename} WiFi signal
-    update_interval: 60s
-  - platform: uptime
-    name: ${friendly_devicename} uptime
-
-light:
-  - platform: monochromatic
-    name: ${friendly_devicename} Light
-    output: output_component1
 
 output:
   - platform: esp8266_pwm
     id: output_component1
     pin: D4
 
-text_sensor:
-  - platform: version
-    name: ${friendly_devicename} ESPHome version
-
-# Enable logging
-logger:
-
-# Enable Home Assistant API
-api:
-
-ota:
+light:
+  - platform: monochromatic
+    name: ${device_verbose_name} Light
+    output: output_component1

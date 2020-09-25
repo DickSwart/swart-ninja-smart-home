@@ -1,0 +1,12 @@
+wifi:
+  fast_connect: true
+  networks:
+    - ssid: !secret wifi_ssid_hall_not
+      password: !secret wifi_password_hall_not
+      bssid: !secret wifi_bssid_hall_ap
+      hidden: true
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: ${device_verbose_name}
+    password: !secret wifi_ap_password

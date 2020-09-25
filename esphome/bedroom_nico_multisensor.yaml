@@ -1,61 +1,34 @@
----
 substitutions:
-  devicename: bedroom_nico_multisensor
-  friendly_devicename: Bedroom Nico MultiSensor
-
-esphome:
-  name: $devicename
-  platform: ESP8266
-  board: nodemcuv2
-
-wifi:
-  networks:
-    - ssid: !secret wifi_ssid_hall_not
-      password: !secret wifi_password_hall_not
-      bssid: !secret wifi_bssid_hall_ap
-      hidden: true
-
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
-  ap:
-    ssid: $friendly_devicename
-    password: "9BNR89DIEtVG"
-
-captive_portal:
-
-# Enable logging
-logger:
-
-# Enable Home Assistant API
-api:
-
-ota:
-
+  node_name: bedroom_nico_multisensor
+  device_verbose_name: Bedroom Nico MultiSensor
+  
+packages:
+  wifi: !include common/wifi.hall.yaml
+  device_base: !include common/nodemcu_base.yaml
+  
 sensor:
   - platform: dht
     pin: D7
     temperature:
-      name: ${friendly_devicename} Temperature
+      name: ${device_verbose_name} Temperature
     humidity:
-      name: ${friendly_devicename} Humidity
+      name: ${device_verbose_name} Humidity
+      icon: mdi:water-percent
     update_interval: 60s
     model: DHT22
   - platform: adc
     pin: A0
-    name: ${friendly_devicename} Luminance
+    name: ${device_verbose_name} Luminance
+    icon: mdi:theme-light-dark
     unit_of_measurement: lux
     filters:
       - lambda: |-
           return (x / 10000.0) * 2000000.0;
-  - platform: wifi_signal
-    name: ${friendly_devicename} WiFi signal
-    update_interval: 60s
-  - platform: uptime
-    name: ${friendly_devicename} uptime
 
 binary_sensor:
   - platform: gpio
     pin: D5
-    name: ${friendly_devicename} Motion
+    name: ${device_verbose_name} Motion
     device_class: motion
 
 output:
@@ -71,11 +44,7 @@ output:
 
 light:
   - platform: rgb
-    name: ${friendly_devicename} Light
+    name: ${device_verbose_name} Light
     red: redgpio
     green: greengpio
     blue: bluegpio
-    
-text_sensor:
-  - platform: version
-    name: ${friendly_devicename} ESPHome version

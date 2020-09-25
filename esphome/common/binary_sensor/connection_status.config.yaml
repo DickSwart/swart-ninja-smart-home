@@ -1,0 +1,2 @@
+platform: status
+name: ${device_verbose_name} Status

@@ -18,6 +18,7 @@ homeassistant/config/deps
 homeassistant/config/netdaemon
 homeassistant/config/www/community
 homeassistant/config/www/images/camera_snapshots/*
+homeassistant/config/image/*
 homeassistant/.ssh/*
 .vscode/
 
@@ -64,4 +65,5 @@ mosquitto/*
 nodered
 *.disable
 # homeassistant/lovelace
+
 

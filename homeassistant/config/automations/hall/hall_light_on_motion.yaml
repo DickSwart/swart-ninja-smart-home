@@ -9,7 +9,7 @@ trigger:
 condition:
   - condition: numeric_state
     entity_id: sensor.hall_multisensor_luminance
-    below: 51
+    below: 15
   - condition: state
     entity_id: light.hall_zw111_nano_dimmer
     state: 'off'

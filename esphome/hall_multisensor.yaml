@@ -36,6 +36,10 @@ binary_sensor:
     name: ${device_verbose_name} Motion
     device_class: motion
   - platform: gpio
-    pin: D2
     name: ${device_verbose_name} Door
     device_class: door
+    pin:
+      number: D2
+      mode: INPUT_PULLUP
+      inverted: False
+

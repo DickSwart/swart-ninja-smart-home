@@ -13,6 +13,6 @@ condition:
 action:
   - service: light.turn_on
     data:
-      entity_id: light.kitchen_cupboard
+      entity_id: light.kitchen_motion_led
       brightness: 127
       transition: 5

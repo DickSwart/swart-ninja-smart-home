@@ -8,8 +8,8 @@ trigger:
   to: 'on'
 condition:
   - condition: state
-    entity_id: light.kitchen_cupboard
+    entity_id: light.kitchen_motion_led
     state: 'on'
 action:
   - service: light.turn_off
-    entity_id: light.kitchen_cupboard
+    entity_id: light.kitchen_motion_led

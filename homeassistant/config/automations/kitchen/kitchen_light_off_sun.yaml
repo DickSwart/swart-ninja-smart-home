@@ -10,4 +10,4 @@ action:
     entity_id:
       - light.kitchen_side
       - light.kitchen_ceiling
-      - light.kitchen_cupboard
+      - light.kitchen_motion_led

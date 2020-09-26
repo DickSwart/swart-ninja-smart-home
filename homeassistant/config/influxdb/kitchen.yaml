@@ -8,7 +8,7 @@
 # URL: https://www.home-assistant.io/integrations/influxdb/#include
 ##############################################################################################
 - binary_sensor.kitchen_multisensor_motion
-- binary_sensor.kitchen_motionsensor_motion
+- binary_sensor.kitchen_motion_led_motion
 - binary_sensor.kitchen_motion
 - sensor.kitchen_motionsensor_wifi
 - sensor.kitchen_multisensor_wifi

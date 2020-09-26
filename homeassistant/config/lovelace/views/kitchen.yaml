@@ -33,7 +33,7 @@ cards:
                 template: motion_sensor_btn
                 type: custom:button-card
 
-          - entity: light.kitchen_cupboard
+          - entity: light.kitchen_motion_led
             name: Cupboards
             type: light
 
@@ -62,9 +62,15 @@ cards:
         type: entities
         show_header_toggle: false
         entities:
-          - entity: light.kitchen_cupboard
-            name: Cupboard LED
-          - entity: binary_sensor.kitchen_motionsensor_motion
+          - entity: light.kitchen_motion_led
+            name: LED
+          - entity: binary_sensor.kitchen_motion_led_motion
             name: Motion
-          - entity: sensor.kitchen_motionsensor_wifi
+          - entity: sensor.kitchen_motion_led_wifi_signal
             name: WiFi
+          - entity: binary_sensor.kitchen_motion_led_status
+            name: Status
+          - entity: sensor.kitchen_motion_led_uptime
+            name: Uptime
+          - entity: sensor.kitchen_motion_led_esphome_version
+            name: ESPHome Version

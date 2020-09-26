@@ -1,0 +1,23 @@
+substitutions:
+  node_name: kitchen_motion_led
+  device_verbose_name: Kitchen Motion LED
+
+packages:
+  wifi: !include common/wifi.hall.yaml
+  device_base: !include common/nodemcu_base.yaml
+
+binary_sensor:
+  - platform: gpio
+    pin: D2
+    name: ${device_verbose_name} Motion
+    device_class: motion
+
+light:
+  - platform: monochromatic
+    name: ${device_verbose_name}
+    output: output_led_light
+
+output:
+  - platform: esp8266_pwm
+    id: output_led_light
+    pin: D1

@@ -59,10 +59,18 @@ cards:
         type: entities
         show_header_toggle: false
         entities:
-          - entity: switch.doorbell_chime
-            name: Chime
           - entity: binary_sensor.doorbell
             name: Pressed
+          - entity: binary_sensor.doorbell_status
+            name: Status
+          - entity: sensor.doorbell_esphome_version
+            name: ESPHome Version
+          - entity: sensor.doorbell_uptime
+            name: Uptime
+          - entity: sensor.doorbell_wifi_signal
+            name: WiFi
+          - entity: switch.doorbell_chime
+            name: Chime
 
       - break
 

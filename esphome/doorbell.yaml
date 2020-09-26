@@ -1,0 +1,24 @@
+substitutions:
+  node_name: doorbell
+  device_verbose_name: Doorbell
+
+packages:
+  wifi: !include common/wifi.hall.yaml
+  device_base: !include common/nodemcu_base.yaml
+
+switch:
+  - platform: gpio
+    pin: D2
+    name: ${device_verbose_name} Chime
+    icon: mdi:light-switch
+
+binary_sensor:
+  - platform: gpio
+    name: ${device_verbose_name}
+    device_class: sound
+    pin:
+      number: D0
+      inverted: False
+      mode: INPUT_PULLDOWN_16
+    filters:
+      - delayed_off: 5s

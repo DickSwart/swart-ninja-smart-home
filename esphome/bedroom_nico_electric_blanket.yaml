@@ -1,0 +1,9 @@
+# Device: Sonoff POW 374EE5
+substitutions:
+  node_name: bedroom_nico_electric_blanket
+  device_verbose_name: Bedroom Nico Electric Blanket
+  switch_icon: mdi:bed-empty
+
+packages:
+  wifi: !include common/wifi.hall.yaml
+  device_base: !include common/sonoff_pow_r1_base_switch.yaml

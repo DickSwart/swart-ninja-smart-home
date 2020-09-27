@@ -46,7 +46,7 @@ shutdown_ender_3:
   - condition: and
     conditions:
     - condition: state
-      entity_id: switch.ender_3_pow
+      entity_id: switch.ender_3
       state: 'on'
     - condition: state
       entity_id: binary_sensor.octoprint_printing
@@ -59,7 +59,7 @@ shutdown_ender_3:
     continue_on_timeout: false
   - delay: 00:00:05
   - service: switch.turn_off
-    entity_id: switch.ender_3_pow
+    entity_id: switch.ender_3
 shutdown_man_cave_volumio:
   alias: Shutdown Man Cave Volumio
   sequence:

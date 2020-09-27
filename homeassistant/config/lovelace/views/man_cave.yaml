@@ -64,7 +64,7 @@ cards:
               - entity: light.man_cave_bathroom_ceiling
                 name: Bathroom
                 type: custom:button-card
-              - entity: switch.ender_3
+              - entity: switch.ender_3_safe
                 type: custom:button-card
               - entity: switch.work_station
                 type: custom:button-card
@@ -247,10 +247,10 @@ cards:
                 name: Power factor
               - entity: sensor.work_station_voltage
                 name: Voltage
-          - head: switch.ender_3
+          - head: switch.ender_3_safe
             type: custom:fold-entity-row
             entities:
-              - entity: switch.ender_3_pow
+              - entity: switch.ender_3
               - entity: sensor.ender_3_pow_current
                 name: Current
               - entity: sensor.ender_3_pow_energy

@@ -4,7 +4,7 @@ sequence:
   - condition: and
     conditions:
       - condition: state
-        entity_id: switch.ender_3_pow
+        entity_id: switch.ender_3
         state: "on"
       - condition: state
         entity_id: binary_sensor.octoprint_printing
@@ -17,4 +17,4 @@ sequence:
     continue_on_timeout: false
   - delay: 00:00:05
   - service: switch.turn_off
-    entity_id: switch.ender_3_pow
+    entity_id: switch.ender_3

@@ -18,21 +18,21 @@ ota:
 sensor:
   - <<: !include sensor/uptime.config.yaml
   - <<: !include sensor/wifi_signal.config.yaml
+  - platform: hlw8012
+    sel_pin: 5
+    cf_pin: 14
+    cf1_pin: 13
+    update_interval: 2s
+    current:
+      name: ${device_verbose_name} Current
+    voltage:
+      name: ${device_verbose_name} Voltage
+    power:
+      name: ${device_verbose_name} Power
 
 binary_sensor:
   - <<: !include binary_sensor/connection_status.config.yaml
-  # Wires soldered to the sonoff basic
-  - platform: gpio
-    id: button_gpio_14
-    pin:
-      number: GPIO14
-      mode: INPUT_PULLUP
-      inverted: True
-    on_state:
-      then:
-        - switch.toggle: switch_relay
-
-  # Button on the Sonoff Basic
+  # Button on the Sonoff POW
   - platform: gpio
     id: button_gpio_0
     pin:
@@ -62,5 +62,5 @@ switch:
 
 status_led:
   pin:
-    number: GPIO13
+    number: GPIO15
     inverted: yes

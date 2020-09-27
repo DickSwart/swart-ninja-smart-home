@@ -1,0 +1,9 @@
+# Device: Shelly 1 2292F6
+substitutions:
+  node_name: man_cave_ceiling
+  device_verbose_name: Man Cave Ceiling
+
+packages:
+  wifi: !include common/wifi.man_cave.yaml
+  device_base: !include common/shelly_1_base.yaml
+#   device_base: !include common/shelly_1_base_blank.yaml

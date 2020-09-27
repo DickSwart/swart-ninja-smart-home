@@ -1,0 +1,9 @@
+# Device: Sonoff POW EA9DBF
+substitutions:
+  node_name: computer_desk
+  device_verbose_name: Computer Desk
+  switch_icon: mdi:desk
+
+packages:
+  wifi: !include common/wifi.man_cave.yaml
+  device_base: !include common/sonoff_pow_r1_base_switch.yaml

@@ -5,5 +5,5 @@ substitutions:
   switch_icon: mdi:soldering-iron
 
 packages:
-  wifi: !include common/wifi.man_cave.yaml
+  wifi: !include common/wifi/not.man_cave.yaml
   device_base: !include common/sonoff_pow_r1_base_switch.yaml

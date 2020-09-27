@@ -5,5 +5,5 @@ substitutions:
   switch_icon: mdi:bed-empty
 
 packages:
-  wifi: !include common/wifi.hall.yaml
+  wifi: !include common/wifi/not.hall.yaml
   device_base: !include common/sonoff_pow_r1_base_switch.yaml

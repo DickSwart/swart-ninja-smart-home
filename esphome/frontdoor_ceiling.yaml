@@ -3,9 +3,9 @@ substitutions:
   device_verbose_name: Front Door Ceiling
 
 packages:
-  wifi: !include common/wifi.hall.yaml
+  wifi: !include common/wifi/not.hall.yaml
   device_base: !include common/shelly_1_base.yaml
 
 # packages:
-#   wifi: !include common/wifi.yaml
+#   wifi: !include common/wifi/main.yaml
 #   device_base: !include common/shelly_1_base_blank.yaml

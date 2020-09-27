@@ -4,5 +4,5 @@ substitutions:
   switch_icon: mdi:light-switch
 
 packages:
-  wifi: !include common/wifi.yaml
+  wifi: !include common/wifi/main.yaml
   device_base: !include common/sonoff_basic_base_switch.yaml

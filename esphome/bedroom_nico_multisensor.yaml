@@ -1,11 +1,11 @@
 substitutions:
   node_name: bedroom_nico_multisensor
   device_verbose_name: Bedroom Nico MultiSensor
-  
+
 packages:
-  wifi: !include common/wifi.hall.yaml
+  wifi: !include common/wifi/not.hall.yaml
   device_base: !include common/nodemcu_base.yaml
-  
+
 sensor:
   - platform: dht
     pin: D7

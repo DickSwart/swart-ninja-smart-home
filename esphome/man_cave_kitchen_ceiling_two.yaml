@@ -3,5 +3,5 @@ substitutions:
   device_verbose_name: Man Cave Kitchen Ceiling Two
 
 packages:
-  wifi: !include common/wifi.man_cave.yaml
+  wifi: !include common/wifi/not.man_cave.yaml
   device_base: !include common/sonoff_basic_base_light.yaml

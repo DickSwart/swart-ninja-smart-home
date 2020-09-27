@@ -3,7 +3,7 @@ substitutions:
   device_verbose_name: Kitchen Motion LED
 
 packages:
-  wifi: !include common/wifi.hall.yaml
+  wifi: !include common/wifi/not.hall.yaml
   device_base: !include common/nodemcu_base.yaml
 
 binary_sensor:

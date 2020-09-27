@@ -1,0 +1,7 @@
+substitutions:
+  node_name: sonoff_basic_35d32e
+  device_verbose_name: Sonoff Basic 35D32E
+
+packages:
+  wifi: !include common/wifi.yaml
+  device_base: !include common/sonoff_basic_base_switch.yaml

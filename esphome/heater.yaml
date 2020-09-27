@@ -1,6 +1,7 @@
 # sonoff_324ADA
 substitutions:
   node_name: heater
+  node_comment: Sonoff Basic 324ADA
   device_verbose_name: Heater
   switch_icon: mdi:radiator
 

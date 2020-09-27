@@ -1,5 +1,6 @@
 substitutions:
   node_name: man_cave_kitchen_ceiling_one
+  node_comment: Sonoff Basic 0FBC52
   device_verbose_name: Man Cave Kitchen Ceiling One
 
 packages:

@@ -1,0 +1,7 @@
+substitutions:
+  node_name: man_cave_kitchen_ceiling_one
+  device_verbose_name: Man Cave Kitchen Ceiling One
+
+packages:
+  wifi: !include common/wifi.man_cave.yaml
+  device_base: !include common/sonoff_basic_base_light.yaml

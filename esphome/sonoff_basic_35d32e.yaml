@@ -1,6 +1,7 @@
 substitutions:
   node_name: sonoff_basic_35d32e
   device_verbose_name: Sonoff Basic 35D32E
+  switch_icon: mdi:light-switch
 
 packages:
   wifi: !include common/wifi.yaml

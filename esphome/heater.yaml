@@ -1,0 +1,9 @@
+# sonoff_324ADA
+substitutions:
+  node_name: heater
+  device_verbose_name: Heater
+  switch_icon: mdi:radiator
+
+packages:
+  wifi: !include common/wifi.man_cave.yaml
+  device_base: !include common/sonoff_basic_base_switch.yaml

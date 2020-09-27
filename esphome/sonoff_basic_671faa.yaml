@@ -1,48 +1,8 @@
 substitutions:
   node_name: sonoff_basic_671faa
   device_verbose_name: Sonoff Basic 671FAA
+  switch_icon: mdi:light-switch
 
 packages:
   wifi: !include common/wifi.yaml
-  device_base: !include common/sonoff_basic_base_v1.yaml
-
-binary_sensor:
-  - platform: gpio
-    id: button_gpio_14
-    name: ${device_verbose_name} Switch
-    pin:
-      number: GPIO14
-      mode: INPUT_PULLUP
-      inverted: True
-    on_state:
-      then:
-        - light.toggle: light_comp
-  - platform: gpio
-    id: button_gpio_0
-    name: ${device_verbose_name} Button
-    pin:
-      number: GPIO0
-      mode: INPUT_PULLUP
-      inverted: True
-    on_press:
-      - light.toggle: light_comp
-
-output:
-  - platform: gpio
-    pin: GPIO12
-    id: relay
-
-light:
-  - platform: binary
-    name: ${device_verbose_name}
-    id: light_comp
-    output: relay
-
-
-# substitutions:
-#   node_name: sonoff_basic_671faa
-#   device_verbose_name: Sonoff Basic 671FAA
-
-# packages:
-#   wifi: !include common/wifi.yaml
-#   device_base: !include common/sonoff_basic_base_switch.yaml
+  device_base: !include common/sonoff_basic_base_switch.yaml

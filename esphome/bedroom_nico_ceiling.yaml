@@ -1,0 +1,11 @@
+substitutions:
+  node_name: bedroom_nico_ceiling
+  device_verbose_name: Bedroom Nico Ceiling
+
+packages:
+  wifi: !include common/wifi.hall.yaml
+  device_base: !include common/shelly_1_base.yaml
+
+# packages:
+#   wifi: !include common/wifi.yaml
+#   device_base: !include common/shelly_1_base_blank.yaml

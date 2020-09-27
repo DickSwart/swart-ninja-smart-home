@@ -1,0 +1,7 @@
+substitutions:
+  node_name: bathroom_fan
+  device_verbose_name: Bathroom
+
+packages:
+  wifi: !include common/wifi.hall.yaml
+  device_base: !include common/sonoff_basic_base_fan.yaml

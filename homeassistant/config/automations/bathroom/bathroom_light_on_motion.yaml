@@ -9,7 +9,7 @@ trigger:
 condition:
   - condition: numeric_state
     entity_id: sensor.bathroom_multisensor_luminance
-    below: 60
+    below: 40
   - condition: state
     entity_id: light.bathroom_zw111_nano_dimmer
     state: 'off'

@@ -30,7 +30,7 @@ binary_sensor:
       inverted: True
     on_state:
       then:
-        - switch.toggle: switch_relay
+        - fan.toggle: fanid
   # Button on the Sonoff Basic
   - platform: gpio
     id: button_gpio_0
@@ -44,7 +44,7 @@ binary_sensor:
       then:
         - switch.toggle: switch_restart
     on_press:
-      - switch.toggle: switch_relay
+      - fan.toggle: fanid
 
 text_sensor:
   - <<: !include text_sensor/version.config.yaml
@@ -53,11 +53,17 @@ switch:
   - platform: restart
     name: ${device_verbose_name} Restart
     id: switch_restart
+
+output:
   - platform: gpio
-    icon: ${switch_icon}
-    name: ${device_verbose_name}
     pin: GPIO12
-    id: switch_relay
+    id: relay
+
+fan:
+  - platform: binary
+    name: ${device_verbose_name}
+    id: fanid
+    output: relay
 
 status_led:
   pin:

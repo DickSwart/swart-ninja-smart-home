@@ -1,0 +1,8 @@
+esphome:
+  name: ${node_name}
+  platform: ESP8266
+  board: esp01_1m
+  build_path: ./build/${node_name}
+
+ota:
+

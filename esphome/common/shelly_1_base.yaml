@@ -1,0 +1,50 @@
+esphome:
+  name: ${node_name}
+  platform: ESP8266
+  board: esp01_1m
+  build_path: ./build/${node_name}
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+sensor:
+  - <<: !include sensor/uptime.config.yaml
+  - <<: !include sensor/wifi_signal.config.yaml
+
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: shelly_1_relay
+
+binary_sensor:
+  - platform: gpio
+    internal: true
+    id: switchid
+    pin:
+      number: GPIO5
+      #mode: INPUT_PULLUP
+      #inverted: True
+    on_state:
+      then:
+        - light.toggle: lightid
+
+light:
+  - platform: binary
+    name: ${device_verbose_name}
+    output: shelly_1_relay
+    id: lightid
+
+switch:
+  - platform: restart
+    name: ${device_verbose_name} Restart
+    id: switch_restart
+
+text_sensor:
+  - <<: !include text_sensor/version.config.yaml

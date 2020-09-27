@@ -16,7 +16,5 @@
 "light.*multisensor*":
   icon: mdi:alarm-light
 
-# "switch.*electric_blanket*":
-#   icon: mdi:bed-empty
 "switch.unifi_*":
   icon: mdi:network

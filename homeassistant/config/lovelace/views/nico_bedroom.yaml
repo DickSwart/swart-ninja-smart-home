@@ -46,19 +46,7 @@ cards:
           show_door: false
           show_motion: true
 
-      - title: Electric Blanket
-        type: entities
-        show_header_toggle: false
-        entities:
-          - entity: switch.bedroom_nico_electric_blanket
-            name: Switch
-          - entity: sensor.bedroom_nico_electric_blanket_current
-            name: Current
-          - entity: sensor.bedroom_nico_electric_blanket_energy
-            name: Energy
-          - entity: sensor.bedroom_nico_electric_blanket_power
-            name: Power
-          - entity: sensor.bedroom_nico_electric_blanket_power_factor
-            name: Power factor
-          - entity: sensor.bedroom_nico_electric_blanket_voltage
-            name: Voltage
+      - !include
+        - ../templates/esphome_sonoff_pow_entities_card.yaml
+        - node_name: bedroom_nico_electric_blanket
+          card_title: Electric Blanket

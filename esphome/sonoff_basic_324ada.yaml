@@ -1,0 +1,10 @@
+# sonoff_324ADA
+substitutions:
+  node_name: sonoff_basic_324ada
+  node_comment: Sonoff Basic 324ADA
+  device_verbose_name: Sonoff Basic 324ADA
+  switch_icon: mdi:light-switch
+
+packages:
+  wifi: !include common/wifi/main.yaml
+  device_base: !include common/sonoff_basic_base_switch.yaml

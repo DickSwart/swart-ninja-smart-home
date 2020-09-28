@@ -1,6 +1,7 @@
 # Device: Shelly 1 2292F6
 substitutions:
   node_name: man_cave_ceiling
+  node_comment: Shelly 1 2292F6
   device_verbose_name: Man Cave Ceiling
 
 packages:

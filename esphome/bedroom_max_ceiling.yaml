@@ -1,0 +1,8 @@
+substitutions:
+  node_name: bedroom_max_ceiling
+  node_comment: Sonoff Basic 184F03
+  device_verbose_name: Bedroom Max Ceiling
+
+packages:
+  wifi: !include common/wifi/not.hall.yaml
+  device_base: !include common/sonoff_basic_base_light.yaml

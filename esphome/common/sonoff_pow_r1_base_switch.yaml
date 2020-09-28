@@ -15,9 +15,6 @@ api:
 
 ota:
 
-web_server:
-  port: 80
-
 sensor:
   - <<: !include sensor/uptime.config.yaml
   - <<: !include sensor/wifi_signal.config.yaml

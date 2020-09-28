@@ -7,6 +7,3 @@ substitutions:
 packages:
   wifi: !include common/wifi/not.hall.yaml
   device_base: !include common/delta_grid_smart_plug_2g_base.yaml
-
-# web_server:
-#   port: 80

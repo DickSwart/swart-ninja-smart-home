@@ -7,6 +7,3 @@ substitutions:
 packages:
   wifi: !include common/wifi/main.yaml
   device_base: !include common/sonoff_basic_base_switch.yaml
-
-# web_server:
-#   port: 80

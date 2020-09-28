@@ -87,8 +87,8 @@ cards:
           - entity: light.man_cave_ceiling
           - entity: light.man_cave_kitchen_ceiling_one
           - entity: light.man_cave_kitchen_ceiling_two
-          - entity: switch.living_room_cupboard_plug_one
-          - entity: switch.living_room_cupboard_plug_two
+          # - entity: switch.living_room_cupboard_plug_one
+          # - entity: switch.living_room_cupboard_plug_two
           - entity: switch.living_room_heat_pump
           - entity: switch.man_cave_heat_pump
           - entity: switch.office_ceiling_light

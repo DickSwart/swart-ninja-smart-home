@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-switch.office_ceiling_light:
+light.office_ceiling:
   name: Office Light
   description: The office ceiling light.
   display_categories: LIGHT

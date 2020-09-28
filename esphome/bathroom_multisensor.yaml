@@ -1,5 +1,6 @@
 substitutions:
   node_name: bathroom_multisensor
+  node_comment: "MultiSensor (ID: E44E60)"
   device_verbose_name: Bathroom MultiSensor
 
 packages:

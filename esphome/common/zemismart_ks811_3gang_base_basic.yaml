@@ -1,0 +1,47 @@
+# esphome:
+#   name: ${node_name}
+#   comment: ${node_comment}
+#   platform: ESP8266
+#   board: esp01_1m
+#   build_path: ./build/${node_name}
+
+# captive_portal:
+
+# # Enable logging
+# logger:
+
+# # Enable Home Assistant API
+# api:
+
+# ota:
+
+# status_led:
+#   pin:
+#     number: GPIO2
+#     inverted: yes
+
+packages:
+  device_base: !include zemismart_ks811_3gang_base_min.yaml
+
+sensor:
+  - <<: !include sensor/uptime.config.yaml
+  - <<: !include sensor/wifi_signal.config.yaml
+
+output:
+  - platform: gpio
+    pin: GPIO13
+    id: relay01
+  - platform: gpio
+    pin: GPIO12
+    id: relay02
+  - platform: gpio
+    pin: GPIO14
+    id: relay03
+
+switch:
+  - platform: restart
+    name: ${device_verbose_name} Restart
+    id: switch_restart
+
+text_sensor:
+  - <<: !include text_sensor/version.config.yaml

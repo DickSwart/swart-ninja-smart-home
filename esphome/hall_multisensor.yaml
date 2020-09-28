@@ -1,5 +1,6 @@
 substitutions:
   node_name: hall_multisensor
+  node_comment: "MultiSensor (ID: E44EC2)"
   device_verbose_name: Hall MultiSensor
 
 packages:

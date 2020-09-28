@@ -1,0 +1,21 @@
+esphome:
+  name: ${node_name}
+  comment: ${node_comment}
+  platform: ESP8266
+  board: esp01_1m
+  build_path: ./build/${node_name}
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+status_led:
+  pin:
+    number: GPIO2
+    inverted: yes

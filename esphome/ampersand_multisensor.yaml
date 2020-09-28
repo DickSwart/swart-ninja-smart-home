@@ -1,5 +1,6 @@
 substitutions:
   node_name: ampersand_multisensor
+  node_comment: "MultiSensor (ID: 53499B)"
   device_verbose_name: Ampersand MultiSensor
 
 packages:

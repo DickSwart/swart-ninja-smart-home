@@ -1,0 +1,37 @@
+# Device: D1Mini 14B847
+substitutions:
+  node_name: d1mini_14b847_4_channel_relay
+  node_comment: "4 Channel Relay (ID: 14B847)"
+  device_verbose_name: D1Mini 14B847 4 Channel Relay
+
+packages:
+  wifi: !include common/wifi/not.hall.yaml
+  device_base: !include common/d1mini_base.yaml
+
+switch:
+  # Relay 1
+  - platform: gpio
+    icon: mdi:bed-empty
+    name: Bedroom Master Electric Blanket Tamara
+    pin: GPIO5
+    id: switch_relay01
+  # Relay 2
+  - platform: gpio
+    icon: mdi:bed-empty
+    name: Bedroom Master Electric Blanket Dick
+    pin: GPIO4
+    id: switch_relay02
+  # Relay 3 - Not Currently In Use
+  - platform: gpio
+    icon: mdi:light-switch
+    name: Relay 03
+    pin: GPIO12
+    id: switch_relay03
+    internal: True
+  # Relay 4 - Not Currently In Use
+  - platform: gpio
+    icon: mdi:light-switch
+    name: Relay 04
+    pin: GPIO13
+    id: switch_relay04
+    internal: True

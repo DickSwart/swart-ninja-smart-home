@@ -1,0 +1,166 @@
+substitutions:
+  node_name: office_3gang_switch
+  node_comment: Zemismart KS811 3 Gang 485539
+  device_verbose_name: Office 3Gang Switch
+
+packages:
+  wifi: !include common/wifi/not.man_cave.yaml
+  device_base: !include common/zemismart_ks811_3gang_base_basic.yaml
+
+# Available Outputs
+# - relay01
+# - relay02
+# - relay03
+
+binary_sensor:
+  # Top
+  - platform: gpio
+    id: button_top
+    pin:
+      number: GPIO16
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+    - timing:
+        - ON for at most 1s
+        - OFF for at most 1s
+        - ON for at most 1s
+        - OFF for at least 0.2s
+      then:
+        - logger.log: "Double Clicked"
+        - if:
+            condition:
+              api.connected:
+            then:
+              - homeassistant.event:
+                  event: esphome.${node_name}
+                  data:
+                    data: BTN_TOP_DOUBLE
+    - timing:
+        - ON for 1s to 5s
+        - OFF for at least 0.5s
+      then:
+        - logger.log: "Single Long Clicked"
+        - if:
+            condition:
+              api.connected:
+            then:
+              - homeassistant.event:
+                  event: esphome.${node_name}
+                  data:
+                    data: BTN_TOP_LONG
+    - timing:
+        - ON for at most 1s
+        - OFF for at least 0.5s
+      then:
+        - logger.log: "Single Short Clicked"
+        - light.toggle: light_top
+  # Middle
+  - platform: gpio
+    id: button_middle
+    pin:
+      number: GPIO5
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+    - timing:
+        - ON for at most 1s
+        - OFF for at most 1s
+        - ON for at most 1s
+        - OFF for at least 0.2s
+      then:
+        - logger.log: "Double Clicked"
+        - if:
+            condition:
+              api.connected:
+            then:
+              - homeassistant.event:
+                  event: esphome.${node_name}
+                  data:
+                    data: BTN_MIDDLE_DOUBLE
+    - timing:
+        - ON for 1s to 5s
+        - OFF for at least 0.5s
+      then:
+        - logger.log: "Single Long Clicked"
+        - if:
+            condition:
+              api.connected:
+            then:
+              - homeassistant.event:
+                  event: esphome.${node_name}
+                  data:
+                    data: BTN_MIDDLE_LONG
+    - timing:
+        - ON for at most 1s
+        - OFF for at least 0.5s
+      then:
+        - logger.log: "Single Short Clicked"
+        - light.toggle: light_middle
+  # Bottom
+  - platform: gpio
+    id: button_bottom
+    pin:
+      number: GPIO4
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+    - timing:
+        - ON for at most 1s
+        - OFF for at most 1s
+        - ON for at most 1s
+        - OFF for at least 0.2s
+      then:
+        - logger.log: "Double Clicked"
+        - if:
+            condition:
+              api.connected:
+            then:
+              - homeassistant.event:
+                  event: esphome.${node_name}
+                  data:
+                    data: BTN_BOTTOM_DOUBLE
+    - timing:
+        - ON for 1s to 5s
+        - OFF for at least 0.5s
+      then:
+        - logger.log: "Single Long Clicked"
+        - if:
+            condition:
+              api.connected:
+            then:
+              - homeassistant.event:
+                  event: esphome.${node_name}
+                  data:
+                    data: BTN_BOTTOM_LONG
+    - timing:
+        - ON for at most 1s
+        - OFF for at least 0.5s
+      then:
+        - logger.log: "Single Short Clicked"
+        - if:
+            condition:
+              api.connected:
+            then:
+              - homeassistant.event:
+                  event: esphome.${node_name}
+                  data:
+                    data: BTN_BOTTOM_SINGLE
+            else:
+              - logger.log: "Not connected to API!"
+              - switch.toggle: switch_relay03
+
+light:
+  - platform: binary
+    name: Office Ceiling
+    output: relay01
+    id: light_top
+  - platform: binary
+    name: Office Shelf
+    output: relay02
+    id: light_middle
+
+switch:
+  - platform: output
+    id: switch_relay03
+    output: relay03

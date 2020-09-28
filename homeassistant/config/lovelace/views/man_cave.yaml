@@ -220,47 +220,21 @@ cards:
               - entity: sensor.man_cave_multisensor_uptime
                 name: Uptime
 
+          - !include
+            - ../templates/esphome_sonoff_pow_folding_entity.yaml
+            - node_name: computer_desk
+              entity_name: Computer Desk
 
-          - head: switch.computer_desk
-            type: custom:fold-entity-row
-            entities:
-              - entity: sensor.computer_desk_current
-                name: Current
-              - entity: sensor.computer_desk_energy
-                name: Energy
-              - entity: sensor.computer_desk_power
-                name: Power
-              - entity: sensor.computer_desk_power_factor
-                name: Power factor
-              - entity: sensor.computer_desk_voltage
-                name: Voltage
-          - head: switch.work_station
-            type: custom:fold-entity-row
-            entities:
-              - entity: sensor.work_station_current
-                name: Current
-              - entity: sensor.work_station_energy
-                name: Energy
-              - entity: sensor.work_station_power
-                name: Power
-              - entity: sensor.work_station_power_factor
-                name: Power factor
-              - entity: sensor.work_station_voltage
-                name: Voltage
-          - head: switch.ender_3_safe
-            type: custom:fold-entity-row
-            entities:
-              - entity: switch.ender_3
-              - entity: sensor.ender_3_pow_current
-                name: Current
-              - entity: sensor.ender_3_pow_energy
-                name: Energy
-              - entity: sensor.ender_3_pow_power
-                name: Power
-              - entity: sensor.ender_3_pow_power_factor
-                name: Power factor
-              - entity: sensor.ender_3_pow_voltage
-                name: Voltage
+          - !include
+            - ../templates/esphome_sonoff_pow_folding_entity.yaml
+            - node_name: work_station
+              entity_name: Work Station
+
+          - !include
+            - ../templates/esphome_sonoff_pow_folding_entity.yaml
+            - node_name: ender_3
+              entity_name: Ender 3
+
           - head: binary_sensor.ender_3_octoprint
             items:
               - entity: sensor.octoprint_actual_tool0_temp

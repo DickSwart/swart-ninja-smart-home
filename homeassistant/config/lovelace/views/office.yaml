@@ -30,19 +30,19 @@ cards:
             cards:
               - name: Ceiling
                 type: custom:button-card
-                entity: switch.office_ceiling_light
+                entity: light.office_ceiling
                 hold_action:
                   action: more-info
               - name: Shelf
                 type: custom:button-card
-                entity: switch.office_shelf_light
+                entity: light.office_shelf
                 hold_action:
                   action: more-info
-              - name: Heater
-                type: custom:button-card
-                entity: switch.office_heater
-                hold_action:
-                  action: more-info
+              # - name: Heater
+              #   type: custom:button-card
+              #   entity: switch.office_heater
+              #   hold_action:
+              #     action: more-info
 
           - type: horizontal-stack
             cards:

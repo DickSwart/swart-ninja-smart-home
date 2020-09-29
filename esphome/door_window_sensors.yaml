@@ -10,23 +10,33 @@ packages:
 
 binary_sensor:
   - platform: gpio
-    pin : D1
+    pin:
+      number: D1
+      inverted: True
     name: Man Cave Back Door
     device_class: door
   - platform: gpio
-    pin : D2
+    pin:
+      number: D2
+      inverted: True
     name: Man Cave Stairs Door
     device_class: door
   - platform: gpio
-    pin : D5
+    pin:
+      number: D5
+      inverted: True
     name: Office Window One
     device_class: window
   - platform: gpio
-    pin : D6
+    pin:
+      number: D6
+      inverted: True
     name: Office Window Two
     device_class: window
   # - platform: gpio
-  #   pin : D7
+  #   pin:
+  #     number: D7
+  #     inverted: True
   #   name: ${device_verbose_name} Door
   #   device_class: window
 

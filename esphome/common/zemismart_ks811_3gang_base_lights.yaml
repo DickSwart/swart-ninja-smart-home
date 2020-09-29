@@ -47,7 +47,7 @@ binary_sensor:
       then:
         - logger.log: "Double Clicked"
     - timing:
-        - ON for 1s to 5s
+        - ON for at least 1.1s
         - OFF for at least 0.5s
       then:
         - logger.log: "Single Long Clicked"
@@ -73,7 +73,7 @@ binary_sensor:
       then:
         - logger.log: "Double Clicked"
     - timing:
-        - ON for 1s to 5s
+        - ON for at least 1.1s
         - OFF for at least 0.5s
       then:
         - logger.log: "Single Long Clicked"
@@ -99,7 +99,7 @@ binary_sensor:
       then:
         - logger.log: "Double Clicked"
     - timing:
-        - ON for 1s to 5s
+        - ON for at least 1.1s
         - OFF for at least 0.5s
       then:
         - logger.log: "Single Long Clicked"

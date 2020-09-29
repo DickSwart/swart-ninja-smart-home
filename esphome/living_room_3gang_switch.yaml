@@ -10,7 +10,7 @@
 # Bottom Button
 #   - Double:   Open Living Room Curtains
 #   - Long:     Close Living Room Curtains
-#   - Single:   Send event (BTN_BOTTOM_SINGLE) or Toggle Relay 3, if API not available
+#   - Single:   Stop Living Room Curtains or Toggle Relay 3, if API not available
 
 # Available Outputs
 # - relay01
@@ -62,7 +62,7 @@ binary_sensor:
                   data:
                     data: BTN_TOP_DOUBLE
     - timing:
-        - ON for 1s to 5s
+        - ON for at least 1.1s
         - OFF for at least 0.5s
       then:
         - logger.log: "Single Long Clicked"
@@ -104,7 +104,7 @@ binary_sensor:
                   data:
                     data: BTN_MIDDLE_DOUBLE
     - timing:
-        - ON for 1s to 5s
+        - ON for at least 1.1s
         - OFF for at least 0.5s
       then:
         - logger.log: "Single Long Clicked"
@@ -157,7 +157,7 @@ binary_sensor:
                   data:
                     entity_id: cover.living_room_sliding_door_curtain
     - timing:
-        - ON for 1s to 5s
+        - ON for at least 1.1s
         - OFF for at least 0.5s
       then:
         - logger.log: "Single Long Clicked"
@@ -179,10 +179,11 @@ binary_sensor:
             condition:
               api.connected:
             then:
-              - homeassistant.event:
-                  event: esphome.${node_name}
+              # Stop Living Room Curtains
+              - homeassistant.service:
+                  service: cover.stop_cover
                   data:
-                    data: BTN_BOTTOM_SINGLE
+                    entity_id: cover.living_room_sliding_door_curtain
             else:
               - switch.toggle: switch_relay03
 

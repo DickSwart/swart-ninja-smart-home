@@ -70,6 +70,8 @@ cards:
             name: Deep Stack
           - entity: sensor.docker_esphome_state
             name: ESPHome
+          - entity: sensor.docker_tasmoadmin_state
+            name: TasmoAdmin
       - break
 
       - type: custom:swipe-card

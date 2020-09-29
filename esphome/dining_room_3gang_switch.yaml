@@ -8,8 +8,8 @@
 #   - Long:     Send event (BTN_MIDDLE_LONG)
 #   - Single:   Toggle Relay 2
 # Bottom Button
-#   - Double:   Send event (BTN_BOTTOM_DOUBLE)
-#   - Long:     Send event (BTN_BOTTOM_LONG)
+#   - Double:   Open Dining Room Curtains
+#   - Long:     Close Dining Room Curtains
 #   - Single:   Send event (BTN_BOTTOM_SINGLE) or Toggle Relay 3, if API not available
 
 # Available Outputs
@@ -18,12 +18,12 @@
 # - relay03
 
 substitutions:
-  node_name: office_3gang_switch
-  node_comment: ID 485539
-  device_verbose_name: Office 3Gang Switch
+  node_name: dining_room_3gang_switch
+  node_comment: "ID 48A182"
+  device_verbose_name: Dining Room 3Gang Switch
 
 packages:
-  wifi: !include common/wifi/not.man_cave.yaml
+  wifi: !include common/wifi/not.hall.yaml
   device_base: !include common/zemismart_ks811_3gang_base_basic.yaml
 
 binary_sensor:
@@ -140,10 +140,11 @@ binary_sensor:
             condition:
               api.connected:
             then:
-              - homeassistant.event:
-                  event: esphome.${node_name}
+              # Open Dining Room Curtains
+              - homeassistant.service:
+                  service: cover.open_cover
                   data:
-                    data: BTN_BOTTOM_DOUBLE
+                    entity_id: cover.dining_room_curtains
     - timing:
         - ON for 1s to 5s
         - OFF for at least 0.5s
@@ -153,10 +154,11 @@ binary_sensor:
             condition:
               api.connected:
             then:
-              - homeassistant.event:
-                  event: esphome.${node_name}
+              # Close Dining Room Curtains
+              - homeassistant.service:
+                  service: cover.close_cover
                   data:
-                    data: BTN_BOTTOM_LONG
+                    entity_id: cover.dining_room_curtains
     - timing:
         - ON for at most 1s
         - OFF for at least 0.5s
@@ -171,16 +173,15 @@ binary_sensor:
                   data:
                     data: BTN_BOTTOM_SINGLE
             else:
-              - logger.log: "Not connected to API!"
               - switch.toggle: switch_relay03
 
 light:
   - platform: binary
-    name: Office Ceiling
+    name: Dining Room Ceiling
     output: relay01
     id: light_top
   - platform: binary
-    name: Office Shelf
+    name: Backyard
     output: relay02
     id: light_middle
 

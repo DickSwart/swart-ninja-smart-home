@@ -6,10 +6,10 @@
 # Middle Button
 #   - Double:   Send event (BTN_MIDDLE_DOUBLE)
 #   - Long:     Send event (BTN_MIDDLE_LONG)
-#   - Single:   Toggle Relay 2
+#   - Single:   Toggle Mood Light or or Toggle Relay 2, if API not available
 # Bottom Button
-#   - Double:   Send event (BTN_BOTTOM_DOUBLE)
-#   - Long:     Send event (BTN_BOTTOM_LONG)
+#   - Double:   Open Living Room Curtains
+#   - Long:     Close Living Room Curtains
 #   - Single:   Send event (BTN_BOTTOM_SINGLE) or Toggle Relay 3, if API not available
 
 # Available Outputs
@@ -18,13 +18,14 @@
 # - relay03
 
 substitutions:
-  node_name: office_3gang_switch
-  node_comment: ID 485539
-  device_verbose_name: Office 3Gang Switch
+  node_name: living_room_3gang_switch
+  node_comment: "ID 721BEC"
+  device_verbose_name: Living Room 3Gang Switch
 
 packages:
-  wifi: !include common/wifi/not.man_cave.yaml
+  wifi: !include common/wifi/not.hall.yaml
   device_base: !include common/zemismart_ks811_3gang_base_basic.yaml
+
 
 binary_sensor:
   # Top
@@ -120,7 +121,17 @@ binary_sensor:
         - OFF for at least 0.5s
       then:
         - logger.log: "Single Short Clicked"
-        - light.toggle: light_middle
+        - if:
+            condition:
+              api.connected:
+            then:
+              # Toggle Mood Light
+              - homeassistant.service:
+                  service: light.toggle
+                  data:
+                    entity_id: light.living_room_mood
+            else:
+              - switch.toggle: switch_relay02
   # Bottom
   - platform: gpio
     id: button_bottom
@@ -140,10 +151,11 @@ binary_sensor:
             condition:
               api.connected:
             then:
-              - homeassistant.event:
-                  event: esphome.${node_name}
+              # Open Living Room Curtains
+              - homeassistant.service:
+                  service: cover.open_cover
                   data:
-                    data: BTN_BOTTOM_DOUBLE
+                    entity_id: cover.living_room_sliding_door_curtain
     - timing:
         - ON for 1s to 5s
         - OFF for at least 0.5s
@@ -153,10 +165,11 @@ binary_sensor:
             condition:
               api.connected:
             then:
-              - homeassistant.event:
-                  event: esphome.${node_name}
+              # Close Living Room Curtains
+              - homeassistant.service:
+                  service: cover.close_cover
                   data:
-                    data: BTN_BOTTOM_LONG
+                    entity_id: cover.living_room_sliding_door_curtain
     - timing:
         - ON for at most 1s
         - OFF for at least 0.5s
@@ -171,20 +184,18 @@ binary_sensor:
                   data:
                     data: BTN_BOTTOM_SINGLE
             else:
-              - logger.log: "Not connected to API!"
               - switch.toggle: switch_relay03
 
 light:
   - platform: binary
-    name: Office Ceiling
+    name: Living Room Ceiling
     output: relay01
     id: light_top
-  - platform: binary
-    name: Office Shelf
-    output: relay02
-    id: light_middle
 
 switch:
+  - platform: output
+    id: switch_relay02
+    output: relay02
   - platform: output
     id: switch_relay03
     output: relay03

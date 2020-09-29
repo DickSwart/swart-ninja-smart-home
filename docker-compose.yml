@@ -137,7 +137,7 @@ services:
   esphome:
     container_name: esphome
     image: esphome/esphome
-    restart: always
+    restart: "no"
     network_mode: host
     volumes:
       - ~/docker/swart-ninja-smart-home/esphome:/config:rw
@@ -146,9 +146,19 @@ services:
       - 6123:6123
     environment:
       TZ: ${TZ}
-    depends_on:
-      - homeassistant
+
+  tasmoadmin:
+    container_name: tasmoadmin
+    image: raymondmm/tasmoadmin
+    ports:
+      - 9999:80
+    volumes:
+      - tasmoadmin_data:/data
+    restart: "no"
+    environment:
+      TZ: ${TZ}
 
 volumes:
   deepstack:
   chronograf_data:
+  tasmoadmin_data:

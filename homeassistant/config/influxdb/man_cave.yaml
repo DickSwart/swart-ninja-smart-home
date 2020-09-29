@@ -23,7 +23,6 @@
 
 # Ender 3
 - sensor.ender_3_current
-- sensor.ender_3_energy
-- sensor.ender_3_power_factor
 - sensor.ender_3_power
 - sensor.ender_3_voltage
+- sensor.ender_3_wifi_signal

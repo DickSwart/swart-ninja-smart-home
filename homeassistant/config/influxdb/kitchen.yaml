@@ -10,8 +10,8 @@
 - binary_sensor.kitchen_multisensor_motion
 - binary_sensor.kitchen_motion_led_motion
 - binary_sensor.kitchen_motion
-- sensor.kitchen_motionsensor_wifi
-- sensor.kitchen_multisensor_wifi
+- sensor.kitchen_motion_led_wifi_signal
+- sensor.kitchen_multisensor_wifi_signal
 - sensor.kitchen_multisensor_humidity
 - sensor.kitchen_multisensor_luminance
 - sensor.kitchen_multisensor_temperature

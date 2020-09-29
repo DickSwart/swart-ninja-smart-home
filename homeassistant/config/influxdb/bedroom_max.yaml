@@ -8,5 +8,6 @@
 # URL: https://www.home-assistant.io/integrations/influxdb/#include
 ##############################################################################################
 - sensor.ampersand_multisensor_humidity
+- sensor.ampersand_multisensor_wifi_signal
 - sensor.ampersand_multisensor_luminance
 - sensor.ampersand_multisensor_temperature

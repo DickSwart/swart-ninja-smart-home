@@ -13,5 +13,5 @@
 - binary_sensor.hlc_motion
 - sensor.hall_multisensor_humidity
 - sensor.hall_multisensor_luminance
-- sensor.hall_multisensor_wifi
+- sensor.hall_multisensor_wifi_signal
 - sensor.hall_multisensor_temperature

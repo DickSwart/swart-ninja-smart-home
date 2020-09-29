@@ -1,0 +1,41 @@
+# lovelace_gen
+# Available parameters:
+# node_name   (required)
+# card_title  (optional)
+# show_led    (optional)
+# show_door   (optional)
+# show_motion (optional)
+type: entities
+{% if card_title %}
+title: {{ card_title }}
+{% else %}
+title: MultiSensor
+{% endif %}
+show_header_toggle: false
+entities:
+{% if show_led %}
+  - entity: light.{{ node_name }}
+    name: LED
+{% endif %}
+{% if show_motion %}
+  - entity: binary_sensor.{{ node_name }}_motion
+    name: Motion
+{% endif %}
+{% if show_door %}
+  - entity: binary_sensor.{{ node_name }}_door
+    name: Door
+{% endif %}
+  - entity: sensor.{{ node_name }}_temperature
+    name: Temperature
+  - entity: sensor.{{ node_name }}_humidity
+    name: Humidity
+  - entity: sensor.{{ node_name }}_luminance
+    name: Luminance
+  - entity: sensor.{{ node_name }}_wifi_signal
+    name: WiFi
+  - entity: binary_sensor.{{ node_name }}_status
+    name: Status
+  - entity: sensor.{{ node_name }}_uptime
+    name: Uptime
+  - entity: sensor.{{ node_name }}_esphome_version
+    name: ESPHome Version

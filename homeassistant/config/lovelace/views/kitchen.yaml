@@ -46,13 +46,13 @@ cards:
       - break
 
       - !include
-        - ../templates/esphome_multisensor_graphs_card.yaml
+        - ../templates/esphome_multisensor_graphs.yaml
         - node_name: kitchen_multisensor
 
       - break
 
       - !include
-        - ../templates/esphome_multisensor_entities_card.yaml
+        - ../templates/esphome_multisensor_entities.yaml
         - node_name: kitchen_multisensor
           show_led: true
           show_door: false

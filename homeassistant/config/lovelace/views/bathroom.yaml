@@ -30,13 +30,13 @@ cards:
       - break
 
       - !include
-        - ../templates/esphome_multisensor_graphs_card.yaml
+        - ../templates/esphome_multisensor_graphs.yaml
         - node_name: bathroom_multisensor
 
       - break
 
       - !include
-        - ../templates/esphome_multisensor_entities_card.yaml
+        - ../templates/esphome_multisensor_entities.yaml
         - node_name: bathroom_multisensor
           show_led: false
           show_door: true

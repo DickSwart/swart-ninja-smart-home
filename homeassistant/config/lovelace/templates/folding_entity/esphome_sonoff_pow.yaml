@@ -4,7 +4,11 @@
 # entity_name  (optional)
 head:
   entity: binary_sensor.{{ node_name }}_status
+{% if entity_name %}
   name: {{entity_name}}
+{% else %}
+  name: Sonoff POW
+{% endif %}
 type: 'custom:fold-entity-row'
 items:
   - entity: switch.{{ node_name }}

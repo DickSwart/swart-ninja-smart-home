@@ -34,19 +34,19 @@ cards:
       - break
 
       - !include
-        - ../templates/esphome_multisensor_graphs_card.yaml
+        - ../templates/esphome_multisensor_graphs.yaml
         - node_name: bedroom_nico_multisensor
 
       - break
 
       - !include
-        - ../templates/esphome_multisensor_entities_card.yaml
+        - ../templates/esphome_multisensor_entities.yaml
         - node_name: bedroom_nico_multisensor
           show_led: true
           show_door: false
           show_motion: true
 
       - !include
-        - ../templates/esphome_sonoff_pow_entities_card.yaml
+        - ../templates/esphome_sonoff_pow_entities.yaml
         - node_name: bedroom_nico_electric_blanket
           card_title: Electric Blanket

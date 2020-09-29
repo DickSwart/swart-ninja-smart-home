@@ -4,10 +4,16 @@
 # show_led    (optional)
 # show_door   (optional)
 # show_motion (optional)
-type: entities
-title: MultiSensor
-show_header_toggle: false
-entities:
+# entity_name (optional)
+head:
+  entity: binary_sensor.{{ node_name }}_status
+{% if entity_name %}
+  name: {{entity_name}}
+{% else %}
+  name: MultiSensor
+{% endif %}
+type: 'custom:fold-entity-row'
+items:
 {% if show_led %}
   - entity: light.{{ node_name }}
     name: LED

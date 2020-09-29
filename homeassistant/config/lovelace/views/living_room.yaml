@@ -82,11 +82,11 @@ cards:
             dry: false
 
       - !include
-        - ../templates/esphome_multisensor_graphs_card.yaml
+        - ../templates/esphome_multisensor_graphs.yaml
         - node_name: living_room_multisensor
 
       - !include
-        - ../templates/esphome_multisensor_entities_card.yaml
+        - ../templates/esphome_multisensor_entities.yaml
         - node_name: living_room_multisensor
           show_led: true
           show_door: false

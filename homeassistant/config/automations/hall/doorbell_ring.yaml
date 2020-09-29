@@ -1,0 +1,65 @@
+---
+id: 4fd43699-80b9-4a63-b69f-9535fc023891
+alias: doorbell_ring
+description: Doorbell ring anounce on alexa in man cave or send notification.
+mode: queued
+
+trigger:
+  platform: state
+  entity_id: binary_sensor.doorbell
+  to: 'on'
+variables:
+  internal_snapshot_path: !secret internal_snapshot_path
+  external_snapshot_path: !secret external_snapshot_path
+  image_name: "deepstack_object_fdc_latest.jpg"
+  internal_image_path: "{{internal_snapshot_path}}/{{image_name}}"
+  external_image_path: "{{external_snapshot_path}}/{{image_name}}"
+action:
+  - choose:
+      # IF between midnight and 6am Dimmed
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.house_mode_away
+            state: 'on'
+        sequence:
+          - condition: state
+            entity_id: input_boolean.notifications_text
+            state: 'on'
+          - service: camera.snapshot
+            data:
+              entity_id: camera.fdc
+              filename: "{{ internal_image_path }}"
+          - service: notify.mobile_app_parents
+            data:
+              message: "Ding! Someone rang the doorbell."
+              data:
+                attachment:
+                  url: "{{ external_image_path }}"
+                  content-type: jpeg
+                  hide-thumbnail: false
+    # ELSE full brightness
+    default:
+      - condition: state
+        entity_id: input_boolean.notifications_audio
+        state: 'on'
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.man_cave_echo_dot
+          volume_level: 1
+      - delay: 2
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.man_cave_echo_dot
+          media_content_id: amzn_sfx_doorbell_chime_02
+          media_content_type: sound
+      - delay: 1
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.man_cave_echo_dot
+          media_content_id: amzn_sfx_doorbell_chime_02
+          media_content_type: sound
+      - delay: 5
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.man_cave_echo_dot
+          volume_level: 0.5

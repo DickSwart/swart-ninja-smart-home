@@ -56,9 +56,10 @@ cards:
 
       - type: calendar
         entities:
-          - calendar.holidays_in_new_zealand
-          - calendar.home_assistant
-          - calendar.school_events
+          - calendar.public_holidays
+          - calendar.ios_family
+          - calendar.ios_schoolholiday
+          - calendar.birthdays
 
       - type: entity-filter
         show_empty: false

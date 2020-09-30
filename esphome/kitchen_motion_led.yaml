@@ -15,7 +15,7 @@ binary_sensor:
 
 light:
   - platform: monochromatic
-    name: ${device_verbose_name}
+    name: Kitchen Cupboard
     output: output_led_light
 
 output:

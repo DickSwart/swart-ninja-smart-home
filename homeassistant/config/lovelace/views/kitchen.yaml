@@ -33,7 +33,7 @@ cards:
                 template: motion_sensor_btn
                 type: custom:button-card
 
-          - entity: light.kitchen_motion_led
+          - entity: light.kitchen_cupboard
             name: Cupboards
             type: light
 
@@ -62,7 +62,7 @@ cards:
         type: entities
         show_header_toggle: false
         entities:
-          - entity: light.kitchen_motion_led
+          - entity: light.kitchen_cupboard
             name: LED
           - entity: binary_sensor.kitchen_motion_led_motion
             name: Motion

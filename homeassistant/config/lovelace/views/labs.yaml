@@ -32,5 +32,12 @@ cards:
           - entity: input_text.alexa_actionable_notification
           - switch.nodered_office_motion_lights
 
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: NodeRed Automations
+        filter:
+          include:
+            - entity_id: "switch.nodered_*"
 
  #     {"text": "This is a test of the alexa actions custom skill. Did it work?", "event": "actionable.skill.test"}

@@ -54,12 +54,12 @@ cards:
           - input_boolean.house_mode_guest
           - input_boolean.house_mode_holiday
 
-      - type: calendar
-        entities:
-          - calendar.public_holidays
-          - calendar.ios_family
-          - calendar.ios_schoolholiday
-          - calendar.birthdays
+      # - type: calendar
+      #   entities:
+      #     - calendar.public_holidays
+      #     - calendar.ios_family
+      #     - calendar.ios_schoolholiday
+      #     - calendar.birthdays
 
       - type: entity-filter
         show_empty: false

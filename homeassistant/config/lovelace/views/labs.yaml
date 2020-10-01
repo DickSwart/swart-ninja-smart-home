@@ -30,7 +30,7 @@ cards:
           type: picture
         entities:
           - entity: input_text.alexa_actionable_notification
-          - switch.mytestdoorbell
+          - switch.nodered_office_motion_lights
 
 
  #     {"text": "This is a test of the alexa actions custom skill. Did it work?", "event": "actionable.skill.test"}

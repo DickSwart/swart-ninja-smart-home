@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: kitchen_side
   node_comment: Sonoff Basic 17FEDB

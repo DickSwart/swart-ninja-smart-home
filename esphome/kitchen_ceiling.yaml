@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: kitchen_ceiling
   node_comment: Sonoff Basic 6B1A4E

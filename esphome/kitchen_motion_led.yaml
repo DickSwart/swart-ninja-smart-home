@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: kitchen_motion_led
   node_comment: "Motion and Cupboard LEDs (ID: 4C86CF)"

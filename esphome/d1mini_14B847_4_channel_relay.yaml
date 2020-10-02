@@ -1,3 +1,4 @@
+---
 # Device: D1Mini 14B847
 substitutions:
   node_name: d1mini_14b847_4_channel_relay
@@ -27,11 +28,11 @@ switch:
     name: Relay 03
     pin: GPIO12
     id: switch_relay03
-    internal: True
+    internal: true
   # Relay 4 - Not Currently In Use
   - platform: gpio
     icon: mdi:light-switch
     name: Relay 04
     pin: GPIO13
     id: switch_relay04
-    internal: True
+    internal: true

@@ -1,3 +1,4 @@
+---
 # Device: Sonoff POW EA5999
 substitutions:
   node_name: bedroom_max_electric_blanket

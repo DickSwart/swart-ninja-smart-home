@@ -30,8 +30,6 @@ binary_sensor:
     id: switchid
     pin:
       number: GPIO5
-      #mode: INPUT_PULLUP
-      #inverted: True
     on_state:
       then:
         - light.toggle: lightid

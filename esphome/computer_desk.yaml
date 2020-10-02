@@ -1,3 +1,4 @@
+---
 # Device: Sonoff POW EA9DBF
 substitutions:
   node_name: computer_desk

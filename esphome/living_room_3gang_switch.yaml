@@ -1,3 +1,4 @@
+---
 # Top Button
 #   - Tripple:  Restart
 #   - Double:   Send event (BTN_TOP_DOUBLE)
@@ -26,7 +27,6 @@ packages:
   wifi: !include common/wifi/not.hall.yaml
   device_base: !include common/zemismart_ks811_3gang_base_basic.yaml
 
-
 binary_sensor:
   # Top
   - platform: gpio
@@ -34,7 +34,7 @@ binary_sensor:
     pin:
       number: GPIO16
       mode: INPUT
-      inverted: True
+      inverted: true
     on_multi_click:
     - timing:
         - ON for at most 1s
@@ -86,7 +86,7 @@ binary_sensor:
     pin:
       number: GPIO5
       mode: INPUT
-      inverted: True
+      inverted: true
     on_multi_click:
     - timing:
         - ON for at most 1s
@@ -138,7 +138,7 @@ binary_sensor:
     pin:
       number: GPIO4
       mode: INPUT
-      inverted: True
+      inverted: true
     on_multi_click:
     - timing:
         - ON for at most 1s

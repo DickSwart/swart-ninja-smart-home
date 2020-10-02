@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: hall_multisensor
   node_comment: "MultiSensor (ID: E44EC2)"
@@ -43,4 +44,3 @@ binary_sensor:
       number: D2
       mode: INPUT_PULLUP
       inverted: False
-

@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: bedroom_max_ceiling
   node_comment: Sonoff Basic 184F03

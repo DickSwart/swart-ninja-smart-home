@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: bathroom_fan
   node_comment: Sonoff Basic 356DC3

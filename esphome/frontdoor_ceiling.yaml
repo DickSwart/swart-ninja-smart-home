@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: frontdoor_ceiling
   node_comment: Shelly 1 22FCC1

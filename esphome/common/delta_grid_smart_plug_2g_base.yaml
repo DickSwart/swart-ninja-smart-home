@@ -29,7 +29,7 @@ binary_sensor:
     pin:
       number: GPIO16
       mode: INPUT_PULLUP
-      inverted: True
+      inverted: true
     on_press:
       - switch.toggle: relay_01
   - platform: gpio
@@ -37,7 +37,7 @@ binary_sensor:
     pin:
       number: GPIO12
       mode: INPUT_PULLUP
-      inverted: True
+      inverted: true
     on_press:
       - switch.toggle: relay_02
 

@@ -13,18 +13,3 @@ custom_calendars:
   - name: School Holiday
     calendar: 'Family'
     search: '(?i)\bSchool Holiday\b'
-
-# calendars:
-# - name: family
-#   calendar: Family
-#   search: '.*'
-# - name: school_holiday
-#   calendar: School Holiday
-#   search: '.*'
-
-# calendars:
-#   - private
-#   - holidays
-
-#^(?i)((?!School Holiday).)*$
-# (?i)\bSchool holiday\b

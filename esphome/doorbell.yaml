@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: doorbell
   node_comment: "Doorbell (ID: A579B6)"

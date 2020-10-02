@@ -1,3 +1,4 @@
+---
 # Device: D1Mini 14B847
 substitutions:
   node_name: door_window_sensors_14c243
@@ -12,31 +13,31 @@ binary_sensor:
   - platform: gpio
     pin:
       number: D1
-      inverted: True
+      inverted: true
     name: Man Cave Back Door
     device_class: door
   - platform: gpio
     pin:
       number: D2
-      inverted: True
+      inverted: true
     name: Man Cave Stairs Door
     device_class: door
   - platform: gpio
     pin:
       number: D5
-      inverted: True
+      inverted: true
     name: Office Window One
     device_class: window
   - platform: gpio
     pin:
       number: D6
-      inverted: True
+      inverted: true
     name: Office Window Two
     device_class: window
   # - platform: gpio
   #   pin:
   #     number: D7
-  #     inverted: True
+  #     inverted: true
   #   name: ${device_verbose_name} Door
   #   device_class: window
 

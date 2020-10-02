@@ -2,7 +2,7 @@
 title: Labs
 icon: mdi:test-tube
 path: admin-labs
-panel: false
+panel: true
 cards:
   - type: custom:layout-card
     layout: vertical
@@ -32,12 +32,23 @@ cards:
           - entity: input_text.alexa_actionable_notification
           - switch.nodered_office_motion_lights
 
+      - break
+
       - type: custom:auto-entities
         card:
           type: entities
           title: NodeRed Automations
+          show_header_toggle: false
         filter:
           include:
             - entity_id: "switch.nodered_*"
 
- #     {"text": "This is a test of the alexa actions custom skill. Did it work?", "event": "actionable.skill.test"}
+      - break
+
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Media Players
+        filter:
+          include:
+            - domain: media_player

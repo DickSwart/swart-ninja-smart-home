@@ -184,7 +184,7 @@ cards:
           - !include
             - ../templates/folding_entity/esphome_multisensor.yaml
             - node_name: man_cave_multisensor
-              show_led   : true
+              show_led: true
               show_motion: true
 
           - !include

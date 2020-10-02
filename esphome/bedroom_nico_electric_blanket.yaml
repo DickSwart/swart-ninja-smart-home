@@ -1,3 +1,4 @@
+---
 # Device: Sonoff POW 374EE5
 substitutions:
   node_name: bedroom_nico_electric_blanket

@@ -37,7 +37,7 @@ binary_sensor:
     pin:
       number: GPIO16
       mode: INPUT
-      inverted: True
+      inverted: true
     on_multi_click:
     - timing:
         - ON for at most 1s
@@ -63,7 +63,7 @@ binary_sensor:
     pin:
       number: GPIO5
       mode: INPUT
-      inverted: True
+      inverted: true
     on_multi_click:
     - timing:
         - ON for at most 1s
@@ -89,7 +89,7 @@ binary_sensor:
     pin:
       number: GPIO4
       mode: INPUT
-      inverted: True
+      inverted: true
     on_multi_click:
     - timing:
         - ON for at most 1s

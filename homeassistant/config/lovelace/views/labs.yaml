@@ -30,7 +30,7 @@ cards:
           type: picture
         entities:
           - entity: input_text.alexa_actionable_notification
-          - switch.nodered_office_motion_lights
+          - switch.nodered_office_lights
 
       - break
 

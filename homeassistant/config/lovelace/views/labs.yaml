@@ -11,6 +11,9 @@ cards:
         - ../templates/heading.yaml
         - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs
 
+      - type: light
+        entity: light.living_room_tv_backlight
+
       - !include
         - ../templates/esphome_multisensor_entities.yaml
         - node_name: man_cave_multisensor

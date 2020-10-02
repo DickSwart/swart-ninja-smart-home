@@ -10,5 +10,5 @@
 platform: group
 name: Living Room Television
 entities:
-  - light.living_room_television_stand
+  - light.living_room_tv_backlight
   - light.light_box_one

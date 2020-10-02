@@ -43,4 +43,4 @@ binary_sensor:
     pin:
       number: D2
       mode: INPUT_PULLUP
-      inverted: False
+      inverted: false

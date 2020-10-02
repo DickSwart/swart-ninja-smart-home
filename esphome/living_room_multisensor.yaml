@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: living_room_multisensor
   node_comment: "BRUH Multisensor (ID: 536310)"

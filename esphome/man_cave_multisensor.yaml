@@ -1,3 +1,4 @@
+---
 substitutions:
   node_name: man_cave_multisensor
   node_comment: "BRUH Multisensor (ID: 535210)"

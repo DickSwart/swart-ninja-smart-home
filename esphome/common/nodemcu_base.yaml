@@ -1,3 +1,4 @@
+---
 esphome:
   name: ${node_name}
   comment: "NodeMCU: ${node_comment}"

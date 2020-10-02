@@ -1,3 +1,4 @@
+---
 esphome:
   name: ${node_name}
   platform: ESP8266

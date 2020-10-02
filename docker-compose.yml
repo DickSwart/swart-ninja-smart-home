@@ -39,6 +39,21 @@ services:
       MYSQL_USER: hass
       MYSQL_PASSWORD: ${MARIADB_MYSQL_HASS_PASSWORD}
 
+  mariadb-backup:
+    build: ./mariadb-backup
+    container_name: mariadb-backup
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
+    environment:
+      TZ: ${TZ}
+      MYSQL_CONTAINER_NAME: mariadb
+      MYSQL_DATABASE: homeassistant
+      MYSQL_ROOT_PASSWORD: ${MARIADB_MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ~/docker/swart-ninja-smart-home/mariadb/backup:/opt/mysql/backup
+    command: crond -f -d 8
+    restart: always
+
   mosquitto:
     container_name: mosquitto
     image: eclipse-mosquitto
@@ -63,6 +78,7 @@ services:
       - 8090:8090
     volumes:
       - ~/docker/swart-ninja-smart-home/influxdb/data:/var/lib/influxdb
+      - ~/docker/swart-ninja-smart-home/influxdb/backups:/backups
     environment:
       TZ: ${TZ}
       INFLUXDB_DB: home_assistant

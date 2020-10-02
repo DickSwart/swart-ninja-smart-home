@@ -1,3 +1,4 @@
+---
 platform: wifi_signal
 name: ${device_verbose_name} WiFi Signal
 icon: mdi:wifi

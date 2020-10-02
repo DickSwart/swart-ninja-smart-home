@@ -12,4 +12,3 @@ wifi:
   ap:
     ssid: ${device_verbose_name}
     password: !secret wifi_ap_password
-

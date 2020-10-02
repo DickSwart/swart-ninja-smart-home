@@ -60,4 +60,4 @@ switch:
 status_led:
   pin:
     number: GPIO4
-    inverted: yes
+    inverted: true

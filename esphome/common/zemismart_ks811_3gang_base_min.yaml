@@ -19,4 +19,4 @@ ota:
 status_led:
   pin:
     number: GPIO2
-    inverted: yes
+    inverted: true

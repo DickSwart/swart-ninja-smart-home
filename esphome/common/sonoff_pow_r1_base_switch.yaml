@@ -64,4 +64,4 @@ switch:
 status_led:
   pin:
     number: GPIO15
-    inverted: yes
+    inverted: true

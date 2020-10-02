@@ -20,7 +20,7 @@ binary_sensor:
     device_class: sound
     pin:
       number: D0
-      inverted: False
+      inverted: false
       mode: INPUT_PULLDOWN_16
     filters:
       - delayed_off: 5s

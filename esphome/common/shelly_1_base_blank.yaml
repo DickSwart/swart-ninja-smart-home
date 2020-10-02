@@ -6,4 +6,3 @@ esphome:
   build_path: ./build/${node_name}
 
 ota:
-

@@ -100,6 +100,10 @@ cards:
             heat_cool: false
             dry: false
 
+      - type: light
+        entity: light.man_cave_tv_backlight
+        name: TV Backlight
+
       - !include
         - ../templates/multisensor_graphs.yaml
         - temp_entity: sensor.man_cave_temperature

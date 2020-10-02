@@ -1,10 +1,11 @@
 wifi:
   fast_connect: true
   networks:
-    - ssid: !secret wifi_man_cave_not_ssid
-      password: !secret wifi_man_cave_not_password
+    - ssid: !secret wifi_not_ssid
+      password: !secret wifi_not_password
       bssid: !secret wifi_man_cave_not_bssid
       hidden: true
+      priority: 0
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:

@@ -1,15 +1,18 @@
 substitutions:
   node_name: ampersand_multisensor
-  node_comment: "MultiSensor (ID: 53499B)"
+  # node_comment: "MultiSensor (ID: 53499B)"
+  node_comment: "Ampersand MultiSensor"
   device_verbose_name: Ampersand MultiSensor
 
 packages:
   wifi: !include common/wifi/not.hall.yaml
   device_base: !include common/nodemcu_base.yaml
+  # device_base: !include common/d1mini_base.yaml
 
 sensor:
   - platform: dht
-    pin: D7
+    # pin: D7
+    pin: D1
     temperature:
       name: ${device_verbose_name} Temperature
     humidity:
@@ -29,7 +32,8 @@ sensor:
 output:
   - platform: esp8266_pwm
     id: output_component1
-    pin: D4
+    # pin: D4
+    pin: D2
 
 light:
   - platform: monochromatic

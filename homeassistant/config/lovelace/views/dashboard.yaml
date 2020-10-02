@@ -11,42 +11,51 @@ cards:
         show_header_toggle: false
         entities:
           - head: sensor.presence_location_dick
+            type: custom:fold-entity-row
             items:
-              - input_boolean.presence_location_away_dick
-              - entity: device_tracker.dick_iphone
+              - entity: input_boolean.presence_location_away_dick
                 secondary_info: last-changed
               - entity: device_tracker.dick_iphone_11_pro
                 secondary_info: last-changed
+              - entity: device_tracker.dick_iphone_11_pro_unifi
+                secondary_info: last-changed
+              - entity: device_tracker.dick_iphone_tile
+                secondary_info: last-changed
+              - entity: device_tracker.dick_keys_tile
+                secondary_info: last-changed
+              - entity: device_tracker.dick_wallet_tile
+                secondary_info: last-changed
               - entity: device_tracker.life360_dick_swart
                 secondary_info: last-changed
-              - entity: device_tracker.tile_478ab17cb091cbbe
+              - entity: device_tracker.unifi_dick_apple_watch
                 secondary_info: last-changed
-              - entity: device_tracker.tile_cc9e13f7316c95e3
+              - entity: device_tracker.unifi_dick_iphone_11_pro
                 secondary_info: last-changed
-            type: custom:fold-entity-row
+
           - head: sensor.presence_location_tamara
             type: custom:fold-entity-row
             items:
-              - input_boolean.presence_location_away_tamara
-              - entity: device_tracker.tamara_iphone
-                secondary_info: last-changed
-              - entity: device_tracker.tamara_iphone_x
+              - entity: input_boolean.presence_location_away_tamara
                 secondary_info: last-changed
               - entity: device_tracker.life360_tamara
+                secondary_info: last-changed
+              - entity: device_tracker.tamara_iphone_x_unifi
+                secondary_info: last-changed
+              - entity: device_tracker.tamara_iphone_x
                 secondary_info: last-changed
           - head: sensor.presence_location_nico
             type: custom:fold-entity-row
             items:
               - input_boolean.nico
               - input_boolean.presence_location_away_nico
-              - entity: device_tracker.nico_iphone_5s
+              - entity: device_tracker.nico_iphone_5s_unifi
                 secondary_info: last-changed
           - head: sensor.presence_location_max
             type: custom:fold-entity-row
             items:
               - input_boolean.max
               - input_boolean.presence_location_away_max
-              - entity: device_tracker.max_iphone_5s
+              - entity: device_tracker.max_iphone_5s_unifi
                 secondary_info: last-changed
 
           - type: divider

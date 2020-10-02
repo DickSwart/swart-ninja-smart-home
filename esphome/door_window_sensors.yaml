@@ -34,10 +34,9 @@ binary_sensor:
       inverted: true
     name: Office Window Two
     device_class: window
-  # - platform: gpio
-  #   pin:
-  #     number: D7
-  #     inverted: true
-  #   name: ${device_verbose_name} Door
-  #   device_class: window
-
+# - platform: gpio
+#   pin:
+#     number: D7
+#     inverted: true
+#   name: ${device_verbose_name} Door
+#   device_class: window

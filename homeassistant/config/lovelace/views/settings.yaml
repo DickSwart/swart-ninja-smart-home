@@ -70,7 +70,6 @@ cards:
             icon: mdi:pac-man
             name: Man Cave
 
-
       - title: Curtains Automations
         type: entities
         entities:

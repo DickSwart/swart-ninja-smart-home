@@ -38,11 +38,6 @@ cards:
                 entity: light.office_shelf
                 hold_action:
                   action: more-info
-              # - name: Heater
-              #   type: custom:button-card
-              #   entity: switch.office_heater
-              #   hold_action:
-              #     action: more-info
 
           - type: horizontal-stack
             cards:

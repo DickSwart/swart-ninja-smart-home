@@ -1,3 +1,4 @@
+---
 # Device: Sonoff POW 374EAA
 substitutions:
   node_name: work_station

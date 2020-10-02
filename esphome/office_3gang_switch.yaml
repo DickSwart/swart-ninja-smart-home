@@ -79,6 +79,7 @@ binary_sensor:
       then:
         - logger.log: "Single Short Clicked"
         - light.toggle: light_top
+
   # Middle
   - platform: gpio
     id: button_middle
@@ -121,6 +122,7 @@ binary_sensor:
       then:
         - logger.log: "Single Short Clicked"
         - light.toggle: light_middle
+
   # Bottom
   - platform: gpio
     id: button_bottom

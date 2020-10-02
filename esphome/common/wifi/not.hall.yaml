@@ -1,3 +1,4 @@
+---
 wifi:
   fast_connect: true
   networks:

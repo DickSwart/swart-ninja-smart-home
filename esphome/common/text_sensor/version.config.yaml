@@ -1,2 +1,3 @@
+---
 platform: version
 name: ${device_verbose_name} ESPHome Version

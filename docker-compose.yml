@@ -163,18 +163,20 @@ services:
     environment:
       TZ: ${TZ}
 
-  tasmoadmin:
-    container_name: tasmoadmin
-    image: raymondmm/tasmoadmin
+  xboxone:
+    container_name: xboxone
+    image: openxbox/hassio-amd64-xboxone
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
     ports:
-      - 9999:80
+      - 5557:5557
     volumes:
-      - tasmoadmin_data:/data
-    restart: unless-stopped
+      - ~/docker/swart-ninja-smart-home/xboxone:/config
+    restart: always
+    # network_mode: host
     environment:
       TZ: ${TZ}
 
 volumes:
   deepstack:
   chronograf_data:
-  tasmoadmin_data:

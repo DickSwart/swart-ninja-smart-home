@@ -67,3 +67,4 @@ nodered
 
 
 homeassistant/config/automations/*test*.yaml
+xboxone/.xbox-token.json

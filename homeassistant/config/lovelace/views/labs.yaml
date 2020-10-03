@@ -46,6 +46,10 @@ cards:
           include:
             - entity_id: "switch.nodered_*"
 
+      - type: media-control
+        entity: media_player.man_cave_xbox_one
+
+
       - break
 
       - type: custom:auto-entities

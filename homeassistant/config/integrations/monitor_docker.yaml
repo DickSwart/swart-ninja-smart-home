@@ -9,32 +9,40 @@
 monitor_docker:
   - name: Docker
     containers:
+      - apprise
       - chronograf
       - deepstack
       - duplicati
+      - esphome
       - grafana
       - homeassistant
       - influxdb
       - mariadb
+      - mariadb-backup
       - minecraft-server-01
       - minecraft-server-02
       - minecraft-server-03
       - mosquitto
       - nodered
       - plexmediaserver
+      - portainer
       - radarr
       - sonarr
-      - unifi-controller
-      - xteve
-      - esphome
       - tasmoadmin
+      - unifi-controller
+      - watchtower
+      - xboxone
+      - xteve
     rename:
+      apprise: AppRise
       chronograf: Chronograf
       deepstack: Deep Stack
       duplicati: Duplicati
+      esphome: ESPHome
       grafana: Grafana
       homeassistant: Home Assistant
       influxdb: InfluxDB
+      mariadb-backup: MariaDB Backup
       mariadb: MariaDB
       minecraft-server-01: Minecraft Server 01
       minecraft-server-02: Minecraft Server 02
@@ -42,9 +50,11 @@ monitor_docker:
       mosquitto: Mosquitto
       nodered: Node-RED
       plexmediaserver: Plex Media Server
+      portainer: Portainer
       radarr: Radarr
       sonarr: Sonarr
-      unifi-controller: UniFi Controller
-      xteve: Xteve
-      esphome: ESPHome
       tasmoadmin: TasmoAdmin
+      unifi-controller: UniFi Controller
+      watchtower: Watchtower
+      xboxone: Xbox One
+      xteve: Xteve

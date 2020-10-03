@@ -146,10 +146,6 @@ cards:
         show_header_toggle: false
         type: entities
         entities:
-          - entity: input_boolean.man_cave_automated_lights
-            name: Automated Main Light
-          - entity: input_boolean.man_cave_kitchen_automated_lights
-            name: Automated Kitchen Lights
           - head:
               entity: zwave.man_cave_kitchen_zw100_multisensor
               name: Kitchen MultiSensor

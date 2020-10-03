@@ -72,12 +72,7 @@ cards:
               entity_name: ESPHome
               entity_icon: mdi:chip
 
-          - !include
-            - ../templates/folding_entity/monitor_docker.yaml
-            - container_name: tasmoadmin
-              entity_name: TasmoAdmin
-              entity_icon: mdi:view-list
-              show_network: true
+
 
       - break
 
@@ -135,4 +130,47 @@ cards:
             - container_name: minecraft_server_03
               entity_name: Minecraft Server 03
               entity_icon: mdi:minecraft
+              show_network: true
+
+      - break
+
+      - title: tools
+        show_header_toggle: false
+        type: entities
+        entities:
+          - !include
+            - ../templates/folding_entity/monitor_docker.yaml
+            - container_name: unifi-controller
+              entity_name: Unifi Controller
+              entity_icon: mdi:router-wireless
+              show_network: true
+          - !include
+            - ../templates/folding_entity/monitor_docker.yaml
+            - container_name: tasmoadmin
+              entity_name: TasmoAdmin
+              entity_icon: mdi:view-list
+              show_network: true
+          - !include
+            - ../templates/folding_entity/monitor_docker.yaml
+            - container_name: duplicati
+              entity_name: Duplicati
+              entity_icon: mdi:cloud-upload
+              show_network: true
+          - !include
+            - ../templates/folding_entity/monitor_docker.yaml
+            - container_name: watchtower
+              entity_name: Watchtower
+              entity_icon: mdi:lighthouse
+              show_network: true
+          - !include
+            - ../templates/folding_entity/monitor_docker.yaml
+            - container_name: apprise
+              entity_name: Apprise
+              entity_icon: mdi:cellphone-message
+              show_network: true
+          - !include
+            - ../templates/folding_entity/monitor_docker.yaml
+            - container_name: portainer
+              entity_name: Portainer
+              entity_icon: mdi:docker
               show_network: true

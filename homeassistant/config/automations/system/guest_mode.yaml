@@ -1,0 +1,33 @@
+---
+# This automation turns on/off the NodeRed light automation based
+# on the state of the guest mode switch.
+#
+id: 3d14fb31-337a-4ed7-88de-4ac3f3999ea3
+alias: system_guest_mode
+description: Turn off NodeRed automations if guest mode is enabled.
+mode: single
+
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: event
+    event_type: automation_reloaded
+  - platform: state
+    entity_id: input_boolean.house_mode_guest
+
+action:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.house_mode_guest
+            state: "on"
+        sequence:
+          - service: switch.turn_off
+            entity_id:
+              - switch.nodered_man_cave_lights
+              - switch.nodered_man_cave_kitchen_lights
+    default:
+      - service: switch.turn_on
+        entity_id:
+          - switch.nodered_man_cave_lights
+          - switch.nodered_man_cave_kitchen_lights

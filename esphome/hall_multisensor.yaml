@@ -12,6 +12,7 @@ switch:
   - platform: gpio
     pin: D1
     name: ${device_verbose_name} Siren
+    icon: mdi:alarm-bell
 
 sensor:
   - platform: dht

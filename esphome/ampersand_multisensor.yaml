@@ -5,7 +5,7 @@ substitutions:
   device_verbose_name: Ampersand MultiSensor
 
 packages:
-  wifi: !include common/wifi/not.hall.yaml
+  wifi: !include common/wifi/not.yaml
   device_base: !include common/nodemcu_base.yaml
 
 sensor:

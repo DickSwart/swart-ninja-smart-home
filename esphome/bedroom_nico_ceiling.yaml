@@ -5,6 +5,6 @@ substitutions:
   device_verbose_name: Bedroom Nico Ceiling
 
 packages:
-  wifi: !include common/wifi/not.hall.yaml
+  wifi: !include common/wifi/not.yaml
   device_base: !include common/shelly_1_base.yaml
 #   device_base: !include common/shelly_1_base_blank.yaml

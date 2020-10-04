@@ -1,0 +1,11 @@
+---
+# Device: Sonoff POW EA5999
+substitutions:
+  node_name: kitchen_dryer
+  node_comment: "Kitchen Dryer (ID: EA5999)"
+  device_verbose_name: Kitchen Dryer
+  switch_icon: mdi:tumble-dryer
+
+packages:
+  wifi: !include common/wifi/not.hall.yaml
+  device_base: !include common/sonoff_pow_r1_base_switch.yaml

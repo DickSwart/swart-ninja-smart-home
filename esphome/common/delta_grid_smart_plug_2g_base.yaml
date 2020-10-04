@@ -1,7 +1,7 @@
 ---
 esphome:
   name: ${node_name}
-  comment: ${node_comment}
+  comment: "Delta Grid Smart Plug (2 Gang). ${node_comment}"
   platform: ESP8266
   board: esp01_1m
   board_flash_mode: dout

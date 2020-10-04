@@ -1,10 +1,14 @@
 ---
-# Device: Sonoff POW 374EE5
+# sonoff_324ADA
 substitutions:
-  node_name: bedroom_nico_electric_blanket
   device_verbose_name: Bedroom Nico Electric Blanket
+  node_comment: "Nico Bedroom Electric Blanket (ID: 324ADA)"
+  node_name: bedroom_nico_electric_blanket
   switch_icon: mdi:bed-empty
 
+web_server:
+  port: 80
+
 packages:
-  wifi: !include common/wifi/not.hall.yaml
-  device_base: !include common/sonoff_pow_r1_base_switch.yaml
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/sonoff_basic_base_switch.yaml

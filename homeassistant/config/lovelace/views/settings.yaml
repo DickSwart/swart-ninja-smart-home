@@ -7,68 +7,13 @@ cards:
   - type: custom:layout-card
     layout: vertical
     cards:
-      - title: Light Automations
-        type: entities
-        entities:
-          - head:
-              entity: group.hall_light_automation
-              icon: mdi:highway
-              name: Hall
-            type: custom:fold-entity-row
-            items:
-              - entity: automation.hall_light_on_motion
-                name: 'On: Motion'
-              - entity: automation.hall_light_off_motion
-                name: 'Off: Motion'
-              - entity: automation.hall_light_on_front_door
-                name: 'On: Front Door'
-          - head:
-              entity: group.bathroom_light_automation
-              icon: mdi:shower
-              name: Bathroom
-            type: custom:fold-entity-row
-            items:
-              - entity: automation.bathroom_light_on_motion
-                name: 'On: Motion'
-              - entity: automation.bathroom_light_off_motion
-                name: 'Off: Motion'
-          - head:
-              entity: group.living_room_light_automation
-              icon: mdi:sofa
-              name: Living Room
-            type: custom:fold-entity-row
-            items:
-              - entity: automation.living_room_light_on_motion
-                name: 'On: Motion'
-              - entity: automation.living_room_light_off_motion
-                name: 'Off: Motion'
-          - head:
-              entity: group.kitchen_light_automation
-              icon: mdi:fridge
-              name: Kitchen
-            type: custom:fold-entity-row
-            items:
-              - entity: automation.kitchen_light_on_motion
-                name: 'On: Motion'
-              - entity: automation.kitchen_light_off_motion
-                name: 'Off: Motion'
-              - entity: automation.kitchen_light_off_sun
-                name: 'Off: Sun'
-              - entity: automation.kitchen_cupboard_light_on
-                name: 'On: Cupboard'
-              - entity: automation.kitchen_cupboard_light_off
-                name: 'Off: Cupboard'
-              - entity: automation.kitchen_side_light_off
-                name: 'Off: Side'
-          - entity: input_boolean.dining_room_automated_lights
-            icon: mdi:silverware-fork-knife
-            name: Dining Room
-          - entity: input_boolean.man_cave_kitchen_automated_lights
-            icon: mdi:pac-man
-            name: Man Cave Kitchen
-          - entity: input_boolean.man_cave_automated_lights
-            icon: mdi:pac-man
-            name: Man Cave
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Light Automations
+        filter:
+          include:
+            - entity_id: "switch.nodered_*_lights"
 
       - title: Curtains Automations
         type: entities

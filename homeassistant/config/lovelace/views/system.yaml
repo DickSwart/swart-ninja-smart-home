@@ -72,6 +72,7 @@ cards:
             name: ESPHome
           - entity: sensor.docker_tasmoadmin_state
             name: TasmoAdmin
+
       - break
 
       - type: custom:swipe-card
@@ -193,28 +194,21 @@ cards:
 
       - break
 
-      - title: Network Switches
-        type: entities
-        show_header_toggle: false
-        entities:
-          - entity: switch.max_iphone_5s
-          - entity: switch.max_laptop
-          - entity: switch.max_laptop_2
-          - entity: switch.nico_iphone_5s
-          - entity: switch.nico_laptop
-          - entity: switch.nico_laptop_2
-          - entity: switch.man_cave_xbox_one
-          - entity: switch.man_cave_television
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Network Switches
+        filter:
+          include:
+            - entity_id: "switch.*_unifi"
 
-      - title: ZWave Network
-        type: entities
-        show_header_toggle: false
-        entities:
-          - entity: zwave.aeon_labs_zw090_z_stick_gen5_au
-          - entity: zwave.bathroom_zw111_nano_dimmer
-          - entity: zwave.hall_zw111_nano_dimmer
-          - entity: zwave.man_cave_kitchen_zw100_multisensor
-          - entity: zwave.office_zw100_multisensor
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: ZWave Network
+        filter:
+          include:
+            - domain: zwave
 
       - break
 

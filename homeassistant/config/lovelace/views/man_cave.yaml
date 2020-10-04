@@ -44,6 +44,8 @@ cards:
               camera_image: camera.octoprint
               entities: []
 
+      - break
+
       - type: vertical-stack
         cards:
           - type: horizontal-stack
@@ -68,6 +70,10 @@ cards:
                 type: custom:button-card
               - entity: switch.work_station
                 type: custom:button-card
+
+          - type: light
+            entity: light.man_cave_tv_backlight
+            name: TV Backlight
 
           - type: horizontal-stack
             cards:
@@ -99,10 +105,6 @@ cards:
             fan_only: false
             heat_cool: false
             dry: false
-
-      - type: light
-        entity: light.man_cave_tv_backlight
-        name: TV Backlight
 
       - !include
         - ../templates/multisensor_graphs.yaml

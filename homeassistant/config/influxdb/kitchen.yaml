@@ -15,3 +15,11 @@
 - sensor.kitchen_multisensor_humidity
 - sensor.kitchen_multisensor_luminance
 - sensor.kitchen_multisensor_temperature
+
+- sensor.kitchen_dryer_current
+- sensor.kitchen_dryer_power
+- sensor.kitchen_dryer_voltage
+
+- sensor.kitchen_washing_machine_current
+- sensor.kitchen_washing_machine_power
+- sensor.kitchen_washing_machine_voltage

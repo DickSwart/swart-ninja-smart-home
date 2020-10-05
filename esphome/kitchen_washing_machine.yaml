@@ -8,4 +8,4 @@ substitutions:
 
 packages:
   wifi: !include common/wifi/not.yaml
-  device_base: !include common/sonoff_pow_r1_base_switch.yaml
+  device_base: !include common/sonoff_pow_r1_base_switch_always_on.yaml

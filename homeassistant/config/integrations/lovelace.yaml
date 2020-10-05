@@ -42,8 +42,6 @@ lovelace:
       type: module
     - url: /hacsfiles/weather-card/weather-card.js
       type: module
-    - url: /hacsfiles/scheduler-card/scheduler-card.js?v=0
-      type: module
     - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
       type: module
   dashboards:

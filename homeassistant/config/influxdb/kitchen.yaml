@@ -19,7 +19,17 @@
 - sensor.kitchen_dryer_current
 - sensor.kitchen_dryer_power
 - sensor.kitchen_dryer_voltage
+- sensor.kitchen_dryer_total_daily_energy
+- sensor.kitchen_dryer_yearly_energy_peak
 
 - sensor.kitchen_washing_machine_current
 - sensor.kitchen_washing_machine_power
 - sensor.kitchen_washing_machine_voltage
+- sensor.kitchen_washing_machine_total_daily_energy
+- sensor.kitchen_washing_machine_yearly_energy_peak
+
+- sensor.kitchen_refrigerator_current
+- sensor.kitchen_refrigerator_power
+- sensor.kitchen_refrigerator_voltage
+- sensor.kitchen_refrigerator_total_daily_energy
+- sensor.kitchen_refrigerator_yearly_energy_peak

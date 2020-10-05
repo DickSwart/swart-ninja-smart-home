@@ -77,6 +77,7 @@ switch:
     name: ${device_verbose_name}
     pin: GPIO12
     id: switch_relay
+    restore_mode: ALWAYS_ON
 
 status_led:
   pin:

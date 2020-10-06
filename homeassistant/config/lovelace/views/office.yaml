@@ -243,7 +243,7 @@ cards:
               - entity: sensor.office_zw100_multisensor_luminance
                 name: Luminance
           - head:
-              entity: cover.office_door_system_cover
+              entity: binary_sensor.office_door_system_status
               name: Door System
             type: custom:fold-entity-row
             entities:
@@ -257,9 +257,8 @@ cards:
                 name: Siren
               - entity: sensor.office_door_system_wifi
                 name: WiFi
-              - entity: script.office_door_system_reset
-                name: Reset Script
-              - entity: automation.office_door_fix_state
+              - entity: switch.office_door_system_reset
+                name: Reset
           - head: media_player.living_room_echo_dot
             items:
               - entity: switch.living_room_echo_dot_do_not_disturb_switch

@@ -72,13 +72,6 @@ shutdown_swartninja02:
   alias: Shutdown SwartNinja02
   sequence:
   - service: shell_command.shutdown_swartninja02
-office_door_system_reset:
-  alias: Office Door System Reset
-  sequence:
-  - data:
-      payload: reset
-      topic: E449D3/set
-    service: mqtt.publish
 activate_alexa_actionable_notification:
   description: Activates an actionable notification on a specific echo device
   fields:

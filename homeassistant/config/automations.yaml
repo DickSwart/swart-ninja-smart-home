@@ -42,17 +42,3 @@
     entity_id: cover.dining_room_small_window_curtain
     type: close
   mode: single
-- id: '1597291732289'
-  alias: Fix Office Door State
-  description: ''
-  trigger:
-  - event: start
-    platform: homeassistant
-  - entity_id: cover.office_door_system_cover
-    platform: state
-    to: unavailable
-  condition: []
-  action:
-  - data: {}
-    service: script.office_door_system_reset
-  mode: single

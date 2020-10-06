@@ -223,7 +223,7 @@ cards:
         show_header_toggle: false
         type: entities
         entities:
-          - entity: input_boolean.office_automated_lights
+          - entity: switch.nodered_office_lights
             name: Automated Main Light
           - head:
               entity: zwave.office_zw100_multisensor

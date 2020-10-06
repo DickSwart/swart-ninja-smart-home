@@ -1,4 +1,6 @@
 {
+    "version": 1,
+    "key": "input_boolean",
     "data": {
         "items": [
             {
@@ -37,26 +39,6 @@
                 "name": "Tamara - Away (Override)"
             },
             {
-                "icon": "mdi:head-lightbulb-outline",
-                "id": "bathroom_automated_lights",
-                "name": "Bathroom Automated Lights"
-            },
-            {
-                "icon": "mdi:head-lightbulb-outline",
-                "id": "hall_automated_lights",
-                "name": "Hall Automated Lights"
-            },
-            {
-                "icon": "mdi:head-lightbulb-outline",
-                "id": "kitchen_automated_lights",
-                "name": "Kitchen Automated Lights"
-            },
-            {
-                "icon": "mdi:head-lightbulb-outline",
-                "id": "living_room_automated_lights",
-                "name": "Living Room Automated Lights"
-            },
-            {
                 "icon": "mdi:sleep",
                 "id": "routine_kids_bedtime",
                 "name": "Routine Kids Bedtime"
@@ -72,21 +54,6 @@
                 "name": "Blue Iris"
             },
             {
-                "icon": "mdi:head-lightbulb-outline",
-                "id": "man_cave_automated_lights",
-                "name": "Man Cave Automated Lights"
-            },
-            {
-                "icon": "mdi:head-lightbulb-outline",
-                "id": "man_cave_kitchen_automated_lights",
-                "name": "Man Cave Kitchen Automated Lights"
-            },
-            {
-                "icon": "mdi:head-lightbulb-outline",
-                "id": "dining_room_automated_lights",
-                "name": "Dining Room Automated Lights"
-            },
-            {
                 "icon": "mdi:school",
                 "id": "routine_kids_home_school",
                 "name": "Routine Kids Home School"
@@ -100,11 +67,6 @@
                 "icon": "mdi:alarm-note",
                 "id": "house_alarm_loud",
                 "name": "Loud Alarm"
-            },
-            {
-                "icon": "mdi:head-lightbulb-outline",
-                "id": "office_automated_lights",
-                "name": "Office Automated Lights"
             },
             {
                 "icon": "mdi:map-marker-up",
@@ -125,7 +87,5 @@
                 "name": "Max (Away / Home)"
             }
         ]
-    },
-    "key": "input_boolean",
-    "version": 1
+    }
 }

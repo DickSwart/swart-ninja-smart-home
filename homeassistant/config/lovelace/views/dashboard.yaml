@@ -90,8 +90,8 @@ cards:
           - entity: light.kitchen_ceiling
           - entity: light.kitchen_side
           - entity: light.living_room_ceiling
-          - entity: light.living_room_fish_tank
-          - entity: light.living_room_fish_tank_color
+          # - entity: light.living_room_fish_tank
+          # - entity: light.living_room_fish_tank_color
           - entity: light.living_room_television
           - entity: light.man_cave_bathroom_ceiling
           - entity: light.man_cave_ceiling

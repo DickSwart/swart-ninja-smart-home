@@ -229,3 +229,45 @@ cards:
         entities:
           - entity: sensor.blue_iris_state
           - input_boolean.blue_iris
+
+      - break
+
+      # example code to show docker containers that are running
+      - type: custom:auto-entities
+        filter:
+          include:
+            - entity_id: '*docker*'
+              state: "on"
+        show_empty: false
+        sort:
+          method: name
+          numeric: true
+        card:
+          type: glance
+          style: |
+            ha-card {
+              border-radius: var(--border-radius);
+              box-shadow: var(--box-shadow);
+            }
+          show_state: false
+          columns: 3
+
+      # example code to show docker containers that are not running
+      - type: custom:auto-entities
+        filter:
+          include:
+            - entity_id: '*docker*'
+              state: "off"
+        show_empty: false
+        sort:
+          method: name
+          numeric: true
+        card:
+          type: glance
+          style: |
+            ha-card {
+              border-radius: var(--border-radius);
+              box-shadow: var(--box-shadow);
+            }
+          show_state: false
+          columns: 3

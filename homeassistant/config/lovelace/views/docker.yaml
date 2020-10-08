@@ -140,7 +140,7 @@ cards:
         entities:
           - !include
             - ../templates/folding_entity/monitor_docker.yaml
-            - container_name: unifi-controller
+            - container_name: unifi_controller
               entity_name: Unifi Controller
               entity_icon: mdi:router-wireless
               show_network: true

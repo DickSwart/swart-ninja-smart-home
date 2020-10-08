@@ -13,4 +13,4 @@
 - sensor.living_room_multisensor_humidity
 - sensor.living_room_multisensor_luminance
 - sensor.living_room_multisensor_temperature
-- sensor.living_room_fish_tank_wifi
+# - sensor.living_room_fish_tank_wifi

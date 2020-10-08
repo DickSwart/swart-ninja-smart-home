@@ -1,0 +1,3 @@
+---
+  switch.docker_mosquitto:
+    entity_picture: /local/images/docker-container-images/mosquitto.png

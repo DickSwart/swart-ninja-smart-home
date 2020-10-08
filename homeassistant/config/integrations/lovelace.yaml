@@ -46,6 +46,8 @@ lovelace:
       type: module
     - url: /hacsfiles/text-divider-row/text-divider-row.js
       type: module
+    - url: /hacsfiles/light-popup-card/light-popup-card.js
+      type: module
   dashboards:
     lovelace-admin:
       mode: yaml

@@ -1,0 +1,13 @@
+# This is the grid used for light and device buttons.
+# This will make the state and label appear horizontally
+# at the bottom of the button. More grids might be added
+# in the future.
+
+#### #### #### #### #### #### #### #### #### #### #### #
+styles:
+  # Card Config
+  # Do NOT change this unless you know what you are doing!
+  grid:
+    - grid-template-areas: '"l l" "i i" "n s"'
+    - grid-template-columns: 1fr min-content
+    - grid-template-rows: min-content 1fr min-content

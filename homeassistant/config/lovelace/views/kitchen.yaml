@@ -10,28 +10,33 @@ cards:
       - type: vertical-stack
         cards:
           - !include
-            - ../templates/heading.yaml
+            - ../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:fridge"></ha-icon> Kitchen
 
       - type: vertical-stack
         cards:
           - type: horizontal-stack
             cards:
-              - entity: light.kitchen_ceiling
-                hold_action:
-                  action: more-info
-                # icon: mdi:ceiling-light
-                name: Ceiling
-                type: custom:button-card
-              - entity: light.kitchen_side
-                hold_action:
-                  action: more-info
-                # icon: mdi:track-light
-                name: Side
-                type: custom:button-card
-              - entity: binary_sensor.kitchen_motion
-                template: motion_sensor_btn
-                type: custom:button-card
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.kitchen_ceiling
+                  name: Ceiling
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.kitchen_side
+                  name: Side
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: binary_sensor.kitchen_motion
+                  grid: grid-alternative
+                  style: style-alternative
+                  name: Motion
+                  show_state: true
+                  btn_template: style-transparent
+                  icon_on: mdi:motion-sensor
+                  icon_color_on: var(--accent-color)
+                  icon_off: mdi:walk
+                  icon_color_off: var(--dark-primary-color)
 
           - entity: light.kitchen_cupboard
             name: Cupboards

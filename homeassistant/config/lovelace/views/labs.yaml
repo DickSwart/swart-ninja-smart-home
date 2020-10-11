@@ -8,54 +8,25 @@ cards:
     layout: vertical
     cards:
       - !include
-        - ../templates/heading.yaml
+        - ../templates/header/view_heading.yaml
         - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs
 
-      - type: light
-        entity: light.living_room_tv_backlight
 
-      - !include
-        - ../templates/esphome_multisensor_entities.yaml
-        - node_name: man_cave_multisensor
+      - break
 
-      - !include
-        - ../templates/esphome_multisensor_graphs.yaml
-        - node_name: man_cave_multisensor
-          show_led: true
-          show_door: false
-          show_motion: true
-
-      - type: entities
-        title: Entities card
+      - title: Lights On
         show_header_toggle: false
-        header:
-          image: 'https://www.home-assistant.io/images/lovelace/header-footer/balloons-header.png'
-          type: picture
+        type: entities
         entities:
-          - entity: input_text.alexa_actionable_notification
-          - switch.nodered_office_lights
-
-      - break
-
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: NodeRed Automations
-          show_header_toggle: false
-        filter:
-          include:
-            - entity_id: "switch.nodered_*"
-
-      - type: media-control
-        entity: media_player.man_cave_xbox_one
-
-
-      - break
-
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: Media Players
-        filter:
-          include:
-            - domain: media_player
+          - type: custom:auto-entities
+            show_empty: false
+            filter:
+              include:
+                - domain: light
+                  state: "on"
+                  area: Kitchen
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Automatically populated

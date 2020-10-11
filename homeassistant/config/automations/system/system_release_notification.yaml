@@ -16,7 +16,7 @@ condition:
 action:
   - service: persistent_notification.create
     data_template:
-      title: 🆕Release
+      title: 🆕 Release
       message:
         "Home Assistant {{ states('sensor.version_available') }} is available
         (current version {{states('sensor.version_current')}}).\n\n
@@ -26,4 +26,4 @@ action:
       title: 🆕 Release
       message:
         Home Assistant {{ states('sensor.version_available') }} is available.
-        You are on version {{states('sensor.version_current')}}.
+        You are on version {{ states('sensor.version_current') }}.

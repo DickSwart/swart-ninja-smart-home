@@ -1,0 +1,24 @@
+---
+##############################################################################################
+# Lovelace
+# Zones allow you to specify certain regions on earth (for now).
+#
+# URL: https://www.home-assistant.io/integrations/zone/
+##############################################################################################
+
+## Button Card Templates
+button_card_templates: !include_dir_named lovelace/templates/button/button-card-templates/
+
+background: var(--background-image)
+views:
+  - !include lovelace/views/dashboard.yaml
+  - !include lovelace/views/living_room.yaml
+  - !include lovelace/views/man_cave.yaml
+  - !include lovelace/views/office.yaml
+  - !include lovelace/views/hall.yaml
+  - !include lovelace/views/bathroom.yaml
+  - !include lovelace/views/dining_room.yaml
+  - !include lovelace/views/kitchen.yaml
+  - !include lovelace/views/master_bedroom.yaml
+  - !include lovelace/views/nico_bedroom.yaml
+  - !include lovelace/views/max_bedroom.yaml

@@ -1,0 +1,15 @@
+---
+## Button Card Templates
+button_card_templates: !include_dir_named lovelace/templates/button/button-card-templates/
+
+## Custom Header
+# custom_header: !include lovelace/custom_header/custom_header.yaml
+
+title: Admin
+background: var(--background-image)
+views:
+  - !include lovelace/views/system.yaml
+  - !include lovelace/views/settings.yaml
+  - !include lovelace/views/cctv_triggered.yaml
+  - !include lovelace/views/docker.yaml
+  - !include lovelace/views/labs.yaml

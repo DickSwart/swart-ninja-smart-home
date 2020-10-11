@@ -10,23 +10,23 @@ cards:
       - type: vertical-stack
         cards:
           - !include
-            - ../templates/heading.yaml
+            - ../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:alpha-m-box"></ha-icon> Max bedroom
 
           - type: horizontal-stack
             cards:
-              - entity: light.bedroom_max_ceiling
-                name: Ceiling
-                type: custom:button-card
-              - entity: switch.bedroom_max_electric_blanket
-                name: Bed
-                type: custom:button-card
-
-          - cards:
-              - entity: light.ampersand_multisensor
-                name: MultiSensor
-                type: entity-button
-            type: horizontal-stack
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.bedroom_max_ceiling
+                  name: Ceiling
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.ampersand_multisensor
+                  name: LED
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.bedroom_max_electric_blanket
+                  name: Bed
 
       - break
 
@@ -44,7 +44,6 @@ cards:
           show_motion: false
 
       - !include
-        - ../templates/esphome_sonoff_pow_entities.yaml
-        - node_name: bedroom_max_electric_blanket
-          card_title: Electric Blanket
-
+        - ../templates/card/auto-entities.yaml
+        - title: Electric Blanket
+          include_entity_id: "*.bedroom_max_electric_blanket*"

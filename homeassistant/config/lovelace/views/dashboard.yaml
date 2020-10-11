@@ -13,30 +13,18 @@ cards:
           - head: sensor.presence_location_dick
             type: custom:fold-entity-row
             items:
-              - entity: input_boolean.presence_location_away_dick
-                secondary_info: last-changed
               - entity: device_tracker.dick_iphone_11_pro
-                secondary_info: last-changed
-              - entity: device_tracker.dick_iphone_11_pro_unifi
-                secondary_info: last-changed
-              - entity: device_tracker.dick_iphone_tile
-                secondary_info: last-changed
-              - entity: device_tracker.dick_keys_tile
-                secondary_info: last-changed
-              - entity: device_tracker.dick_wallet_tile
                 secondary_info: last-changed
               - entity: device_tracker.life360_dick_swart
                 secondary_info: last-changed
-              - entity: device_tracker.unifi_dick_apple_watch
+              - entity: device_tracker.dick_apple_watch_unifi
                 secondary_info: last-changed
-              - entity: device_tracker.unifi_dick_iphone_11_pro
+              - entity: device_tracker.dick_iphone_11_pro_unifi
                 secondary_info: last-changed
 
           - head: sensor.presence_location_tamara
             type: custom:fold-entity-row
             items:
-              - entity: input_boolean.presence_location_away_tamara
-                secondary_info: last-changed
               - entity: device_tracker.life360_tamara
                 secondary_info: last-changed
               - entity: device_tracker.tamara_iphone_x_unifi
@@ -47,14 +35,12 @@ cards:
             type: custom:fold-entity-row
             items:
               - input_boolean.nico
-              - input_boolean.presence_location_away_nico
               - entity: device_tracker.nico_iphone_5s_unifi
                 secondary_info: last-changed
           - head: sensor.presence_location_max
             type: custom:fold-entity-row
             items:
               - input_boolean.max
-              - input_boolean.presence_location_away_max
               - entity: device_tracker.max_iphone_5s_unifi
                 secondary_info: last-changed
 
@@ -63,12 +49,92 @@ cards:
           - input_boolean.house_mode_guest
           - input_boolean.house_mode_holiday
 
-      # - type: calendar
-      #   entities:
-      #     - calendar.public_holidays
-      #     - calendar.ios_family
-      #     - calendar.ios_schoolholiday
-      #     - calendar.birthdays
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../templates/header/section_heading.yaml
+            - title: Master bedroom
+
+          - type: horizontal-stack
+            cards:
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.bedroom_master_ceiling
+                  name: Ceiling
+                  label: !include ../includes/brightness-label.yaml
+                  template: '../popup-cards/light-color-temp.yaml'
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.bedroom_master_electric_blanket_tamara
+                  name: Tamara
+                  label: !include ../includes/brightness-label.yaml
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.bedroom_master_electric_blanket_dick
+                  name: Dick
+                  label: !include ../includes/brightness-label.yaml
+
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../templates/header/section_heading.yaml
+            - title: Nico bedroom
+
+          - type: horizontal-stack
+            cards:
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.bedroom_nico_ceiling
+                  name: Ceiling
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.bedroom_nico_electric_blanket
+                  name: Bed
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.bedroom_nico_multisensor
+                  label: !include ../includes/brightness-label.yaml
+                  template: '../popup-cards/light-rgb.yaml'
+                  name: LED
+
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../templates/header/section_heading.yaml
+            - title: Max bedroom
+
+          - type: horizontal-stack
+            cards:
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.bedroom_max_ceiling
+                  name: Ceiling
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.bedroom_max_electric_blanket
+                  name: Bed
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.ampersand_multisensor
+                  label: !include ../includes/brightness-label.yaml
+                  name: LED
+
+      - break
+
+      - title: Curtains
+        type: entities
+        show_header_toggle: false
+        entities:
+          - !include
+            - '../templates/entities-row/cover-control.yaml'
+            - entity: cover.living_room_sliding_door_curtain
+              name: Living Room
+              icon: mdi:sofa
+          - !include
+            - '../templates/entities-row/cover-control.yaml'
+            - entity: cover.dining_room_curtains
+              name: Dining Room
+              icon: mdi:silverware-fork-knife
 
       - type: entity-filter
         show_empty: false
@@ -97,8 +163,8 @@ cards:
           - entity: light.man_cave_ceiling
           - entity: light.man_cave_kitchen_ceiling_one
           - entity: light.man_cave_kitchen_ceiling_two
-          # - entity: switch.living_room_cupboard_plug_one
-          # - entity: switch.living_room_cupboard_plug_two
+          - entity: switch.living_room_cupboard_plug_01
+          - entity: switch.living_room_cupboard_plug_02
           - entity: switch.living_room_heat_pump
           - entity: switch.man_cave_heat_pump
           - entity: light.office_ceiling
@@ -107,123 +173,10 @@ cards:
 
       - break
 
-      - type: vertical-stack
-        cards:
-          - !include
-            - ../templates/sub_heading.yaml
-            - title: Master bedroom
-
-          - cards:
-              - name: Ceiling
-                type: custom:button-card
-                color: auto
-                entity: light.bedroom_master_ceiling
-              - name: Tamara
-                type: custom:button-card
-                color: auto
-                entity: switch.bedroom_master_electric_blanket_tamara
-              - name: Dick
-                type: custom:button-card
-                color: auto
-                entity: switch.bedroom_master_electric_blanket_dick
-            type: horizontal-stack
-
-      - type: vertical-stack
-        cards:
-          - !include
-            - ../templates/sub_heading.yaml
-            - title: Nico bedroom
-
-          - type: horizontal-stack
-            cards:
-              - name: Ceiling
-                type: custom:button-card
-                color: auto
-                entity: light.bedroom_nico_ceiling
-
-              - color: auto
-                entity: switch.bedroom_nico_electric_blanket
-                hold_action:
-                  action: more-info
-                name: Bed
-                type: custom:button-card
-
-              - name: LED
-                type: custom:button-card
-                color: auto
-                entity: light.bedroom_nico_multisensor
-
-      - type: vertical-stack
-        cards:
-          - !include
-            - ../templates/sub_heading.yaml
-            - title: Max bedroom
-
-          - type: horizontal-stack
-            cards:
-              - name: Ceiling
-                type: custom:button-card
-                color: auto
-                entity: light.bedroom_max_ceiling
-
-              - color: auto
-                entity: switch.bedroom_max_electric_blanket
-                hold_action:
-                  action: more-info
-                name: Bed
-                type: custom:button-card
-
-              - name: LED
-                type: custom:button-card
-                color: auto
-                entity: light.ampersand_multisensor
-
-      - break
-
-      - title: Curtains
-        type: entities
-        show_header_toggle: false
-        entities:
-          - name: Living Room
-            icon: mdi:sofa
-            type: custom:cover-control-button-row
-            entity: cover.living_room_sliding_door_curtain
-            reverseButtons: true
-            customTheme: true
-            stopButtonColor: "#CF5C36"
-            buttonInactiveColor: var(--disabled-text-color)
-            isOpenedColor: var(--primary-color)
-            isClosedColor: var(--primary-color)
-            customOpenText: OPEN
-            customStopText: STOP
-            customCloseText: CLOSE
-            style: |
-              button.position {
-                border: 1px solid var(--primary-background-color);
-              }
-          - name: Dining Room
-            icon: mdi:silverware-fork-knife
-            type: custom:cover-control-button-row
-            entity: cover.dining_room_curtains
-            reverseButtons: true
-            customTheme: true
-            stopButtonColor: "#CF5C36"
-            buttonInactiveColor: var(--disabled-text-color)
-            isOpenedColor: var(--primary-color)
-            isClosedColor: var(--primary-color)
-            customOpenText: OPEN
-            customStopText: STOP
-            customCloseText: CLOSE
-            style: |
-              button.position {
-                border: 1px solid var(--primary-background-color);
-              }
-
       - type: custom:mod-card
         style: |
           ha-card {
             background: var(--card-background-color);
-
           }
         card:
           type: vertical-stack

@@ -1,17 +1,7 @@
 {
-    "data": {
-        "items": [
-            {
-                "icon": "mdi:view-dashboard-variant",
-                "id": "all_unmanaged",
-                "mode": "storage",
-                "require_admin": true,
-                "show_in_sidebar": true,
-                "title": "All Unmanaged",
-                "url_path": "all-unmanaged"
-            }
-        ]
-    },
+    "version": 1,
     "key": "lovelace_dashboards",
-    "version": 1
+    "data": {
+        "items": []
+    }
 }

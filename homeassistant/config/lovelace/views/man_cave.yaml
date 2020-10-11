@@ -10,7 +10,7 @@ cards:
       - type: vertical-stack
         cards:
           - !include
-            - ../templates/heading.yaml
+            - ../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:pac-man"></ha-icon> Man cave
 
           - title: Man Cave
@@ -50,26 +50,31 @@ cards:
         cards:
           - type: horizontal-stack
             cards:
-              - name: Ceiling
-                type: custom:button-card
-                entity: light.man_cave_ceiling
-              - entity: light.man_cave_kitchen_ceiling_one
-                icon: mdi:track-light
-                name: Kitchen One
-                type: custom:button-card
-              - entity: light.man_cave_kitchen_ceiling_two
-                name: Kitchen Two
-                type: custom:button-card
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.man_cave_ceiling
+                  name: Ceiling
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.man_cave_kitchen_ceiling_one
+                  name: Kitchen One
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.man_cave_kitchen_ceiling_two
+                  name: Kitchen Two
 
           - type: horizontal-stack
             cards:
-              - entity: light.man_cave_bathroom_ceiling
-                name: Bathroom
-                type: custom:button-card
-              - entity: switch.ender_3_safe
-                type: custom:button-card
-              - entity: switch.work_station
-                type: custom:button-card
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.man_cave_bathroom_ceiling
+                  name: Bathroom
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.ender_3_safe
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.work_station
 
           - type: light
             entity: light.man_cave_tv_backlight
@@ -77,18 +82,44 @@ cards:
 
           - type: horizontal-stack
             cards:
-              - entity: binary_sensor.man_cave_motion
-                name: Motion
-                template: motion_sensor_btn
-                type: custom:button-card
-              - entity: binary_sensor.man_cave_back_door
-                name: Back
-                template: door_sensor_btn
-                type: custom:button-card
-              - entity: binary_sensor.man_cave_stairs_door
-                name: Stairs
-                template: door_sensor_btn
-                type: custom:button-card
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: binary_sensor.man_cave_motion
+                  grid: grid-alternative
+                  style: style-alternative
+                  name: Motion
+                  show_state: true
+                  btn_template: style-transparent
+                  icon_on: mdi:motion-sensor
+                  icon_color_on: var(--accent-color)
+                  icon_off: mdi:walk
+                  icon_color_off: var(--dark-primary-color)
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: binary_sensor.man_cave_back_door
+                  grid: grid-alternative
+                  style: style-alternative
+                  name: Back Door
+                  show_state: true
+                  icon_on: mdi:door-open
+                  icon_color_on: var(--accent-color)
+                  icon_off: mdi:door-closed
+                  icon_color_off: var(--dark-primary-color)
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: binary_sensor.man_cave_stairs_door
+                  grid: grid-alternative
+                  style: style-alternative
+                  name: Stairs Door
+                  show_state: true
+                  icon_on: mdi:door-open
+                  icon_color_on: var(--accent-color)
+                  icon_off: mdi:door-closed
+                  icon_color_off: var(--dark-primary-color)
+
+
+      - type: media-control
+        entity: media_player.man_cave_xbox_one
 
       - break
 

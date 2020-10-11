@@ -10,7 +10,7 @@ cards:
       - type: vertical-stack
         cards:
           - !include
-            - ../templates/heading.yaml
+            - ../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:silverware-fork-knife"></ha-icon> Dining Room
 
           - title: Dining Room
@@ -22,23 +22,37 @@ cards:
 
       - type: horizontal-stack
         cards:
-          - name: Ceiling
-            type: custom:button-card
-            hold_action:
-              action: more-info
-            entity: light.dining_room_ceiling
-
-          - name: Backyard
-            type: custom:button-card
-            hold_action:
-              action: more-info
-            entity: light.backyard
+          - !include
+            - '../templates/button/button.yaml'
+            - entity: light.dining_room_ceiling
+              name: Ceiling
+          - !include
+            - '../templates/button/button.yaml'
+            - entity: light.backyard
+              name: Backyard
+          - !include
+            - '../templates/button/button.yaml'
+            - entity: binary_sensor.dining_room_motion
+              grid: grid-alternative
+              style: style-alternative
+              name: Motion
+              show_state: true
+              btn_template: style-transparent
+              icon_on: mdi:motion-sensor
+              icon_color_on: var(--accent-color)
+              icon_off: mdi:walk
+              icon_color_off: var(--dark-primary-color)
 
       - title: Curtains
         type: entities
         show_header_toggle: false
         entities:
-          - entity: cover.dining_room_small_window_curtain
-            name: Small Window
-          - entity: cover.dining_room_corner_curtain
-            name: Corner Window
+          - !include
+            - '../templates/entities-row/cover-control.yaml'
+            - entity: cover.dining_room_small_window_curtain
+              name: Small Window
+          - !include
+            - '../templates/entities-row/cover-control.yaml'
+            - entity: cover.dining_room_corner_curtain
+              name: Corner Window
+

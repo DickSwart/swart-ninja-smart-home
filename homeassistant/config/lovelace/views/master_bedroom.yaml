@@ -10,7 +10,7 @@ cards:
       - type: vertical-stack
         cards:
           - !include
-            - ../templates/heading.yaml
+            - ../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:human-male-female"></ha-icon> Master bedroom
 
           - entity: light.bedroom_master_ceiling
@@ -20,15 +20,26 @@ cards:
 
           - type: horizontal-stack
             cards:
-              - name: Tamara Bed
-                type: entity-button
-                entity: switch.bedroom_master_electric_blanket_tamara
-              - name: Dick Bed
-                type: entity-button
-                entity: switch.bedroom_master_electric_blanket_dick
-              - entity: binary_sensor.bedroom_master_multisensor_motion
-                type: custom:button-card
-                template: motion_sensor_btn
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.bedroom_master_electric_blanket_tamara
+                  name: Tamara
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.bedroom_master_electric_blanket_dick
+                  name: Dick
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: binary_sensor.bedroom_master_multisensor_motion
+                  grid: grid-alternative
+                  style: style-alternative
+                  name: Motion
+                  show_state: true
+                  btn_template: style-transparent
+                  icon_on: mdi:motion-sensor
+                  icon_color_on: var(--accent-color)
+                  icon_off: mdi:walk
+                  icon_color_off: var(--dark-primary-color)
 
       - break
 
@@ -43,6 +54,7 @@ cards:
         icon: mdi:apple
         artwork: cover
         name: Apple TV
+
 
       - !include
         - ../templates/esphome_multisensor_entities.yaml

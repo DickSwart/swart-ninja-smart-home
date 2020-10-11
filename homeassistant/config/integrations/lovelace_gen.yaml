@@ -5,4 +5,4 @@
 #
 # URL: https://github.com/thomasloven/hass-lovelace_gen
 ##################################################################################################################
-lovelace_gen: ~
+lovelace_gen: !include_dir_merge_named ../lovelace/config/

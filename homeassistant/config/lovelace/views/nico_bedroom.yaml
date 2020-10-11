@@ -10,26 +10,42 @@ cards:
       - type: vertical-stack
         cards:
           - !include
-            - ../templates/heading.yaml
+            - ../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:alpha-n-box"></ha-icon> Nico bedroom
 
-          - type: horizontal-stack
-            cards:
-              - entity: light.bedroom_nico_ceiling
-                name: Ceiling
-                type: custom:button-card
-              - entity: switch.bedroom_nico_electric_blanket
-                name: Bed
-                type: custom:button-card
 
           - type: horizontal-stack
             cards:
-              - entity: light.bedroom_nico_multisensor
-                name: MultiSensor
-                type: custom:button-card
-              - entity: binary_sensor.bedroom_nico_multisensor_motion
-                template: motion_sensor_btn
-                type: custom:button-card
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.bedroom_nico_ceiling
+                  name: Ceiling
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: light.bedroom_nico_multisensor
+                  name: LED
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: switch.bedroom_nico_electric_blanket
+                  name: Bed
+          - type: horizontal-stack
+            cards:
+              - !include
+                - '../templates/button/button.yaml'
+                - entity: binary_sensor.bedroom_nico_multisensor_motion
+                  grid: grid-alternative
+                  style: style-alternative
+                  name: Motion
+                  show_state: true
+                  btn_template: style-transparent
+                  icon_on: mdi:motion-sensor
+                  icon_color_on: var(--accent-color)
+                  icon_off: mdi:walk
+                  icon_color_off: var(--dark-primary-color)
+              - type: "custom:button-card"
+                color_type: blank-card
+              - type: "custom:button-card"
+                color_type: blank-card
 
       - break
 
@@ -47,6 +63,8 @@ cards:
           show_motion: true
 
       - !include
-        - ../templates/esphome_sonoff_pow_entities.yaml
-        - node_name: bedroom_nico_electric_blanket
-          card_title: Electric Blanket
+        - ../templates/card/auto-entities.yaml
+        - title: Electric Blanket
+          include_entity_id: "*.bedroom_nico_electric_blanket*"
+
+

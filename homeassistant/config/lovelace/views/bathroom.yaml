@@ -10,22 +10,32 @@ cards:
       - type: vertical-stack
         cards:
           - !include
-            - ../templates/heading.yaml
+            - ../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:shower"></ha-icon> Bathroom
 
-      - type: vertical-stack
+      - type: horizontal-stack
         cards:
-          - name: Ceiling
-            type: light
-            entity: light.bathroom_zw111_nano_dimmer
-          - type: horizontal-stack
-            cards:
-              - name: Fan
-                type: custom:button-card
-                entity: fan.bathroom
-              - type: custom:button-card
-                template: motion_sensor_btn
-                entity: binary_sensor.bathroom_multisensor_motion
+          - !include
+            - '../templates/button/button.yaml'
+            - entity: light.bathroom_zw111_nano_dimmer
+              name: Ceiling
+          - !include
+            - '../templates/button/button.yaml'
+            - entity: fan.bathroom
+              name: Fan
+              spin_on: true
+          - !include
+            - '../templates/button/button.yaml'
+            - entity: binary_sensor.bathroom_motion
+              grid: grid-alternative
+              style: style-alternative
+              name: Motion
+              show_state: true
+              btn_template: style-transparent
+              icon_on: mdi:motion-sensor
+              icon_color_on: var(--accent-color)
+              icon_off: mdi:walk
+              icon_color_off: var(--dark-primary-color)
 
       - break
 

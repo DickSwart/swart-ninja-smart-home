@@ -1,0 +1,7 @@
+---
+#
+# List of entities that is exposed to Alexa
+# From area: Man Cave Kitchen
+#
+- switch.man_cave_kitchen_ceiling_one
+- switch.man_cave_kitchen_ceiling_two

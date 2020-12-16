@@ -1,0 +1,17 @@
+---
+id: living_room_light_off_motion
+alias: Living Room Light Off Motion
+description: Turn off living room light 20 minutes after last movement
+trigger:
+  platform: state
+  entity_id: binary_sensor.living_room_motion
+  to: 'off'
+  for:
+    minutes: 20
+condition:
+  - condition: state
+    entity_id: light.living_room_ceiling
+    state: 'on'
+action:
+  - service: light.turn_off
+    entity_id: light.living_room_ceiling

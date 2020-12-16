@@ -1,0 +1,15 @@
+---
+id: 76254de2-05a9-4e32-b537-eee52528320d
+alias: living_room_curtains_close
+description: 'Curtains Close: 30 min before sunset'
+mode: single
+trigger:
+- event: sunset
+  offset: -00:30:00
+  platform: sun
+condition: []
+action:
+  - service: cover.close_cover
+    entity_id:
+      - cover.living_room_sliding_door_curtain
+

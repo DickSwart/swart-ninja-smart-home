@@ -1,0 +1,17 @@
+---
+id: hall_light_off_motion
+alias: Hall Light Off Motion
+description: Turn off hall light 5 minutes after last movement
+trigger:
+  platform: state
+  entity_id: binary_sensor.hall_motion
+  to: 'off'
+  for:
+    minutes: 3
+condition:
+  - condition: state
+    entity_id: light.hall_zw111_nano_dimmer
+    state: 'on'
+action:
+  - service: light.turn_off
+    entity_id: light.hall_zw111_nano_dimmer

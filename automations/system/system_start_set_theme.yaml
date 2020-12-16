@@ -1,0 +1,11 @@
+---
+id: ca3ae655-a0ee-4f8f-adf9-a570e144a589
+alias: System Start Set Theme
+description: Set theme on Home Assistant start
+trigger:
+  platform: homeassistant
+  event: start
+action:
+  - service: frontend.set_theme
+    data:
+      name: swart_ninja_dark

@@ -1,0 +1,32 @@
+---
+id: hall_light_on_motion
+alias: Hall Light On Motion
+description: Turn on hall light when there is movement
+trigger:
+  platform: state
+  entity_id: binary_sensor.hall_motion
+  to: 'on'
+condition:
+  - condition: numeric_state
+    entity_id: sensor.hall_multisensor_luminance
+    below: 15
+  - condition: state
+    entity_id: light.hall_zw111_nano_dimmer
+    state: 'off'
+action:
+  - choose:
+      # IF between midnight and 6am Dimmed
+      - conditions:
+          - condition: time
+            before: '06:01:00'
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.hall_zw111_nano_dimmer
+              brightness: 18
+    # ELSE full brightness
+    default:
+      - service: light.turn_on
+        data:
+          entity_id: light.hall_zw111_nano_dimmer
+          brightness: 255

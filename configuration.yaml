@@ -1,0 +1,29 @@
+---
+##################################################################################################################
+# Home Assistant configuration
+# The configuration.yaml is only used to bootstrap the system.
+#
+# Splitting up the configuration: https://www.home-assistant.io/docs/configuration/splitting_configuration/
+##################################################################################################################
+homeassistant:
+  name: Swart Ninja Smart Home
+  latitude: !secret lat_home
+  longitude: !secret long_home
+  elevation: !secret elevation_home
+  time_zone: Pacific/Auckland
+  external_url: !secret external_url
+  internal_url: !secret internal_url
+  unit_system: metric
+  customize: !include_dir_merge_named customizations/entities
+  customize_domain: !include_dir_merge_named customizations/domains
+  customize_glob: !include customizations/globs.yaml
+
+  allowlist_external_dirs:
+    - !secret internal_snapshot_path
+
+  media_dirs:
+    media: /media
+    camera_snapshots: !secret internal_snapshot_path
+
+  # Load packages
+  packages: !include_dir_named integrations

@@ -1,0 +1,7 @@
+---
+#
+# List of entities that is exposed to Alexa
+# From area: Dining Room
+#
+- cover.dining_room_curtains
+- light.dining_room_ceiling

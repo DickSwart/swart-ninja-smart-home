@@ -1,0 +1,16 @@
+---
+id: d8214bec-50bc-4783-a228-246138a0f9d6
+alias: dining_room_curtains_close
+description: 'Curtains Close: 30 min before sunset'
+mode: single
+trigger:
+- event: sunset
+  offset: -00:30:00
+  platform: sun
+condition: []
+action:
+  - service: cover.close_cover
+    entity_id:
+      - cover.dining_room_corner_curtain
+      - cover.dining_room_small_window_curtain
+

@@ -1,0 +1,31 @@
+---
+id: b050b152-ce22-4b38-8e99-ba9cd9a9c0a2
+alias: "System Updater Notification: AddOn"
+description: Create a notification when there is updates pending in AddOn
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: binary_sensor.updater_addons
+    from: "off"
+    to: "on"
+  - platform: homeassistant
+    event: start
+condition:
+  - condition: state
+    entity_id: binary_sensor.updater_addons
+    state: "on"
+action:
+  - service: persistent_notification.create
+    data_template:
+      title: 🆕 Updates pending in HACS
+      message: >-
+        {% for addon in state_attr(sensor.supervisor_updates, 'addons') %}
+          **{{ addon.name }}** _{{ addon.installed }}_ -> _{{ addon.version }}_
+        {% endfor %}
+  - service: notify.telegram_chat_id_swart_ninja_smart_home_group
+    data_template:
+      title: 🆕 Updates pending in HACS
+      message: >-
+        {% for addon in state_attr(sensor.supervisor_updates, 'addons') %}
+          **{{ addon.name }}** _{{ addon.installed }}_ -> _{{ addon.version }}_
+        {% endfor %}

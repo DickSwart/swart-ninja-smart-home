@@ -1,0 +1,16 @@
+---
+id: 7f4eb500-6aca-42db-b801-e4bbf6296458
+alias: dining_room_curtains_open
+description: 'Curtains Open: 30 min after sunrise'
+mode: single
+trigger:
+- event: sunrise
+  offset: 00:30:00
+  platform: sun
+condition: []
+action:
+  - service: cover.open_cover
+    entity_id:
+      - cover.dining_room_corner_curtain
+      - cover.dining_room_small_window_curtain
+

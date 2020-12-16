@@ -1,0 +1,43 @@
+---
+# This automation turns on/off the cupboard lights based
+# on the state of the kitchen ceiling light.
+#
+# It is turned on if the kitchen ceiling light is off.
+# Turned off otherwise.
+#
+id: d500d220-b87c-48be-befb-a7342b3b3e99
+alias: kitchen_ceiling_cupboard
+description: Turn on kitchen cupboard light when ceiling light is turned off.
+mode: single
+
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: event
+    event_type: automation_reloaded
+  - platform: state
+    entity_id:
+      - switch.kitchen_ceiling
+      - sun.sun
+
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+
+action:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: switch.kitchen_ceiling
+            state: "on"
+        sequence:
+          - service: light.turn_off
+            entity_id: light.kitchen_motion_led
+    default:
+      - service: light.turn_on
+        data:
+          entity_id: light.kitchen_motion_led
+          brightness: 127
+          transition: 5
+

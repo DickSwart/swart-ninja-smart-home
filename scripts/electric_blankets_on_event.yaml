@@ -1,0 +1,13 @@
+---
+alias: Call Electric Blankets on Event
+max: 10
+mode: parallel
+description: Call electric blankets on event that will trigger in NodeRed
+fields:
+  name:
+    description: The name of the electric blanket (dick / tamara / nico / max / kids)
+    example: max
+sequence:
+  - event: electric_blankets_on
+    event_data_template:
+      name: "{{ name }}"

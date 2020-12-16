@@ -36,6 +36,8 @@ zwcfg_*
 zwscene.xml
 webostv.conf
 google_calendars.yaml
+node-red/flows_cred.backup
+node-red/flows_cred.json
 
 # ESPHome ignores
 esphome/secrets.yaml
@@ -54,3 +56,4 @@ notebooks
 
 # Specific keeps
 !.gitkeep
+

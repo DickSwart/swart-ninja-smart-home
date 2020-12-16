@@ -1,0 +1,4 @@
+---
+alias: Shutdown Man Cave Volumio
+sequence:
+  - service: shell_command.shutdown_man_cave_volumio

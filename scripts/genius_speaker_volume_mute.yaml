@@ -1,0 +1,6 @@
+---
+alias: Genius speakers mute
+sequence:
+  - service: rest_command.genius_swhf51_3000_command
+    data:
+      command: MUTE

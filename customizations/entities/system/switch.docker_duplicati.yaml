@@ -1,3 +1,3 @@
 ---
-  switch.docker_duplicati:
-    entity_picture: /local/images/docker-container-images/duplicati.png
+switch.docker_duplicati:
+  entity_picture: /local/images/docker-container-images/duplicati.png

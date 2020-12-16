@@ -8,6 +8,7 @@ ignore: |
   scenes.yaml
   themes/
   blueprints/
+  lovelace/templates
 rules:
   braces:
     level: error

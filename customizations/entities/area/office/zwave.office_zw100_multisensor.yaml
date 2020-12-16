@@ -1,0 +1,4 @@
+---
+# Z-Wave MultiSensor - Office
+zwave.office_zw100_multisensor:
+  friendly_name: Office MultiSensor MultiSensor

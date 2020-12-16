@@ -1,0 +1,3 @@
+---
+  switch.docker_tasmoadmin:
+    entity_picture: /local/images/docker-container-images/tasmoadmin.png

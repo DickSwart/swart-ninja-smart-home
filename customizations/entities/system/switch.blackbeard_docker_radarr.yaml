@@ -1,0 +1,3 @@
+---
+switch.blackbeard_docker_radarr:
+  entity_picture: /local/images/docker-container-images/radarr.png

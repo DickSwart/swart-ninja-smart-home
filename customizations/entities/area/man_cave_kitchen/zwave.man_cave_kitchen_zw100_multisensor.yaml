@@ -1,0 +1,4 @@
+---
+# Z-Wave MultiSensor - Man Cave Kitchen
+zwave.man_cave_kitchen_zw100_multisensor:
+  friendly_name: Man Cave Kitchen MultiSensor

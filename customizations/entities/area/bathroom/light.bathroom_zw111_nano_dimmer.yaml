@@ -1,0 +1,5 @@
+---
+# Z-Wave Nano Dimmer - Bathroom
+light.bathroom_zw111_nano_dimmer:
+  friendly_name: Bathroom Nano Dimmer
+  icon: mdi:ceiling-light

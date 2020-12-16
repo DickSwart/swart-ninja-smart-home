@@ -1,0 +1,4 @@
+---
+binary_sensor.office_zw100_multisensor_motion:
+  friendly_name: Office MultiSensor Motion
+  device_class: motion

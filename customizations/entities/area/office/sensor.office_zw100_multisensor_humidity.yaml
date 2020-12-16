@@ -1,0 +1,3 @@
+---
+sensor.office_zw100_multisensor_humidity:
+  friendly_name: Office MultiSensor Humidity

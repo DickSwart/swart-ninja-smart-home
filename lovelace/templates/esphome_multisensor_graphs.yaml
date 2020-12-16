@@ -1,0 +1,6 @@
+# lovelace_gen
+!include
+- multisensor_graphs.yaml
+- temp_entity: sensor.{{ node_name }}_temperature
+  hum_entity: sensor.{{ node_name }}_humidity
+  lux_entity: sensor.{{ node_name }}_luminance

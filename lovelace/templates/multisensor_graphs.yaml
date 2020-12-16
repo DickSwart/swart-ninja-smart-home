@@ -1,0 +1,33 @@
+# lovelace_gen
+# Available parameters:
+# temp_entity   (required)
+# hum_entity   (required)
+# lux_entity   (required)
+type: vertical-stack
+cards:
+  - type: custom:mini-graph-card
+    font_size: 75
+    line_width: 3
+    entities:
+      - name: Room Temperature
+        color: var(--light-primary-color)
+        entity: {{ temp_entity }}
+      - entity: sensor.dark_sky_temperature
+        color: var(--dark-primary-color)
+        name: Outside Temperature
+  - type: horizontal-stack
+    cards:
+      - entities:
+          - entity: {{ hum_entity }}
+            name: Humidity
+        font_size: 75
+        line_color: var(--complement-color-one)
+        line_width: 3
+        type: custom:mini-graph-card
+      - entities:
+          - entity: {{ lux_entity }}
+            name: Luminance
+        font_size: 75
+        line_color: var(--complement-color-two)
+        line_width: 3
+        type: custom:mini-graph-card

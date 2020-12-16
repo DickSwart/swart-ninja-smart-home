@@ -1,0 +1,49 @@
+---
+title: Max bedroom
+icon: mdi:alpha-m-box
+panel: true
+path: max_bedroom
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../../templates/header/view_heading.yaml
+            - title: <ha-icon icon="mdi:alpha-m-box"></ha-icon> Max bedroom
+
+          - type: horizontal-stack
+            cards:
+              - !include
+                - "../../templates/button/button.yaml"
+                - entity: switch.bedroom_max_ceiling
+                  name: Ceiling
+              - !include
+                - "../../templates/button/button.yaml"
+                - entity: light.ampersand_multisensor
+                  name: LED
+              - !include
+                - "../../templates/button/button.yaml"
+                - entity: switch.bedroom_max_electric_blanket
+                  name: Bed
+
+      - break
+
+      - !include
+        - ../../templates/esphome_multisensor_graphs.yaml
+        - node_name: ampersand_multisensor
+
+      - break
+
+      - !include
+        - ../../templates/esphome_multisensor_entities.yaml
+        - node_name: ampersand_multisensor
+          show_led: true
+          show_door: false
+          show_motion: false
+
+      - !include
+        - ../../templates/card/auto-entities.yaml
+        - title: Electric Blanket
+          include_entity_id: "*.bedroom_max_electric_blanket*"

@@ -1,0 +1,81 @@
+---
+icon: mdi:fridge
+panel: true
+path: kitchen
+title: Kitchen
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: vertical-stack
+        cards:
+          - !include
+            - ../../templates/header/view_heading.yaml
+            - title: <ha-icon icon="mdi:fridge"></ha-icon> Kitchen
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - !include
+                - "../../templates/button/button.yaml"
+                - entity: switch.kitchen_ceiling
+                  name: Ceiling
+              - !include
+                - "../../templates/button/button.yaml"
+                - entity: switch.kitchen_side
+                  name: Side
+              - !include
+                - "../../templates/button/button.yaml"
+                - entity: binary_sensor.kitchen_motion
+                  grid: grid-alternative
+                  style: style-alternative
+                  name: Motion
+                  show_state: true
+                  btn_template: style-transparent
+                  icon_on: mdi:motion-sensor
+                  icon_color_on: var(--accent-color)
+                  icon_off: mdi:walk
+                  icon_color_off: var(--dark-primary-color)
+
+          - entity: light.kitchen_cupboard
+            name: Cupboards
+            type: light
+
+      - type: custom:mini-media-player
+        entity: media_player.kitchen_apple_tv
+        icon: mdi:apple
+        artwork: cover
+        name: Apple TV
+
+      - break
+
+      - !include
+        - ../../templates/esphome_multisensor_graphs.yaml
+        - node_name: kitchen_multisensor
+
+      - break
+
+      - !include
+        - ../../templates/esphome_multisensor_entities.yaml
+        - node_name: kitchen_multisensor
+          show_led: true
+          show_door: false
+          show_motion: true
+
+      - title: Motion & Cupboard
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: light.kitchen_cupboard
+            name: LED
+          - entity: binary_sensor.kitchen_motion_led_motion
+            name: Motion
+          - entity: sensor.kitchen_motion_led_wifi_signal
+            name: WiFi
+          - entity: binary_sensor.kitchen_motion_led_status
+            name: Status
+          - entity: sensor.kitchen_motion_led_uptime
+            name: Uptime
+          - entity: sensor.kitchen_motion_led_esphome_version
+            name: ESPHome Version

@@ -1,0 +1,30 @@
+# lovelace_gen
+# Available parameters:
+# node_name   (required)
+# card_title  (optional)
+type: entities
+{% if card_title %}
+title: {{ card_title }}
+{% else %}
+title: Sonoff POW
+{% endif %}
+show_header_toggle: false
+entities:
+  - entity: switch.{{ node_name }}
+    name: Switch
+  - entity: sensor.{{ node_name }}_current
+    name: Current
+  - entity: sensor.{{ node_name }}_power
+    name: Power
+  - entity: sensor.{{ node_name }}_voltage
+    name: Voltage
+  - entity: sensor.{{ node_name }}_wifi_signal
+    name: WiFi
+  - entity: binary_sensor.{{ node_name }}_status
+    name: Status
+  - entity: sensor.{{ node_name }}_uptime
+    name: Uptime
+  - entity: sensor.{{ node_name }}_esphome_version
+    name: ESPHome Version
+  - entity: switch.{{ node_name }}_restart
+    name: Restart

@@ -1,0 +1,19 @@
+# lovelace_gen
+type: markdown
+content: |
+  # {{ title }}
+style: |
+  ha-card {
+    box-shadow: none;
+    background: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--primary-color);
+  }
+  ha-icon {
+    color: var(--primary-color);
+  }
+  h1 {
+    font-size: 2em;
+    font-weight: 400;
+    font-family: var(--paper-font-title_-_font-family);
+  }

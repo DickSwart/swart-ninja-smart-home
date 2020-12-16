@@ -1,0 +1,99 @@
+---
+title: Settings
+path: admin-settings
+icon: mdi:tune
+panel: true
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Light Automations
+        filter:
+          include:
+            - entity_id: "switch.nodered_*_lights"
+
+      - title: Curtains Automations
+        type: entities
+        entities:
+          - entity: switch.nodered_dining_room_curtains
+          - entity: switch.nodered_living_room_curtains
+
+      - title: System Automations
+        type: entities
+        entities:
+          - entity: automation.system_release_notification
+            name: Send notification if new release abailable
+          - entity: automation.system_shutdown_notification
+            name: Send notification on Home Assistant stop
+          - entity: automation.system_start_notification
+            name: Send notification on Home Assistant start
+          - entity: automation.system_start_set_theme
+            name: Set theme on Home Assistant start
+
+      - break
+
+      - title: Automation Sensors
+        type: entities
+        entities:
+          - binary_sensor.presence_anyone_home
+          - binary_sensor.is_cold
+          - binary_sensor.school_today
+          - binary_sensor.school_tomorrow
+          - binary_sensor.workday_today
+          - binary_sensor.workday_tomorrow
+          - binary_sensor.dark_outside
+          - entity: binary_sensor.updater
+            name: Home Assistant Released Version
+
+      - title: System
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: input_boolean.notifications_text
+          - entity: input_boolean.notifications_audio
+          - entity: switch.doorbell_chime
+            name: Doorbell Chime
+
+      - title: Presence Detection
+        type: entities
+        entities:
+          - entity: input_boolean.presence_location_away_dick
+          - entity: input_boolean.presence_location_away_tamara
+
+      - break
+
+      - title: Kids Bed Times
+        show_header_toggle: false
+        type: entities
+        entities:
+          - entity: input_datetime.kids_bedtime_school_nights
+            name: School nights
+          - entity: input_datetime.kids_bedtime_other_nights
+            name: Other nights
+
+      - title: Kids Routines
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: input_boolean.routine_kids_home_school
+          - entity: input_boolean.routine_kids_bedtime
+          - entity: input_boolean.routine_kids_shower_time
+
+      - title: Alarm
+        type: custom:vertical-stack-in-card
+        cards:
+          - entity: alarm_control_panel.alexa_guard_68602
+            states:
+              - arm_home
+              - arm_away
+            type: alarm-panel
+          - type: divider
+          - entities:
+              - entity: input_boolean.house_alarm_silent
+              - entity: input_boolean.house_alarm_loud
+              - entity: light.alarm_lights_group
+            show_header_toggle: false
+            type: entities

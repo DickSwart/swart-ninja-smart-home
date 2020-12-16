@@ -1,0 +1,57 @@
+# lovelace_gen
+# Available parameters:
+# container_name   (required)
+# entity_name      (optional)
+# entity_icon      (optional)
+# show_network     (optional)
+
+head:
+  entity: sensor.docker_{{ container_name }}_state
+{% if entity_name %}
+  name: {{entity_name}}
+{% endif %}
+{% if entity_icon %}
+  icon: {{entity_icon}}
+{% endif %}
+type: 'custom:fold-entity-row'
+items:
+  - entity: switch.docker_{{ container_name }}
+    name: "Off / On"
+  - entity: sensor.docker_{{ container_name }}_image
+    name: Image
+  - entity: sensor.docker_{{ container_name }}_state
+    name: State
+  - entity: sensor.docker_{{ container_name }}_status
+    name: Status
+  - entity: sensor.docker_{{ container_name }}_up_time
+    name: Up Time
+  - entity: sensor.docker_{{ container_name }}_cpu
+    name: CPU
+  - entity: sensor.docker_{{ container_name }}_memory
+    name: Memory
+  - entity: sensor.docker_{{ container_name }}_memory_percent
+    name: Memory Percent
+{% if show_network %}
+  - entity: sensor.docker_{{ container_name }}_network_speed_down
+    name: Network Speed - Down
+  - entity: sensor.docker_{{ container_name }}_network_speed_up
+    name: Network Speed - Up
+  - entity: sensor.docker_{{ container_name }}_network_total_down
+    name: Network Speed - Total Down
+  - entity: sensor.docker_{{ container_name }}_network_total_up
+    name: Network Speed - Total Up
+{% endif %}
+{% if container_name.startswith("minecraft") %}
+  - entity: binary_sensor.{{ container_name }}_status
+    name: Status
+  - entity: sensor.{{ container_name }}_latency_time
+    name: Latency Time
+  - entity: sensor.{{ container_name }}_players_max
+    name: Max Players
+  - entity: sensor.{{ container_name }}_players_online
+    name: Players Online
+  - entity: sensor.{{ container_name }}_protocol_version
+    name: Protocol Version
+  - entity: sensor.{{ container_name }}_version
+    name: Version
+{% endif %}

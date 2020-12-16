@@ -1,0 +1,285 @@
+---
+title: Labs
+icon: mdi:test-tube
+path: admin-labs
+panel: true
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - !include
+        - ../../templates/header/view_heading.yaml
+        - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs
+
+      - title: NVMe
+        type: custom:vertical-stack-in-card
+        cards:
+          - title: NVMe
+            type: entities
+            style: |
+              .card-header {
+                padding-top: 0;
+              }
+            entities:
+              - sensor.swartninjanas_cache_device_1_status
+              - sensor.swartninjanas_cache_device_1_temperature
+              - binary_sensor.swartninjanas_cache_device_1_below_min_remaining_life
+              - binary_sensor.swartninjanas_cache_device_1_exceeded_max_bad_sectors
+              - sensor.swartninjanas_cache_device_2_status
+              - sensor.swartninjanas_cache_device_2_temperature
+              - binary_sensor.swartninjanas_cache_device_2_below_min_remaining_life
+              - binary_sensor.swartninjanas_cache_device_2_exceeded_max_bad_sectors
+
+      - break
+
+      ########################
+      ### Card Syno Status ###
+      ########################
+      - title: SwartNinjaNAS
+        type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/images/ds920plus.png
+            elements:
+              ### Drive 1
+              - type: state-label
+                title: Temperature
+                entity: sensor.swartninjanas_drive_1_temperature
+                style: { left: 24.3%, top: 26% }
+              - type: state-icon
+                title: Status
+                entity: sensor.swartninjanas_drive_1_status
+                style: { left: 24.3%, top: 36% }
+              - type: state-icon
+                title: Status Smart
+                entity: sensor.swartninjanas_drive_1_status_smart
+                style: { left: 24.3%, top: 46% }
+              - type: state-icon
+                title: Below min remaining life
+                entity: binary_sensor.swartninjanas_drive_1_below_min_remaining_life
+                style: { left: 24.3%, top: 56% }
+              - type: state-icon
+                title: Exceeded max bad sectors
+                entity: binary_sensor.swartninjanas_drive_1_exceeded_max_bad_sectors
+                style: { left: 24.3%, top: 66% }
+              ### Drive 2
+              - type: state-label
+                title: Temperature
+                entity: sensor.swartninjanas_drive_2_temperature
+                style: { left: 38.5%, top: 26% }
+              - type: state-icon
+                title: Status
+                entity: sensor.swartninjanas_drive_2_status
+                style: { left: 38.5%, top: 36% }
+              - type: state-icon
+                title: Status Smart
+                entity: sensor.swartninjanas_drive_2_status_smart
+                style: { left: 38.5%, top: 46% }
+              - type: state-icon
+                title: Below min remaining life
+                entity: binary_sensor.swartninjanas_drive_2_below_min_remaining_life
+                style: { left: 38.5%, top: 56% }
+              - type: state-icon
+                title: Exceeded max bad sectors
+                entity: binary_sensor.swartninjanas_drive_2_exceeded_max_bad_sectors
+                style: { left: 38.5%, top: 66% }
+              ### Drive 3
+              - type: state-label
+                title: Temperature
+                entity: sensor.swartninjanas_drive_3_temperature
+                style: { left: 52.6%, top: 26% }
+              - type: state-icon
+                title: Status
+                entity: sensor.swartninjanas_drive_3_status
+                style: { left: 52.6%, top: 36% }
+              - type: state-icon
+                title: Status Smart
+                entity: sensor.swartninjanas_drive_3_status_smart
+                style: { left: 52.6%, top: 46% }
+              - type: state-icon
+                title: Below min remaining life
+                entity: binary_sensor.swartninjanas_drive_3_below_min_remaining_life
+                style: { left: 52.6%, top: 56% }
+              - type: state-icon
+                title: Exceeded max bad sectors
+                entity: binary_sensor.swartninjanas_drive_3_exceeded_max_bad_sectors
+                style: { left: 52.6%, top: 66% }
+              ### Drive 4
+              - type: state-label
+                title: Temperature
+                entity: sensor.swartninjanas_drive_4_temperature
+                style: { left: 67%, top: 26% }
+              - type: state-icon
+                title: Status
+                entity: sensor.swartninjanas_drive_4_status
+                style: { left: 67%, top: 36% }
+              - type: state-icon
+                title: Status Smart
+                entity: sensor.swartninjanas_drive_4_status_smart
+                style: { left: 67%, top: 46% }
+              - type: state-icon
+                title: Below min remaining life
+                entity: binary_sensor.swartninjanas_drive_4_below_min_remaining_life
+                style: { left: 67%, top: 56% }
+              - type: state-icon
+                title: Exceeded max bad sectors
+                entity: binary_sensor.swartninjanas_drive_4_exceeded_max_bad_sectors
+                style: { left: 67%, top: 66% }
+              ### Device Info
+              - type: state-label
+                prefix: "Security: "
+                entity: binary_sensor.swartninjanas_security_status
+                style: { left: 28%, bottom: 9% }
+              - type: state-label
+                prefix: "Update: "
+                entity: binary_sensor.swartninjanas_update_available
+                style: { left: 65%, bottom: 9% }
+
+      - title: NVMe Cache 1
+        type: glance
+        entities:
+          - entity: sensor.swartninjanas_cache_device_1_status
+            name: Status
+          - entity: sensor.swartninjanas_cache_device_1_temperature
+            name: Temperature
+          - entity: binary_sensor.swartninjanas_cache_device_1_below_min_remaining_life
+            name: Remaining Life
+          - entity: binary_sensor.swartninjanas_cache_device_1_exceeded_max_bad_sectors
+            name: Bad Sectors
+
+      #     - title: NVMe
+      #       type: entities
+      #       style: |
+      #         .card-header {
+      #           padding-top: 0;
+      #         }
+      #       entities:
+      #         - entity: sensor.swartninjanas_cache_device_1_status
+      #           name: Cache 1 Status
+      #         - entity: sensor.swartninjanas_cache_device_1_temperature
+      #           name: Cache 1 Temperature
+      #         - entity: binary_sensor.swartninjanas_cache_device_1_below_min_remaining_life
+      #           name: Cache 1 Status
+      #         - entity: binary_sensor.swartninjanas_cache_device_1_exceeded_max_bad_sectors
+      #           name: Cache 1 Exceeded Max Bad Sectors
+
+      #         - entity: sensor.swartninjanas_cache_device_2_status
+      #           name: Cache 2 Status
+      #         - entity: sensor.swartninjanas_cache_device_2_temperature
+      #           name: Cache 2 Temperature
+      #         - entity: binary_sensor.swartninjanas_cache_device_2_below_min_remaining_life
+      #           name: Cache 2 Status
+      #         - entity: binary_sensor.swartninjanas_cache_device_2_exceeded_max_bad_sectors
+      #           name: Cache 2 Exceeded Max Bad Sectors
+
+      #     - type: horizontal-stack
+      #       cards:
+      #         - type: gauge
+      #           name: CPU
+      #           unit: "%"
+      #           entity: sensor.swartninjanas_cpu_load_total
+      #           severity:
+      #             green: 0
+      #             yellow: 45
+      #             red: 85
+      #         - type: custom:bar-card
+      #           style: |
+      #             .card-content {
+      #               padding-bottom: 0;
+      #             }
+      #           direction: up
+      #           height: 100px
+      #           max: 100
+      #           min: 0
+      #           positions:
+      #             icon: inside
+      #             title: inside
+      #             value: inside
+      #           severity:
+      #             - color: "#2DAD4B"
+      #               from: 0
+      #               to: 30
+      #             - color: "#2AA246"
+      #               from: 30
+      #               to: 40
+      #             - color: "#FFAE03"
+      #               from: 40
+      #               to: 50
+      #             - color: "#CC8B00"
+      #               from: 50
+      #               to: 60
+      #             - color: "#D37209"
+      #               from: 60
+      #               to: 70
+      #             - color: "#D95812"
+      #               from: 70
+      #               to: 80
+      #             - color: "#E52424"
+      #               from: 80
+      #               to: 90
+      #             - color: "#C91818"
+      #               from: 90
+      #               to: 100
+      #           show_icon: true
+      #           stack: horizontal
+      #           tap_action: none
+      #           entities:
+      #             - entity: sensor.swartninjanas_volume_1_volume_used
+      #               name: HDD
+      #     - type: horizontal-stack
+      #       cards:
+      #         - type: gauge
+      #           name: RAM
+      #           unit: "%"
+      #           entity: sensor.swartninjanas_memory_usage_real
+      #           severity:
+      #             green: 0
+      #             yellow: 45
+      #             red: 85
+      #         - type: gauge
+      #           name: Swap
+      #           unit: "%"
+      #           entity: sensor.glances_swap_used_percent
+      #           severity:
+      #             green: 0
+      #             yellow: 45
+      #             red: 85
+      #     - type: horizontal-stack
+      #       cards:
+      #         - type: gauge
+      #           name: Download
+      #           unit: "kB/s"
+      #           entity: sensor.swartninjanas_network_down
+      #           min: 0
+      #           max: 150
+      #           severity:
+      #             green: 80
+      #             yellow: 50
+      #             red: 0
+      #         - type: gauge
+      #           name: Upload
+      #           unit: "kB/s"
+      #           entity: sensor.swartninjanas_network_up
+      #           min: 0
+      #           max: 100
+      #           severity:
+      #             green: 20
+      #             yellow: 10
+      #             red: 0
+
+      # - title: Lights On
+      #   show_header_toggle: false
+      #   type: entities
+      #   entities:
+      #     - type: custom:auto-entities
+      #       show_empty: false
+      #       filter:
+      #         include:
+      #           - domain: light
+      #             state: "on"
+      #             area: Kitchen
+      #       card:
+      #         type: custom:fold-entity-row
+      #         head:
+      #           type: section
+      #           label: Automatically populated

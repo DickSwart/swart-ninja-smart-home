@@ -1,0 +1,448 @@
+---
+title: NAS
+icon: mdi:nas
+path: admin-nas
+panel: true
+popup_cards:
+  switch.nas_docker_plex:
+    title: Plex Media Server
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.nas_docker_plex*"
+  switch.nas_docker_unifi_controller:
+    title: Unifi Controller
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.docker_unifi_controller*"
+  switch.nas_docker_watchtower:
+    title: Watchtower
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.nas_docker_watchtower*"
+  switch.docker_xboxone:
+    title: Xbox One
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.docker_xboxone*"
+  switch.nas_docker_xteve:
+    title: xTeVe
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.nas_docker_xteve*"
+  switch.nas_docker_garbage_collection:
+    title: Garbage Collection
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.nas_docker_garbage_collection*"
+  switch.nas_docker_vscode:
+    title: VSCode
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.nas_docker_vscode*"
+
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - title: SwartNinjaNAS
+        type: glance
+        entities:
+          - entity: binary_sensor.swartninjanas_security_status
+            name: Security
+          - entity: binary_sensor.swartninjanas_update_available
+            name: Update
+          - entity: sensor.swartninjanas_last_boot
+            name: Last Boot
+          - entity: sensor.swartninjanas_temperature
+            name: Temperature
+
+      - type: vertical-stack
+        cards:
+          - type: picture-elements
+            image: /local/images/ds920plus.png
+            elements:
+              ### Drive 1
+              - type: state-label
+                title: Temperature
+                entity: sensor.swartninjanas_drive_1_temperature
+                style: { left: 24.3%, top: 26% }
+              - type: state-icon
+                title: Status
+                entity: sensor.swartninjanas_drive_1_status
+                style: { left: 24.3%, top: 36% }
+              - type: state-icon
+                title: Status Smart
+                entity: sensor.swartninjanas_drive_1_status_smart
+                style: { left: 24.3%, top: 46% }
+              - type: state-icon
+                title: Below min remaining life
+                entity: binary_sensor.swartninjanas_drive_1_below_min_remaining_life
+                style: { left: 24.3%, top: 56% }
+              - type: state-icon
+                title: Exceeded max bad sectors
+                entity: binary_sensor.swartninjanas_drive_1_exceeded_max_bad_sectors
+                style: { left: 24.3%, top: 66% }
+              ### Drive 2
+              - type: state-label
+                title: Temperature
+                entity: sensor.swartninjanas_drive_2_temperature
+                style: { left: 38.5%, top: 26% }
+              - type: state-icon
+                title: Status
+                entity: sensor.swartninjanas_drive_2_status
+                style: { left: 38.5%, top: 36% }
+              - type: state-icon
+                title: Status Smart
+                entity: sensor.swartninjanas_drive_2_status_smart
+                style: { left: 38.5%, top: 46% }
+              - type: state-icon
+                title: Below min remaining life
+                entity: binary_sensor.swartninjanas_drive_2_below_min_remaining_life
+                style: { left: 38.5%, top: 56% }
+              - type: state-icon
+                title: Exceeded max bad sectors
+                entity: binary_sensor.swartninjanas_drive_2_exceeded_max_bad_sectors
+                style: { left: 38.5%, top: 66% }
+              ### Drive 3
+              - type: state-label
+                title: Temperature
+                entity: sensor.swartninjanas_drive_3_temperature
+                style: { left: 52.6%, top: 26% }
+              - type: state-icon
+                title: Status
+                entity: sensor.swartninjanas_drive_3_status
+                style: { left: 52.6%, top: 36% }
+              - type: state-icon
+                title: Status Smart
+                entity: sensor.swartninjanas_drive_3_status_smart
+                style: { left: 52.6%, top: 46% }
+              - type: state-icon
+                title: Below min remaining life
+                entity: binary_sensor.swartninjanas_drive_3_below_min_remaining_life
+                style: { left: 52.6%, top: 56% }
+              - type: state-icon
+                title: Exceeded max bad sectors
+                entity: binary_sensor.swartninjanas_drive_3_exceeded_max_bad_sectors
+                style: { left: 52.6%, top: 66% }
+              ### Drive 4
+              - type: state-label
+                title: Temperature
+                entity: sensor.swartninjanas_drive_4_temperature
+                style: { left: 67%, top: 26% }
+              - type: state-icon
+                title: Status
+                entity: sensor.swartninjanas_drive_4_status
+                style: { left: 67%, top: 36% }
+              - type: state-icon
+                title: Status Smart
+                entity: sensor.swartninjanas_drive_4_status_smart
+                style: { left: 67%, top: 46% }
+              - type: state-icon
+                title: Below min remaining life
+                entity: binary_sensor.swartninjanas_drive_4_below_min_remaining_life
+                style: { left: 67%, top: 56% }
+              - type: state-icon
+                title: Exceeded max bad sectors
+                entity: binary_sensor.swartninjanas_drive_4_exceeded_max_bad_sectors
+                style: { left: 67%, top: 66% }
+              ### Device Info
+              - type: state-label
+                prefix: "Volume 1 - Usage: "
+                entity: sensor.swartninjanas_volume_1_volume_used
+                style: { left: 35%, bottom: 9% }
+              - type: state-label
+                prefix: "("
+                suffix: ")"
+                entity: sensor.swartninjanas_volume_1_used_space
+                style: { left: 67%, bottom: 9% }
+
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                name: CPU
+                unit: "%"
+                entity: sensor.swartninjanas_cpu_load_total
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
+              - type: gauge
+                name: RAM
+                unit: "%"
+                entity: sensor.swartninjanas_memory_usage_real
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
+
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.swartninjanas_network_up
+                name: Network Up
+              - type: sensor
+                entity: sensor.swartninjanas_network_down
+                name: Network Down
+
+      - break
+
+      - title: NVMe Cache 1
+        type: glance
+        entities:
+          - entity: sensor.swartninjanas_cache_device_1_status
+            name: Status
+          - entity: sensor.swartninjanas_cache_device_1_temperature
+            name: Temperature
+          - entity: binary_sensor.swartninjanas_cache_device_1_below_min_remaining_life
+            name: Remaining Life
+          - entity: binary_sensor.swartninjanas_cache_device_1_exceeded_max_bad_sectors
+            name: Bad Sectors
+
+      - title: NVMe Cache 2
+        type: glance
+        entities:
+          - entity: sensor.swartninjanas_cache_device_2_status
+            name: Status
+          - entity: sensor.swartninjanas_cache_device_2_temperature
+            name: Temperature
+          - entity: binary_sensor.swartninjanas_cache_device_2_below_min_remaining_life
+            name: Remaining Life
+          - entity: binary_sensor.swartninjanas_cache_device_2_exceeded_max_bad_sectors
+            name: Bad Sectors
+
+      - break
+
+      # Docker containers that are running
+      - type: custom:auto-entities
+        filter:
+          include:
+            - entity_id: "*nas_docker*"
+              state: "on"
+        show_empty: false
+        sort:
+          method: name
+          numeric: true
+        card:
+          type: glance
+          title: Docker Containers Running
+          show_state: false
+          columns: 3
+
+      # Docker containers that are not running
+      - type: custom:auto-entities
+        filter:
+          include:
+            - entity_id: "*nas_docker*"
+              state: "off"
+        show_empty: false
+        sort:
+          method: name
+          numeric: true
+        card:
+          type: glance
+          title: Docker Containers Stopped
+          show_state: false
+          columns: 3

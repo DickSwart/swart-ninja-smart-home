@@ -1,0 +1,345 @@
+---
+title: Blackbeard
+path: admin-blackbeard
+icon: mdi:cloud-download
+panel: true
+popup_cards:
+  switch.blackbeard_docker_radarr:
+    title: Radarr
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.blackbeard_docker_radarr*"
+  switch.blackbeard_docker_sonarr:
+    title: Sonarr
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.blackbeard_docker_sonarr*"
+  switch.blackbeard_docker_watchtower:
+    title: Watchtower
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.blackbeard_docker_watchtower*"
+  switch.blackbeard_docker_deluge:
+    title: Deluge
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.blackbeard_docker_deluge*"
+  switch.blackbeard_docker_jackett:
+    title: Jackett
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.blackbeard_docker_jackett*"
+  switch.blackbeard_docker_organizr:
+    title: Organizr
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.blackbeard_docker_organizr*"
+  switch.blackbeard_docker_glances:
+    title: glances
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.blackbeard_docker_glances*"
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+      - type: grid
+        title: Blackbeard
+        columns: 2
+        square: true
+        cards:
+          - type: gauge
+            name: CPU
+            unit: "%"
+            entity: sensor.blackbeard_cpu_used
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: binary_sensor.blackbeard_vpn
+              grid: grid-alternative
+              style: style-alternative
+              name: VPN
+              show_state: true
+              btn_template: style-transparent
+              icon: mdi:vpn
+              icon_color_on: var(--dark-primary-color)
+              icon_color_off: var(--accent-color)
+          - type: gauge
+            name: RAM
+            unit: "%"
+            entity: sensor.blackbeard_ram_used_percent
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+          - type: gauge
+            name: Swap
+            unit: "%"
+            entity: sensor.blackbeard_swap_used_percent
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+
+      - break
+
+      - title: Sonarr
+        type: entities
+        entities:
+          - sensor.sonarr_commands
+          - sensor.sonarr_disk_space
+          - sensor.sonarr_queue
+          - sensor.sonarr_shows
+          - sensor.sonarr_upcoming
+          - sensor.sonarr_wanted
+
+      - title: Deluge
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: script.shutdown_blackbeard
+            name: Shutdown
+          - switch.deluge_switch
+          - sensor.deluge_down_speed
+          - sensor.deluge_up_speed
+          - sensor.deluge_status
+
+      - break
+
+      # Docker containers that are running
+      - type: custom:auto-entities
+        filter:
+          include:
+            - entity_id: "*blackbeard_docker*"
+              state: "on"
+        show_empty: false
+        sort:
+          method: name
+          numeric: true
+        card:
+          type: glance
+          title: Docker Containers Running
+          show_state: false
+          columns: 3
+
+      # Docker containers that are not running
+      - type: custom:auto-entities
+        filter:
+          include:
+            - entity_id: "*blackbeard_docker*"
+              state: "off"
+        show_empty: false
+        sort:
+          method: name
+          numeric: true
+        card:
+          type: glance
+          title: Docker Containers Stopped
+          show_state: false
+          columns: 3

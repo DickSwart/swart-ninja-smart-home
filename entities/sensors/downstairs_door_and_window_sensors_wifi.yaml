@@ -1,0 +1,17 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# Device: D1 Mini 14C243 door-window-sensor
+# EntityID: binary_sensor.downstairs_door_and_window_sensors_wifi
+##############################################################################################
+platform: mqtt
+name: Downstairs Door And Window Sensors WiFi
+state_topic: 14C243/sensor/wifi
+unit_of_measurement: "%"
+availability_topic: 14C243/status
+payload_available: online
+payload_not_available: offline

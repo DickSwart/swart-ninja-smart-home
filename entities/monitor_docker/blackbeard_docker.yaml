@@ -1,0 +1,21 @@
+---
+name: Blackbeard Docker
+url: tcp://192.168.1.202:2375
+containers:
+  - deluge
+  - garbage-collection
+  - glances
+  - jackett
+  - organizr
+  - radarr
+  - sonarr
+  - watchtower
+rename:
+  deluge: Deluge
+  garbage-collection: Garbage
+  glances: Glances
+  jackett: Jackett
+  organizr: Organizr
+  radarr: Radarr
+  sonarr: Sonarr
+  watchtower: Watchtower

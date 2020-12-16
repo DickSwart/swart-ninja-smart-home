@@ -1,0 +1,14 @@
+---
+##################################################################################################################
+# Light Group
+# The group light platform lets you combine multiple lights into one entity.
+#
+# URL: https://www.home-assistant.io/integrations/light.group/
+#
+# EntityID: light.living_room_television
+##################################################################################################################
+platform: group
+name: Living Room Television
+entities:
+  - light.living_room_tv_backlight
+  - light.light_box_one

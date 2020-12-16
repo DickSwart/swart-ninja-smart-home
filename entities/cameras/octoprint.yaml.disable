@@ -1,0 +1,14 @@
+---
+##############################################################################################
+# Generic IP Camera
+# The generic camera platform allows you to integrate any IP camera or other
+# URL into Home Assistant.
+#
+# URL: https://www.home-assistant.io/integrations/generic_ip_camera/
+#
+# EntityID: camera.octoprint
+##############################################################################################
+platform: generic
+name: OctoPrint
+still_image_url: http://192.168.1.204:8080/?action=snapshot
+stream_source: http://192.168.1.204/webcam/?action=stream

@@ -1,0 +1,15 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# Device: smart_fish_tank_01
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+##############################################################################################
+platform: mqtt
+name: Living Room Fish Tank WiFi
+state_topic: E41B0E/sensor/wifi
+unit_of_measurement: "%"
+availability_topic: E41B0E/status
+payload_available: online
+payload_not_available: offline

@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# MJPEG IP Camera
+# The mjpeg camera platform allows you to integrate IP cameras which are capable to stream
+# their video with MJPEG into Home Assistant.
+#
+# URL: https://www.home-assistant.io/integrations/mjpeg/
+#
+# EntityID: camera.lrc
+##############################################################################################
+platform: mjpeg
+mjpeg_url: http://192.168.1.203:23456/mjpg/LRC/video.mjpeg
+name: LRC
+username: !secret bi_username
+password: !secret bi_password
+authentication: basic

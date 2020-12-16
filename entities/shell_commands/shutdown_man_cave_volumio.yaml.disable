@@ -1,0 +1,2 @@
+---
+shutdown_man_cave_volumio: ssh volumio 'sudo shutdown now -h' ;echo $?

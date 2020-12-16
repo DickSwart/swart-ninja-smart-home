@@ -1,0 +1,13 @@
+---
+##############################################################################################
+# Xbox One Smartglass
+# media player integration and a dockerized version of the Xbox One Smartglass REST server.
+#
+# URL: https://github.com/OpenXbox/xboxone-home-assistant
+#
+# EntityID: media_player.man_cave_xbox_one
+##############################################################################################
+platform: xboxone
+device: !secret xboxone_live_id
+ip_address: 192.168.1.196
+name: Man Cave XBox One

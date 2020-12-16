@@ -1,0 +1,30 @@
+---
+name: Hass Docker
+url: tcp://localhost:2375
+# containers:
+#   - addon_a0d7b954_esphome
+#   - addon_a0d7b954_glances
+#   - addon_a0d7b954_influxdb
+#   - addon_a0d7b954_nodered
+#   - addon_a0d7b954_portainer
+#   - addon_a0d7b954_vscode
+#   - addon_core_mariadb
+#   - addon_core_mosquitto
+#   - addon_core_samba
+#   - addon_core_ssh
+#   - sonarr
+#   - watchtower
+#   - xboxone
+#   - xteve
+rename:
+  addon_a0d7b954_esphome: ESPHome
+  addon_a0d7b954_glances: Glances
+  addon_a0d7b954_influxdb: InfluxDB
+  addon_a0d7b954_nodered: Node-RED
+  addon_a0d7b954_portainer: Portainer
+  addon_a0d7b954_vscode: VSCode
+  addon_cebe7a76_hassio_google_drive_backup: Backup
+  addon_core_mariadb: MariaDB
+  addon_core_mosquitto: Mosquitto
+  addon_core_samba: Samba
+  addon_core_ssh: SSH

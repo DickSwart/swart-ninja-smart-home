@@ -1,0 +1,17 @@
+---
+##############################################################################################
+# HASS-Deepstack-object
+#  Deepstack is a service which runs in a docker container and exposes deep-learning models
+# via a REST API. Deepstack object detection uses Yolo V3 to identify 80
+# different kinds of objects
+#
+# URL: https://github.com/robmarkcole/HASS-Deepstack-object
+##############################################################################################
+platform: deepstack_object
+ip_address: !secret deepstack_ip
+port: !secret deepstack_port
+save_file_folder: !secret internal_snapshot_path
+targets:
+  - person
+source:
+  - entity_id: camera.lrc

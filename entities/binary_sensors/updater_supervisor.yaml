@@ -1,0 +1,18 @@
+---
+##############################################################################################
+# Template Binary Sensor
+# The template platform supports binary sensors which get their values from other entities.
+# The state of a Template Binary Sensor can only be on or off.
+#
+# URL: https://www.home-assistant.io/integrations/binary_sensor.template
+#
+# EntityID: binary_sensor.updater_supervisor
+##############################################################################################
+platform: template
+sensors:
+  # True if there's an update available for supervisor
+  updater_supervisor:
+    friendly_name: "Updater - Supervisor"
+    device_class: problem
+    value_template: "{{ state_attr('sensor.supervisor_updates', 'current_version') != state_attr('sensor.supervisor_updates', 'newest_version') }}"
+    availability_template: "{{ (states('sensor.supervisor_updates') | int(-1)) > -1 }}"

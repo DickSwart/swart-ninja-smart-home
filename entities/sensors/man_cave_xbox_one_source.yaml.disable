@@ -1,0 +1,15 @@
+---
+  ##############################################################################################
+  # Template
+  # The template platform supports sensors which get their values from other entities.
+  #
+  # URL: https://www.home-assistant.io/integrations/template
+  #
+  # EntityID: sensor.man_cave_xbox_one_source
+  ##############################################################################################
+  platform: template
+  sensors:
+    man_cave_xbox_one_source:
+      friendly_name: Man Cave XBox One Source
+      # icon_template: /api/image/serve/8d9cbe85ec73d233bd85c07fb781728f/512x512
+      value_template: "{{ state_attr('media_player.man_cave_xbox_one', 'source') }}"

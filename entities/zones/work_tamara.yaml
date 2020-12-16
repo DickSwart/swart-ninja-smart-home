@@ -1,0 +1,12 @@
+---
+##############################################################################################
+# Zone
+# Zones allow you to specify certain regions on earth (for now).
+#
+# URL: https://www.home-assistant.io/integrations/zone/
+##############################################################################################
+name: Work Tamara
+latitude: !secret lat_tamara_work
+longitude: !secret long_tamara_work
+radius: 76.2
+icon: mdi:worker

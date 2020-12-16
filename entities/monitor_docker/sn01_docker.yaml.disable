@@ -1,0 +1,45 @@
+---
+name: NAS Docker
+url: tcp://192.168.1.210:2375
+containers:
+  - apprise
+  - duplicati
+  - esphome
+  - grafana
+  - influxdb
+  - mariadb
+  - mariadb-backup
+  - minecraft-server-01
+  - minecraft-server-02
+  - minecraft-server-03
+  - mosquitto
+  - nodered
+  - plex-media-server
+  - portainer
+  - radarr
+  - sonarr
+  - unifi-controller
+  - watchtower
+  - xboxone
+  - xteve
+rename:
+  apprise: AppRise
+  duplicati: Duplicati
+  esphome: ESPHome
+  grafana: Grafana
+  influxdb: InfluxDB
+  mariadb-backup: MariaDB Backup
+  mariadb: MariaDB
+  minecraft-server-01: Minecraft Server 01
+  minecraft-server-02: Minecraft Server 02
+  minecraft-server-03: Minecraft Server 03
+  mosquitto: Mosquitto
+  nodered: Node-RED
+  plex-media-server: Plex Media Server
+  portainer: Portainer
+  radarr: Radarr
+  sonarr: Sonarr
+  unifi-controller: UniFi Controller
+  watchtower: Watchtower
+  xboxone: Xbox One
+  xteve: Xteve

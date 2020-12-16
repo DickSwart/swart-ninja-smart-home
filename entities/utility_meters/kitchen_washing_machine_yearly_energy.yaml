@@ -1,0 +1,12 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+##############################################################################################
+kitchen_washing_machine_yearly_energy:
+  source: sensor.kitchen_washing_machine_total_daily_energy
+  cycle: yearly
+  tariffs:
+    - peak

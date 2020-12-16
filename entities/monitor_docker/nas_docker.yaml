@@ -1,0 +1,17 @@
+---
+name: NAS Docker
+url: tcp://192.168.1.210:2375
+containers:
+  - garbage-collection
+  - plex
+  - unifi-controller
+  - vscode
+  - watchtower
+  - xteve
+rename:
+  garbage-collection: Garbage
+  plex: Plex
+  unifi-controller: UniFi
+  vscode: VSCode
+  watchtower: Watchtower
+  xteve: Xteve

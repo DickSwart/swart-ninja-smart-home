@@ -1,0 +1,18 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+##############################################################################################
+platform: template
+sensors:
+  presence_location_tamara:
+    friendly_name: Tamara
+    entity_picture_template: /api/image/serve/27594325255020f584edae67e2cd7bbd/512x512
+    value_template: >-
+      {% if is_state('input_boolean.presence_location_away_tamara', 'on') %}
+        Away (Override)
+      {% else %}
+        {{ states('person.tamara') | replace("_", " ") | title }}
+      {% endif %}

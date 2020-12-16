@@ -1,0 +1,15 @@
+---
+##############################################################################################
+# Group
+# Groups allow the user to combine multiple entities into one.
+#
+# URL: https://www.home-assistant.io/integrations/group/
+##############################################################################################
+light_switches:
+  name: Light Switches
+  entities:
+    - switch.kitchen_side
+    - switch.kitchen_ceiling
+    - switch.man_cave_kitchen_ceiling_one
+    - switch.man_cave_kitchen_ceiling_two
+    - switch.bedroom_max_ceiling

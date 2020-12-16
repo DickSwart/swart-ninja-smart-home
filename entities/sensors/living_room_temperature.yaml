@@ -1,0 +1,29 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.living_room_temperature
+##############################################################################################
+platform: template
+sensors:
+  living_room_temperature:
+    friendly_name: Living Room Temperature
+    device_class: temperature
+    unit_of_measurement: °C
+    value_template: >-
+      {% set hp = state_attr('climate.living_room' , 'current_temperature') | float %}
+      {% set ms = states('sensor.living_room_multisensor_temperature') | float %}
+      {% set hpTemp  = float(hp) | round(2) if hp and hp > -30 and hp < 50 else null %}
+      {% set msTemp  = float(ms) | round(2) if ms and ms > -30 and ms < 50 else null %}
+      {% if hpTemp and msTemp -%}
+        {{ ((hpTemp + msTemp) / 2) | round(2) }}
+      {%- elif msTemp -%}
+        {{ msTemp | round(2) }}
+      {%- elif hpTemp -%}
+        {{ hpTemp | round(2) }}
+      {%- else -%}
+        0.0
+      {%- endif %}

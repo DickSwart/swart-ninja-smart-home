@@ -1,0 +1,14 @@
+---
+##############################################################################################
+# Command Line
+# The command_line binary sensor platform issues specific commands to get data.
+#
+# URL: https://www.home-assistant.io/integrations/command_line/
+#
+# EntityID: binary_sensor.blackbeard_vpn
+##############################################################################################
+name: Blackbeard VPN
+device_class: connectivity
+platform: command_line
+command: ssh -p 606 -i /config/.ssh/id_rsa -o StrictHostKeyChecking=no dickswart@192.168.1.202 'sh /home/dickswart/scripts/vpn_check.sh'
+scan_interval: 300 # 5 min

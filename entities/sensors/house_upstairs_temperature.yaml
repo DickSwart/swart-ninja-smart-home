@@ -1,0 +1,91 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.house_upstairs_temperature
+##############################################################################################
+platform: template
+sensors:
+  house_upstairs_temperature:
+    friendly_name: Man Cave Temperature
+    device_class: temperature
+    unit_of_measurement: °C
+    value_template: >-
+      {% set rm = states('sensor.bedrooms_temperature') | float %}
+      {% set kt = states('sensor.kitchen_multisensor_temperature') | float %}
+      {% set lr = states('sensor.living_room_temperature') | float %}
+      {% set br = states('sensor.bathroom_multisensor_temperature') | float %}
+      {% set hl = states('sensor.hall_multisensor_temperature') | float %}
+      {% set rmTemp  = float(rm) | round(2) if rm and rm > -30 and rm < 50 else null %}
+      {% set ktTemp  = float(kt) | round(2) if kt and kt > -30 and kt < 50 else null %}
+      {% set lrTemp  = float(lr) | round(2) if lr and lr > -30 and lr < 50 else null %}
+      {% set brTemp  = float(br) | round(2) if br and br > -30 and br < 50 else null %}
+      {% set hlTemp  = float(hl) | round(2) if hl and hl > -30 and hl < 50 else null %}
+      {% if rmTemp and ktTemp and lrTemp and brTemp and hlTemp -%}
+        {{ ((rmTemp + lrTemp + ktTemp + brTemp + hlTemp) / 5) | round(2) }}
+      {%- elif rmTemp and ktTemp and lrTemp and brTemp -%}
+        {{ ((rmTemp + ktTemp + lrTemp + brTemp) / 4) | round(2) }}
+      {%- elif rmTemp and ktTemp and lrTemp and hlTemp -%}
+        {{ ((rmTemp + ktTemp + lrTemp + hlTemp) / 4) | round(2) }}
+      {%- elif rmTemp and ktTemp and brTemp and hlTemp -%}
+        {{ ((rmTemp + ktTemp + brTemp + hlTemp) / 4) | round(2) }}
+      {%- elif rmTemp and lrTemp and brTemp and hlTemp -%}
+        {{ ((rmTemp + lrTemp + brTemp + hlTemp) / 4) | round(2) }}
+      {%- elif ktTemp and lrTemp and brTemp and hlTemp -%}
+        {{ ((ktTemp + lrTemp + brTemp + hlTemp) / 4) | round(2) }}
+      {%- elif rmTemp and ktTemp and lrTemp -%}
+        {{ ((rmTemp + ktTemp + lrTemp) / 3) | round(2) }}
+      {%- elif rmTemp and ktTemp and brTemp -%}
+        {{ ((rmTemp + ktTemp + brTemp) / 3) | round(2) }}
+      {%- elif rmTemp and ktTemp and hlTemp -%}
+        {{ ((rmTemp + ktTemp + hlTemp) / 3) | round(2) }}
+      {%- elif rmTemp and lrTemp and brTemp -%}
+        {{ ((rmTemp + lrTemp + brTemp) / 3) | round(2) }}
+      {%- elif rmTemp and lrTemp and hlTemp -%}
+        {{ ((rmTemp + lrTemp + hlTemp) / 3) | round(2) }}
+      {%- elif rmTemp and brTemp and hlTemp -%}
+        {{ ((rmTemp + brTemp + hlTemp) / 3) | round(2) }}
+      {%- elif ktTemp and lrTemp and brTemp -%}
+        {{ ((ktTemp + lrTemp + brTemp) / 3) | round(2) }}
+      {%- elif ktTemp and lrTemp and hlTemp -%}
+        {{ ((ktTemp + lrTemp + hlTemp) / 3) | round(2) }}
+      {%- elif ktTemp and brTemp and hlTemp -%}
+        {{ ((ktTemp + brTemp + hlTemp) / 3) | round(2) }}
+      {%- elif lrTemp and brTemp and hlTemp -%}
+        {{ ((lrTemp + brTemp + hlTemp) / 3) | round(2) }}
+      {%- elif rmTemp and ktTemp -%}
+        {{ ((rmTemp + ktTemp ) / 2) | round(2) }}
+      {%- elif rmTemp and lrTemp -%}
+        {{ ((rmTemp + lrTemp ) / 2) | round(2) }}
+      {%- elif rmTemp and brTemp -%}
+        {{ ((rmTemp + brTemp ) / 2) | round(2) }}
+      {%- elif rmTemp and hlTemp -%}
+        {{ ((rmTemp + hlTemp ) / 2) | round(2) }}
+      {%- elif ktTemp and lrTemp -%}
+        {{ ((ktTemp + lrTemp ) / 2) | round(2) }}
+      {%- elif ktTemp and brTemp -%}
+        {{ ((ktTemp + brTemp ) / 2) | round(2) }}
+      {%- elif ktTemp and hlTemp -%}
+        {{ ((ktTemp + hlTemp ) / 2) | round(2) }}
+      {%- elif lrTemp and brTemp -%}
+        {{ ((lrTemp + brTemp ) / 2) | round(2) }}
+      {%- elif lrTemp and hlTemp -%}
+        {{ ((lrTemp + hlTemp ) / 2) | round(2) }}
+      {%- elif brTemp and hlTemp -%}
+        {{ ((brTemp + hlTemp ) / 2) | round(2) }}
+      {%- elif rmTemp -%}
+        {{ rmTemp | round(2) }}
+      {%- elif ktTemp -%}
+        {{ ktTemp | round(2) }}
+      {%- elif lrTemp -%}
+        {{ lrTemp | round(2) }}
+      {%- elif brTemp -%}
+        {{ brTemp | round(2) }}
+      {%- elif hlTemp -%}
+        {{ hlTemp | round(2) }}
+      {%- else -%}
+        0.0
+      {%- endif %}

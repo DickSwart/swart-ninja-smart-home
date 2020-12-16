@@ -1,0 +1,15 @@
+---
+##############################################################################################
+# EntityID: camera.byc
+##############################################################################################
+platform: caldav
+username: !secret icloud_dick_email
+password: !secret icloud_dick_app_password
+url: https://caldav.icloud.com
+custom_calendars:
+  - name: All
+    calendar: 'Family'
+    search: '.*'
+  - name: School Holiday
+    calendar: 'Family'
+    search: '(?i)\bSchool Holiday\b'

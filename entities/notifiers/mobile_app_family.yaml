@@ -1,0 +1,12 @@
+---
+##############################################################################################
+# Notify Group
+# The group notification platform allows you to combine multiple notify platforms into a single service.
+#
+# URL: https://www.home-assistant.io/integrations/notify.group
+##############################################################################################
+platform: group
+name: mobile_app_parents
+services:
+  - service: mobile_app_dick_iphone
+  - service: mobile_app_tamara_iphone

@@ -1,0 +1,12 @@
+---
+##################################################################################################################
+# Hyperion
+# The hyperion platform allows you to integrate your Hyperion into Home Assistant.
+#
+# URL: https://www.home-assistant.io/integrations/hyperion
+#
+# EntityID: light.man_cave_tv_backlight
+##################################################################################################################
+platform: hyperion
+name: Man Cave TV Backlight
+host: 192.168.1.207

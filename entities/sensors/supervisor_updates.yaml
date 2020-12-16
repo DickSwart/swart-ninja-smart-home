@@ -1,0 +1,11 @@
+---
+# Sensor to track available updates for supervisor & addons
+platform: command_line
+name: Supervisor Updates
+command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"newest_version":.data.version_latest,"current_version":.data.version,"addons":[.data.addons[] | select(.update_available)]}'''
+value_template: "{{ value_json.addons | length }}"
+json_attributes:
+  - newest_version
+  - current_version
+  - addons
+scan_interval: 3600

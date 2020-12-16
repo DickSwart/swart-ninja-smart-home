@@ -3,7 +3,8 @@
 # Home Assistant configuration
 # The configuration.yaml is only used to bootstrap the system.
 #
-# Splitting up the configuration: https://www.home-assistant.io/docs/configuration/splitting_configuration/
+# Splitting up the configuration:
+# https://www.home-assistant.io/docs/configuration/splitting_configuration/
 ##################################################################################################################
 homeassistant:
   name: Swart Ninja Smart Home

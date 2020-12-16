@@ -1,0 +1,10 @@
+---
+substitutions:
+  node_name: bedroom_max_electric_blanket
+  node_comment: "Max Bedroom Electric Blanket (ID: 35D32E)"
+  device_verbose_name: Bedroom Max Electric Blanket
+  switch_icon: mdi:bed-empty
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/sonoff_basic_base_switch.yaml

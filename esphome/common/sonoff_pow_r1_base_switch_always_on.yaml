@@ -1,0 +1,85 @@
+---
+esphome:
+  name: ${node_name}
+  comment: "Sonoff POW R1. ${node_comment}"
+  platform: ESP8266
+  board: esp8285
+  arduino_version: 2.4.2
+  build_path: ./build/${node_name}
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+time:
+  - platform: sntp
+    id: my_time
+
+sensor:
+  - <<: !include sensor/uptime.config.yaml
+  - <<: !include sensor/wifi_signal.config.yaml
+  - platform: hlw8012
+    sel_pin: 5
+    cf_pin: 14
+    cf1_pin: 13
+    update_interval: 2s
+    current:
+      name: ${device_verbose_name} Current
+      id: curr
+    voltage:
+      name: ${device_verbose_name} Voltage
+      id: volt
+    power:
+      name: ${device_verbose_name} Power
+      id: power
+  - platform: total_daily_energy
+    name: ${device_verbose_name} Total Daily Energy
+    power_id: power
+    filters:
+        # Multiplication factor from W to kW is 0.001
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    accuracy_decimals: 1
+
+
+binary_sensor:
+  - <<: !include binary_sensor/connection_status.config.yaml
+  # Button on the Sonoff POW
+  - platform: gpio
+    id: button_gpio_0
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: true
+    on_click:
+      min_length: 1s
+      max_length: 10s
+      then:
+        - switch.toggle: switch_restart
+    on_press:
+      - switch.toggle: switch_relay
+
+text_sensor:
+  - <<: !include text_sensor/version.config.yaml
+
+switch:
+  - platform: restart
+    name: ${device_verbose_name} Restart
+    id: switch_restart
+  - platform: gpio
+    icon: ${switch_icon}
+    name: ${device_verbose_name}
+    pin: GPIO12
+    id: switch_relay
+    restore_mode: ALWAYS_ON
+
+status_led:
+  pin:
+    number: GPIO15
+    inverted: true

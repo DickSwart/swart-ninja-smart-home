@@ -1,0 +1,10 @@
+---
+substitutions:
+  node_name: living_room_cupboard_plug
+  node_comment: DETA 2G Plug
+  device_verbose_name: Living Room Cupboard Plug
+  switch_icon: mdi:power-socket-au
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/delta_grid_smart_plug_2g_base.yaml

@@ -1,0 +1,10 @@
+---
+substitutions:
+  node_name: man_cave_kitchen_ceiling_one
+  node_comment: 'ID: 0FBC52'
+  device_verbose_name: Man Cave Kitchen Ceiling One
+  switch_icon: mdi:track-light
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/sonoff_basic_base_switch.yaml

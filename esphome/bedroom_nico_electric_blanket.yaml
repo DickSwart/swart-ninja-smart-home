@@ -1,0 +1,11 @@
+---
+# sonoff_324ADA
+substitutions:
+  device_verbose_name: Bedroom Nico Electric Blanket
+  node_comment: "Nico Bedroom Electric Blanket (ID: 324ADA)"
+  node_name: bedroom_nico_electric_blanket
+  switch_icon: mdi:bed-empty
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/sonoff_basic_base_switch.yaml

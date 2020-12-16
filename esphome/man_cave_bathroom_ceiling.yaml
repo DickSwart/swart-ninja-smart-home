@@ -1,0 +1,9 @@
+---
+substitutions:
+  node_name: man_cave_bathroom_ceiling
+  node_comment: Shelly 1 500703
+  device_verbose_name: Man Cave Bathroom Ceiling
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/shelly_1_base.yaml

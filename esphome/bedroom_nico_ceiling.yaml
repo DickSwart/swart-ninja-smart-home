@@ -1,0 +1,10 @@
+---
+substitutions:
+  node_name: bedroom_nico_ceiling
+  node_comment: Shelly 1 22F3C2
+  device_verbose_name: Bedroom Nico Ceiling
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/shelly_1_base.yaml
+#   device_base: !include common/shelly_1_base_blank.yaml

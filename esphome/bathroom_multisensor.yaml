@@ -1,0 +1,41 @@
+---
+substitutions:
+  node_name: bathroom_multisensor
+  node_comment: "MultiSensor (ID: E44E60)"
+  device_verbose_name: Bathroom MultiSensor
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/nodemcu_base.yaml
+
+sensor:
+  - platform: dht
+    pin: D6
+    temperature:
+      name: ${device_verbose_name} Temperature
+    humidity:
+      name: ${device_verbose_name} Humidity
+      icon: mdi:water-percent
+    update_interval: 60s
+    model: DHT22
+  - platform: adc
+    pin: A0
+    name: ${device_verbose_name} Luminance
+    icon: mdi:theme-light-dark
+    unit_of_measurement: lux
+    filters:
+      - lambda: |-
+          return (x / 10000.0) * 2000000.0;
+
+binary_sensor:
+  - platform: gpio
+    pin: D5
+    name: ${device_verbose_name} Motion
+    device_class: motion
+  - platform: gpio
+    name: ${device_verbose_name} Door
+    device_class: door
+    pin:
+      number: D2
+      mode: INPUT_PULLUP
+      inverted: false

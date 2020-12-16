@@ -1,0 +1,9 @@
+---
+substitutions:
+  node_name: bathroom_fan
+  node_comment: Sonoff Basic 356DC3
+  device_verbose_name: Bathroom
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/sonoff_basic_base_fan.yaml

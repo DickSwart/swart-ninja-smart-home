@@ -1,0 +1,11 @@
+---
+# Device: Sonoff POW 374EE5
+substitutions:
+  node_name: kitchen_washing_machine
+  node_comment: "Kitchen Washing Machine (ID: 374EE5)"
+  device_verbose_name: Kitchen Washing Machine
+  switch_icon: mdi:washing-machine
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/sonoff_pow_r1_base_switch_always_on.yaml

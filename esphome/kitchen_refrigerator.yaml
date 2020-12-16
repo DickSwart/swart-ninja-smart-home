@@ -1,0 +1,11 @@
+---
+# Device: Sonoff POW 374EAA
+substitutions:
+  device_verbose_name: Kitchen Refrigerator
+  node_comment: "Kitchen Refrigerator (ID: 374EAA)"
+  node_name: kitchen_refrigerator
+  switch_icon: mdi:fridge
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/sonoff_pow_r1_base_switch_always_on.yaml

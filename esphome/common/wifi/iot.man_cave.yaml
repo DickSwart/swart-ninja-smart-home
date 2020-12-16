@@ -1,0 +1,14 @@
+---
+wifi:
+  fast_connect: true
+  networks:
+    - ssid: !secret wifi_iot_ssid
+      password: !secret wifi_iot_password
+      bssid: !secret wifi_man_cave_iot_bssid
+      hidden: true
+      priority: 0
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: ${device_verbose_name}
+    password: !secret wifi_ap_password

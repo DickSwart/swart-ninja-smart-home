@@ -65,7 +65,9 @@
     "7f6bcf37_0b99a": {
       "lastPayload": {
         "state": false,
-        "attributes": {}
+        "attributes": {
+          "targets": 0
+        }
       }
     },
     "4782993e_99edd8": {

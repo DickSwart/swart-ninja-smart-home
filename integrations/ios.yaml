@@ -1,0 +1,81 @@
+---
+##################################################################################################################
+# iOS
+# The Fan integration allows you to control and monitor Fan devices.
+#
+# URL: https://companion.home-assistant.io/
+#
+# Actionable Notifications: https://companion.home-assistant.io/docs/notifications/actionable-notifications
+##################################################################################################################
+ios:
+  push:
+    categories:
+      - name: Heat pump
+        identifier: heatpump
+        actions:
+          - identifier: HEAT_PUMP_OFF
+            title: Turn off
+            activationMode: background
+            authenticationRequired: false
+            destructive: false
+            behavior: default
+      - name: Guest Mode
+        identifier: guest_mode
+        actions:
+          - identifier: GUEST_MODE_OFF
+            title: Turn off
+            activationMode: background
+            authenticationRequired: false
+            destructive: false
+            behavior: default
+      - name: Alarm
+        identifier: alarm
+        actions:
+          - identifier: ALARM_SILENT
+            title: Silent Alarm
+            activationMode: background
+            authenticationRequired: false
+            destructive: false
+            behavior: default
+          - identifier: ALARM_LOUD
+            title: Sound Alarm
+            activationMode: background
+            authenticationRequired: false
+            destructive: true
+            behavior: default
+      - name: Camera
+        identifier: camera
+        actions:
+          - identifier: ALARM_LOUD
+            title: Sound Alarm
+            activationMode: background
+            authenticationRequired: false
+            destructive: true
+            behavior: default
+      - name: Alarm Triggered
+        identifier: alarm_triggered
+        actions:
+          - identifier: ALARM_TRIGGERED_NOTIFY_FRIENDS
+            title: Notify Friends
+            activationMode: background
+            authenticationRequired: false
+            destructive: false
+            behavior: default
+          - identifier: ALARM_TRIGGERED_NOTIFY_SOCIAL_MEDIA
+            title: Social Media Post
+            activationMode: background
+            authenticationRequired: false
+            destructive: false
+            behavior: default
+          - identifier: ALARM_TRIGGERED_NOTIFY_BOTH
+            title: Both
+            activationMode: background
+            authenticationRequired: false
+            destructive: false
+            behavior: default
+          - identifier: ALARM_TRIGGERED_OFF
+            title: Turn Off
+            activationMode: background
+            authenticationRequired: false
+            destructive: true
+            behavior: default

@@ -1,0 +1,9 @@
+---
+##################################################################################################################
+# Logbook
+# The logbook integration provides a different perspective on the history of your house by showing
+# all the changes that happened to your house in reverse chronological order.
+#
+# URL: https://www.home-assistant.io/integrations/logbook/
+##################################################################################################################
+logbook: ~

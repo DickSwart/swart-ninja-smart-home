@@ -1,0 +1,9 @@
+---
+##################################################################################################################
+# Media Source
+# The Media Source integration platform allows integrations to expose media for use inside Home Assistant
+# through the Media Browser panel or through supported media players like Google Cast.
+#
+# URL: https://www.home-assistant.io/integrations/media_source/
+##################################################################################################################
+media_source: ~

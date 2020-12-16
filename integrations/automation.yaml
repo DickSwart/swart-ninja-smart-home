@@ -1,0 +1,9 @@
+---
+##################################################################################################################
+# Automating Home Assistant
+# Home Assistant offers a wide range of automation configurations.
+#
+# URL: https://www.home-assistant.io/docs/automation/
+##################################################################################################################
+automation: !include ../automations.yaml
+automation split: !include_dir_list ../automations

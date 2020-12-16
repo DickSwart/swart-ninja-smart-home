@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Cover
+# Home Assistant can give you an interface to control covers such as rollershutters, blinds, and garage doors.
+#
+# URL: https://www.home-assistant.io/integrations/cover/
+##################################################################################################################
+cover: !include_dir_list ../entities/covers

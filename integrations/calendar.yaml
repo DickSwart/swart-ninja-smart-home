@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# CalDAV
+# The caldav platform allows you to connect to your WebDAV calendar and generate binary sensors.
+#
+# URL: https://www.home-assistant.io/integrations/caldav
+##################################################################################################################
+calendar: !include_dir_list ../entities/calendars

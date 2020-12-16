@@ -1,0 +1,20 @@
+---
+##################################################################################################################
+# HomeKit
+# The HomeKit Bridge integration allows you to forward entities from Home Assistant to Apple HomeKit,
+# so they can be controlled from Apple’s Home app and Siri
+#
+# URL: https://www.home-assistant.io/integrations/homekit
+##################################################################################################################
+homekit:
+  # Need to be individual for each instance of Home Assistant using the integration on the same local network.
+  # Between 3 and 25 characters. Alphanumeric and spaces allowed. Default value: Home Assistant Bridge
+  name: Home Assistant
+
+  # Configuration for specific entities. All subordinate keys are the corresponding entity
+  # ids to the domains, e.g., alarm_control_panel.alarm.
+  entity_config: !include_dir_named ../customizations/homekit
+
+  # Filters for entities to be included/excluded from HomeKit.
+  filter:
+    include_entities: !include_dir_merge_list ../homekit

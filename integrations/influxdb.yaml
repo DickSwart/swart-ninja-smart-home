@@ -1,0 +1,31 @@
+---
+##################################################################################################################
+# InfluxDB
+# The influxdb integration makes it possible to transfer all state changes to an external InfluxDB database.
+#
+# URL: https://www.home-assistant.io/integrations/influxdb/
+##################################################################################################################
+influxdb:
+  # This is the Hass.io add-on slug, allowing a direct connection to the addon.
+  host: a0d7b954-influxdb
+  port: 8086
+
+  # The database name to store all the metrics in.
+  database: !secret influxdb_database
+
+  # Authentication credentials.
+  username: !secret influxdb_username
+  password: !secret influxdb_password
+
+  # Set this to allow the integration to retry if there was a network error when transmitting data.
+  max_retries: 3
+  default_measurement: state
+
+  # The list of attribute names which should be reported as tags and not fields to InfluxDB.
+  tags_attributes:
+    - device_class
+
+  # I like to specify (whitelist) each thing I'd like to put
+  # into InfluxDB, to keep the database as clean as possible.
+  include:
+    entities: !include_dir_merge_list ../influxdb

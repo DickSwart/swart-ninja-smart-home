@@ -1,0 +1,10 @@
+---
+##################################################################################################################
+# Home Assistant Frontend
+# This offers the official frontend to control Home Assistant.
+#
+# URL: https://www.home-assistant.io/integrations/frontend/
+##################################################################################################################
+frontend:
+  # Allow to define different themes. See below for further details.
+  themes: !include_dir_merge_named ../themes

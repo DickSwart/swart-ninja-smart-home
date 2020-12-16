@@ -1,0 +1,14 @@
+---
+##################################################################################################################
+# Lovelace
+# Lovelace is the Home Assistant user interface. It’s a fast, customizable and powerful way for users to
+# manage their homes, working on mobile or desktop.
+#
+# URL: https://www.home-assistant.io/lovelace/
+# URL: https://www.home-assistant.io/lovelace/yaml-mode/
+##################################################################################################################
+lovelace:
+  mode: storage
+
+    # Additional YAML-based Lovelace dashboards
+  dashboards: !include ../lovelace/dashboards.yaml

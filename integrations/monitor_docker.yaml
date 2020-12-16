@@ -1,0 +1,9 @@
+---
+##################################################################################################################
+# Monitor Docker
+# The Monitor Docker allows you to monitor Docker and container statistics and turn on/off containers.
+# It can connected to the Docker daemon locally or remotely.
+#
+# URL: https://github.com/ualex73/monitor_docker
+##################################################################################################################
+monitor_docker: !include_dir_list ../entities/monitor_docker

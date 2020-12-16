@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Switch
+# Keeps track which switches are in your environment, their state and allows you to control them.
+#
+# URL: https://www.home-assistant.io/integrations/switch/
+##################################################################################################################
+switch: !include_dir_list ../entities/switches

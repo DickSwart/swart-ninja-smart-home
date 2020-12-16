@@ -1,0 +1,8 @@
+---
+##################################################################################################################
+# Fan
+# The Fan integration allows you to control and monitor Fan devices.
+#
+# URL: https://www.home-assistant.io/integrations/fan/
+##################################################################################################################
+fan: !include_dir_list ../entities/fans

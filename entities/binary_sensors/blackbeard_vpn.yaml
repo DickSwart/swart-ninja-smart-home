@@ -7,6 +7,7 @@
 #
 # EntityID: binary_sensor.blackbeard_vpn
 ##############################################################################################
+
 name: Blackbeard VPN
 device_class: connectivity
 platform: command_line

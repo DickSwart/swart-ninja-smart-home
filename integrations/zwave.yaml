@@ -13,7 +13,7 @@ zwave:
   network_key: !secret zwave_network_key
 
   # The time period in milliseconds between polls of a nodes value.
-  polling_interval: 120000
+  polling_interval: 30000
 
   # This attribute contains node-specific override values.
   # device_config:

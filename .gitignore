@@ -13,6 +13,7 @@ __pycache__
 deps
 .ssh
 www/images/camera_snapshots
+node-red
 
 # Specific file ignores
 .config_entries.json
@@ -36,9 +37,6 @@ zwcfg_*
 zwscene.xml
 webostv.conf
 google_calendars.yaml
-node-red/flows_cred.backup
-node-red/flows_cred.json
-node-red/node-red-contrib-home-assistant-websocket.json
 
 # ESPHome ignores
 esphome/secrets.yaml

@@ -172,15 +172,15 @@ cards:
           - entity: switch.kitchen_ceiling
           - entity: switch.kitchen_side
           - entity: light.living_room_ceiling
-          # - entity: light.living_room_fish_tank
-          # - entity: light.living_room_fish_tank_color
+          - entity: light.fish_tank_main_light
+          - entity: light.fish_tank_colour_light
           - entity: light.living_room_television
           - entity: light.man_cave_bathroom_ceiling
           - entity: light.man_cave_ceiling
           - entity: switch.man_cave_kitchen_ceiling_one
           - entity: switch.man_cave_kitchen_ceiling_two
           - entity: switch.living_room_cupboard_plug_01
-          - entity: switch.living_room_cupboard_plug_02
+          # - entity: switch.living_room_cupboard_plug_02
           - entity: switch.living_room_heat_pump
           - entity: switch.man_cave_heat_pump
           - entity: light.office_ceiling

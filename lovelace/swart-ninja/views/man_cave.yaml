@@ -190,7 +190,7 @@ cards:
               entity_name: Computer Desk
 
           - !include
-            - ../../templates/folding_entity/esphome_sonoff_pow.yaml
+            - ../../templates/folding_entity/esphome_sonoff_basic.yaml
             - node_name: work_station
               entity_name: Work Station
 

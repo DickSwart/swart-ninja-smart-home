@@ -20,7 +20,7 @@ cards:
             entities:
               - binary_sensor.drc_motion
 
-      - type: horizontal-stack
+      - type: grid
         cards:
           - !include
             - "../../templates/button/button.yaml"
@@ -30,6 +30,12 @@ cards:
             - "../../templates/button/button.yaml"
             - entity: light.backyard
               name: Backyard
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: light.dining_room_sml_window
+              label: !include ../../includes/brightness-label.yaml
+              popup_template: "../popup-cards/light-rgb.yaml"
+              name: Mood
           - !include
             - "../../templates/button/button.yaml"
             - entity: binary_sensor.dining_room_motion
@@ -42,6 +48,28 @@ cards:
               icon_color_on: var(--accent-color)
               icon_off: mdi:walk
               icon_color_off: var(--dark-primary-color)
+
+      - type: horizontal-stack
+        cards:
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.dining_room_plug_5789577_01
+              name: Plug One
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.dining_room_plug_5789577_02
+              name: Plug Two
+
+      - type: horizontal-stack
+        cards:
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.dining_room_plug_6207090_01
+              name: Plug One A
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.dining_room_plug_6207090_01
+              name: Plug Two A
 
       - title: Curtains
         type: entities

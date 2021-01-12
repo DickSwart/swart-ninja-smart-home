@@ -30,7 +30,7 @@ sensor:
 output:
   - platform: esp8266_pwm
     id: output_component1
-    pin: D2
+    pin: D5
 
 light:
   - platform: monochromatic

@@ -2,7 +2,7 @@
 # Device: D1Mini 14B847
 substitutions:
   node_name: door_window_sensors_14c243
-  node_comment: "Door and Window Sensors (ID: 14C243)"
+  node_comment: "ID: 14C243"
   device_verbose_name: Door and Window Sensors 14C243
 
 packages:

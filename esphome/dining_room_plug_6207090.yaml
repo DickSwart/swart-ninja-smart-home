@@ -1,0 +1,10 @@
+---
+substitutions:
+  node_name: dining_room_plug_6207090
+  node_comment: "ID: 6207090"
+  device_verbose_name: Dining Room Plug 6207090
+  switch_icon: mdi:power-socket-au
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/delta_grid_smart_plug_2g_base.yaml

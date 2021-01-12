@@ -17,15 +17,15 @@ condition:
 action:
   - service: persistent_notification.create
     data_template:
-      title: 🆕 Updates pending in HACS
+      title: 🆕 Updates pending in AddOn
       message: >-
-        {% for addon in state_attr(sensor.supervisor_updates, 'addons') %}
-          **{{ addon.name }}** _{{ addon.installed }}_ -> _{{ addon.version }}_
+        {% for addon in state_attr('sensor.supervisor_updates', 'addons') %}
+          ** {{ addon.name }}: _{{ addon.installed }}_ -> _{{ addon.version }}_
         {% endfor %}
   - service: notify.telegram_chat_id_swart_ninja_smart_home_group
     data_template:
-      title: 🆕 Updates pending in HACS
+      title: 🆕 Updates pending in AddOn
       message: >-
-        {% for addon in state_attr(sensor.supervisor_updates, 'addons') %}
-          **{{ addon.name }}** _{{ addon.installed }}_ -> _{{ addon.version }}_
+        {% for addon in state_attr('sensor.supervisor_updates', 'addons') %}
+          ** {{ addon.name }}: _{{ addon.installed }}_ -> _{{ addon.version }}_
         {% endfor %}

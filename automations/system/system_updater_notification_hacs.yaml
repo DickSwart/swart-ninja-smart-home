@@ -19,13 +19,13 @@ action:
     data_template:
       title: 🆕 Updates pending in HACS
       message: >-
-        {% for repo in state_attr(sensor.hacs, 'repositories') %}
-          **{{ repo.display_name }}** _{{ repo["installed_version"] }}_ -> _{{ repo["available_version"] }}_
+        {% for repo in state_attr('sensor.hacs', 'repositories') %}
+          ** {{ repo.display_name }}: _{{ repo["installed_version"] }}_ -> _{{ repo["available_version"] }}_
         {% endfor %}
   - service: notify.telegram_chat_id_swart_ninja_smart_home_group
     data_template:
       title: 🆕 Updates pending in HACS
       message: >-
-        {% for repo in state_attr(sensor.hacs, 'repositories') %}
-          **{{ repo.display_name }}** _{{ repo["installed_version"] }}_ -> _{{ repo["available_version"] }}_
+        {% for repo in state_attr('sensor.hacs', 'repositories') %}
+          ** {{ repo.display_name }}** _{{ repo["installed_version"] }}_ -> _{{ repo["available_version"] }}_
         {% endfor %}

@@ -11,7 +11,7 @@ import logging
 import os
 import re
 from datetime import timedelta
-from typing import Tuple
+from typing import Tuple, Dict, List
 from pathlib import Path
 
 from PIL import Image, ImageDraw
@@ -74,6 +74,7 @@ EVENT_OBJECT_DETECTED = "deepstack.object_detected"
 BOX = "box"
 FILE = "file"
 OBJECT = "object"
+SAVED_FILE = "saved_file"
 
 # rgb(red, green, blue)
 RED = (255, 0, 0)  # For objects within the ROI
@@ -123,7 +124,7 @@ def get_valid_filename(name: str) -> str:
     return re.sub(r"(?u)[^-\w.]", "", str(name).strip().replace(" ", "_"))
 
 
-def get_objects(predictions: list, img_width: int, img_height: int):
+def get_objects(predictions: list, img_width: int, img_height: int) -> List[Dict]:
     """Return objects with formatting and extra info."""
     objects = []
     decimal_places = 3
@@ -168,22 +169,22 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     entities = []
     for camera in config[CONF_SOURCE]:
         object_entity = ObjectClassifyEntity(
-            config.get(CONF_IP_ADDRESS),
-            config.get(CONF_PORT),
-            config.get(CONF_API_KEY),
-            config.get(CONF_TIMEOUT),
-            config.get(CONF_CUSTOM_MODEL),
-            targets,
-            config.get(ATTR_CONFIDENCE),
-            config[CONF_ROI_Y_MIN],
-            config[CONF_ROI_X_MIN],
-            config[CONF_ROI_Y_MAX],
-            config[CONF_ROI_X_MAX],
-            config[CONF_SHOW_BOXES],
-            save_file_folder,
-            config.get(CONF_SAVE_TIMESTAMPTED_FILE),
-            camera.get(CONF_ENTITY_ID),
-            camera.get(CONF_NAME),
+            ip_address=config.get(CONF_IP_ADDRESS),
+            port=config.get(CONF_PORT),
+            api_key=config.get(CONF_API_KEY),
+            timeout=config.get(CONF_TIMEOUT),
+            custom_model=config.get(CONF_CUSTOM_MODEL),
+            targets=targets,
+            confidence=config.get(ATTR_CONFIDENCE),
+            roi_y_min=config[CONF_ROI_Y_MIN],
+            roi_x_min=config[CONF_ROI_X_MIN],
+            roi_y_max=config[CONF_ROI_Y_MAX],
+            roi_x_max=config[CONF_ROI_X_MAX],
+            show_boxes=config[CONF_SHOW_BOXES],
+            save_file_folder=save_file_folder,
+            save_timestamped_file=config.get(CONF_SAVE_TIMESTAMPTED_FILE),
+            camera_entity=camera.get(CONF_ENTITY_ID),
+            name=camera.get(CONF_NAME),
         )
         entities.append(object_entity)
     add_devices(entities)
@@ -214,7 +215,12 @@ class ObjectClassifyEntity(ImageProcessingEntity):
         """Init with the API key and model id."""
         super().__init__()
         self._dsobject = ds.DeepstackObject(
-            ip_address, port, api_key, timeout, custom_model
+            ip=ip_address,
+            port=port,
+            api_key=api_key,
+            timeout=timeout,
+            min_confidence=confidence / 100,
+            custom_model=custom_model,
         )
         self._custom_model = custom_model
         self._targets = targets
@@ -254,6 +260,7 @@ class ObjectClassifyEntity(ImageProcessingEntity):
         self._objects = []  # The parsed raw data
         self._targets_found = []
         self._summary = {}
+        saved_image_path = None
 
         try:
             predictions = self._dsobject.detect(image)
@@ -275,16 +282,18 @@ class ObjectClassifyEntity(ImageProcessingEntity):
         if self._state > 0:
             self._last_detection = dt_util.now().strftime(DATETIME_FORMAT)
 
+        if self._save_file_folder and self._state > 0:
+            saved_image_path = self.save_image(
+                image, self._targets_found, self._save_file_folder,
+            )
+
         # Fire events
         for target in self._targets_found:
             target_event_data = target.copy()
             target_event_data[ATTR_ENTITY_ID] = self.entity_id
+            if saved_image_path:
+                target_event_data[SAVED_FILE] = saved_image_path
             self.hass.bus.fire(EVENT_OBJECT_DETECTED, target_event_data)
-
-        if self._save_file_folder and self._state > 0:
-            self.save_image(
-                image, self._targets, self._confidence, self._save_file_folder,
-            )
 
     @property
     def camera_entity(self):
@@ -302,17 +311,12 @@ class ObjectClassifyEntity(ImageProcessingEntity):
         return self._name
 
     @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement."""
-        return "targets"
-
-    @property
     def should_poll(self):
         """Return the polling state."""
         return False
 
     @property
-    def device_state_attributes(self):
+    def device_state_attributes(self) -> Dict:
         """Return device specific state attributes."""
         attr = {}
         for target in self._targets:
@@ -328,11 +332,17 @@ class ObjectClassifyEntity(ImageProcessingEntity):
             attr["custom_model"] = self._custom_model
         attr["targets"] = self._targets
         attr["summary"] = self._summary
-        attr["objects"] = self._objects
+        if self._save_file_folder:
+            attr[CONF_SAVE_FILE_FOLDER] = str(self._save_file_folder)
+        if self._save_timestamped_file:
+            attr[CONF_SAVE_TIMESTAMPTED_FILE] = self._save_timestamped_file
         return attr
 
-    def save_image(self, image, targets, confidence, directory):
-        """Draws the actual bounding box of the detected objects."""
+    def save_image(self, image, targets, directory) -> str:
+        """Draws the actual bounding box of the detected objects.
+
+        Returns: saved_image_path, which is the path to the saved timestamped file if configured, else the default saved image.
+        """
         try:
             img = Image.open(io.BytesIO(bytearray(image))).convert("RGB")
         except UnidentifiedImageError:
@@ -346,11 +356,9 @@ class ObjectClassifyEntity(ImageProcessingEntity):
                 draw, roi_tuple, img.width, img.height, text="ROI", color=GREEN,
             )
 
-        for obj in self._objects:
+        for obj in targets:
             if not self._show_boxes:
                 break
-            if not obj["name"] in self._targets:
-                continue
             name = obj["name"]
             confidence = obj["confidence"]
             box = obj["bounding_box"]
@@ -378,12 +386,17 @@ class ObjectClassifyEntity(ImageProcessingEntity):
                 fill=box_colour,
             )
 
+        # Save images, returning the path of saved image as str
         latest_save_path = (
             directory / f"{get_valid_filename(self._name).lower()}_latest.jpg"
         )
+        _LOGGER.info("Deepstack saved file %s", latest_save_path)
         img.save(latest_save_path)
+        saved_image_path = latest_save_path
 
         if self._save_timestamped_file:
             timestamp_save_path = directory / f"{self._name}_{self._last_detection}.jpg"
             img.save(timestamp_save_path)
             _LOGGER.info("Deepstack saved file %s", timestamp_save_path)
+            saved_image_path = timestamp_save_path
+        return str(saved_image_path)

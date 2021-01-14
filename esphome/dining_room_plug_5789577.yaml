@@ -7,4 +7,4 @@ substitutions:
 
 packages:
   wifi: !include common/wifi/not.yaml
-  device_base: !include common/delta_grid_smart_plug_2g_base.yaml
+  device_base: !include common/delta_grid_smart_plug_2g_general.yaml

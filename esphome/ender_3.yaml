@@ -3,6 +3,7 @@
 substitutions:
   node_name: ender_3
   device_verbose_name: Ender 3
+  node_comment: "ID: XXX"
   switch_icon: mdi:printer-3d
 
 packages:

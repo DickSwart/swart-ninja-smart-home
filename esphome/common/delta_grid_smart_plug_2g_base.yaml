@@ -24,38 +24,9 @@ sensor:
 
 binary_sensor:
   - <<: !include binary_sensor/connection_status.config.yaml
-  # Button on the Sonoff Basic
-  - platform: gpio
-    id: button_01
-    pin:
-      number: GPIO16
-      mode: INPUT_PULLUP
-      inverted: true
-    on_press:
-      - switch.toggle: relay_01
-  - platform: gpio
-    id: button_02
-    pin:
-      number: GPIO12
-      mode: INPUT_PULLUP
-      inverted: true
-    on_press:
-      - switch.toggle: relay_02
 
 text_sensor:
   - <<: !include text_sensor/version.config.yaml
-
-switch:
-  - platform: gpio
-    pin: GPIO13
-    id: relay_01
-    name: ${device_verbose_name} 01
-    icon: ${switch_icon}
-  - platform: gpio
-    pin: GPIO14
-    id: relay_02
-    name: ${device_verbose_name} 02
-    icon: ${switch_icon}
 
 status_led:
   pin:

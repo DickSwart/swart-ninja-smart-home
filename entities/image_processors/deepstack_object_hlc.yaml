@@ -13,6 +13,6 @@ port: !secret deepstack_port
 save_file_folder: !secret internal_snapshot_path
 confidence: 70
 targets:
-  - person
+  - target: person
 source:
   - entity_id: camera.hlc

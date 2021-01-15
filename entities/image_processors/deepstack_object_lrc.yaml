@@ -12,6 +12,6 @@ ip_address: !secret deepstack_ip
 port: !secret deepstack_port
 save_file_folder: !secret internal_snapshot_path
 targets:
-  - person
+  - target: person
 source:
   - entity_id: camera.lrc

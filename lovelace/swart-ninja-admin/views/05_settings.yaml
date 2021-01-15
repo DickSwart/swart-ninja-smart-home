@@ -97,3 +97,12 @@ cards:
               - entity: light.alarm_lights_group
             show_header_toggle: false
             type: entities
+
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Unifi Switches
+          show_header_toggle: false
+        filter:
+          include:
+            - entity_id: "switch.*_unifi"

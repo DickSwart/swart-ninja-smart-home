@@ -179,7 +179,7 @@ cards:
           - entity: light.man_cave_ceiling
           - entity: switch.man_cave_kitchen_ceiling_one
           - entity: switch.man_cave_kitchen_ceiling_two
-          - entity: switch.living_room_cupboard_plug_01
+          # - entity: switch.living_room_cupboard_plug_01
           # - entity: switch.living_room_cupboard_plug_02
           - entity: switch.living_room_heat_pump
           - entity: switch.man_cave_heat_pump

@@ -56,26 +56,33 @@ cards:
 
       - break
 
-      - !include
-        - ../../templates/esphome_multisensor_entities.yaml
-        - node_name: kitchen_multisensor
-          show_led: true
-          show_door: false
-          show_motion: true
+      - type: custom:state-switch
+        entity: user
+        states:
+          Dick:
+            title: Other
+            show_header_toggle: false
+            type: entities
+            entities:
+              - !include
+                - ../../templates/folding_entity/esphome_multisensor.yaml
+                - node_name: kitchen_multisensor
+                  show_led: true
+                  show_door: false
+                  show_motion: true
 
-      - title: Motion & Cupboard
-        type: entities
-        show_header_toggle: false
-        entities:
-          - entity: light.kitchen_cupboard
-            name: LED
-          - entity: binary_sensor.kitchen_motion_led_motion
-            name: Motion
-          - entity: sensor.kitchen_motion_led_wifi_signal
-            name: WiFi
-          - entity: binary_sensor.kitchen_motion_led_status
-            name: Status
-          - entity: sensor.kitchen_motion_led_uptime
-            name: Uptime
-          - entity: sensor.kitchen_motion_led_esphome_version
-            name: ESPHome Version
+              - head:
+                  entity: binary_sensor.kitchen_motion_led_status
+                  name: Motion & Cupboard
+                items:
+                  - entity: light.kitchen_cupboard
+                    name: LED
+                  - entity: binary_sensor.kitchen_motion_led_motion
+                    name: Motion
+                  - entity: sensor.kitchen_motion_led_wifi_signal
+                    name: WiFi
+                  - entity: sensor.kitchen_motion_led_uptime
+                    name: Uptime
+                  - entity: sensor.kitchen_motion_led_esphome_version
+                    name: ESPHome Version
+                type: custom:fold-entity-row

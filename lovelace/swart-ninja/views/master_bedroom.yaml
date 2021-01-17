@@ -55,9 +55,17 @@ cards:
         artwork: cover
         name: Apple TV
 
-      - !include
-        - ../../templates/esphome_multisensor_entities.yaml
-        - node_name: bedroom_master_multisensor
-          show_led: true
-          show_door: false
-          show_motion: true
+      - type: custom:state-switch
+        entity: user
+        states:
+          Dick:
+            title: Other
+            show_header_toggle: false
+            type: entities
+            entities:
+              - !include
+                - ../../templates/folding_entity/esphome_multisensor.yaml
+                - node_name: bedroom_master_multisensor
+                  show_led: true
+                  show_door: false
+                  show_motion: true

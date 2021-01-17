@@ -36,14 +36,22 @@ cards:
 
       - break
 
-      - !include
-        - ../../templates/esphome_multisensor_entities.yaml
-        - node_name: ampersand_multisensor
-          show_led: true
-          show_door: false
-          show_motion: false
+      - type: custom:state-switch
+        entity: user
+        states:
+          Dick:
+            title: Other
+            show_header_toggle: false
+            type: entities
+            entities:
+              - !include
+                - ../../templates/folding_entity/esphome_multisensor.yaml
+                - node_name: ampersand_multisensor
+                  show_led: true
+                  show_door: false
+                  show_motion: false
 
-      - !include
-        - ../../templates/card/auto-entities.yaml
-        - title: Electric Blanket
-          include_entity_id: "*.bedroom_max_electric_blanket*"
+              - !include
+                - ../../templates/folding_entity/esphome_sonoff_basic.yaml
+                - node_name: bedroom_max_electric_blanket
+                  entity_name: Electric Blanket

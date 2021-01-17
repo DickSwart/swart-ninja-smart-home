@@ -174,7 +174,7 @@ cards:
           - entity: light.living_room_ceiling
           - entity: light.fish_tank_main_light
           - entity: light.fish_tank_colour_light
-          - entity: light.living_room_television
+          - entity: light.living_room_tv_backlight_group
           - entity: light.man_cave_bathroom_ceiling
           - entity: light.man_cave_ceiling
           - entity: switch.man_cave_kitchen_ceiling_one

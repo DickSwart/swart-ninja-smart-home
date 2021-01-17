@@ -13,19 +13,42 @@ cards:
             - ../../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:sofa"></ha-icon> Living Room
 
-          - camera_image: camera.lrc
-            camera_view: live
-            entities:
-              - binary_sensor.lrc_motion
-            title: Living Room
-            type: picture-glance
-
-          - camera_image: camera.dec
-            camera_view: live
-            entities:
-              - binary_sensor.dec_motion
-            title: Deck
-            type: picture-glance
+      - type: custom:state-switch
+        entity: user
+        default: default
+        states:
+          Dick:
+            type: vertical-stack
+            cards:
+              - camera_image: camera.lrc
+                camera_view: live
+                entities:
+                  - binary_sensor.lrc_motion
+                  - switch.lrc
+                title: Living Room
+                type: picture-glance
+              - camera_image: camera.dec
+                camera_view: live
+                entities:
+                  - binary_sensor.dec_motion
+                  - switch.dec
+                title: Deck
+                type: picture-glance
+          default:
+            type: vertical-stack
+            cards:
+              - camera_image: camera.lrc
+                camera_view: live
+                entities:
+                  - binary_sensor.lrc_motion
+                title: Living Room
+                type: picture-glance
+              - camera_image: camera.dec
+                camera_view: live
+                entities:
+                  - binary_sensor.dec_motion
+                title: Deck
+                type: picture-glance
 
       - break
 
@@ -43,7 +66,7 @@ cards:
               name: Mood
           - !include
             - "../../templates/button/button.yaml"
-            - entity: light.living_room_television
+            - entity: light.living_room_tv_backlight_group
               label: !include ../../includes/brightness-label.yaml
               popup_template: "../popup-cards/light-rgb.yaml"
               name: TV
@@ -52,7 +75,7 @@ cards:
             - entity: light.living_room_curtains
               label: !include ../../includes/brightness-label.yaml
               popup_template: "../popup-cards/light-rgb.yaml"
-              name: Curtains
+              name: Window LED
           - !include
             - "../../templates/button/button.yaml"
             - entity: light.fish_tank_main_light
@@ -60,7 +83,6 @@ cards:
               popup_template: "../popup-cards/light-color-temp.yaml"
               name: Fish Tank
               icon: mdi:fishbowl
-
           ## Fish Tank
           # - !include
           #   - "../../templates/button/button.yaml"
@@ -84,12 +106,30 @@ cards:
               icon_off: mdi:walk
               icon_color_off: var(--dark-primary-color)
 
-      - title: Curtains
-        type: entities
+      - type: entities
         show_header_toggle: false
         entities:
-          - entity: cover.living_room_sliding_door_curtain
-            name: Sliding Door
+          - entity: input_select.living_room_scenes
+            name: Scene Selector
+          - !include
+            - "../../templates/entities-row/cover-control.yaml"
+            - entity: cover.living_room_sliding_door_curtain
+              name: Sliding Door Curtains
+
+      - type: custom:simple-thermostat
+        entity: climate.living_room
+        step_layout: row
+        name: false
+        sensors:
+          - entity: sensor.living_room_multisensor_temperature
+            name: Multi-Sensor
+        control:
+          hvac:
+            auto: false
+            fan_only: false
+            heat_cool: false
+
+      - break
 
       - type: custom:mod-card
         style: |
@@ -159,51 +199,6 @@ cards:
                         color: "#272727"
                         font-size: 1.2em
 
-            - type: entities
-              style: |
-                ha-card {
-                  background: none;
-
-                }
-                .card-content {
-                  padding-top: 0;
-                }
-                .card-content > div:first-of-type {
-                  border-top: 0.1em solid rgb(217, 217, 217);
-                }
-              entities:
-                - entity: light.fish_tank_main_light
-                  name: Main Light
-                - entity: light.fish_tank_colour_light
-                  name: Colour Light
-                - entity: switch.fish_tank_relay_01
-                  name: Filter
-                  icon: mdi:air-filter
-                - entity: switch.living_room_cupboard_plug_01
-                  name: Air Pump
-                  icon: mdi:chart-bubble
-                - entity: switch.fish_tank_relay_02
-                  name: Heater
-                  icon: mdi:radiator
-                - entity: input_boolean.fish_tank_light_schedule
-                  name: Light Schedule
-                  icon: mdi:update
-
-      - break
-
-      - type: custom:simple-thermostat
-        entity: climate.living_room
-        step_layout: row
-        name: false
-        sensors:
-          - entity: sensor.living_room_multisensor_temperature
-            name: Multi-Sensor
-        control:
-          hvac:
-            auto: false
-            fan_only: false
-            heat_cool: false
-
       - !include
         - ../../templates/multisensor_graphs.yaml
         - temp_entity: sensor.living_room_temperature
@@ -249,91 +244,123 @@ cards:
                   - icon: mdi:youtube
                     type: source
                     id: YouTube
-              style:
-                .: |
-                  ha-card {
-                    background: var(--card-background-color);
-                  }
-                .mmp-player > .mmp-player__core:
-                  .: |
-                    .mmp-player__core > mmp-powerstrip {
-                      justify-content: center;
-                    }
-                mmp-powerstrip:
-                  $: |
-                    :host > mmp-media-controls {
-                      max-width: calc(var(--mmp-unit) * 10);
-                    }
+              # style:
+              #   .: |
+              #     ha-card {
+              #       background: var(--card-background-color);
+              #     }
+              #   .mmp-player > .mmp-player__core:
+              #     .: |
+              #       .mmp-player__core > mmp-powerstrip {
+              #         justify-content: center;
+              #       }
+              #   mmp-powerstrip:
+              #     $: |
+              #       :host > mmp-media-controls {
+              #         max-width: 100%;
+              #       }
             - type: conditional
               conditions:
-                - entity: media_player.living_room_television
+                - entity: binary_sensor.living_room_tv_source_plex
                   state: "on"
               card:
                 type: media-control
                 name: Plex
                 entity: media_player.living_room_tv_plex
 
-      - title: Other
-        show_header_toggle: false
-        type: entities
-        entities:
-          - head:
-              entity: binary_sensor.fish_tank_status
-              name: Fish Tank
-            type: custom:fold-entity-row
-            items:
-              - entity: light.fish_tank_main_light
-                name: Main Light
-              - entity: light.fish_tank_colour_light
-                name: Colour Light
-              - entity: switch.fish_tank_relay_01
-                name: Pump
-              - entity: switch.fish_tank_relay_02
-                name: Heater
-              - entity: switch.fish_tank_relay_03
-                name: Relay 3
-              - entity: switch.fish_tank_relay_04
-                name: Relay 4
-              - entity: input_boolean.fish_tank_light_schedule
-                name: Light Schedule
-              - entity: sensor.fish_tank_esphome_version
-                name: Version
-              - entity: sensor.fish_tank_temperature
-                name: Temperature
-              - entity: sensor.fish_tank_uptime
-                name: Uptime
-              - entity: binary_sensor.fish_tank_water_level
-                name: Water Level
-              - entity: sensor.fish_tank_wifi_signal
-                name: WiFi Signal
+      - type: custom:state-switch
+        entity: user
+        states:
+          Dick:
+            title: Other
+            show_header_toggle: false
+            type: entities
+            entities:
+              - light.light_box_one
 
-          - head: media_player.living_room_echo_dot
-            items:
-              - entity: switch.living_room_echo_dot_do_not_disturb_switch
-                name: Do not disturb
-              - entity: sensor.living_room_echo_dot_next_alarm
-                name: Next alarm
-              - entity: sensor.living_room_echo_dot_next_reminder
-                name: Next reminder
-              - entity: sensor.living_room_echo_dot_next_timer
-                name: Next timer
-              - entity: switch.living_room_echo_dot_repeat_switch
-                name: Repeat
-              - entity: switch.living_room_echo_dot_shuffle_switch
-                name: Shuffle
-            type: custom:fold-entity-row
+              - head:
+                  entity: binary_sensor.living_room_tv_backlight_status
+                  name: TV Stand
+                items:
+                  - entity: light.living_room_tv_backlight
+                    name: Light
+                  - entity: sensor.living_room_tv_backlight_esphome_version
+                    name: EXPHome Version
+                  - entity: sensor.living_room_tv_backlight_uptime
+                    name: Uptime
+                  - entity: sensor.living_room_tv_backlight_wifi_signal
+                    name: WiFi Signal
+                type: custom:fold-entity-row
 
-          - head: light.living_room_curtains
-            items:
-              - entity: switch.living_room_curtains_nightlight
-              - entity: switch.living_room_curtains_sync_receive
-              - entity: switch.living_room_curtains_sync_send
-              - entity: sensor.living_room_curtains_estimated_current
-              - entity: sensor.living_room_curtains_temperature
-            type: custom:fold-entity-row
+              - head: light.living_room_curtains
+                items:
+                  - entity: switch.living_room_curtains_nightlight
+                    name: Nightlight
+                  - entity: switch.living_room_curtains_sync_receive
+                    name: Sync Receive
+                  - entity: switch.living_room_curtains_sync_send
+                    name: Sync Send
+                  - entity: sensor.living_room_curtains_estimated_current
+                    name: Estimated Current
+                  - entity: sensor.living_room_curtains_temperature
+                    name: Temperature
+                type: custom:fold-entity-row
 
-          - !include
-            - ../../templates/folding_entity/esphome_multisensor.yaml
-            - node_name: living_room_multisensor
-              show_led: true
-              show_motion: true
+              - head:
+                  entity: binary_sensor.fish_tank_status
+                  name: Fish Tank
+                type: custom:fold-entity-row
+                items:
+                  - entity: light.fish_tank_main_light
+                    name: Main Light
+                  - entity: light.fish_tank_colour_light
+                    name: Colour Light
+                  - entity: switch.fish_tank_relay_01
+                    name: Filter
+                    icon: mdi:air-filter
+                  - entity: switch.living_room_cupboard_plug_01
+                    name: Air Pump
+                    icon: mdi:chart-bubble
+                  - entity: switch.fish_tank_relay_02
+                    name: Heater
+                    icon: mdi:radiator
+                  - entity: input_boolean.fish_tank_light_schedule
+                    name: Light Schedule
+                    icon: mdi:update
+                  - entity: switch.fish_tank_relay_03
+                    name: Relay 3
+                  - entity: switch.fish_tank_relay_04
+                    name: Relay 4
+                  - entity: sensor.fish_tank_esphome_version
+                    name: Version
+                  - entity: sensor.fish_tank_temperature
+                    name: Temperature
+                  - entity: sensor.fish_tank_uptime
+                    name: Uptime
+                  - entity: binary_sensor.fish_tank_water_level
+                    name: Water Level
+                    icon: mdi:waves
+                  - entity: sensor.fish_tank_wifi_signal
+                    name: WiFi Signal
+
+              - head: media_player.living_room_echo_dot
+                items:
+                  - entity: switch.living_room_echo_dot_do_not_disturb_switch
+                    name: Do not disturb
+                  - entity: sensor.living_room_echo_dot_next_alarm
+                    name: Next alarm
+                  - entity: sensor.living_room_echo_dot_next_reminder
+                    name: Next reminder
+                  - entity: sensor.living_room_echo_dot_next_timer
+                    name: Next timer
+                  - entity: switch.living_room_echo_dot_repeat_switch
+                    name: Repeat
+                  - entity: switch.living_room_echo_dot_shuffle_switch
+                    name: Shuffle
+                type: custom:fold-entity-row
+
+              - !include
+                - ../../templates/folding_entity/esphome_multisensor.yaml
+                - node_name: living_room_multisensor
+                  show_led: true
+                  show_motion: true

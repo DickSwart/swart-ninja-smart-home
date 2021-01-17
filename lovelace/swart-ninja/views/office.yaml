@@ -23,6 +23,7 @@ cards:
             camera_view: live
             entities:
               - binary_sensor.ofc_motion
+              - switch.ofc
 
       - type: vertical-stack
         cards:

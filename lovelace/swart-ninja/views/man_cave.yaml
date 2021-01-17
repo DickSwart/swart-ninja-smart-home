@@ -13,109 +13,135 @@ cards:
             - ../../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:pac-man"></ha-icon> Man cave
 
-          - title: Man Cave
-            type: picture-glance
-            camera_image: camera.mcc
-            camera_view: live
-            entities:
-              - binary_sensor.mcc_motion
-
-          - type: horizontal-stack
+      - type: custom:state-switch
+        entity: user
+        default: default
+        states:
+          Dick:
+            type: vertical-stack
             cards:
-              - title: Backyard
+              - title: Man Cave
                 type: picture-glance
-                camera_image: camera.byc
+                camera_image: camera.mcc
                 camera_view: live
                 entities:
-                  - binary_sensor.byc_motion
-              - title: House Side
+                  - binary_sensor.mcc_motion
+                  - switch.mcc
+              - type: horizontal-stack
+                cards:
+                  - title: Backyard
+                    type: picture-glance
+                    camera_image: camera.byc
+                    camera_view: live
+                    entities:
+                      - binary_sensor.byc_motion
+                      - switch.byc
+                  - title: House Side
+                    type: picture-glance
+                    camera_image: camera.hsc
+                    camera_view: live
+                    entities:
+                      - binary_sensor.hsc_motion
+                      - switch.hsc
+          default:
+            type: vertical-stack
+            cards:
+              - title: Man Cave
                 type: picture-glance
-                camera_image: camera.hsc
+                camera_image: camera.mcc
                 camera_view: live
                 entities:
-                  - binary_sensor.hsc_motion
+                  - binary_sensor.mcc_motion
+              - type: horizontal-stack
+                cards:
+                  - title: Backyard
+                    type: picture-glance
+                    camera_image: camera.byc
+                    camera_view: live
+                    entities:
+                      - binary_sensor.byc_motion
+                  - title: House Side
+                    type: picture-glance
+                    camera_image: camera.hsc
+                    camera_view: live
+                    entities:
+                      - binary_sensor.hsc_motion
 
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.ender_3_octoprint
-                state: "on"
-            card:
-              type: picture-glance
-              camera_image: camera.octoprint
-              entities: []
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.ender_3_octoprint
+            state: "on"
+        card:
+          type: picture-glance
+          camera_image: camera.octoprint
+          entities: []
 
       - break
 
-      - type: vertical-stack
+      - type: grid
         cards:
-          - type: horizontal-stack
-            cards:
-              - !include
-                - "../../templates/button/button.yaml"
-                - entity: light.man_cave_ceiling
-                  name: Ceiling
-              - !include
-                - "../../templates/button/button.yaml"
-                - entity: switch.man_cave_kitchen_ceiling_one
-                  name: Kitchen One
-              - !include
-                - "../../templates/button/button.yaml"
-                - entity: switch.man_cave_kitchen_ceiling_two
-                  name: Kitchen Two
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: light.man_cave_ceiling
+              name: Ceiling
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.man_cave_kitchen_ceiling_one
+              name: Kitchen One
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.man_cave_kitchen_ceiling_two
+              name: Kitchen Two
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: light.man_cave_bathroom_ceiling
+              name: Bathroom
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.ender_3_safe
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.work_station
+          # - type: light
+          #   entity: light.man_cave_tv_backlight
+          #   name: TV Backlight
 
-          - type: horizontal-stack
-            cards:
-              - !include
-                - "../../templates/button/button.yaml"
-                - entity: light.man_cave_bathroom_ceiling
-                  name: Bathroom
-              - !include
-                - "../../templates/button/button.yaml"
-                - entity: switch.ender_3_safe
-              - !include
-                - "../../templates/button/button.yaml"
-                - entity: switch.work_station
-
-          - type: light
-            entity: light.man_cave_tv_backlight
-            name: TV Backlight
-
-          - type: horizontal-stack
-            cards:
-              - !include
-                - "../../templates/button/button.yaml"
-                - entity: binary_sensor.man_cave_motion
-                  grid: grid-alternative
-                  style: style-alternative
-                  name: Motion
-                  show_state: true
-                  btn_template: style-transparent
-                  icon_on: mdi:motion-sensor
-                  icon_color_on: var(--accent-color)
-                  icon_off: mdi:walk
-                  icon_color_off: var(--dark-primary-color)
-              - !include
-                - "../../templates/button/button.yaml"
-                - entity: binary_sensor.man_cave_back_door
-                  grid: grid-alternative
-                  style: style-alternative
-                  name: Back Door
-                  show_state: true
-                  icon_on: mdi:door-open
-                  icon_color_on: var(--accent-color)
-                  icon_off: mdi:door-closed
-                  icon_color_off: var(--dark-primary-color)
-              - !include
-                - "../../templates/button/button.yaml"
-                - entity: binary_sensor.man_cave_stairs_door
-                  grid: grid-alternative
-                  style: style-alternative
-                  name: Stairs Door
-                  show_state: true
-                  icon_on: mdi:door-open
-                  icon_color_on: var(--accent-color)
-                  icon_off: mdi:door-closed
-                  icon_color_off: var(--dark-primary-color)
+      - type: horizontal-stack
+        cards:
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: binary_sensor.man_cave_motion
+              grid: grid-alternative
+              style: style-alternative
+              name: Motion
+              show_state: true
+              btn_template: style-transparent
+              icon_on: mdi:motion-sensor
+              icon_color_on: var(--accent-color)
+              icon_off: mdi:walk
+              icon_color_off: var(--dark-primary-color)
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: binary_sensor.man_cave_back_door
+              grid: grid-alternative
+              style: style-alternative
+              name: Back Door
+              show_state: true
+              icon_on: mdi:door-open
+              icon_color_on: var(--accent-color)
+              icon_off: mdi:door-closed
+              icon_color_off: var(--dark-primary-color)
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: binary_sensor.man_cave_stairs_door
+              grid: grid-alternative
+              style: style-alternative
+              name: Stairs Door
+              show_state: true
+              icon_on: mdi:door-open
+              icon_color_on: var(--accent-color)
+              icon_off: mdi:door-closed
+              icon_color_off: var(--dark-primary-color)
 
       - type: media-control
         entity: media_player.xboxone

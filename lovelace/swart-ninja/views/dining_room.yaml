@@ -13,12 +13,29 @@ cards:
             - ../../templates/header/view_heading.yaml
             - title: <ha-icon icon="mdi:silverware-fork-knife"></ha-icon> Dining Room
 
-          - title: Dining Room
-            type: picture-glance
-            camera_image: camera.drc
-            camera_view: live
-            entities:
-              - binary_sensor.drc_motion
+      - type: custom:state-switch
+        entity: user
+        default: default
+        states:
+          Dick:
+            type: vertical-stack
+            cards:
+              - title: Dining Room
+                type: picture-glance
+                camera_image: camera.drc
+                camera_view: live
+                entities:
+                  - binary_sensor.drc_motion
+                  - switch.drc
+          default:
+            type: vertical-stack
+            cards:
+              - title: Dining Room
+                type: picture-glance
+                camera_image: camera.drc
+                camera_view: live
+                entities:
+                  - binary_sensor.drc_motion
 
       - type: grid
         cards:
@@ -30,12 +47,12 @@ cards:
             - "../../templates/button/button.yaml"
             - entity: light.backyard
               name: Backyard
-          - !include
-            - "../../templates/button/button.yaml"
-            - entity: light.dining_room_sml_window
-              label: !include ../../includes/brightness-label.yaml
-              popup_template: "../popup-cards/light-rgb.yaml"
-              name: Mood
+          # - !include
+          #   - "../../templates/button/button.yaml"
+          #   - entity: light.dining_room_sml_window
+          #     label: !include ../../includes/brightness-label.yaml
+          #     popup_template: "../popup-cards/light-rgb.yaml"
+          #     name: Curtains
           - !include
             - "../../templates/button/button.yaml"
             - entity: binary_sensor.dining_room_motion
@@ -51,25 +68,12 @@ cards:
 
       - type: horizontal-stack
         cards:
-          - !include
-            - "../../templates/button/button.yaml"
-            - entity: switch.dining_room_plug_5789577_01
-              name: Plug One
-          - !include
-            - "../../templates/button/button.yaml"
-            - entity: switch.dining_room_plug_5789577_02
-              name: Plug Two
-
-      - type: horizontal-stack
-        cards:
-          - !include
-            - "../../templates/button/button.yaml"
-            - entity: switch.dining_room_plug_6207090_01
-              name: Plug One A
-          - !include
-            - "../../templates/button/button.yaml"
-            - entity: switch.dining_room_plug_6207090_01
-              name: Plug Two A
+          - name: Small Window LED
+            type: light
+            entity: light.dining_room_sml_window
+          - name: Corner Window LED
+            type: light
+            entity: light.dining_room_corner_window
 
       - title: Curtains
         type: entities
@@ -83,3 +87,59 @@ cards:
             - "../../templates/entities-row/cover-control.yaml"
             - entity: cover.dining_room_corner_curtain
               name: Corner Window
+
+      - break
+
+      - type: horizontal-stack
+        cards:
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.dining_room_plug_6207090_01
+              name: Plug 01
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.dining_room_plug_6207090_02
+              name: Plug 02
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.dining_room_plug_5789577_01
+              name: Plug 03
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: switch.dining_room_plug_5789577_02
+              name: Plug 04
+
+      - type: custom:state-switch
+        entity: user
+        states:
+          Dick:
+            title: Other
+            show_header_toggle: false
+            type: entities
+            entities:
+              - head: light.dining_room_sml_window
+                items:
+                  - entity: switch.dining_room_sml_window_nightlight
+                    name: Nightlight
+                  - entity: switch.dining_room_sml_window_sync_receive
+                    name: Sync Receive
+                  - entity: switch.dining_room_sml_window_sync_send
+                    name: Sync Send
+                  - entity: sensor.dining_room_sml_window_estimated_current
+                    name: Estimated Current
+                  - entity: sensor.dining_room_curtains_sml_temperature
+                    name: Temperature
+                type: custom:fold-entity-row
+              - head: light.dining_room_corner_window
+                items:
+                  - entity: switch.dining_room_corner_window_nightlight
+                    name: Nightlight
+                  - entity: switch.dining_room_corner_window_sync_receive
+                    name: Sync Receive
+                  - entity: switch.dining_room_corner_window_sync_send
+                    name: Sync Send
+                  - entity: sensor.dining_room_corner_window_estimated_current
+                    name: Estimated Current
+                  - entity: sensor.dining_room_curtains_corner_temperature
+                    name: Temperature
+                type: custom:fold-entity-row

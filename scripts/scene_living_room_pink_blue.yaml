@@ -1,0 +1,52 @@
+---
+alias: Pink And Blue Scene
+sequence:
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.living_room_sliding_door_curtain
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.nodered_living_room_lights
+  - service: light.turn_off
+    data: {}
+    entity_id: light.living_room_mood
+  - service: light.turn_off
+    data: {}
+    entity_id: light.living_room_ceiling
+  - service: light.turn_off
+    data: {}
+    entity_id: light.fish_tank_main_light
+  - service: light.turn_on
+    data:
+      brightness: 255
+      xy_color:
+        - 0.174
+        - 0.254
+      white_value: 0
+      effect: Solid
+    entity_id: light.living_room_curtains
+  - service: light.turn_on
+    data:
+      brightness: 255
+      xy_color:
+        - 0.463
+        - 0.211
+      effect: none
+    entity_id: light.light_box_one
+  - service: light.turn_on
+    data:
+      brightness: 255
+      xy_color:
+        - 0.323
+        - 0.329
+      effect: None
+    entity_id: light.living_room_tv_backlight
+  - service: light.turn_on
+    data:
+      brightness: 255
+      xy_color:
+        - 0.478
+        - 0.197
+      effect: None
+    entity_id: light.fish_tank_colour_light
+mode: single

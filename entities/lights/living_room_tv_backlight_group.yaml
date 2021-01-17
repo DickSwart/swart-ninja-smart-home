@@ -5,10 +5,10 @@
 #
 # URL: https://www.home-assistant.io/integrations/light.group/
 #
-# EntityID: light.living_room_television
+# EntityID: light.living_room_tv_backlight_group
 ##################################################################################################################
 platform: group
-name: Living Room Television
+name: Living Room TV Backlight Group
 entities:
   - light.living_room_tv_backlight
   - light.light_box_one

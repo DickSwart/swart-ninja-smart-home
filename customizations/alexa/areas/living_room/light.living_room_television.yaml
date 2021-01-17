@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-light.living_room_television:
+light.living_room_tv_backlight_group:
   name: Living Room TV Light
   description: The TV stand light.
   display_categories: LIGHT

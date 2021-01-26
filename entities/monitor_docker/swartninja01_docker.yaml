@@ -1,0 +1,17 @@
+---
+name: SwartNinja01 Docker
+url: tcp://192.168.1.201:2375
+containers:
+  - garbage-collection
+  - glances
+  - minecraft-server-01
+  - minecraft-server-02
+  - minecraft-server-03
+  - watchtower
+rename:
+  garbage-collection: Garbage
+  glances: Glances
+  minecraft-server-01: Minecraft Server 01
+  minecraft-server-02: Minecraft Server 02
+  minecraft-server-03: Minecraft Server 03
+  watchtower: Watchtower

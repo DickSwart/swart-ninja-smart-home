@@ -75,18 +75,31 @@ cards:
             type: light
             entity: light.dining_room_corner_window
 
-      - title: Curtains
-        type: entities
+      - type: entities
         show_header_toggle: false
         entities:
-          - !include
-            - "../../templates/entities-row/cover-control.yaml"
-            - entity: cover.dining_room_small_window_curtain
-              name: Small Window
-          - !include
-            - "../../templates/entities-row/cover-control.yaml"
-            - entity: cover.dining_room_corner_curtain
-              name: Corner Window
+          - type: custom:fold-entity-row
+            head:
+              entity: cover.dining_room_curtains
+              name: Curtains
+            items:
+              - entity: cover.dining_room_small_window_curtain
+                name: Small Window
+              - entity: cover.dining_room_corner_curtain
+                name: Corner Window
+
+      # - title: Curtains
+      #   type: entities
+      #   show_header_toggle: false
+      #   entities:
+      #     - !include
+      #       - "../../templates/entities-row/cover-control.yaml"
+      #       - entity: cover.dining_room_small_window_curtain
+      #         name: Small Window
+      #     - !include
+      #       - "../../templates/entities-row/cover-control.yaml"
+      #       - entity: cover.dining_room_corner_curtain
+      #         name: Corner Window
 
       - break
 
@@ -127,8 +140,10 @@ cards:
                     name: Sync Send
                   - entity: sensor.dining_room_sml_window_estimated_current
                     name: Estimated Current
-                  - entity: sensor.dining_room_curtains_sml_temperature
+                  - entity: sensor.dining_room_curtain_sml_temperature
                     name: Temperature
+                  - entity: sensor.dining_room_curtain_sml_luminance
+                    name: Luminance
                 type: custom:fold-entity-row
               - head: light.dining_room_corner_window
                 items:
@@ -140,6 +155,8 @@ cards:
                     name: Sync Send
                   - entity: sensor.dining_room_corner_window_estimated_current
                     name: Estimated Current
-                  - entity: sensor.dining_room_curtains_corner_temperature
+                  - entity: sensor.dining_room_curtain_corner_temperature
                     name: Temperature
+                  - entity: sensor.dining_room_curtain_corner_luminance
+                    name: Luminance
                 type: custom:fold-entity-row

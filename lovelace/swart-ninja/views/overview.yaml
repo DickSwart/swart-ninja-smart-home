@@ -141,16 +141,12 @@ cards:
         type: entities
         show_header_toggle: false
         entities:
-          - !include
-            - "../../templates/entities-row/cover-control.yaml"
-            - entity: cover.living_room_sliding_door_curtain
-              name: Living Room
-              icon: mdi:sofa
-          - !include
-            - "../../templates/entities-row/cover-control.yaml"
-            - entity: cover.dining_room_curtains
-              name: Dining Room
-              icon: mdi:silverware-fork-knife
+          - entity: cover.living_room_sliding_door_curtain
+            name: Living Room
+            icon: mdi:sofa
+          - entity: cover.dining_room_curtains
+            name: Dining Room
+            icon: mdi:silverware-fork-knife
 
       - type: entity-filter
         show_empty: false
@@ -172,8 +168,8 @@ cards:
           - entity: switch.kitchen_ceiling
           - entity: switch.kitchen_side
           - entity: light.living_room_ceiling
-          - entity: light.fish_tank_main_light
-          - entity: light.fish_tank_colour_light
+          # - entity: light.fish_tank_main_light
+          # - entity: light.fish_tank_colour_light
           - entity: light.living_room_tv_backlight_group
           - entity: light.man_cave_bathroom_ceiling
           - entity: light.man_cave_ceiling

@@ -76,13 +76,13 @@ cards:
               label: !include ../../includes/brightness-label.yaml
               popup_template: "../popup-cards/light-rgb.yaml"
               name: Window LED
-          - !include
-            - "../../templates/button/button.yaml"
-            - entity: light.fish_tank_main_light
-              label: !include ../../includes/brightness-label.yaml
-              popup_template: "../popup-cards/light-color-temp.yaml"
-              name: Fish Tank
-              icon: mdi:fishbowl
+          # - !include
+          #   - "../../templates/button/button.yaml"
+          #   - entity: light.fish_tank_main_light
+          #     label: !include ../../includes/brightness-label.yaml
+          #     popup_template: "../popup-cards/light-color-temp.yaml"
+          #     name: Fish Tank
+          #     icon: mdi:fishbowl
           ## Fish Tank
           # - !include
           #   - "../../templates/button/button.yaml"
@@ -111,10 +111,8 @@ cards:
         entities:
           - entity: input_select.living_room_scenes
             name: Scene Selector
-          - !include
-            - "../../templates/entities-row/cover-control.yaml"
-            - entity: cover.living_room_sliding_door_curtain
-              name: Sliding Door Curtains
+          - entity: cover.living_room_sliding_door_curtain
+            name: Curtains
 
       - type: custom:simple-thermostat
         entity: climate.living_room
@@ -302,8 +300,10 @@ cards:
                     name: Sync Send
                   - entity: sensor.living_room_curtains_estimated_current
                     name: Estimated Current
-                  - entity: sensor.living_room_curtains_temperature
+                  - entity: sensor.living_room_curtain_temperature
                     name: Temperature
+                  - entity: sensor.living_room_curtain_luminance
+                    name: Luminance
                 type: custom:fold-entity-row
 
               - head:

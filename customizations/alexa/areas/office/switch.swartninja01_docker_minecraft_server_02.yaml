@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-switch.docker_minecraft_server_01:
-  name: Minecraft Server One
-  description: First Minecraft server created, our main world
+switch.swartninja01_docker_minecraft_server_02:
+  name: Minecraft Server Two
+  description: This is our war server, no rules.
   display_categories: SWITCH

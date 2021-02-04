@@ -129,6 +129,12 @@ cards:
 
       - break
 
+      - !include
+        - ../../templates/multisensor_graphs.yaml
+        - temp_entity: sensor.living_room_temperature
+          hum_entity: sensor.living_room_multisensor_humidity
+          lux_entity: sensor.living_room_luminance
+
       - type: custom:mod-card
         style: |
           ha-card {
@@ -196,12 +202,6 @@ cards:
                         top: 11%
                         color: "#272727"
                         font-size: 1.2em
-
-      - !include
-        - ../../templates/multisensor_graphs.yaml
-        - temp_entity: sensor.living_room_temperature
-          hum_entity: sensor.living_room_multisensor_humidity
-          lux_entity: sensor.living_room_multisensor_luminance
 
       - break
 

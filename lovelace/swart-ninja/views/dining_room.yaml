@@ -47,12 +47,12 @@ cards:
             - "../../templates/button/button.yaml"
             - entity: light.backyard
               name: Backyard
-          # - !include
-          #   - "../../templates/button/button.yaml"
-          #   - entity: light.dining_room_sml_window
-          #     label: !include ../../includes/brightness-label.yaml
-          #     popup_template: "../popup-cards/light-rgb.yaml"
-          #     name: Curtains
+          - !include
+            - "../../templates/button/button.yaml"
+            - entity: light.dining_room_corner_window
+              label: !include ../../includes/brightness-label.yaml
+              popup_template: "../popup-cards/light-rgb.yaml"
+              name: Window LED
           - !include
             - "../../templates/button/button.yaml"
             - entity: binary_sensor.dining_room_motion
@@ -66,14 +66,14 @@ cards:
               icon_off: mdi:walk
               icon_color_off: var(--dark-primary-color)
 
-      - type: horizontal-stack
-        cards:
-          - name: Small Window LED
-            type: light
-            entity: light.dining_room_sml_window
-          - name: Corner Window LED
-            type: light
-            entity: light.dining_room_corner_window
+      # - type: horizontal-stack
+      #   cards:
+      #     - name: Small Window LED
+      #       type: light
+      #       entity: light.dining_room_sml_window
+      #     - name: Corner Window LED
+      #       type: light
+      #       entity: light.dining_room_corner_window
 
       - type: entities
         show_header_toggle: false
@@ -102,6 +102,11 @@ cards:
       #         name: Corner Window
 
       - break
+
+      - type: sensor
+        entity: sensor.dining_room_luminance
+        name: Luminance
+        graph: line
 
       - type: horizontal-stack
         cards:

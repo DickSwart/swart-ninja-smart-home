@@ -248,17 +248,45 @@ cards:
     cards:
       - type: grid
         title: Blackbeard
-        columns: 2
-        square: true
         cards:
-          - type: gauge
-            name: CPU
-            unit: "%"
-            entity: sensor.blackbeard_cpu_used
-            severity:
-              green: 0
-              yellow: 45
-              red: 85
+          - !include
+            - "../../templates/button/vm_power_button.yaml"
+            - state_switch_entity: binary_sensor.pve_blackbeard_running
+              vm_id: 202
+
+          # - type: custom:state-switch
+          #   entity: binary_sensor.pve_blackbeard_running
+          #   states:
+          #     "on":
+          #       type: "custom:button-card"
+          #       template:
+          #         - style-default
+          #         - grid-default
+          #       name: Power
+          #       icon: mdi:power
+          #       color: var(--paper-item-icon-active-color)
+          #       size: 50%
+          #       aspect_ratio: 1/1
+          #       tap_action:
+          #         action: call-service
+          #         service: shell_command.proxmox_vm_shutdown
+          #         service_data:
+          #           vm_id: 202
+          #     "off":
+          #       type: "custom:button-card"
+          #       template:
+          #         - style-default
+          #         - grid-default
+          #       name: Power
+          #       icon: mdi:power
+          #       color: var(--paper-item-icon-color)
+          #       size: 50%
+          #       aspect_ratio: 1/1
+          #       tap_action:
+          #         action: call-service
+          #         service: shell_command.proxmox_vm_start
+          #         service_data:
+          #           vm_id: 202
           - !include
             - "../../templates/button/button.yaml"
             - entity: binary_sensor.blackbeard_vpn
@@ -270,22 +298,35 @@ cards:
               icon: mdi:vpn
               icon_color_on: var(--dark-primary-color)
               icon_color_off: var(--accent-color)
+
+      - type: vertical-stack
+        cards:
           - type: gauge
-            name: RAM
+            name: CPU
             unit: "%"
-            entity: sensor.blackbeard_ram_used_percent
+            entity: sensor.blackbeard_cpu_used
             severity:
               green: 0
               yellow: 45
               red: 85
-          - type: gauge
-            name: Swap
-            unit: "%"
-            entity: sensor.blackbeard_swap_used_percent
-            severity:
-              green: 0
-              yellow: 45
-              red: 85
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                name: RAM
+                unit: "%"
+                entity: sensor.blackbeard_ram_used_percent
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
+              - type: gauge
+                name: Swap
+                unit: "%"
+                entity: sensor.blackbeard_swap_used_percent
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
 
       - break
 

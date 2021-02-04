@@ -17,7 +17,10 @@ lock:
   unlock: {{ lock_unlock|default('tap') }}
   duration: {{ lock_duration|default('5') }}
 aspect_ratio: {{ aspect_ratio|default('1/1') }}
+# entity: {{ entity }}
+{% if entity %}
 entity: {{ entity }}
+{% endif %}
 {% if label %}
 label: "{{ label|default('&nbsp;') }}"
 {% endif %}

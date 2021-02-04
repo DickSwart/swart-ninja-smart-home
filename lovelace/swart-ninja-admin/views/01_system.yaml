@@ -487,6 +487,14 @@ cards:
                   yellow: 10
                   red: 0
 
+      - title: Proxmox VE
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.pve_blackbeard_running
+          - entity: binary_sensor.pve_blue_iris_running
+          - entity: binary_sensor.pve_swartninja01_running
+
       - break
 
       # Docker containers that are running

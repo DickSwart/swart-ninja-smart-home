@@ -38,6 +38,40 @@ popup_cards:
       filter:
         include:
           - entity_id: "*.hass_docker_addon_core_mosquitto*"
+  switch.hass_docker_addon_core_zwave_js:
+    title: ZWave JS
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          padding:10px;
+          box-shadow:none;
+        }
+      .: |
+        app-toolbar {
+          background-color: var(--primary-color);
+        }
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.9);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }
+    card:
+      type: custom:auto-entities
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "*.hass_docker_addon_core_zwave_js*"
   switch.hass_docker_addon_cebe7a76_hassio_google_drive_backup:
     title: AppRise
     style:
@@ -366,7 +400,7 @@ cards:
               <ha-icon icon="mdi:home-assistant"></ha-icon>&nbsp;**Add-ons needing update:** &nbsp;&nbsp; {{ states.sensor.supervisor_updates.state }}
 
               > {% for addon in states.sensor.supervisor_updates.attributes.addons %}
-              > {{ addon.name }}&nbsp; {{ addon.installed }} -> {{ addon.version }}
+              > {{ addon.name }}&nbsp; {{ addon.version }} -> {{ addon.version_latest }}
               > {% endfor %}
 
               <ha-icon icon="hacs:hacs"></ha-icon>&nbsp;**HACS updates available:** &nbsp;&nbsp; {{ states.sensor.hacs.state }}
@@ -379,14 +413,6 @@ cards:
               |                                  | Current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    | Latest                                                        |
               |----------------------------------|----------------------------------------------------------------|---------------------------------------------------------------|
               | **Supervisor**&nbsp;&nbsp;&nbsp; | {{state_attr('sensor.supervisor_updates', 'current_version')}} | {{state_attr('sensor.supervisor_updates', 'newest_version')}} |
-
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: ZWave Network
-        filter:
-          include:
-            - domain: zwave
 
       - break
 

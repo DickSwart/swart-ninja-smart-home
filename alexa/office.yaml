@@ -8,3 +8,5 @@
 - switch.swartninja01_docker_minecraft_server_02
 - switch.swartninja01_docker_minecraft_server_03
 - light.office_ceiling
+- script.vm_swartninja01_shutdown
+- script.vm_swartninja01_start

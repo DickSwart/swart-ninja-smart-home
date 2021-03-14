@@ -1,0 +1,10 @@
+host: 192.168.1.200
+verify_ssl: false
+username: !secret proxmoxve_pve_username
+password: !secret proxmoxve_pve_password
+realm: pve
+nodes:
+  - node: pve
+    vms:
+      - 201
+      - 202

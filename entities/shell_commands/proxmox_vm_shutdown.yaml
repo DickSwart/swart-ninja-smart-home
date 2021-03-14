@@ -1,0 +1,2 @@
+---
+proxmox_vm_shutdown: "ssh -p 22 -i /config/.ssh/id_rsa -o StrictHostKeyChecking=no root@192.168.1.200 'qm shutdown {{vm_id}}' "

@@ -1,0 +1,6 @@
+---
+alias: Shutdown SwartNinja01
+sequence:
+  - service: shell_command.proxmox_vm_shutdown
+    data:
+      vm_id: 201

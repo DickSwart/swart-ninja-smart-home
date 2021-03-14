@@ -1,0 +1,26 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.dining_room_luminance
+##############################################################################################
+platform: template
+sensors:
+  living_room_luminance:
+    friendly_name: Living Room Luminance
+    unit_of_measurement: lux
+    value_template: >-
+      {% set ms = states('sensor.living_room_multisensor_luminance') | float %}
+      {% set wnd = states('sensor.living_room_curtain_luminance') | float %}
+      {%- if ms and wnd -%}
+        {{ ((ms + wnd ) / 2) | round(2) }}
+      {%- elif ms -%}
+        {{ ms | round(2) }}
+      {%- elif wnd -%}
+        {{ wnd | round(2) }}
+      {%- else -%}
+        0.0
+      {%- endif %}

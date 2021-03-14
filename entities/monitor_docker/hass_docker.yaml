@@ -28,3 +28,4 @@ rename:
   addon_core_mosquitto: Mosquitto
   addon_core_samba: Samba
   addon_core_ssh: SSH
+  addon_core_zwave_js: ZWave JS

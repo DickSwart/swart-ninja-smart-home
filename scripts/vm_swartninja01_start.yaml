@@ -1,0 +1,6 @@
+---
+alias: Start SwartNinja01
+sequence:
+  - service: shell_command.proxmox_vm_start
+    data:
+      vm_id: 201

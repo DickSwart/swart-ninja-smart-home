@@ -1,0 +1,2 @@
+---
+proxmox_vm_start: "ssh -p 22 -i /config/.ssh/id_rsa -o StrictHostKeyChecking=no root@192.168.1.200 'qm start {{vm_id}}' "

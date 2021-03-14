@@ -6,7 +6,7 @@ substitutions:
   switch_icon: mdi:fishbowl
 
 packages:
-  wifi: !include common/wifi/not.yaml
+  wifi: !include common/wifi/not.upstairs.yaml
   device_base: !include common/esp32_base.yaml
 
 switch:

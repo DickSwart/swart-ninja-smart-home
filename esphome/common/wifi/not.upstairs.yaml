@@ -1,7 +1,7 @@
 ---
 wifi:
-  ssid: !secret wifi_man_cave_not_ssid
-  password: !secret wifi_man_cave_not_password
+  ssid: !secret wifi_upstairs_not_ssid
+  password: !secret wifi_upstairs_not_password
   fast_connect: false
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
@@ -12,9 +12,9 @@ wifi:
 # wifi:
 #   fast_connect: true
 #   networks:
-#     - ssid: !secret wifi_man_cave_not_ssid
-#       password: !secret wifi_man_cave_not_password
-#       bssid: !secret wifi_man_cave_not_bssid
+#     - ssid: !secret wifi_not_ssid
+#       password: !secret wifi_not_password
+#       bssid: !secret wifi_hall_not_bssid
 #       hidden: true
 #       priority: 0
 

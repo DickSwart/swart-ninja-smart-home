@@ -6,5 +6,5 @@ substitutions:
   switch_icon: mdi:dome-light
 
 packages:
-  wifi: !include common/wifi/not.yaml
+  wifi: !include common/wifi/not.upstairs.yaml
   device_base: !include common/sonoff_basic_base_switch.yaml

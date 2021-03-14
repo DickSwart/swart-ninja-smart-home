@@ -24,7 +24,7 @@ substitutions:
   device_verbose_name: Office 3Gang Switch
 
 packages:
-  wifi: !include common/wifi/not.yaml
+  wifi: !include common/wifi/not.man_cave.yaml
   device_base: !include common/zemismart_ks811_3gang_base_basic.yaml
 
 binary_sensor:

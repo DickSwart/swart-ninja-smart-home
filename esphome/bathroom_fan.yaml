@@ -5,5 +5,5 @@ substitutions:
   device_verbose_name: Bathroom
 
 packages:
-  wifi: !include common/wifi/not.yaml
+  wifi: !include common/wifi/not.upstairs.yaml
   device_base: !include common/sonoff_basic_base_fan.yaml

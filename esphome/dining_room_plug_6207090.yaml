@@ -6,5 +6,5 @@ substitutions:
   switch_icon: mdi:power-socket-au
 
 packages:
-  wifi: !include common/wifi/not.yaml
+  wifi: !include common/wifi/not.upstairs.yaml
   device_base: !include common/delta_grid_smart_plug_2g_general.yaml

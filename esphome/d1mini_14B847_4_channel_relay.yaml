@@ -6,7 +6,7 @@ substitutions:
   device_verbose_name: D1Mini 14B847 4 Channel Relay
 
 packages:
-  wifi: !include common/wifi/not.yaml
+  wifi: !include common/wifi/not.upstairs.yaml
   device_base: !include common/d1mini_base.yaml
 
 switch:

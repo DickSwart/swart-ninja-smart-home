@@ -6,5 +6,5 @@ substitutions:
   switch_icon: mdi:desk
 
 packages:
-  wifi: !include common/wifi/not.yaml
+  wifi: !include common/wifi/not.man_cave.yaml
   device_base: !include common/sonoff_pow_r1_base_switch.yaml

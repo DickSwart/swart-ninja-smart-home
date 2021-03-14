@@ -6,6 +6,6 @@ substitutions:
   device_verbose_name: Man Cave Ceiling
 
 packages:
-  wifi: !include common/wifi/not.yaml
+  wifi: !include common/wifi/not.man_cave.yaml
   device_base: !include common/shelly_1_base.yaml
 #   device_base: !include common/shelly_1_base_blank.yaml

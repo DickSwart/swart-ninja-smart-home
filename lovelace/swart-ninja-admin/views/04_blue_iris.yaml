@@ -2,23 +2,20 @@
 title: Blue Iris
 path: admin-blue-iris
 icon: mdi:cctv
-panel: true
+type: custom:vertical-layout
 
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: grid
+    title: Blue Iris
     cards:
-      - type: grid
-        title: Blue Iris
-        cards:
-          - !include
-            - "../../templates/button/vm_power_button.yaml"
-            - state_switch_entity: binary_sensor.pve_blue_iris_running
-              vm_id: 203
+      - !include
+        - "../../templates/button/vm_power_button.yaml"
+        - state_switch_entity: binary_sensor.pve_blue_iris_running
+          vm_id: 203
 
-      - type: entities
-        show_header_toggle: false
-        entities:
-          - entity: sensor.blue_iris_state
-          - entity: input_boolean.blue_iris
-            name: Profile (Unarmed / Armed)
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.blue_iris_state
+      - entity: input_boolean.blue_iris
+        name: Profile (Unarmed / Armed)

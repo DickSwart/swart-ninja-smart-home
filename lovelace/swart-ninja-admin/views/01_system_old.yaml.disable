@@ -886,7 +886,7 @@ cards:
                   yellow: 10
                   red: 0
 
-      - break
+      - type: custom:layout-break
 
       # example code to show docker containers that are running
       - type: custom:auto-entities
@@ -920,7 +920,7 @@ cards:
           show_state: false
           columns: 3
 
-      - break
+      - type: custom:layout-break
 
       # example code to show docker containers that are not running
       - type: custom:auto-entities
@@ -939,7 +939,7 @@ cards:
           show_header_toggle: false
           title: Docker Memory Usage
 
-      - break
+      - type: custom:layout-break
 
       - type: custom:auto-entities
         card:

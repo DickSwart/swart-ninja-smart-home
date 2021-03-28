@@ -2,83 +2,80 @@
 title: Labs
 icon: mdi:test-tube
 path: admin-labs
-panel: true
+type: custom:vertical-layout
 cards:
-  - type: custom:layout-card
-    layout: vertical
-    cards:
-      - !include
-        - ../../templates/header/view_heading.yaml
-        - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs
+  - !include
+    - ../../templates/header/view_heading.yaml
+    - title: <ha-icon icon="mdi:test-tube"></ha-icon> Labs
 
-      - type: custom:state-switch
-        entity: light.fish_tank_main_light
-        states:
-          "on":
-            type: picture-elements
-            image: /local/images/appliances/fish_tank_on.png
-            elements:
-              - type: state-label
-                title: Temperature
-                prefix: "Temperature: "
-                entity: sensor.fish_tank_temperature
-                style:
-                  left: 25%
-                  top: 11%
-                  color: "#272727"
-                  font-size: 1.2em
-              - type: state-label
-                title: Water level
-                prefix: "Water level: "
-                entity: binary_sensor.fish_tank_water_level
-                style:
-                  left: 80%
-                  top: 11%
-                  color: "#272727"
-                  font-size: 1.2em
-          "off":
-            type: picture-elements
-            image: /local/images/appliances/fish_tank_off.png
-            elements:
-              - type: state-label
-                title: Temperature
-                prefix: "Temperature: "
-                entity: sensor.fish_tank_temperature
-                style:
-                  left: 25%
-                  top: 11%
-                  color: "#272727"
-                  font-size: 1.2em
-              - type: state-label
-                title: Water level
-                prefix: "Water level: "
-                entity: binary_sensor.fish_tank_water_level
-                style:
-                  left: 80%
-                  top: 11%
-                  color: "#272727"
-                  font-size: 1.2em
+  - type: custom:state-switch
+    entity: light.fish_tank_main_light
+    states:
+      "on":
+        type: picture-elements
+        image: /local/images/appliances/fish_tank_on.png
+        elements:
+          - type: state-label
+            title: Temperature
+            prefix: "Temperature: "
+            entity: sensor.fish_tank_temperature
+            style:
+              left: 25%
+              top: 11%
+              color: "#272727"
+              font-size: 1.2em
+          - type: state-label
+            title: Water level
+            prefix: "Water level: "
+            entity: binary_sensor.fish_tank_water_level
+            style:
+              left: 80%
+              top: 11%
+              color: "#272727"
+              font-size: 1.2em
+      "off":
+        type: picture-elements
+        image: /local/images/appliances/fish_tank_off.png
+        elements:
+          - type: state-label
+            title: Temperature
+            prefix: "Temperature: "
+            entity: sensor.fish_tank_temperature
+            style:
+              left: 25%
+              top: 11%
+              color: "#272727"
+              font-size: 1.2em
+          - type: state-label
+            title: Water level
+            prefix: "Water level: "
+            entity: binary_sensor.fish_tank_water_level
+            style:
+              left: 80%
+              top: 11%
+              color: "#272727"
+              font-size: 1.2em
 
-      - type: picture-glance
-        title: Fish Tank
-        entities:
-          - switch.fish_tank_relay_01
-          - switch.fish_tank_relay_02
-          - light.fish_tank_main_light
-          - binary_sensor.fish_tank_water_level
-          - sensor.fish_tank_temperature
-        state_image:
-          "on": /local/images/appliances/fish_tank_on.png
-          "off": /local/images/appliances/fish_tank_off.png
-        entity: light.fish_tank_main_light
+  - type: picture-glance
+    title: Fish Tank
+    entities:
+      - switch.fish_tank_relay_01
+      - switch.fish_tank_relay_02
+      - light.fish_tank_main_light
+      - binary_sensor.fish_tank_water_level
+      - sensor.fish_tank_temperature
+    state_image:
+      "on": /local/images/appliances/fish_tank_on.png
+      "off": /local/images/appliances/fish_tank_off.png
+    entity: light.fish_tank_main_light
 
-      - type: picture-entity
-        entity: light.fish_tank_main_light
-        show_name: false
-        show_state: false
-        state_image:
-          "on": /local/images/appliances/fish_tank_on.png
-          "off": /local/images/appliances/fish_tank_off.png
+  - type: picture-entity
+    entity: light.fish_tank_main_light
+    show_name: false
+    show_state: false
+    state_image:
+      "on": /local/images/appliances/fish_tank_on.png
+      "off": /local/images/appliances/fish_tank_off.png
   # - sensor.fish_tank_esphome_version
   # - switch.fish_tank_relay_01
   # - switch.fish_tank_relay_02

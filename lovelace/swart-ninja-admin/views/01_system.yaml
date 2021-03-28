@@ -2,7 +2,7 @@
 title: System
 path: system
 icon: mdi:desktop-tower-monitor
-panel: true
+type: custom:vertical-layout
 popup_cards:
   switch.hass_docker_addon_core_mosquitto:
     title: Mosquitto
@@ -380,177 +380,174 @@ popup_cards:
           - entity_id: "*.hass_docker_addon_a0d7b954_portainer*"
 
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - title: Home Assistant
+    type: custom:vertical-stack-in-card
     cards:
-      - title: Home Assistant
-        type: custom:vertical-stack-in-card
-        cards:
-          - type: glance
-            entities:
-              - entity: sensor.version_current
-                name: Current
-              - entity: sensor.version_available
-                name: Available
-              - entity: sensor.uptime
-              - entity: binary_sensor.remote_ui
-          - type: markdown
-            content: |
-              ---
-              <ha-icon icon="mdi:home-assistant"></ha-icon>&nbsp;**Add-ons needing update:** &nbsp;&nbsp; {{ states.sensor.supervisor_updates.state }}
-
-              > {% for addon in states.sensor.supervisor_updates.attributes.addons %}
-              > {{ addon.name }}&nbsp; {{ addon.version }} -> {{ addon.version_latest }}
-              > {% endfor %}
-
-              <ha-icon icon="hacs:hacs"></ha-icon>&nbsp;**HACS updates available:** &nbsp;&nbsp; {{ states.sensor.hacs.state }}
-
-              > {% for repo in states.sensor.hacs.attributes.repositories %}
-              >    **{{ repo.display_name }}** _{{ repo["installed_version"] }}_ -> _{{ repo["available_version"] }}_
-              > {% endfor %}
-
-              ---
-              |                                  | Current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    | Latest                                                        |
-              |----------------------------------|----------------------------------------------------------------|---------------------------------------------------------------|
-              | **Supervisor**&nbsp;&nbsp;&nbsp; | {{state_attr('sensor.supervisor_updates', 'current_version')}} | {{state_attr('sensor.supervisor_updates', 'newest_version')}} |
-
-      - break
-
-      - type: vertical-stack
-        cards:
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                name: CPU
-                unit: "%"
-                entity: sensor.glances_cpu_used
-                severity:
-                  green: 0
-                  yellow: 45
-                  red: 85
-              - type: custom:bar-card
-                style: |
-                  .card-content {
-                    padding-bottom: 0;
-                  }
-                direction: up
-                height: 100px
-                max: 100
-                min: 0
-                positions:
-                  icon: inside
-                  title: inside
-                  value: inside
-                severity:
-                  - color: "#2DAD4B"
-                    from: 0
-                    to: 30
-                  - color: "#2AA246"
-                    from: 30
-                    to: 40
-                  - color: "#FFAE03"
-                    from: 40
-                    to: 50
-                  - color: "#CC8B00"
-                    from: 50
-                    to: 60
-                  - color: "#D37209"
-                    from: 60
-                    to: 70
-                  - color: "#D95812"
-                    from: 70
-                    to: 80
-                  - color: "#E52424"
-                    from: 80
-                    to: 90
-                  - color: "#C91818"
-                    from: 90
-                    to: 100
-                show_icon: true
-                stack: horizontal
-                tap_action: none
-                entities:
-                  - entity: sensor.disk_use_percent
-                    name: HDD
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                name: RAM
-                unit: "%"
-                entity: sensor.glances_ram_used_percent
-                severity:
-                  green: 0
-                  yellow: 45
-                  red: 85
-              - type: gauge
-                name: Swap
-                unit: "%"
-                entity: sensor.glances_swap_used_percent
-                severity:
-                  green: 0
-                  yellow: 45
-                  red: 85
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                name: Download
-                unit: "Mbit/s"
-                entity: sensor.speedtest_download
-                min: 0
-                max: 150
-                severity:
-                  green: 80
-                  yellow: 50
-                  red: 0
-              - type: gauge
-                name: Upload
-                unit: "Mbit/s"
-                entity: sensor.speedtest_upload
-                min: 0
-                max: 100
-                severity:
-                  green: 20
-                  yellow: 10
-                  red: 0
-
-      - title: Proxmox VE
-        type: entities
-        show_header_toggle: false
+      - type: glance
         entities:
-          - entity: binary_sensor.pve_blackbeard_running
-          - entity: binary_sensor.pve_blue_iris_running
-          - entity: binary_sensor.pve_swartninja01_running
+          - entity: sensor.version_current
+            name: Current
+          - entity: sensor.version_available
+            name: Available
+          - entity: sensor.uptime
+          - entity: binary_sensor.remote_ui
+      - type: markdown
+        content: |
+          ---
+          <ha-icon icon="mdi:home-assistant"></ha-icon>&nbsp;**Add-ons needing update:** &nbsp;&nbsp; {{ states.sensor.supervisor_updates.state }}
 
-      - break
+          > {% for addon in states.sensor.supervisor_updates.attributes.addons %}
+          > {{ addon.name }}&nbsp; {{ addon.version }} -> {{ addon.version_latest }}
+          > {% endfor %}
 
-      # Docker containers that are running
-      - type: custom:auto-entities
-        filter:
-          include:
-            - entity_id: "*hass_docker*"
-              state: "on"
-        show_empty: false
-        sort:
-          method: name
-          numeric: true
-        card:
-          type: glance
-          title: Docker Containers Running
-          show_state: false
-          columns: 3
+          <ha-icon icon="hacs:hacs"></ha-icon>&nbsp;**HACS updates available:** &nbsp;&nbsp; {{ states.sensor.hacs.state }}
 
-      # Docker containers that are not running
-      - type: custom:auto-entities
-        filter:
-          include:
-            - entity_id: "*hass_docker*"
-              state: "off"
-        show_empty: false
-        sort:
-          method: name
-          numeric: true
-        card:
-          type: glance
-          title: Docker Containers Stopped
-          show_state: false
-          columns: 3
+          > {% for repo in states.sensor.hacs.attributes.repositories %}
+          >    **{{ repo.display_name }}** _{{ repo["installed_version"] }}_ -> _{{ repo["available_version"] }}_
+          > {% endfor %}
+
+          ---
+          |                                  | Current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    | Latest                                                        |
+          |----------------------------------|----------------------------------------------------------------|---------------------------------------------------------------|
+          | **Supervisor**&nbsp;&nbsp;&nbsp; | {{state_attr('sensor.supervisor_updates', 'current_version')}} | {{state_attr('sensor.supervisor_updates', 'newest_version')}} |
+
+  - type: custom:layout-break
+
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            name: CPU
+            unit: "%"
+            entity: sensor.glances_cpu_used
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+          - type: custom:bar-card
+            style: |
+              .card-content {
+                padding-bottom: 0;
+              }
+            direction: up
+            height: 100px
+            max: 100
+            min: 0
+            positions:
+              icon: inside
+              title: inside
+              value: inside
+            severity:
+              - color: "#2DAD4B"
+                from: 0
+                to: 30
+              - color: "#2AA246"
+                from: 30
+                to: 40
+              - color: "#FFAE03"
+                from: 40
+                to: 50
+              - color: "#CC8B00"
+                from: 50
+                to: 60
+              - color: "#D37209"
+                from: 60
+                to: 70
+              - color: "#D95812"
+                from: 70
+                to: 80
+              - color: "#E52424"
+                from: 80
+                to: 90
+              - color: "#C91818"
+                from: 90
+                to: 100
+            show_icon: true
+            stack: horizontal
+            tap_action: none
+            entities:
+              - entity: sensor.disk_use_percent
+                name: HDD
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            name: RAM
+            unit: "%"
+            entity: sensor.glances_ram_used_percent
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+          - type: gauge
+            name: Swap
+            unit: "%"
+            entity: sensor.glances_swap_used_percent
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            name: Download
+            unit: "Mbit/s"
+            entity: sensor.speedtest_download
+            min: 0
+            max: 150
+            severity:
+              green: 80
+              yellow: 50
+              red: 0
+          - type: gauge
+            name: Upload
+            unit: "Mbit/s"
+            entity: sensor.speedtest_upload
+            min: 0
+            max: 100
+            severity:
+              green: 20
+              yellow: 10
+              red: 0
+
+  - title: Proxmox VE
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: binary_sensor.pve_blackbeard_running
+      - entity: binary_sensor.pve_blue_iris_running
+      - entity: binary_sensor.pve_swartninja01_running
+
+  - type: custom:layout-break
+
+  # Docker containers that are running
+  - type: custom:auto-entities
+    filter:
+      include:
+        - entity_id: "*hass_docker*"
+          state: "on"
+    show_empty: false
+    sort:
+      method: name
+      numeric: true
+    card:
+      type: glance
+      title: Docker Containers Running
+      show_state: false
+      columns: 3
+
+  # Docker containers that are not running
+  - type: custom:auto-entities
+    filter:
+      include:
+        - entity_id: "*hass_docker*"
+          state: "off"
+    show_empty: false
+    sort:
+      method: name
+      numeric: true
+    card:
+      type: glance
+      title: Docker Containers Stopped
+      show_state: false
+      columns: 3

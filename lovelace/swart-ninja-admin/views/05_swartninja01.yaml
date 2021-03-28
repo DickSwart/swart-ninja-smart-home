@@ -2,7 +2,7 @@
 title: SwartNinja01
 path: admin-swart-ninja-01
 icon: mdi:ninja
-panel: true
+type: custom:vertical-layout
 popup_cards:
   switch.swartninja01_docker_minecraft_server_01:
     title: Minecraft Server 01
@@ -108,116 +108,113 @@ popup_cards:
           - entity_id: "*minecraft_server_03*"
 
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  - type: grid
+    title: SwartNinja01
     cards:
-      - type: grid
-        title: SwartNinja01
-        cards:
-          - !include
-            - "../../templates/button/vm_power_button.yaml"
-            - state_switch_entity: binary_sensor.pve_swartninja01_running
-              vm_id: 201
-          # - type: custom:state-switch
-          #   entity: binary_sensor.pve_swartninja01_running
-          #   states:
-          #     "on":
-          #       type: "custom:button-card"
-          #       template:
-          #         - style-default
-          #         - grid-default
-          #       name: Power
-          #       icon: mdi:power
-          #       color: var(--paper-item-icon-active-color)
-          #       size: 50%
-          #       aspect_ratio: 1/1
-          #       tap_action:
-          #         action: call-service
-          #         service: shell_command.proxmox_vm_shutdown
-          #         service_data:
-          #           vm_id: 201
-          #     "off":
-          #       type: "custom:button-card"
-          #       template:
-          #         - style-default
-          #         - grid-default
-          #       name: Power
-          #       icon: mdi:power
-          #       color: var(--paper-item-icon-color)
-          #       size: 50%
-          #       aspect_ratio: 1/1
-          #       tap_action:
-          #         action: call-service
-          #         service: shell_command.proxmox_vm_start
-          #         service_data:
-          #           vm_id: 201
+      - !include
+        - "../../templates/button/vm_power_button.yaml"
+        - state_switch_entity: binary_sensor.pve_swartninja01_running
+          vm_id: 201
+      # - type: custom:state-switch
+      #   entity: binary_sensor.pve_swartninja01_running
+      #   states:
+      #     "on":
+      #       type: "custom:button-card"
+      #       template:
+      #         - style-default
+      #         - grid-default
+      #       name: Power
+      #       icon: mdi:power
+      #       color: var(--paper-item-icon-active-color)
+      #       size: 50%
+      #       aspect_ratio: 1/1
+      #       tap_action:
+      #         action: call-service
+      #         service: shell_command.proxmox_vm_shutdown
+      #         service_data:
+      #           vm_id: 201
+      #     "off":
+      #       type: "custom:button-card"
+      #       template:
+      #         - style-default
+      #         - grid-default
+      #       name: Power
+      #       icon: mdi:power
+      #       color: var(--paper-item-icon-color)
+      #       size: 50%
+      #       aspect_ratio: 1/1
+      #       tap_action:
+      #         action: call-service
+      #         service: shell_command.proxmox_vm_start
+      #         service_data:
+      #           vm_id: 201
 
-      - type: conditional
-        conditions:
-          - entity: binary_sensor.pve_swartninja01_running
-            state: "on"
-        card:
-          type: vertical-stack
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.pve_swartninja01_running
+        state: "on"
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
           cards:
-            - type: horizontal-stack
-              cards:
-                - type: gauge
-                  name: CPU
-                  unit: "%"
-                  entity: sensor.swartninja01_cpu_used
-                  severity:
-                    green: 0
-                    yellow: 45
-                    red: 85
-            - type: horizontal-stack
-              cards:
-                - type: gauge
-                  name: RAM
-                  unit: "%"
-                  entity: sensor.swartninja01_ram_used_percent
-                  severity:
-                    green: 0
-                    yellow: 45
-                    red: 85
-                - type: gauge
-                  name: Swap
-                  unit: "%"
-                  entity: sensor.swartninja01_swap_used_percent
-                  severity:
-                    green: 0
-                    yellow: 45
-                    red: 85
+            - type: gauge
+              name: CPU
+              unit: "%"
+              entity: sensor.swartninja01_cpu_used
+              severity:
+                green: 0
+                yellow: 45
+                red: 85
+        - type: horizontal-stack
+          cards:
+            - type: gauge
+              name: RAM
+              unit: "%"
+              entity: sensor.swartninja01_ram_used_percent
+              severity:
+                green: 0
+                yellow: 45
+                red: 85
+            - type: gauge
+              name: Swap
+              unit: "%"
+              entity: sensor.swartninja01_swap_used_percent
+              severity:
+                green: 0
+                yellow: 45
+                red: 85
 
-      - break
+  - type: custom:layout-break
 
-      # Docker containers that are running
-      - type: custom:auto-entities
-        filter:
-          include:
-            - entity_id: "*swartninja01_docker*"
-              state: "on"
-        show_empty: false
-        sort:
-          method: name
-          numeric: true
-        card:
-          type: glance
-          title: Docker Containers Running
-          show_state: false
-          columns: 3
+  # Docker containers that are running
+  - type: custom:auto-entities
+    filter:
+      include:
+        - entity_id: "*swartninja01_docker*"
+          state: "on"
+    show_empty: false
+    sort:
+      method: name
+      numeric: true
+    card:
+      type: glance
+      title: Docker Containers Running
+      show_state: false
+      columns: 3
 
-      # Docker containers that are not running
-      - type: custom:auto-entities
-        filter:
-          include:
-            - entity_id: "*swartninja01_docker*"
-              state: "off"
-        show_empty: false
-        sort:
-          method: name
-          numeric: true
-        card:
-          type: glance
-          title: Docker Containers Stopped
-          show_state: false
-          columns: 3
+  # Docker containers that are not running
+  - type: custom:auto-entities
+    filter:
+      include:
+        - entity_id: "*swartninja01_docker*"
+          state: "off"
+    show_empty: false
+    sort:
+      method: name
+      numeric: true
+    card:
+      type: glance
+      title: Docker Containers Stopped
+      show_state: false
+      columns: 3

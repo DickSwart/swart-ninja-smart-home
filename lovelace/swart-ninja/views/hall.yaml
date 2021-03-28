@@ -1,138 +1,138 @@
 ---
-icon: mdi:highway
-panel: true
-path: hall
 title: Hall
+path: hall
+icon: mdi:highway
+type: custom:vertical-layout
 cards:
-  - type: custom:layout-card
-    layout: vertical
+  # - type: custom:layout-card
+  #   layout: vertical
+  #   cards:
+  - type: vertical-stack
     cards:
-      - type: vertical-stack
-        cards:
-          - !include
-            - ../../templates/header/view_heading.yaml
-            - title: <ha-icon icon="mdi:highway"></ha-icon> Hall
-
-      - type: custom:state-switch
-        entity: user
-        default: default
-        states:
-          Dick:
-            type: vertical-stack
-            cards:
-              - title: Hall
-                type: picture-glance
-                camera_image: camera.hlc
-                camera_view: live
-                entities:
-                  - binary_sensor.hlc_motion
-                  - switch.hlc
-              - title: Front Door
-                type: picture-glance
-                camera_image: camera.fdc
-                camera_view: live
-                entities:
-                  - binary_sensor.fdc_motion
-                  - switch.fdc
-          default:
-            type: vertical-stack
-            cards:
-              - title: Hall
-                type: picture-glance
-                camera_image: camera.hlc
-                camera_view: live
-                entities:
-                  - binary_sensor.hlc_motion
-              - title: Front Door
-                type: picture-glance
-                camera_image: camera.fdc
-                camera_view: live
-                entities:
-                  - binary_sensor.fdc_motion
-
-      - break
-
-      - type: horizontal-stack
-        cards:
-          - !include
-            - "../../templates/button/button.yaml"
-            - entity: light.hall_zw111_nano_dimmer
-              name: Ceiling
-          - !include
-            - "../../templates/button/button.yaml"
-            - entity: binary_sensor.hall_multisensor_door
-              grid: grid-alternative
-              style: style-alternative
-              name: Door
-              show_state: true
-              btn_template: style-transparent
-              icon_on: mdi:door-open
-              icon_color_on: var(--accent-color)
-              icon_off: mdi:door-closed
-              icon_color_off: var(--dark-primary-color)
-          - !include
-            - "../../templates/button/button.yaml"
-            - entity: binary_sensor.hall_motion
-              grid: grid-alternative
-              style: style-alternative
-              name: Motion
-              show_state: true
-              btn_template: style-transparent
-              icon_on: mdi:motion-sensor
-              icon_color_on: var(--accent-color)
-              icon_off: mdi:walk
-              icon_color_off: var(--dark-primary-color)
-
       - !include
-        - ../../templates/esphome_multisensor_graphs.yaml
-        - node_name: hall_multisensor
+        - ../../templates/header/view_heading.yaml
+        - title: <ha-icon icon="mdi:highway"></ha-icon> Hall
 
-      - break
-
-      - type: custom:state-switch
-        entity: user
-        states:
-          Dick:
-            title: Other
-            show_header_toggle: false
-            type: entities
+  - type: custom:state-switch
+    entity: user
+    default: default
+    states:
+      Dick:
+        type: vertical-stack
+        cards:
+          - title: Hall
+            type: picture-glance
+            camera_image: camera.hlc
+            camera_view: live
             entities:
-              - !include
-                - ../../templates/folding_entity/esphome_multisensor.yaml
-                - node_name: hall_multisensor
-                  show_motion: true
-                  show_door: true
+              - binary_sensor.hlc_motion
+              - switch.hlc
+          - title: Front Door
+            type: picture-glance
+            camera_image: camera.fdc
+            camera_view: live
+            entities:
+              - binary_sensor.fdc_motion
+              - switch.fdc
+      default:
+        type: vertical-stack
+        cards:
+          - title: Hall
+            type: picture-glance
+            camera_image: camera.hlc
+            camera_view: live
+            entities:
+              - binary_sensor.hlc_motion
+          - title: Front Door
+            type: picture-glance
+            camera_image: camera.fdc
+            camera_view: live
+            entities:
+              - binary_sensor.fdc_motion
 
-              - head:
-                  entity: binary_sensor.doorbell_status
-                  name: Doorbell
-                items:
-                  - entity: binary_sensor.doorbell
-                    name: Pressed
-                  - entity: sensor.doorbell_esphome_version
-                    name: ESPHome Version
-                  - entity: sensor.doorbell_uptime
-                    name: Uptime
-                  - entity: sensor.doorbell_wifi_signal
-                    name: WiFi
-                  - entity: switch.doorbell_chime
-                    name: Chime
-                type: custom:fold-entity-row
+  - type: custom:layout-break
 
-              - head:
-                  entity: zwave.hall_zw111_nano_dimmer
-                  name: Hall ZW111 Nano Dimmer
-                items:
-                  - entity: light.hall_zw111_nano_dimmer
-                    name: Light
-                  - entity: sensor.hall_zw111_nano_dimmer_current
-                    name: Current
-                  - entity: sensor.hall_zw111_nano_dimmer_energy
-                    name: Energy
-                  - entity: sensor.hall_zw111_nano_dimmer_power
-                    name: Power
-                  - entity: sensor.hall_zw111_nano_dimmer_previous_reading
-                    name: Previous reading
-                  - entity: sensor.hall_zw111_nano_dimmer_voltage
-                    name: Voltage
-                type: custom:fold-entity-row
+  - type: horizontal-stack
+    cards:
+      - !include
+        - "../../templates/button/button.yaml"
+        - entity: light.hall_zw111_nano_dimmer
+          name: Ceiling
+      - !include
+        - "../../templates/button/button.yaml"
+        - entity: binary_sensor.hall_multisensor_door
+          grid: grid-alternative
+          style: style-alternative
+          name: Door
+          show_state: true
+          btn_template: style-transparent
+          icon_on: mdi:door-open
+          icon_color_on: var(--accent-color)
+          icon_off: mdi:door-closed
+          icon_color_off: var(--dark-primary-color)
+      - !include
+        - "../../templates/button/button.yaml"
+        - entity: binary_sensor.hall_motion
+          grid: grid-alternative
+          style: style-alternative
+          name: Motion
+          show_state: true
+          btn_template: style-transparent
+          icon_on: mdi:motion-sensor
+          icon_color_on: var(--accent-color)
+          icon_off: mdi:walk
+          icon_color_off: var(--dark-primary-color)
+
+  - !include
+    - ../../templates/esphome_multisensor_graphs.yaml
+    - node_name: hall_multisensor
+
+  - type: custom:layout-break
+
+  - type: custom:state-switch
+    entity: user
+    states:
+      Dick:
+        title: Other
+        show_header_toggle: false
+        type: entities
+        entities:
+          - !include
+            - ../../templates/folding_entity/esphome_multisensor.yaml
+            - node_name: hall_multisensor
+              show_motion: true
+              show_door: true
+
+          - head:
+              entity: binary_sensor.doorbell_status
+              name: Doorbell
+            items:
+              - entity: binary_sensor.doorbell
+                name: Pressed
+              - entity: sensor.doorbell_esphome_version
+                name: ESPHome Version
+              - entity: sensor.doorbell_uptime
+                name: Uptime
+              - entity: sensor.doorbell_wifi_signal
+                name: WiFi
+              - entity: switch.doorbell_chime
+                name: Chime
+            type: custom:fold-entity-row
+
+          - head:
+              entity: zwave.hall_zw111_nano_dimmer
+              name: Hall ZW111 Nano Dimmer
+            items:
+              - entity: light.hall_zw111_nano_dimmer
+                name: Light
+              - entity: sensor.hall_zw111_nano_dimmer_current
+                name: Current
+              - entity: sensor.hall_zw111_nano_dimmer_energy
+                name: Energy
+              - entity: sensor.hall_zw111_nano_dimmer_power
+                name: Power
+              - entity: sensor.hall_zw111_nano_dimmer_previous_reading
+                name: Previous reading
+              - entity: sensor.hall_zw111_nano_dimmer_voltage
+                name: Voltage
+            type: custom:fold-entity-row

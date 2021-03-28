@@ -9,9 +9,16 @@
 #
 # EntityID: binary_sensor.mcc_motion
 ##############################################################################################
+# platform: mqtt
+# name: MCC Motion
+# state_topic: BlueIris/MCC/MOTION
+# payload_on: "ON"
+# payload_off: "OFF"
+# device_class: motion
+
 platform: mqtt
 name: MCC Motion
-state_topic: BlueIris/MCC/MOTION
+state_topic: ai/MCC/motion
 payload_on: "ON"
-payload_off: "OFF"
+off_delay: 30
 device_class: motion

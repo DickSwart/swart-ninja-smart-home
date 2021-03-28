@@ -9,9 +9,16 @@
 # Device: House Side Camera
 # EntityID: binary_sensor.TODO
 ##############################################################################################
+# platform: mqtt
+# name: HSC Motion
+# state_topic: BlueIris/HSC/MOTION
+# payload_on: "ON"
+# payload_off: "OFF"
+# device_class: motion
+
 platform: mqtt
 name: HSC Motion
-state_topic: BlueIris/HSC/MOTION
+state_topic: ai/HSC/motion
 payload_on: "ON"
-payload_off: "OFF"
+off_delay: 30
 device_class: motion

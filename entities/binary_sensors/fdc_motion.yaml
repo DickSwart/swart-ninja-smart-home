@@ -18,7 +18,8 @@
 
 platform: mqtt
 name: FDC Motion
-state_topic: ai/MCC/motion
+state_topic: ai/FDC/motion
 payload_on: "ON"
-off_delay: 30
+off_delay: 15
 device_class: motion
+json_attributes_topic: ai/FDC/attributes

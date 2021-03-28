@@ -20,5 +20,6 @@ platform: mqtt
 name: LRC Motion
 state_topic: ai/LRC/motion
 payload_on: "ON"
-off_delay: 30
+off_delay: 15
 device_class: motion
+json_attributes_topic: ai/LRC/attributes

@@ -24,7 +24,7 @@ substitutions:
   device_verbose_name: Dining Room 3Gang Switch
 
 packages:
-  wifi: !include common/wifi/not.upstairs.yaml
+  wifi: !include common/wifi/not.yaml
   device_base: !include common/zemismart_ks811_3gang_base_basic.yaml
 
 binary_sensor:

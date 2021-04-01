@@ -6,7 +6,7 @@ substitutions:
   switch_icon: mdi:fishbowl
 
 packages:
-  wifi: !include common/wifi/not.upstairs.yaml
+  wifi: !include common/wifi/not.yaml
   device_base: !include common/esp32_base.yaml
 
 switch:
@@ -67,15 +67,15 @@ light:
     name: ${device_verbose_name} Main Light
     output: output_main_led_strip
     id: light_main_led_strip
-  # Colour Leds
-  - platform: fastled_clockless
-    chipset: WS2811
-    pin: GPIO14
-    num_leds: 20
-    rgb_order: BRG
-    name: ${device_verbose_name} Colour Light
-    effects:
-      - random:
+  # # Colour Leds
+  # - platform: fastled_clockless
+  #   chipset: WS2811
+  #   pin: GPIO14
+  #   num_leds: 20
+  #   rgb_order: BRG
+  #   name: ${device_verbose_name} Colour Light
+  #   effects:
+  #     - random:
 
 output:
   - platform: ledc

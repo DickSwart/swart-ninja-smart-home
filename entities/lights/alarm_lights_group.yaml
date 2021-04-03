@@ -13,3 +13,4 @@ entities:
   - light.outside_lights
   - light.bedroom_master_ceiling
   - light.hall_zw111_nano_dimmer
+  - light.man_cave_ceiling

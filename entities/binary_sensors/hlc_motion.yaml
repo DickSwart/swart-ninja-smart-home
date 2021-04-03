@@ -9,17 +9,12 @@
 # Device: Hall Camera
 # EntityID: binary_sensor.hlc_motion
 ##############################################################################################
-# platform: mqtt
-# name: HLC Motion
-# state_topic: BlueIris/HLC/MOTION
-# payload_on: "ON"
-# payload_off: "OFF"
-# device_class: motion
-
 platform: mqtt
 name: HLC Motion
-state_topic: ai/HLC/motion
+state_topic: BlueIris/HLC/motion
+value_template: "{{ value_json.state }}"
 payload_on: "ON"
-off_delay: 15
+payload_off: "OFF"
 device_class: motion
-json_attributes_topic: ai/HLC/attributes
+json_attributes_topic: BlueIris/HLC/motion
+json_attributes_template: "{{ value_json.attributes | tojson }}"

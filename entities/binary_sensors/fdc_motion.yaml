@@ -9,17 +9,12 @@
 # Device: Front Door Camera
 # EntityID: binary_sensor.fdc_motion
 ##############################################################################################
-# platform: mqtt
-# name: FDC Motion
-# state_topic: BlueIris/FDC/MOTION
-# payload_on: "ON"
-# payload_off: "OFF"
-# device_class: motion
-
 platform: mqtt
 name: FDC Motion
-state_topic: ai/FDC/motion
+state_topic: BlueIris/FDC/motion
+value_template: "{{ value_json.state }}"
 payload_on: "ON"
-off_delay: 15
+payload_off: "OFF"
 device_class: motion
-json_attributes_topic: ai/FDC/attributes
+json_attributes_topic: BlueIris/FDC/motion
+json_attributes_template: "{{ value_json.attributes | tojson }}"

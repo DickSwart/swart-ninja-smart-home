@@ -4,14 +4,14 @@
 # The mqtt binary sensor platform uses an MQTT message received to set the binary sensor’s
 # state to on or off.
 #
-# Device: Living Room IP Camera
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
-# EntityID: binary_sensor.lrc_signal
+# Device: Front Door Camera
+# EntityID: binary_sensor.fdc_signal
 ##############################################################################################
 platform: mqtt
-name: LRC Signal
-state_topic: BlueIris/LRC/SIGNAL
+name: FDC Signal
+state_topic: BlueIris/FDC/signal
 payload_on: "ON"
 payload_off: "OFF"
 device_class: connectivity

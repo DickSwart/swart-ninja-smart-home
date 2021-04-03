@@ -6,19 +6,15 @@
 #
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
+# Device: Deck Camera
 # EntityID: binary_sensor.dec_Motion
 ##############################################################################################
-# platform: mqtt
-# name: DEC Motion
-# state_topic: BlueIris/DEC/MOTION
-# payload_on: "ON"
-# payload_off: "OFF"
-# device_class: motion
-
 platform: mqtt
 name: DEC Motion
-state_topic: ai/DEC/motion
+state_topic: BlueIris/DEC/motion
+value_template: "{{ value_json.state }}"
 payload_on: "ON"
-off_delay: 15
+payload_off: "OFF"
 device_class: motion
-json_attributes_topic: ai/DEC/attributes
+json_attributes_topic: BlueIris/DEC/motion
+json_attributes_template: "{{ value_json.attributes | tojson }}"

@@ -4,22 +4,17 @@
 # The mqtt binary sensor platform uses an MQTT message received to set the binary sensor’s
 # state to on or off.
 #
-# Device: Living Room IP Camera
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
+# Device: Living Room IP Camera
 # EntityID: binary_sensor.lrc_motion
 ##############################################################################################
-# platform: mqtt
-# name: LRC Motion
-# state_topic: BlueIris/LRC/MOTION
-# payload_on: "ON"
-# payload_off: "OFF"
-# device_class: motion
-
 platform: mqtt
 name: LRC Motion
-state_topic: ai/LRC/motion
+state_topic: BlueIris/LRC/motion
+value_template: "{{ value_json.state }}"
 payload_on: "ON"
-off_delay: 15
+payload_off: "OFF"
 device_class: motion
-json_attributes_topic: ai/LRC/attributes
+json_attributes_topic: BlueIris/LRC/motion
+json_attributes_template: "{{ value_json.attributes | tojson }}"

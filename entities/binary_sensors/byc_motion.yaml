@@ -9,17 +9,12 @@
 # Device: Backyard Camera
 # EntityID: binary_sensor.byc_Motion
 ##############################################################################################
-# platform: mqtt
-# name: BYC Motion
-# state_topic: BlueIris/BYC/MOTION
-# payload_on: "ON"
-# payload_off: "OFF"
-# device_class: motion
-
 platform: mqtt
 name: BYC Motion
-state_topic: ai/BYC/motion
+state_topic: BlueIris/BYC/motion
+value_template: "{{ value_json.state }}"
 payload_on: "ON"
-off_delay: 15
+payload_off: "OFF"
 device_class: motion
-json_attributes_topic: ai/BYC/attributes
+json_attributes_topic: BlueIris/BYC/motion
+json_attributes_template: "{{ value_json.attributes | tojson }}"

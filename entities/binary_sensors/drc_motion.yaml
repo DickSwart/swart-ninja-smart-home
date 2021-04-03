@@ -9,17 +9,12 @@
 # Device: Dining Room Door Camera
 # EntityID: binary_sensor.drc_motion
 ##############################################################################################
-# platform: mqtt
-# name: DRC Motion
-# state_topic: BlueIris/DRC/MOTION
-# payload_on: "ON"
-# payload_off: "OFF"
-# device_class: motion
-
 platform: mqtt
 name: DRC Motion
-state_topic: ai/DRC/motion
+state_topic: BlueIris/DRC/motion
+value_template: "{{ value_json.state }}"
 payload_on: "ON"
-off_delay: 15
+payload_off: "OFF"
 device_class: motion
-json_attributes_topic: ai/DRC/attributes
+json_attributes_topic: BlueIris/DRC/motion
+json_attributes_template: "{{ value_json.attributes | tojson }}"

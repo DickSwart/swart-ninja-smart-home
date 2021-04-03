@@ -6,12 +6,12 @@
 #
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
-# Device: Office IP Camera
-# EntityID: binary_sensor.ofc_signal
+# Device: Hall Camera
+# EntityID: binary_sensor.hlc_signal
 ##############################################################################################
 platform: mqtt
-name: OFC Signal
-state_topic: BlueIris/OFC/SIGNAL
+name: HLC Signal
+state_topic: BlueIris/HLC/signal
 payload_on: "ON"
 payload_off: "OFF"
 device_class: connectivity

@@ -9,17 +9,12 @@
 # Device: Office IP Camera
 # EntityID: binary_sensor.ofc_motion
 ##############################################################################################
-# platform: mqtt
-# name: OFC Motion
-# state_topic: BlueIris/OFC/MOTION
-# payload_on: "ON"
-# payload_off: "OFF"
-# device_class: motion
-
 platform: mqtt
 name: OFC Motion
-state_topic: ai/OFC/motion
+state_topic: BlueIris/OFC/motion
+value_template: "{{ value_json.state }}"
 payload_on: "ON"
-off_delay: 15
+payload_off: "OFF"
 device_class: motion
-json_attributes_topic: ai/OFC/attributes
+json_attributes_topic: BlueIris/OFC/motion
+json_attributes_template: "{{ value_json.attributes | tojson }}"

@@ -25,3 +25,6 @@ switch:
 
 text_sensor:
   - <<: !include text_sensor/version.config.yaml
+
+# binary_sensor:
+#   - <<: !include binary_sensor/connection_status.config.yaml

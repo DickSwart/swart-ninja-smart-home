@@ -16,6 +16,9 @@ api:
 
 ota:
 
+binary_sensor:
+  - <<: !include binary_sensor/connection_status.config.yaml
+
 status_led:
   pin:
     number: GPIO2

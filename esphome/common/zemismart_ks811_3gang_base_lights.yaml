@@ -32,7 +32,7 @@ output:
     id: relay03
 
 binary_sensor:
-  # Top
+  # - <<: !include binary_sensor/connection_status.config.yaml
   - platform: gpio
     id: button_top
     pin:

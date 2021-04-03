@@ -1,0 +1,13 @@
+---
+##############################################################################################
+# Local File Camera
+# TThe local_file camera platform allows you to integrate an image file from disk into 
+# Home Assistant as a camera.
+#
+# URL: https://www.home-assistant.io/integrations/local_file/
+#
+# EntityID: camera.fdc_alert
+##############################################################################################
+platform: local_file
+name: FDC Alert
+file_path: /config/www/images/camera_snapshots/FDC.jpg

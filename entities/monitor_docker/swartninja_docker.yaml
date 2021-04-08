@@ -1,17 +1,25 @@
 ---
-name: SwartNinja01 Docker
+name: SwartNinja Docker
 url: tcp://192.168.1.201:2375
 containers:
   - garbage-collection
   - glances
+  - guacamole
+  - guacamole-daemon
+  - mariadb
   - minecraft-server-01
   - minecraft-server-02
-  - minecraft-server-03
+  - phpmyadmin
+  - portainer
   - watchtower
 rename:
   garbage-collection: Garbage
   glances: Glances
   minecraft-server-01: Minecraft Server 01
   minecraft-server-02: Minecraft Server 02
-  minecraft-server-03: Minecraft Server 03
   watchtower: Watchtower
+  guacamole: Guacamole
+  guacamole-daemon: Guacamole Daemon
+  mariadb: MariaDB
+  phpmyadmin: phpMyAdmin
+  portainer: Portainer

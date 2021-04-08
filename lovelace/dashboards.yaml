@@ -12,16 +12,16 @@
 #
 # https://www.home-assistant.io/lovelace/dashboards-and-views/#dashboards
 
-swart-ninja:
-  mode: yaml
-  title: Home
-  icon: mdi:home
-  show_in_sidebar: true
-  filename: lovelace/swart-ninja/dashboard.yaml
-swart-ninja-admin:
-  mode: yaml
-  title: Admin
-  icon: mdi:home-lock
-  show_in_sidebar: true
-  require_admin: true
-  filename: lovelace/swart-ninja-admin/dashboard.yaml
+# swart-ninja:
+#   mode: yaml
+#   title: Home
+#   icon: mdi:home
+#   show_in_sidebar: true
+#   filename: lovelace/swart-ninja/dashboard.yaml
+# swart-ninja-admin:
+#   mode: yaml
+#   title: Admin
+#   icon: mdi:home-lock
+#   show_in_sidebar: true
+#   require_admin: true
+#   filename: lovelace/swart-ninja-admin/dashboard.yaml

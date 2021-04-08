@@ -17,7 +17,9 @@ url: tcp://localhost:2375
 #   - xboxone
 #   - xteve
 rename:
+  addon_a0d7b954_chrony: Chrony
   addon_a0d7b954_esphome: ESPHome
+  addon_a0d7b954_ftp: FTP
   addon_a0d7b954_glances: Glances
   addon_a0d7b954_influxdb: InfluxDB
   addon_a0d7b954_nodered: Node-RED

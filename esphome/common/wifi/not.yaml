@@ -1,5 +1,6 @@
 ---
 wifi:
+  # use_address: 192.168.30.52
   ssid: !secret wifi_not_ssid
   password: !secret wifi_not_password
   fast_connect: false

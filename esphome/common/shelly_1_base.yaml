@@ -26,6 +26,7 @@ output:
     id: shelly_1_relay
 
 binary_sensor:
+  - <<: !include binary_sensor/connection_status.config.yaml
   - platform: gpio
     internal: true
     id: switchid

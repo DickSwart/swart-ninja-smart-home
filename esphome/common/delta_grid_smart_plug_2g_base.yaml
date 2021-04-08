@@ -28,6 +28,11 @@ binary_sensor:
 text_sensor:
   - <<: !include text_sensor/version.config.yaml
 
+switch:
+  - platform: restart
+    name: ${device_verbose_name} Restart
+    id: switch_restart
+
 status_led:
   pin:
     number: GPIO4

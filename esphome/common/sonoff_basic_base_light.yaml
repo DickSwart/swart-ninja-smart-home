@@ -53,7 +53,6 @@ text_sensor:
 
 switch:
   - platform: restart
-    internal: true
     name: ${device_verbose_name} Restart
     id: switch_restart
 

@@ -1,3 +1,3 @@
 ---
-switch.swartninja01_docker_watchtower:
+switch.swartninja_docker_watchtower:
   entity_picture: /local/images/docker-container-images/watchtower.png

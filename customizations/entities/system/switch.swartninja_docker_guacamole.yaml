@@ -1,0 +1,3 @@
+---
+switch.swartninja_docker_guacamole:
+  entity_picture: /local/images/docker-container-images/guacamole.png

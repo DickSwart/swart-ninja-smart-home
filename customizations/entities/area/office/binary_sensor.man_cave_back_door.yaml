@@ -1,0 +1,3 @@
+---
+binary_sensor.man_cave_back_door:
+  friendly_name: Back Door

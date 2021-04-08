@@ -1,0 +1,3 @@
+---
+binary_sensor.office_window_one:
+  friendly_name: Window One

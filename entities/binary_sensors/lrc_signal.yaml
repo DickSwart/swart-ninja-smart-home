@@ -12,6 +12,9 @@
 platform: mqtt
 name: LRC Signal
 state_topic: BlueIris/LRC/signal
+value_template: "{{ value_json.state }}"
 payload_on: "ON"
 payload_off: "OFF"
 device_class: connectivity
+json_attributes_topic: BlueIris/LRC/signal
+json_attributes_template: "{{ value_json.attributes | tojson }}"

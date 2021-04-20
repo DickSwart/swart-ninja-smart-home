@@ -11,6 +11,9 @@
 platform: mqtt
 name: DEC Signal
 state_topic: BlueIris/DEC/signal
+value_template: "{{ value_json.state }}"
 payload_on: "ON"
 payload_off: "OFF"
 device_class: connectivity
+json_attributes_topic: BlueIris/DEC/signal
+json_attributes_template: "{{ value_json.attributes | tojson }}"

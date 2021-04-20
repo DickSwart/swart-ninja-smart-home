@@ -8,8 +8,7 @@
 # URL: https://www.home-assistant.io/lovelace/yaml-mode/
 ##################################################################################################################
 lovelace:
-  mode:
-    storage
+  mode: storage
 
-    # Additional YAML-based Lovelace dashboards
-  dashboards: !include ../lovelace/dashboards.yaml
+  #   # Additional YAML-based Lovelace dashboards
+  # dashboards: !include ../lovelace/dashboards.yaml

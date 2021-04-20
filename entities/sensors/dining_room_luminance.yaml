@@ -1,26 +1,16 @@
 ---
 ##############################################################################################
-# Template
-# The template platform supports sensors which get their values from other entities.
+# Min/Max
+# The min_max sensor platform consumes the state from other sensors to determine the minimum,
+# maximum, latest (last), mean and median of the collected states.
 #
-# URL: https://www.home-assistant.io/integrations/template
+# URL: https://www.home-assistant.io/integrations/min_max
 #
 # EntityID: sensor.dining_room_luminance
 ##############################################################################################
-platform: template
-sensors:
-  dining_room_luminance:
-    friendly_name: Dining Room Luminance
-    unit_of_measurement: lux
-    value_template: >-
-      {% set sml = states('sensor.dining_room_curtain_sml_luminance') | float %}
-      {% set corner = states('sensor.dining_room_curtain_corner_luminance') | float %}
-      {%- if sml and corner -%}
-        {{ ((sml + corner ) / 2) | round(2) }}
-      {%- elif sml -%}
-        {{ sml | round(2) }}
-      {%- elif corner -%}
-        {{ corner | round(2) }}
-      {%- else -%}
-        0.0
-      {%- endif %}
+platform: min_max
+type: mean
+name: Dining Room Luminance
+entity_ids:
+  - sensor.dining_room_curtain_sml_luminance
+  - sensor.dining_room_curtain_corner_luminance

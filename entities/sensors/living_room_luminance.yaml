@@ -1,26 +1,16 @@
 ---
 ##############################################################################################
-# Template
-# The template platform supports sensors which get their values from other entities.
+# Min/Max
+# The min_max sensor platform consumes the state from other sensors to determine the minimum,
+# maximum, latest (last), mean and median of the collected states.
 #
-# URL: https://www.home-assistant.io/integrations/template
+# URL: https://www.home-assistant.io/integrations/min_max
 #
-# EntityID: sensor.dining_room_luminance
+# EntityID: sensor.living_room_luminance
 ##############################################################################################
-platform: template
-sensors:
-  living_room_luminance:
-    friendly_name: Living Room Luminance
-    unit_of_measurement: lux
-    value_template: >-
-      {% set ms = states('sensor.living_room_multisensor_luminance') | float %}
-      {% set wnd = states('sensor.living_room_curtain_luminance') | float %}
-      {%- if ms and wnd -%}
-        {{ ((ms + wnd ) / 2) | round(2) }}
-      {%- elif ms -%}
-        {{ ms | round(2) }}
-      {%- elif wnd -%}
-        {{ wnd | round(2) }}
-      {%- else -%}
-        0.0
-      {%- endif %}
+platform: min_max
+type: mean
+name: Living Room Luminance
+entity_ids:
+  - sensor.living_room_multisensor_luminance
+  - sensor.living_room_curtain_luminance

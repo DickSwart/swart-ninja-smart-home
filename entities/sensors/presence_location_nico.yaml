@@ -11,7 +11,7 @@ platform: template
 sensors:
   presence_location_nico:
     friendly_name: Nico
-    entity_picture_template: /api/image/serve/6f93d6011a1db8140b5d08f651bab6ef/512x512
+    entity_picture_template: /local/images/nico.jpg
     value_template: >-
       {% if is_state('input_boolean.presence_location_away_nico', 'on') %}
         Away (Override)

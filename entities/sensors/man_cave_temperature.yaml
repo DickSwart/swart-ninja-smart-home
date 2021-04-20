@@ -1,39 +1,17 @@
 ---
 ##############################################################################################
-# Template
-# The template platform supports sensors which get their values from other entities.
+# Min/Max
+# The min_max sensor platform consumes the state from other sensors to determine the minimum,
+# maximum, latest (last), mean and median of the collected states.
 #
-# URL: https://www.home-assistant.io/integrations/template
+# URL: https://www.home-assistant.io/integrations/min_max
 #
 # EntityID: sensor.man_cave_temperature
 ##############################################################################################
-platform: template
-sensors:
-  man_cave_temperature:
-    friendly_name: Man Cave Temperature
-    device_class: temperature
-    unit_of_measurement: °C
-    value_template: >-
-      {% set hp = state_attr('climate.man_cave' , 'current_temperature') | float %}
-      {% set ms = states('sensor.man_cave_multisensor_temperature') | float %}
-      {% set zw = states('sensor.man_cave_kitchen_zw100_multisensor_temperature') | float %}
-      {% set hpTemp  = float(hp) | round(2) if hp and hp > -30 and hp < 50 else null %}
-      {% set msTemp  = float(ms) | round(2) if ms and ms > -30 and ms < 50 else null %}
-      {% set zwTemp  = float(zw) | round(2) if zw and zw > -30 and zw < 50 else null %}
-      {% if hpTemp and zwTemp and msTemp -%}
-        {{ ((hpTemp + zwTemp + msTemp) / 3) | round(2) }}
-      {%- elif hpTemp and msTemp -%}
-        {{ ((hpTemp + msTemp) / 2) | round(2) }}
-      {%- elif hpTemp and zwTemp -%}
-        {{ ((hpTemp + zwTemp) / 2) | round(2) }}
-      {%- elif zwTemp and msTemp -%}
-        {{ ((zwTemp + msTemp ) / 2) | round(2) }}
-      {%- elif msTemp -%}
-        {{ msTemp | round(2) }}
-      {%- elif hpTemp -%}
-        {{ hpTemp | round(2) }}
-      {%- elif zwTemp -%}
-        {{ zwTemp | round(2) }}
-      {%- else -%}
-        0.0
-      {%- endif %}
+platform: min_max
+type: mean
+name: Man Cave Temperature
+entity_ids:
+  - sensor.man_cave_heat_pump_temperature
+  - sensor.man_cave_multisensor_temperature
+  - sensor.man_cave_kitchen_zw100_multisensor_temperature

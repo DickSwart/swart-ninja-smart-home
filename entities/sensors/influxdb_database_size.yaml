@@ -1,0 +1,25 @@
+---
+##############################################################################################
+# InfluxDB
+# The influxdb sensor allows you to use values from an InfluxDB database to populate a
+# sensor state.
+#
+# URL: https://www.home-assistant.io/integrations/influxdb/#sensor
+#
+# EntityID: sensor.influxdb_database_size
+##############################################################################################
+platform: influxdb
+host: a0d7b954-influxdb
+port: 8086
+username: !secret influxdb_username
+password: !secret influxdb_password
+scan_interval: 3600
+queries:
+  - name: InfluxDB Database Size
+    unit_of_measurement: MB
+    value_template: "{{ (value | float / 1024 /1024) | round(1) }}"
+    group_function: mean
+    measurement: '"monitor"."shard"'
+    database: _internal
+    where: 'time > now() - 10s AND "database"=''homeassistant'''
+    field: diskBytes

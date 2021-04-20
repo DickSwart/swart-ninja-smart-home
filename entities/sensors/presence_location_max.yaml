@@ -11,7 +11,7 @@ platform: template
 sensors:
   presence_location_max:
     friendly_name: Max
-    entity_picture_template: /api/image/serve/fb473bc397cd4366445a1b0586368594/512x512
+    entity_picture_template: /local/images/max.jpg
     value_template: >-
       {% if is_state('input_boolean.presence_location_away_max', 'on') %}
         Away (Override)

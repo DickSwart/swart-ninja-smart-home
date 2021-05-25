@@ -10,6 +10,7 @@
 ##############################################################################################
 platform: mjpeg
 mjpeg_url: http://192.168.1.203:23456/mjpg/FDC/video.mjpeg
+# mjpeg_url: http://192.168.1.212:23456/mjpg/FDC/video.mjpeg # VM
 name: FDC
 username: !secret bi_username
 password: !secret bi_password

@@ -3,6 +3,8 @@
 # List of entities that is exposed to Alexa
 # From area: Bedroom Master
 #
-- light.bedroom_master_ceiling
+- light.bedroom_master_3gang_switch_one
+- light.bedroom_master_2gang_switch_two
+- cover.bedroom_master_blinds
 - switch.bedroom_master_electric_blanket_dick
 - switch.bedroom_master_electric_blanket_tamara

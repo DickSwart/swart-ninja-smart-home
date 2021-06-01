@@ -4,4 +4,4 @@
 # From area: Bedroom Max
 #
 - light.bedroom_max_2gang_switch_ceiling
-# - switch.bedroom_max_electric_blanket
+- cover.bedroom_max_blinds

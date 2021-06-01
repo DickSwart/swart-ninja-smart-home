@@ -3,5 +3,5 @@
 # List of entities that is exposed to Alexa
 # From area: Bedroom Nico
 #
-- light.bedroom_nico_ceiling
-- switch.bedroom_nico_electric_blanket
+- light.bedroom_nico_2gang_switch_ceiling
+- cover.bedroom_nico_blinds

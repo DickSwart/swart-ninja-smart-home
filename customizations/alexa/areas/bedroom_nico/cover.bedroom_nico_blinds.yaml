@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-light.bedroom_max_2gang_switch_ceiling:
-  name: Max Bedroom Light
-  description: The main light in Max bedroom
-  display_categories: LIGHT
+cover.bedroom_nico_blinds:
+  name: Nico Bedroom Blinds
+  description: Nico bedroom 433MHz RF blinds.
+  display_categories: INTERIOR_BLIND

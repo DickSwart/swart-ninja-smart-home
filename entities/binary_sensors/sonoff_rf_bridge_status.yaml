@@ -1,0 +1,17 @@
+---
+##############################################################################################
+# MQTT Binary Sensor
+# The mqtt binary sensor platform uses an MQTT message received to set the binary sensor’s
+# state to on or off.
+#
+# URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
+#
+# Device: Sonoff RF Bridge
+# EntityID: binary_sensor.sonoff_rf_bridge_status
+##############################################################################################
+platform: mqtt
+name: Sonoff RF Bridge Status
+state_topic: tele/SonoffRFBridge_5AF955/LWT
+payload_on: "Online"
+payload_off: "Offline"
+device_class: connectivity

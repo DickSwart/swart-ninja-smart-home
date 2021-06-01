@@ -10,4 +10,5 @@
 platform: time_date
 display_options:
   - time
+  - time_utc
   - date

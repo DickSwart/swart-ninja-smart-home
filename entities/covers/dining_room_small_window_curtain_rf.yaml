@@ -1,0 +1,19 @@
+---
+##############################################################################################
+# MQTT Cover
+# The mqtt cover platform allows you to control an MQTT cover
+# (such as blinds, a roller shutter or a garage door).
+#
+# URL: https://www.home-assistant.io/integrations/cover.mqtt/
+#
+# EntityID: cover.dining_room_small_curtain_rf
+##############################################################################################
+platform: mqtt
+name: Dining Room Small Curtain RF
+command_topic: "cmnd/SonoffRFBridge_5AF955/Backlog"
+availability_topic: "tele/SonoffRFBridge_5AF955/LWT"
+payload_open: RfRaw AAB0490408017202B20C6C134238180808090808081808080809081808090808180808090819190808080808190818080808080809081809081908180808080908080828080808080808080855; RfRaw 0
+payload_close: RfRaw AAB0450408017202C60C62132E380808081919080808081808091809080808081809180809080808180809180919080818090808081809191908080819190828080808080808080855; RfRaw 0
+payload_stop: RfRaw AAB0460408016802A80AFA132E38190808081808080908081808091809190808081808090808180918080808080919080819180809191809081908080818080828080808080808080855; RfRaw 0
+payload_available: "Online"
+payload_not_available: "Offline"

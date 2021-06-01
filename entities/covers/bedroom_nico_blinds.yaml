@@ -1,0 +1,19 @@
+---
+##############################################################################################
+# MQTT Cover
+# The mqtt cover platform allows you to control an MQTT cover
+# (such as blinds, a roller shutter or a garage door).
+#
+# URL: https://www.home-assistant.io/integrations/cover.mqtt/
+#
+# EntityID: cover.bedroom_nico_blinds
+##############################################################################################
+platform: mqtt
+name: Bedroom Nico Blinds
+command_topic: "cmnd/SonoffRFBridge_5AF955/Backlog"
+availability_topic: "tele/SonoffRFBridge_5AF955/LWT"
+payload_open: RfRaw AAB0350508126605E6014A02EE20E4481A3B2A3B2A3A3A3A3A3A3B2B2B2A3A3A3A3A3A3A3B2B2A3A3A3A3B2A3A3A3A3A3A3A3A3B2A3A3A3B55; RfRaw 0
+payload_close: RfRaw AAB0350508127005E6015402E420EE481A3B2A3B2A3A3A3A3A3A3B2B2B2A3A3A3A3A3A3A3B2B2A3A3A3A3B2A3A3A3A3A3A3A3B2B2A3A3B2B55; RfRaw 0
+payload_stop: RfRaw AAB0350508126605F0014A02E420E4481A3B2A3B2A3A3A3A3A3A3B2B2B2A3A3A3A3A3A3A3B2B2A3A3A3A3B2A3A3A3A3A3A3B2A3B2A3B2A3B55; RfRaw 0
+payload_available: "Online"
+payload_not_available: "Offline"

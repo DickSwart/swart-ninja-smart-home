@@ -19,5 +19,5 @@ sensors:
         mdi:home-lock
       {% endif %}
     value_template: >-
-      {{ is_state('sensor.presence_location_dick', 'Home')
-         or is_state('sensor.presence_location_tamara', 'Home') }}
+      {{ is_state('sensor.presence_location_dick', 'Home') or 
+      is_state('sensor.presence_location_tamara', 'Home') }}

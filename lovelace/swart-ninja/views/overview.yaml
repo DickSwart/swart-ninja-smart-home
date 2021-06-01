@@ -173,8 +173,8 @@ cards:
       - entity: light.living_room_tv_backlight_group
       - entity: light.man_cave_bathroom_ceiling
       - entity: light.man_cave_ceiling
-      - entity: switch.man_cave_kitchen_ceiling_one
-      - entity: switch.man_cave_kitchen_ceiling_two
+      - entity: light.man_cave_kitchen_2gang_switch_one
+      - entity: light.man_cave_kitchen_3gang_switch_two
       # - entity: switch.living_room_cupboard_plug_01
       # - entity: switch.living_room_cupboard_plug_02
       - entity: switch.living_room_heat_pump

@@ -1,0 +1,20 @@
+---
+##################################################################################################################
+# Amazon Alexa entity configuration
+# Entity specific configuration for Alexa.
+# URL: https://www.nabucasa.com/config/amazon_alexa/
+# URL: https://developer.amazon.com/en-US/docs/alexa/device-apis/alexa-discovery.html#display-categories
+#
+# ENTITY_ID:
+#   (map) (Optional) Entity to configure.
+#   name:
+#     (string) (Optional) Name of entity to show in Alexa.
+#   description:
+#     (string) (Optional) Description of entity to show in Alexa.
+#   display_categories:
+#     (string) (Optional) The display category to use in Alexa. Available categories
+##################################################################################################################
+light.man_cave_kitchen_2gang_switch_one:
+  name: Man Cave Kitchen Light One
+  description: The light at the desk
+  display_categories: LIGHT

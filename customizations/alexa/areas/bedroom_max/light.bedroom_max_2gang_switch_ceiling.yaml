@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-switch.bedroom_max_ceiling:
+light.bedroom_max_2gang_switch_ceiling:
   name: Max Bedroom Light
   description: The main light in Max's room
   display_categories: LIGHT

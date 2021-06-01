@@ -1,13 +1,19 @@
 ---
 esphome:
   name: ${node_name}
-  comment: "Sonoff POW R1. ${node_comment}"
+  comment: "Sonoff POW R1. (ID: ${node_id})"
   platform: ESP8266
   board: esp8285
   arduino_version: 2.4.2
   build_path: ./build/${node_name}
 
 captive_portal:
+
+# # Enable debug
+# debug:
+
+# logger:
+#   level: debug
 
 # Enable logging
 logger:
@@ -16,6 +22,12 @@ logger:
 api:
 
 ota:
+
+# Enable Webserver
+web_server:
+  port: 80
+  css_url: http://192.168.1.211:8123/local/esphome/webserver-v1.min.css
+  js_url: http://192.168.1.211:8123/local/esphome/webserver-v1.min.js
 
 time:
   - platform: sntp
@@ -47,7 +59,6 @@ sensor:
     unit_of_measurement: kWh
     accuracy_decimals: 1
 
-
 binary_sensor:
   - <<: !include binary_sensor/connection_status.config.yaml
   # Button on the Sonoff POW
@@ -67,6 +78,7 @@ binary_sensor:
 
 text_sensor:
   - <<: !include text_sensor/version.config.yaml
+  - <<: !include text_sensor/wifi_info.config.yaml
 
 switch:
   - platform: restart
@@ -77,6 +89,7 @@ switch:
     name: ${device_verbose_name}
     pin: GPIO12
     id: switch_relay
+    restore_mode: ${switch_restore_mode}
 
 status_led:
   pin:

@@ -20,12 +20,12 @@
 
 substitutions:
   node_name: dining_room_3gang_switch
-  node_comment: "ID 48A182"
+  node_id: "48A182"
   device_verbose_name: Dining Room 3Gang Switch
 
 packages:
   wifi: !include common/wifi/not.yaml
-  device_base: !include common/zemismart_ks811_3gang_base_basic.yaml
+  device_base: !include common/zemismart_ks811_3gang_basic.yaml
 
 binary_sensor:
   # Top

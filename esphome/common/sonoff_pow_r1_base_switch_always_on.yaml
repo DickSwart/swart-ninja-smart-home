@@ -17,6 +17,12 @@ api:
 
 ota:
 
+# Enable Webserver
+web_server:
+  port: 80
+  css_url: http://192.168.1.211:8123/local/esphome/webserver-v1.min.css
+  js_url: http://192.168.1.211:8123/local/esphome/webserver-v1.min.js
+
 time:
   - platform: sntp
     id: my_time
@@ -47,7 +53,6 @@ sensor:
     unit_of_measurement: kWh
     accuracy_decimals: 1
 
-
 binary_sensor:
   - <<: !include binary_sensor/connection_status.config.yaml
   # Button on the Sonoff POW
@@ -67,6 +72,7 @@ binary_sensor:
 
 text_sensor:
   - <<: !include text_sensor/version.config.yaml
+  - <<: !include text_sensor/wifi_info.config.yaml
 
 switch:
   - platform: restart

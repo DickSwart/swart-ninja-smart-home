@@ -1,0 +1,15 @@
+---
+esphome:
+  name: ${node_name}
+  comment: "Zemismart KS811 2 Gang (ID: ${node_id})"
+
+packages:
+  device_base: !include zemismart_ks811_base.yaml
+
+output:
+  - platform: gpio
+    pin: GPIO13
+    id: relay01
+  - platform: gpio
+    pin: GPIO12
+    id: relay02

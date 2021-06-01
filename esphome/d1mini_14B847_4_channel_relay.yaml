@@ -1,8 +1,8 @@
 ---
 # Device: D1Mini 14B847
 substitutions:
+  node_id: "14B847"
   node_name: d1mini_14b847_4_channel_relay
-  node_comment: "4 Channel Relay (ID: 14B847)"
   device_verbose_name: D1Mini 14B847 4 Channel Relay
 
 packages:

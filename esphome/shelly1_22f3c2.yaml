@@ -1,9 +1,8 @@
 ---
-# Device: Shelly 1 2292F6
 substitutions:
-  node_id: 2292F6
-  node_name: man_cave_ceiling
-  device_verbose_name: Man Cave Ceiling
+  node_id: 22F3C2
+  node_name: shelly1_22f3c2
+  device_verbose_name: Shelly 1 22F3C2
 
 packages:
   wifi: !include common/wifi/not.yaml

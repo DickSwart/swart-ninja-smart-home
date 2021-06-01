@@ -1,7 +1,7 @@
 ---
 substitutions:
+  node_id: "53474A"
   node_name: living_room_tv_backlight
-  node_comment: "ID: 53474A"
   device_verbose_name: Living Room TV Backlight
 
 packages:

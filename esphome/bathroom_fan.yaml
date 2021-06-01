@@ -1,7 +1,7 @@
 ---
 substitutions:
+  node_id: 356DC3
   node_name: bathroom_fan
-  node_comment: Sonoff Basic 356DC3
   device_verbose_name: Bathroom
 
 packages:

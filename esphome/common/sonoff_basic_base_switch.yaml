@@ -1,7 +1,7 @@
 ---
 esphome:
   name: ${node_name}
-  comment: "Sonoff Basic Switch. ${node_comment}"
+  comment: "Sonoff Basic. (ID: ${node_id})"
   platform: ESP8266
   board: esp8285
   arduino_version: 2.4.2

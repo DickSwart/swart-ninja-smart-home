@@ -1,7 +1,7 @@
 ---
 substitutions:
+  node_id: "534E79"
   node_name: bedroom_master_multisensor
-  node_comment: "BRUH Multisensor (ID: 534E79)"
   device_verbose_name: Bedroom Master MultiSensor
 
 packages:

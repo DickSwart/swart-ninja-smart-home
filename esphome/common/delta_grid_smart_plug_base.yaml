@@ -1,0 +1,82 @@
+---
+esphome:
+  name: ${node_name}
+  comment: "Deta Grid Connect Smart Double Plug (ID: ${node_id})"
+  platform: ESP8266
+  board: esp01_1m
+  board_flash_mode: dout
+  esp8266_restore_from_flash: true
+  build_path: ./build/${node_name}
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+# Enable Webserver
+web_server:
+  port: 80
+  css_url: http://192.168.1.211:8123/local/esphome/webserver-v1.min.css
+  js_url: http://192.168.1.211:8123/local/esphome/webserver-v1.min.js  
+
+sensor:
+  - <<: !include sensor/uptime.config.yaml
+  - <<: !include sensor/wifi_signal.config.yaml
+
+# binary_sensor:
+#   - <<: !include binary_sensor/connection_status.config.yaml
+
+text_sensor:
+  - <<: !include text_sensor/version.config.yaml
+  - <<: !include text_sensor/wifi_info.config.yaml
+
+# switch:
+#   - platform: restart
+#     name: ${device_verbose_name} Restart
+#     id: switch_restart
+
+status_led:
+  pin:
+    number: GPIO4
+    inverted: true
+
+binary_sensor:
+  - <<: !include binary_sensor/connection_status.config.yaml
+  - platform: gpio
+    id: button_01
+    pin:
+      number: GPIO16
+      mode: INPUT_PULLUP
+      inverted: true
+    on_press:
+      - switch.toggle: relay_01
+  - platform: gpio
+    id: button_02
+    pin:
+      number: GPIO12
+      mode: INPUT_PULLUP
+      inverted: true
+    on_press:
+      - switch.toggle: relay_02
+
+switch:
+  - platform: restart
+    name: ${device_verbose_name} Restart
+    id: switch_restart
+  - platform: gpio
+    pin: GPIO13
+    id: relay_01
+    name: ${device_verbose_name} 01
+    icon: ${switch_icon}
+    restore_mode: ${plug_01_restore_mode}
+  - platform: gpio
+    pin: GPIO14
+    id: relay_02
+    name: ${device_verbose_name} 02
+    icon: ${switch_icon}
+    restore_mode: ${plug_02_restore_mode}

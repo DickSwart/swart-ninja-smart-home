@@ -1,10 +1,19 @@
 ---
 # Device: Sonoff POW 374EE6
+
+### substitutions values ###
+# switch_restore_mode:
+# - RESTORE_DEFAULT_OFF (Default) - Attempt to restore state and default to OFF if not possible to restore.
+# - RESTORE_DEFAULT_ON - Attempt to restore state and default to ON.
+# - ALWAYS_OFF - Always initialize the pin as OFF on bootup.
+# - ALWAYS_ON - Always initialize the pin as ON on bootup.
+
 substitutions:
+  node_id: "374EE6"
   node_name: ender_3
   device_verbose_name: Ender 3
-  node_comment: "ID: XXX"
   switch_icon: mdi:printer-3d
+  switch_restore_mode: RESTORE_DEFAULT_OFF
 
 packages:
   wifi: !include common/wifi/not.yaml

@@ -1,8 +1,8 @@
 ---
 substitutions:
-  device_verbose_name: Work Station
-  node_comment: "Work Station (ID: 671FAA)"
+  node_id: 671FAA
   node_name: work_station
+  device_verbose_name: Work Station
   switch_icon: mdi:soldering-iron
 
 packages:

@@ -1,7 +1,7 @@
 ---
 esphome:
   name: ${node_name}
-  comment: "Shelly 1. ${node_comment}"
+  comment: "Shelly 1. (ID: ${node_id})"
   platform: ESP8266
   board: esp01_1m
   build_path: ./build/${node_name}

@@ -1,9 +1,9 @@
 ---
 substitutions:
-  node_id: 6B1A4E
-  node_name: kitchen_ceiling
-  device_verbose_name: Kitchen Ceiling
-  switch_icon: mdi:track-light
+  node_id: 35D32E
+  node_name: sonoff_basic_35d32e
+  device_verbose_name: Sonoff Basic 35D32E
+  switch_icon: mdi:light-switch
 
 packages:
   wifi: !include common/wifi/not.yaml

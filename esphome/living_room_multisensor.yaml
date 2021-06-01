@@ -1,7 +1,7 @@
 ---
 substitutions:
+  node_id: "536310"
   node_name: living_room_multisensor
-  node_comment: "BRUH Multisensor (ID: 536310)"
   device_verbose_name: Living Room MultiSensor
 
 packages:

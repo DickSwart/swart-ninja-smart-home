@@ -21,6 +21,7 @@ homeassistant:
 
   allowlist_external_dirs:
     - !secret internal_snapshot_path
+    - !secret internal_esphome_path
 
   media_dirs:
     media: /media

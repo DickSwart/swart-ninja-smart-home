@@ -28,53 +28,53 @@ ios:
             authenticationRequired: false
             destructive: false
             behavior: default
-      - name: Alarm
-        identifier: alarm
+      - name: Trigger Alarm
+        identifier: alarm_trigger
         actions:
-          - identifier: ALARM_SILENT
-            title: Silent Alarm
+          - identifier: ALARM_TRIGGER
+            title: Trigger Alarm
+            activationMode: background
+            authenticationRequired: false
+            destructive: true
+            behavior: default
+      - name: Arm Alarm
+        identifier: alarm_arm
+        actions:
+          - identifier: ALARM_ARM_AWAY
+            title: Arm Away
             activationMode: background
             authenticationRequired: false
             destructive: false
             behavior: default
-          - identifier: ALARM_LOUD
-            title: Sound Alarm
+          - identifier: ALARM_ARM_HOME
+            title: Arm Home
             activationMode: background
             authenticationRequired: false
-            destructive: true
-            behavior: default
-      - name: Camera
-        identifier: camera
-        actions:
-          - identifier: ALARM_LOUD
-            title: Sound Alarm
-            activationMode: background
-            authenticationRequired: false
-            destructive: true
+            destructive: false
             behavior: default
       - name: Alarm Triggered
         identifier: alarm_triggered
         actions:
-          - identifier: ALARM_TRIGGERED_NOTIFY_FRIENDS
+          - identifier: ALARM_NOTIFY_FRIENDS
             title: Notify Friends
             activationMode: background
             authenticationRequired: false
             destructive: false
             behavior: default
-          - identifier: ALARM_TRIGGERED_NOTIFY_SOCIAL_MEDIA
+          - identifier: ALARM_NOTIFY_SOCIAL_MEDIA
             title: Social Media Post
             activationMode: background
             authenticationRequired: false
             destructive: false
             behavior: default
-          - identifier: ALARM_TRIGGERED_NOTIFY_BOTH
+          - identifier: ALARM_NOTIFY_ALL
             title: Both
             activationMode: background
             authenticationRequired: false
             destructive: false
             behavior: default
-          - identifier: ALARM_TRIGGERED_OFF
-            title: Turn Off
+          - identifier: ALARM_DISARM
+            title: Disarm Alarm
             activationMode: background
             authenticationRequired: false
             destructive: true

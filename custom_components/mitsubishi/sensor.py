@@ -19,7 +19,12 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     import mitsubishi_echonet as mit
     """Set up the Mitsubishi ECHONET climate devices."""
     mitsubishi_api = mit.HomeAirConditioner(config.get(CONF_IP_ADDRESS))
-    sensors = [ATTR_INSIDE_TEMPERATURE, ATTR_OUTSIDE_TEMPERATURE]
+    sensors = [ATTR_INSIDE_TEMPERATURE]
+    # check for support for outdoor sensor
+    hvac_properties = mitsubishi_api.fetchGetProperties()
+    if 190 in hvac_properties.values():
+        sensors.append(ATTR_OUTSIDE_TEMPERATURE)
+
     async_add_entities(
         [
             MitsubishiClimateSensor(mitsubishi_api, sensor, hass.config.units, config.get(CONF_NAME))
@@ -39,7 +44,11 @@ class MitsubishiClimateSensor(Entity):
             name = f"{self._sensor[CONF_NAME]}"
         self._name = f"{name} {monitored_state.replace('_', ' ')}"
         self._device_attribute = monitored_state
-
+        try:
+           self._uid = f'{api.getIdentificationNumber()["identification_number"]}-{self._device_attribute}'
+           _LOGGER.debug("Sensor has UID of %s",self._uid)
+        except KeyError:
+           self._uid = None
         if self._sensor[CONF_TYPE] == SENSOR_TYPE_TEMPERATURE:
             self._unit_of_measurement = units.temperature_unit
 
@@ -57,6 +66,11 @@ class MitsubishiClimateSensor(Entity):
     def name(self):
         """Return the name of the sensor."""
         return self._name
+
+    @property
+    def unique_id(self):
+         """Return a unique ID."""
+         return self._uid
 
     @property
     def state(self):

@@ -6,4 +6,13 @@
 #
 # URL: https://www.home-assistant.io/integrations/logbook/
 ##################################################################################################################
-logbook: ~
+logbook:
+  exclude:
+    entities:
+      - sensor.date
+    entity_globs:
+      - sensor.deluge_*
+      - sensor.dark_sky_*
+      - sensor.weather_*
+    domains:
+      - sun

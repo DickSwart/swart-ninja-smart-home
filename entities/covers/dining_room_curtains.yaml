@@ -7,8 +7,14 @@
 #
 # EntityID: cover.dining_room_curtains
 ##############################################################################################
+# platform: group
+# name: Dining Room Curtains
+# entities:
+#   - cover.dining_room_small_curtain_rf
+#   - cover.dining_room_corner_curtain_rf
+
 platform: group
 name: Dining Room Curtains
 entities:
+  - cover.dining_room_small_curtain
   - cover.dining_room_corner_curtain
-  - cover.dining_room_small_window_curtain

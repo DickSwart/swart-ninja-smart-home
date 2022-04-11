@@ -10,4 +10,5 @@ platform: mqtt
 name: Living Room Curtain Luminance
 state_topic: wled/b0515f/luminance
 icon: mdi:theme-light-dark
-unit_of_measurement: "lux"
+unit_of_measurement: "lx"
+device_class: illuminance

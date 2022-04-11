@@ -13,11 +13,11 @@ switches:
     friendly_name: Man Cave Heat Pump
     icon_template: mdi:air-conditioner
     value_template: >
-      {{ is_state('climate.man_cave','heat') or is_state('climate.man_cave','cool') or
-         is_state('climate.man_cave','auto')  or is_state('climate.man_cave','fan_only') }}
+      {{ is_state('climate.man_cave_heat_pump','heat') or is_state('climate.man_cave_heat_pump','cool') or
+         is_state('climate.man_cave_heat_pump','auto')  or is_state('climate.man_cave_heat_pump','fan_only') }}
     turn_on:
       service: climate.turn_on
-      entity_id: climate.man_cave
+      entity_id: climate.man_cave_heat_pump
     turn_off:
       service: climate.turn_off
-      entity_id: climate.man_cave
+      entity_id: climate.man_cave_heat_pump

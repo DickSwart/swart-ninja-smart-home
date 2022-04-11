@@ -1,0 +1,16 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.man_cave_motion
+##############################################################################################
+
+name: Man Cave Motion
+unique_id: b706beae-e724-4918-8c88-86b926a30559
+device_class: motion
+state: >-
+  {{ is_state('binary_sensor.man_cave_multisensor_motion', 'on') or 
+  is_state('binary_sensor.mcc_motion', 'on') }}

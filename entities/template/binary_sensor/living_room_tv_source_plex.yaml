@@ -1,0 +1,12 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.living_room_tv_source_plex
+##############################################################################################
+name: Living Room TV Source Plex
+state: >
+  {{ is_state_attr('media_player.living_room_television', 'source', 'Plex') }}

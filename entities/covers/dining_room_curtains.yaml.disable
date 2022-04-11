@@ -1,0 +1,20 @@
+---
+##############################################################################################
+# Cover Group
+# The group platform can create a cover that combines several cover entities into one.
+#
+# URL: https://www.home-assistant.io/integrations/cover.group/
+#
+# EntityID: cover.dining_room_curtains
+##############################################################################################
+# platform: group
+# name: Dining Room Curtains
+# entities:
+#   - cover.dining_room_small_curtain_rf
+#   - cover.dining_room_corner_curtain_rf
+
+# platform: group
+# name: Dining Room Curtains
+# entities:
+#   - cover.dining_room_small_curtain
+#   - cover.dining_room_corner_curtain

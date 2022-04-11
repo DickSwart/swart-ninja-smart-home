@@ -1,0 +1,15 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.man_cave_light_automation_blocking_entity
+##############################################################################################
+
+name: "Man Cave light automation: Blocking entity"
+unique_id: a7f43d98-bb1f-40cf-82c3-d7febf6298d9
+state: >
+  {{ is_state('input_boolean.house_mode_away', 'on') 
+      or is_state('input_boolean.house_mode_people_sleeping_in_man_cave', 'on') }}

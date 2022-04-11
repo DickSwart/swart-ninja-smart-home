@@ -1,0 +1,23 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.man_cave_heat_pump_temperature
+##############################################################################################
+# platform: template
+# sensors:
+#   man_cave_heat_pump_temperature:
+#     friendly_name: Man Cave Heat Pump Temperature
+#     device_class: temperature
+#     unit_of_measurement: °C
+#     value_template: "{{ state_attr('climate.man_cave' , 'current_temperature') | float }}"
+
+name: Man Cave Heat Pump Temperature
+unique_id: e90a61a0-05c6-47b8-a46e-3277c0cd3f09
+device_class: temperature
+unit_of_measurement: °C
+state: >
+  {{ state_attr('climate.man_cave' , 'current_temperature') | float }}

@@ -1,0 +1,24 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.living_room_heat_pump_temperature
+##############################################################################################
+
+name: Living Room Heat Pump Temperature
+unique_id: d943385d-29c8-4d7b-b2fd-c33d780e3f1e
+device_class: temperature
+unit_of_measurement: °C
+state: >
+  {{ state_attr('climate.living_room' , 'current_temperature') | float }}
+
+# platform: template
+# sensors:
+#   living_room_heat_pump_temperature:
+#     friendly_name: Living Room Heat Pump Temperature
+#     device_class: temperature
+#     unit_of_measurement: °C
+#     value_template: "{{ state_attr('climate.living_room' , 'current_temperature') | float }}"

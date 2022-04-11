@@ -16,7 +16,7 @@ from pychonet.lib.const import ENL_SETMAP, ENL_GETMAP, ENL_UID, ENL_MANUFACTURER
 from aioudp import UDPServer
 # from pychonet import Factory
 from pychonet import ECHONETAPIClient
-from .const import DOMAIN, USER_OPTIONS
+from .const import DOMAIN, USER_OPTIONS, TEMP_OPTIONS
 
 
 _LOGGER = logging.getLogger(__name__)
@@ -35,8 +35,9 @@ async def validate_input(hass: HomeAssistant,  user_input: dict[str, Any]) -> di
     _LOGGER.debug(f"IP address is {user_input['host']}")
     host = user_input['host']
     server = None
+    finished_instances = {}
     if DOMAIN in hass.data:  # maybe set up by config entry?
-        _LOGGER.debug(f"{hass.data[DOMAIN]} has already been setup..")
+        _LOGGER.debug("API listener has already been setup previously..")
         server = hass.data[DOMAIN]['api']
     else:
         udp = UDPServer()
@@ -62,6 +63,7 @@ async def validate_input(hass: HomeAssistant,  user_input: dict[str, Any]) -> di
         for eojcc in list(state['instances'][eojgc].keys()):
             for instance in list(state['instances'][eojgc][eojcc].keys()):
                 _LOGGER.debug(f"instance is {instance}")
+
                 await server.getAllPropertyMaps(host, eojgc, eojcc, instance)
                 _LOGGER.debug(f"{host} - ECHONET Instance {eojgc}-{eojcc}-{instance} map attributes discovered!")
                 getmap = state['instances'][eojgc][eojcc][instance][ENL_GETMAP]
@@ -90,6 +92,7 @@ async def validate_input(hass: HomeAssistant,  user_input: dict[str, Any]) -> di
                     "uid": uid,
                     "manufacturer": manufacturer
                 })
+
     return instance_list
 
 
@@ -114,9 +117,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             _LOGGER.debug("Node detected")
         except CannotConnect:
             errors["base"] = "cannot_connect"
-        except Exception:  # pylint: disable=broad-except
-            _LOGGER.exception("Unexpected exception")
-            errors["base"] = "unknown"
         else:
             self.host = user_input["host"]
             self.title = user_input["title"]
@@ -147,9 +147,9 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         """Manage the options."""
         data_schema_structure = {}
 
-        # Handle HVAC User configurable options
+        # Handle HVAC and Air Cleaner User configurable options
         for instance in self._config_entry.data["instances"]:
-            if instance['eojgc'] == 0x01 and instance['eojcc'] == 0x30:
+            if instance['eojgc'] == 0x01 and instance['eojcc'] == 0x30:  # HomeAirConditioner
                 for option in list(USER_OPTIONS.keys()):
                     if option in instance['setmap']:
                         option_default = []
@@ -158,7 +158,34 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                         data_schema_structure.update({
                             vol.Optional(
                                 USER_OPTIONS[option]['option'],
-                                default = option_default
+                                default=option_default
+                            ): cv.multi_select(
+                                USER_OPTIONS[option]['option_list']
+                            )
+                        })
+
+                # Handle setting temperature ranges for various modes of operation
+                for option in list(TEMP_OPTIONS.keys()):
+                    default_temp = TEMP_OPTIONS[option]['min']
+                    if self._config_entry.options.get(option) is not None:
+                        default_temp = self._config_entry.options.get(option)
+                    data_schema_structure.update({
+                            vol.Required(
+                                option,
+                                default=default_temp
+                            ): vol.All(vol.Coerce(int), vol.Range(min=TEMP_OPTIONS[option]['min'], max=TEMP_OPTIONS[option]['max']))
+                    })
+
+            elif instance['eojgc'] == 0x01 and instance['eojcc'] == 0x35:  # AirCleaner
+                for option in list(USER_OPTIONS.keys()):
+                    if option in instance['setmap']:
+                        option_default = []
+                        if self._config_entry.options.get(USER_OPTIONS[option]['option']) is not None:
+                            option_default = self._config_entry.options.get(USER_OPTIONS[option]['option'])
+                        data_schema_structure.update({
+                            vol.Optional(
+                                USER_OPTIONS[option]['option'],
+                                default=option_default
                             ): cv.multi_select(
                                 USER_OPTIONS[option]['option_list']
                             )

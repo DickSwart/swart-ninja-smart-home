@@ -1,5 +1,5 @@
 """Constants for the echonetlite integration."""
-from homeassistant.const import CONF_ICON, CONF_TYPE, DEVICE_CLASS_TEMPERATURE, DEVICE_CLASS_ENERGY
+from homeassistant.const import CONF_ICON, CONF_TYPE, DEVICE_CLASS_POWER, DEVICE_CLASS_TEMPERATURE, DEVICE_CLASS_ENERGY, DEVICE_CLASS_HUMIDITY, PERCENTAGE
 from homeassistant.components.sensor import ATTR_STATE_CLASS, STATE_CLASS_MEASUREMENT, STATE_CLASS_TOTAL_INCREASING
 from pychonet.HomeAirConditioner import (
     ENL_FANSPEED,
@@ -25,6 +25,10 @@ HVAC_SELECT_OP_CODES = {
     0xA4: AIRFLOW_VERT
 }
 
+FAN_SELECT_OP_CODES = {
+    0xA0: FAN_SPEED
+}
+
 ENL_SENSOR_OP_CODES = {
     0x00: {
         0x11: {
@@ -37,10 +41,20 @@ ENL_SENSOR_OP_CODES = {
     },
     0x01: {
         0x30: {
+            0x84: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_POWER,
+                CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
+            },
             0x85: {
                 CONF_ICON: "mdi:flash",
                 CONF_TYPE: DEVICE_CLASS_ENERGY,
                 CONF_STATE_CLASS: STATE_CLASS_TOTAL_INCREASING
+            },
+            0xBA: {
+                CONF_ICON: "mdi:water-percent",
+                CONF_TYPE: DEVICE_CLASS_HUMIDITY,
+                CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
             },
             0xBE: {
                 CONF_ICON: "mdi:thermometer",
@@ -50,6 +64,69 @@ ENL_SENSOR_OP_CODES = {
             0xBB: {
                 CONF_ICON: "mdi:thermometer",
                 CONF_TYPE: DEVICE_CLASS_TEMPERATURE,
+                CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
+            }
+        },
+        0x35: {
+            0x84: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_POWER,
+                CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
+            },
+            0x85: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_ENERGY,
+                CONF_STATE_CLASS: STATE_CLASS_TOTAL_INCREASING
+            }
+        }
+    },
+    0x02: {
+        0x79:{
+            0xE0: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_POWER,
+                CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
+            },
+            0xE1: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_ENERGY,
+                CONF_STATE_CLASS: STATE_CLASS_TOTAL_INCREASING
+            },
+            0xE5: {
+                CONF_ICON: "mdi:percent",
+                CONF_TYPE: PERCENTAGE,
+                CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
+            },
+            0xE6: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_POWER,
+                CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
+            },
+            0xE8: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_POWER,
+                CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
+            },
+            0xE9: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_POWER,
+                CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
+            }
+        },
+        0x87 : {
+            0xC0: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_ENERGY,
+                CONF_STATE_CLASS: STATE_CLASS_TOTAL_INCREASING
+            },
+            0xC1: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_ENERGY,
+                CONF_STATE_CLASS: STATE_CLASS_TOTAL_INCREASING
+            },
+            0xC6: {
+                CONF_ICON: "mdi:flash",
+                CONF_TYPE: DEVICE_CLASS_POWER,
                 CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT
             }
         }
@@ -130,4 +207,12 @@ USER_OPTIONS = {
     ENL_AIR_VERT:   {'option': 'swing_vert', 'option_list': AIRFLOW_VERT_OPTIONS},
     ENL_AUTO_DIRECTION: {'option': 'auto_direction', 'option_list': AUTO_DIRECTION_OPTIONS},
     ENL_SWING_MODE:     {'option': 'swing_mode', 'option_list': SWING_MODE_OPTIONS},
+}
+
+TEMP_OPTIONS = {"min_temp_heat": {"min":15, "max":25},
+                "max_temp_heat": {"min":18, "max":30},
+                "min_temp_cool": {"min":15, "max":25},
+                "max_temp_cool": {"min":18, "max":30},
+                "min_temp_auto": {"min":15, "max":25},
+                "max_temp_auto": {"min":18, "max":30},
 }

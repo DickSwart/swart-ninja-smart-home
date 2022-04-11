@@ -6,6 +6,8 @@
 # Splitting up the configuration:
 # https://www.home-assistant.io/docs/configuration/splitting_configuration/
 ##################################################################################################################
+default_config:
+
 homeassistant:
   name: Swart Ninja Smart Home
   latitude: !secret lat_home

@@ -22,7 +22,8 @@ sensor:
     pin: A0
     name: ${device_verbose_name} Luminance
     icon: mdi:theme-light-dark
-    unit_of_measurement: lux
+    device_class: illuminance
+    unit_of_measurement: lx
     filters:
       - lambda: |-
           return (x / 10000.0) * 2000000.0;

@@ -121,17 +121,12 @@ binary_sensor:
           - OFF for at least 0.5s
         then:
           - logger.log: "Single Short Clicked"
-          - if:
-              condition:
-                api.connected:
-              then:
-                # Toggle Mood Light
-                - homeassistant.service:
-                    service: light.toggle
-                    data:
-                      entity_id: light.living_room_mood
-              else:
-                - switch.toggle: switch_relay02
+          # Toggle Mood Light
+          - homeassistant.service:
+              service: light.toggle
+              data:
+                entity_id: light.living_room_mood
+          - switch.toggle: switch_relay02
   # Bottom
   - platform: gpio
     id: button_bottom
@@ -175,17 +170,12 @@ binary_sensor:
           - OFF for at least 0.5s
         then:
           - logger.log: "Single Short Clicked"
-          - if:
-              condition:
-                api.connected:
-              then:
-                # Stop Living Room Curtains
-                - homeassistant.service:
-                    service: cover.stop_cover
-                    data:
-                      entity_id: cover.living_room_sliding_door_curtain
-              else:
-                - switch.toggle: switch_relay03
+          # Stop Living Room Curtains
+          - homeassistant.service:
+              service: cover.stop_cover
+              data:
+                entity_id: cover.living_room_sliding_door_curtain
+          - switch.toggle: switch_relay03
 
 light:
   - platform: binary

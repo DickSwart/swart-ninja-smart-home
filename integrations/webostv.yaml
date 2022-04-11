@@ -5,4 +5,5 @@
 #
 # URL: https://www.home-assistant.io/integrations/webostv/
 ##################################################################################################################
-webostv: !include_dir_list ../entities/webostvs
+# webostv: !include_dir_list ../entities/webostvs
+webostv:

@@ -13,6 +13,6 @@ cloud:
     # These are loaded from a separate directory.
     entity_config: !include_dir_merge_named ../customizations/alexa
 
-    # Filters for entities to include/exclude from Alexa.
-    filter:
-      include_entities: !include_dir_merge_list ../alexa
+    # # Filters for entities to include/exclude from Alexa.
+    # filter:
+    #   include_entities: !include_dir_merge_list ../alexa

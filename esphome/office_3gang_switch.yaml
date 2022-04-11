@@ -163,17 +163,22 @@ binary_sensor:
           - OFF for at least 0.5s
         then:
           - logger.log: "Single Short Clicked"
-          - if:
-              condition:
-                api.connected:
-              then:
-                - homeassistant.event:
-                    event: esphome.${node_name}
-                    data:
-                      data: BTN_BOTTOM_SINGLE
-              else:
-                - logger.log: "Not connected to API!"
-                - switch.toggle: switch_relay03
+          - homeassistant.event:
+              event: esphome.${node_name}
+              data:
+                data: BTN_BOTTOM_SINGLE
+          - switch.toggle: switch_relay03
+          # - if:
+          #     condition:
+          #       api.connected:
+          #     then:
+          #       - homeassistant.event:
+          #           event: esphome.${node_name}
+          #           data:
+          #             data: BTN_BOTTOM_SINGLE
+          #     else:
+          #       - logger.log: "Not connected to API!"
+          #       - switch.toggle: switch_relay03
 
 light:
   - platform: binary

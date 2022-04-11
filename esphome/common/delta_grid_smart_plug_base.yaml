@@ -51,7 +51,7 @@ binary_sensor:
     id: button_01
     pin:
       number: GPIO16
-      mode: INPUT_PULLUP
+      mode: INPUT
       inverted: true
     on_press:
       - switch.toggle: relay_01

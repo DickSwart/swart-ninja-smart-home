@@ -4,7 +4,7 @@ esphome:
   comment: "Sonoff POW R1. ${node_comment}"
   platform: ESP8266
   board: esp8285
-  arduino_version: 2.4.2
+  #arduino_version: 2.4.2
   build_path: ./build/${node_name}
 
 captive_portal:

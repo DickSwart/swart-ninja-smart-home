@@ -1,9 +1,10 @@
 ---
 substitutions:
   node_id: 356DC3
-  node_name: bathroom_fan
-  device_verbose_name: Bathroom
+  node_name: bathroom-fan
+  device_verbose_name: Bathroom Fan
+  switch_icon: mdi:light-switch
 
 packages:
   wifi: !include common/wifi/not.yaml
-  device_base: !include common/sonoff_basic_base_fan.yaml
+  device_base: !include common/sonoff_basic_base.yaml

@@ -1,10 +1,10 @@
 ---
 substitutions:
   node_id: 671FAA
-  node_name: work_station
+  node_name: work-station
   device_verbose_name: Work Station
   switch_icon: mdi:soldering-iron
 
 packages:
   wifi: !include common/wifi/not.yaml
-  device_base: !include common/sonoff_basic_base_switch.yaml
+  device_base: !include common/sonoff_basic_base.yaml

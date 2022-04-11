@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-climate.living_room:
+climate.living_room_heat_pump:
   name: Living Room Heat Pump
   description: The heat pump in the living room.
   display_categories: THERMOSTAT

@@ -3,4 +3,4 @@
 # List of entities that is exposed to HomeKit/Siri
 # From area: Man Cave
 #
-- climate.man_cave
+- climate.man_cave_heat_pump

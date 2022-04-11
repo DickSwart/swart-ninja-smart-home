@@ -4,9 +4,7 @@
 # From area: Office
 #
 - cover.office_door_system_cover
-- switch.swartninja01_docker_minecraft_server_01
-- switch.swartninja01_docker_minecraft_server_02
-- switch.swartninja01_docker_minecraft_server_03
+- switch.swartninja_docker_minecraft_server_01
 - light.office_ceiling
 - script.vm_swartninja01_shutdown
 - script.vm_swartninja01_start

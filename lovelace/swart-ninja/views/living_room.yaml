@@ -115,7 +115,7 @@ cards:
         name: Curtains
 
   - type: custom:simple-thermostat
-    entity: climate.living_room
+    entity: climate.living_room_heat_pump
     step_layout: row
     name: false
     sensors:

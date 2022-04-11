@@ -22,69 +22,60 @@
 "switch.docker_minecraft_server_*":
   entity_picture: /local/images/docker-container-images/minecraft.png
 
-"sensor.*_current":
-  friendly_name: Current
-"sensor.*_energy":
-  friendly_name: Energy
-"sensor.*_power":
-  friendly_name: Power
-"sensor.*_voltage":
-  friendly_name: Voltage
+# "sensor.*_current":
+#   friendly_name: Current
+# "sensor.*_energy":
+#   friendly_name: Energy
+# "sensor.*_power":
+#   friendly_name: Power
+# "sensor.*_voltage":
+#   friendly_name: Voltage
 
-"binary_sensor.*_status":
-  friendly_name: Status
-"binary_sensor.*_motion":
-  friendly_name: Motion
-"binary_sensor.*_door":
-  friendly_name: Door
-"sensor.*_temperature":
-  friendly_name: Temperature
+# "binary_sensor.*_status":
+#   friendly_name: Status
+# "binary_sensor.*_motion":
+#   friendly_name: Motion
+# "binary_sensor.*_door":
+#   friendly_name: Door
+# "sensor.*_temperature":
+#   friendly_name: Temperature
 "sensor.*_humidity":
   icon: mdi:water-percent
-  friendly_name: Humidity
+  # friendly_name: Humidity
 "sensor.*_luminance":
   icon: mdi:theme-light-dark
-  friendly_name: Luminance
+  # friendly_name: Luminance
 "sensor.*_wifi_signal":
   icon: mdi:wifi
-  friendly_name: WIFI Signal
-"sensor.*_version":
-  friendly_name: Version
-"sensor.*_uptime":
-  friendly_name: Uptime
-"switch.*_restart":
-  friendly_name: Restart
+  # friendly_name: WIFI Signal
+# "sensor.*_version":
+#   friendly_name: Version
+# "sensor.*_uptime":
+#   friendly_name: Uptime
+# "switch.*_restart":
+#   friendly_name: Restart
 "sensor.*_ultraviolet":
-  friendly_name: Ultraviolet
+  # friendly_name: Ultraviolet
   icon: mdi:white-balance-sunny
-
 # WLED
-"sensor.*_free_memory":
-  friendly_name: Free Memory
-"sensor.*_wi_fi_bssid":
-  friendly_name: WIFI BSSID
-"sensor.*_wi_fi_channel":
-  friendly_name: WIFI Channel
-"sensor.*_wi_fi_rssi":
-  friendly_name: WIFI RSSI
-"sensor.*_wi_fi_signal":
-  friendly_name: WIFI Signal
-"switch.*_nightlight":
-  friendly_name: Nightlight
-"switch.*_sync_receive":
-  friendly_name: Sync Receive
-"switch.*_sync_send":
-  friendly_name: Sync Send
-"sensor.*_estimated_current":
-  friendly_name: Estimated Current
-# "sensor.*xxxxxx":
-#   friendly_name: xxxxxx
-# "sensor.*xxxxxx":
-#   friendly_name: xxxxxx
-# "sensor.*xxxxxx":
-#   friendly_name: xxxxxx
-# "sensor.*xxxxxx":
-#   friendly_name: xxxxxx
+# "sensor.*_free_memory":
+#   friendly_name: Free Memory
+# "sensor.*_wi_fi_bssid":
+#   friendly_name: WIFI BSSID
+# "sensor.*_wi_fi_channel":
+#   friendly_name: WIFI Channel
+# "sensor.*_wi_fi_rssi":
+#   friendly_name: WIFI RSSI
+# "sensor.*_wi_fi_signal":
+#   friendly_name: WIFI Signal
+# "switch.*_nightlight":
+#   friendly_name: Nightlight
+# "switch.*_sync_receive":
+#   friendly_name: Sync Receive
+# "switch.*_sync_send":
+#   friendly_name: Sync Send
+# "sensor.*_estimated_current":
+#   friendly_name: Estimated Current
 
 # Delta Plug
 # - entity: switch.living_room_cupboard_plug_01

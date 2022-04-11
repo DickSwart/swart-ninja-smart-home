@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-climate.man_cave:
+climate.man_cave_heat_pump:
   name: Man Cave Heat Pump
   description: The heat pump in the man cave.
   display_categories: THERMOSTAT

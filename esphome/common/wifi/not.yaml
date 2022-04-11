@@ -1,6 +1,6 @@
 ---
 wifi:
-  # use_address: 192.168.30.10
+  #use_address: work_station.local
   ssid: !secret wifi_not_ssid
   password: !secret wifi_not_password
   fast_connect: false

@@ -1,0 +1,16 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.kitchen_motion
+##############################################################################################
+
+name: Kitchen Motion
+unique_id: f6602da6-f8a7-47d1-be66-a981db0ea2a5
+device_class: motion
+state: >
+  {{ is_state('binary_sensor.kitchen_motion_led_motion', 'on')
+      or is_state('binary_sensor.kitchen_multisensor_motion', 'on') }}

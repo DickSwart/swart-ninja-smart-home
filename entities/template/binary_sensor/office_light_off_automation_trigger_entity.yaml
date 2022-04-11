@@ -1,0 +1,15 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.office_light_off_automation_trigger_entity
+##############################################################################################
+
+name: "Office light off automation: Trigger entity"
+unique_id: 7e1c0b9e-7f4a-4d9a-92fd-b1891374b442
+state: >
+  {{ states('sensor.office_zw100_multisensor_luminance') | int >= 
+     states('input_number.office_light_off_automation_illuminance_cutoff') | int }}

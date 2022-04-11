@@ -1,0 +1,5 @@
+---
+living_room_light_on_motion_automation_secondary_before:
+  name: "Living Room light on motion automation: Secondary before"
+  has_date: false
+  has_time: true

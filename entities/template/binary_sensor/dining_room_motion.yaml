@@ -1,0 +1,15 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.dining_room_motion
+##############################################################################################
+
+name: Dining Room Motion
+unique_id: 6c55f462-b367-4111-8f3b-dd3dc9e0c13c
+device_class: motion
+state: >
+  {{ is_state('binary_sensor.drc_motion', 'on') }}

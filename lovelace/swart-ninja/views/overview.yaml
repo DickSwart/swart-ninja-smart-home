@@ -65,7 +65,7 @@ cards:
       - input_boolean.house_mode_away
       - input_boolean.house_mode_guest
       - input_boolean.house_mode_holiday
-      - input_boolean.house_mode_kids_sleep_man_cave
+      # - input_boolean.house_mode_kids_sleep_man_cave
 
   - type: vertical-stack
     cards:

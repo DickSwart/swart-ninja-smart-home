@@ -1,0 +1,70 @@
+blueprint:
+  name: Turn off light, switch, based on bimary sensor.
+
+  domain: automation
+  input:
+    trigger_entity:
+      name: Trigger Entity
+      description: This sensor will trigger the turning on of the target entity.
+      selector:
+        entity:
+          domain:
+            - binary_sensor
+            - input_boolean
+    automation_entity:
+      name: (OPTIONAL) Linked Automation
+      default:
+      selector:
+        entity:
+          domain: automation
+    blocker_entity:
+      name: (OPTIONAL) Blocking entity
+      description: If this entity's state is on, it will prevent the automation from running. E.g. sleepmode or away mode.
+      default:
+      selector:
+        entity:
+          domain:
+            - binary_sensor
+            - input_boolean
+    target_off_entities:
+      name: Turn-off entity
+      description: If defined, this entity will be turned off instead of the default target entity. This can be helpful when using target entities of type scene or script.
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+          multiple: true
+
+mode: restart
+max_exceeded: silent
+
+variables:
+  trigger_entity: !input trigger_entity
+  blocker_entity: !input blocker_entity
+  automation_entity: !input automation_entity
+  target_off_entities: !input target_off_entities
+  target_off_entity_that_is_on: >
+    {{ expand(target_off_entities)
+      | selectattr("state", "eq", "on") 
+      | map(attribute='entity_id')
+      | list }}
+
+trigger:
+  platform: state
+  entity_id: !input trigger_entity
+  to: "on"
+
+condition:
+  - condition: template
+    value_template: >
+      {{ target_off_entity_that_is_on | length > 0 }}
+  - condition: template
+    value_template: "{{ (blocker_entity == none) or is_state(blocker_entity, 'off') }}"
+  - condition: template
+    value_template: "{{ (automation_entity == none) or is_state(automation_entity, 'on') }}"
+
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: "{{ target_off_entity_that_is_on }}"

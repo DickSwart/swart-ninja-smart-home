@@ -149,7 +149,7 @@ cards:
   - type: custom:layout-break
 
   - type: custom:simple-thermostat
-    entity: climate.man_cave
+    entity: climate.man_cave_heat_pump
     step_layout: row
     name: false
     sensors:

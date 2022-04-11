@@ -8,8 +8,8 @@ trigger:
     entity_id: binary_sensor.updater_addons
     from: "off"
     to: "on"
-  - platform: homeassistant
-    event: start
+  - platform: time
+    at: "11:00:00"
 condition:
   - condition: state
     entity_id: binary_sensor.updater_addons

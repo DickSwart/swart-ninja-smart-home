@@ -8,8 +8,8 @@ trigger:
     entity_id: binary_sensor.updater
     from: "off"
     to: "on"
-  - platform: homeassistant
-    event: start
+  - platform: time
+    at: "11:00:00"
 condition:
   - condition: template
     value_template: "{{ states('sensor.version_current') != state_attr('binary_sensor.updater', 'newest_version') }}"

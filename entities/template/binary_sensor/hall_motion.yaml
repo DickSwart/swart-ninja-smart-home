@@ -1,0 +1,16 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.hall_motion
+##############################################################################################
+
+name: Hall Motion
+unique_id: ca2af9dc-4a5e-47da-b80a-5629e9cbb322
+device_class: motion
+state: >
+  {{ is_state('binary_sensor.hall_multisensor_motion', 'on')
+      or is_state('binary_sensor.hlc_ai_motion', 'on') }}

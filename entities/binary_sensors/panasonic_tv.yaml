@@ -1,0 +1,14 @@
+---
+##############################################################################################
+# Ping (ICMP) - Binary Sensor
+# The ping binary sensor platform allows you to use ping to send ICMP echo requests.
+#
+# URL: https://www.home-assistant.io/integrations/ping/#binary-sensor
+#
+# EntityID: binary_sensor.panasonic_tv
+##############################################################################################
+platform: ping
+name: Panasonic TV
+host: !secret panasonic_tv_host
+count: 2
+scan_interval: 60

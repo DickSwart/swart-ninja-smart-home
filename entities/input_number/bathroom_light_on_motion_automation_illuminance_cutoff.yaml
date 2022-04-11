@@ -1,0 +1,7 @@
+---
+bathroom_light_on_motion_automation_illuminance_cutoff:
+  name: "Bathroom light on motion automation: Illuminance cutoff"
+  min: 0
+  max: 250
+  step: 1
+  unit_of_measurement: "lx"

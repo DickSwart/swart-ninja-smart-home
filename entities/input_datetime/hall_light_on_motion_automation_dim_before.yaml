@@ -1,0 +1,5 @@
+---
+hall_light_on_motion_automation_dim_before:
+  name: "Hall light on motion automation: Dim before"
+  has_date: false
+  has_time: true

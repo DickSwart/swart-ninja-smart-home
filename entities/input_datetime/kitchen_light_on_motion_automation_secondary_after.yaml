@@ -1,0 +1,5 @@
+---
+kitchen_light_on_motion_automation_secondary_after:
+  name: "Kitchen light on motion automation: Secondary after"
+  has_time: true
+  has_date: false

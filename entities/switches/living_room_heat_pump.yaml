@@ -13,11 +13,11 @@ switches:
     friendly_name: Living Room Heat Pump
     icon_template: mdi:air-conditioner
     value_template: >
-      {{ is_state('climate.living_room','heat') or is_state('climate.living_room','cool') or
-         is_state('climate.living_room','auto')  or is_state('climate.living_room','fan_only') }}
+      {{ is_state('climate.living_room_heat_pump','heat') or is_state('climate.living_room_heat_pump','cool') or
+         is_state('climate.living_room_heat_pump','auto')  or is_state('climate.living_room_heat_pump','fan_only') }}
     turn_on:
       service: climate.turn_on
-      entity_id: climate.living_room
+      entity_id: climate.living_room_heat_pump
     turn_off:
       service: climate.turn_off
-      entity_id: climate.living_room
+      entity_id: climate.living_room_heat_pump

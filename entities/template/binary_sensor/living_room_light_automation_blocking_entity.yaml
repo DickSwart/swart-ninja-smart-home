@@ -1,0 +1,15 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.living_room_light_automation_blocking_entity
+##############################################################################################
+
+name: "Living Room light automation: Blocking entity"
+unique_id: 12a98c3b-4e2f-4f3d-8cd8-c16f0652aa32
+state: >
+  {{ is_state('input_boolean.house_mode_away', 'on') 
+      or is_state('media_player.living_room_television', 'on') }}

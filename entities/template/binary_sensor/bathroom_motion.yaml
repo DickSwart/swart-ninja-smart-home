@@ -1,0 +1,15 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.bathroom_motion
+###############################################################################################
+
+name: Bathroom Motion
+unique_id: b2c6e594-46e0-4ee5-9599-b9a11c9857c9
+device_class: motion
+state: >
+  {{ is_state('binary_sensor.bathroom_multisensor_motion', 'on') }}

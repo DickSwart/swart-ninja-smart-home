@@ -10,4 +10,5 @@ platform: mqtt
 name: Dining Room Curtain Corner Luminance
 state_topic: wled/b0b368/luminance
 icon: mdi:theme-light-dark
-unit_of_measurement: "lux"
+unit_of_measurement: "lx"
+device_class: illuminance

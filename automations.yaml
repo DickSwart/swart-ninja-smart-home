@@ -208,9 +208,9 @@
       to: "on"
   condition:
     - condition: template
-      value_template: >-
+      value_template: |-
         {{ (states('sensor.hall_multisensor_luminance') | int(0) < 
-            states('input_number.hall_light_on_motion_automation_illuminance_cutoff') | int(0)) and
+            states('input_number.hall_light_on_motion_automation_illuminance_cutoff') | int(0))
             and is_state('light.hall_zw111_nano_dimmer', 'off') }}
   action:
     - service: light.turn_on

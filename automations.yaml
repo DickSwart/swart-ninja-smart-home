@@ -259,3 +259,16 @@
       phone_battery: sensor.dick_iphone_battery_level
       person_home: person.dick
       discharged_percent: 30
+- id: '1649841335537'
+  alias: Man Cave Light Off
+  description: ''
+  use_blueprint:
+    path: swartninja/auto_light_off.yaml
+    input:
+      trigger_entity: binary_sensor.man_cave_light_off_automation_trigger_entity
+      automation_entity: automation.man_cave_light_on_motion
+      blocker_entity: input_boolean.house_mode_away
+      target_off_entities:
+      - light.man_cave_ceiling
+      - light.man_cave_kitchen_2gang_switch_one
+      - light.man_cave_kitchen_3gang_switch_two

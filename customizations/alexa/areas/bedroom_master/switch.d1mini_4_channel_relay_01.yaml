@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-switch.bedroom_master_electric_blanket_dick:
-  name: Dick Electric Blanket
-  description: The electric blanket in Nico's bedroom
+switch.d1mini_4_channel_relay_01:
+  name: Tamara Electric Blanket
+  description: The electric blanket in master bedroom
   display_categories: SWITCH

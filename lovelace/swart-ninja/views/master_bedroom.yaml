@@ -22,11 +22,11 @@ cards:
         cards:
           - !include
             - "../../templates/button/button.yaml"
-            - entity: switch.bedroom_master_electric_blanket_tamara
+            - entity: switch.d1mini_4_channel_relay_01
               name: Tamara
           - !include
             - "../../templates/button/button.yaml"
-            - entity: switch.bedroom_master_electric_blanket_dick
+            - entity: switch.d1mini_4_channel_relay_02
               name: Dick
           - !include
             - "../../templates/button/button.yaml"

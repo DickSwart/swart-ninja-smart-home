@@ -1,0 +1,14 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.front_door_light_on_motion_automation_blocking_entity
+##############################################################################################
+
+name: "Front door light on motion automation: Blocking entity"
+unique_id: 7d4d66cb-c882-4e56-8620-ad333db93702
+state: >
+  {{ is_state('binary_sensor.dark_outside', 'off') }}

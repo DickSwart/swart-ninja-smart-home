@@ -6,10 +6,11 @@ platform: caldav
 username: !secret icloud_dick_email
 password: !secret icloud_dick_app_password
 url: https://caldav.icloud.com
+days: 2
 custom_calendars:
   - name: All
-    calendar: 'Family'
-    search: '.*'
+    calendar: "Family"
+    search: ^((?!School Holiday).)*$
   - name: School Holiday
-    calendar: 'Family'
+    calendar: "Family"
     search: '(?i)\bSchool Holiday\b'

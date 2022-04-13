@@ -11,14 +11,13 @@
 
 name: School Tomorrow
 state: >
-  {% set sh_start_date =
-    (as_timestamp(state_attr('calendar.family_school_holiday', 'start_time'))) | float | default(0) %}
-  {% set sh_end_date =
-    (as_timestamp(state_attr('calendar.family_school_holiday', 'end_time'))) | float | default(0) %}
+  {% set start_date = as_timestamp(state_attr('calendar.family_school_holiday', 'start_time')) %}
+  {% set end_time = as_timestamp(state_attr('calendar.family_school_holiday', 'end_time')) %}
+  {% set sh_start_date = start_date | float | default(0) if  start_date != none else 0 %}
+  {% set sh_end_date = end_time | float | default(0) if  end_time != none else 0 %}
   {% set tomorrow_date = (as_timestamp(now()) + (24*3600)) | float | default(0) %}
-  {% if ( ( (tomorrow_date >= sh_start_date) and
-          (tomorrow_date <= sh_end_date)) or
-          is_state('binary_sensor.workday_tomorrow', 'off')) %}
+  {% if (( (tomorrow_date >= sh_start_date) and (tomorrow_date <= sh_end_date) ) 
+            or is_state('binary_sensor.workday_tomorrow', 'off')) %}
     false
   {% else %}
     true

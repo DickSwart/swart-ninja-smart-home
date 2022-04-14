@@ -1,5 +1,5 @@
 blueprint:
-  name: Turn on light (new), switch, scene, script or group based on motion and illuminance.
+  name: Turn on light, switch, scene, script or group based on motion and illuminance.
   description: >
     Turn on a light, switch, scene, script or group based on motion detection, and low light level.
 
@@ -98,12 +98,6 @@ blueprint:
       default:
       selector:
         entity:
-    # target_off_entity:
-    #   name: (OPTIONAL) Turn-off entity
-    #   description: If defined, this entity will be turned off instead of the default target entity. This can be helpful when using target entities of type scene or script.
-    #   default:
-    #   selector:
-    #     target:
     target_off_entity:
       name: (OPTIONAL) Turn-off entity
       description: If defined, this entity will be turned off instead of the default target entity. This can be helpful when using target entities of type scene or script.

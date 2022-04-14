@@ -6,6 +6,7 @@
 *.pyc
 ._*
 __pycache__
+*.log.*
 
 # Directory (contents) ignores
 .cloud
@@ -37,7 +38,7 @@ zwcfg_*
 zwscene.xml
 webostv.conf
 google_calendars.yaml
-home-assistant.log.1
+home-assistant.log.*
 
 # ESPHome ignores
 esphome/secrets.yaml

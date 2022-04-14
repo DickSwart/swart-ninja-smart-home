@@ -93,6 +93,16 @@ blueprint:
       default: Updates
       selector:
         text:
+    status_bar_icon:
+      name: Status bar icon
+      description: >-
+        (Android only) Sets the status bar icon (https://companion.home-assistant.io/docs/notifications/notifications-basic/#notification-icon).
+        NOTE: Different then the icon inside the notification, that is always set to the entity picture of the update
+        entity (if it has one).
+      default: mdi:package-up
+      selector:
+        icon:
+          placeholder: mdi:package-up
 mode: parallel
 max: 100
 trigger_variables:
@@ -195,7 +205,9 @@ action:
       sequence:
         - variables:
             entity_id: &tag-to-entity >-
-              update.{{ trigger.event.data.tag | default(trigger.event.data.action_data.tag, true) }}
+              update.{{ trigger.event.data.tag
+                if trigger.event.data.tag is string and trigger.event.data.tag != ''
+                else trigger.event.data.action_data.tag }}
         - service: update.install
           data:
             entity_id: "{{ entity_id }}"
@@ -327,7 +339,7 @@ action:
               tag: *tag-from-entity
               channel: !input notification_channel
               group: !input notification_channel
-              notification_icon: mdi:package-up
+              notification_icon: !input status_bar_icon
               icon_url: "{{ state_attr(entity_id, 'entity_picture') | default('', true) }}"
               url: "{{ url }}"
               clickAction: "{{ url }}"

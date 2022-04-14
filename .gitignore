@@ -37,6 +37,7 @@ zwcfg_*
 zwscene.xml
 webostv.conf
 google_calendars.yaml
+home-assistant.log.1
 
 # ESPHome ignores
 esphome/secrets.yaml
@@ -55,3 +56,4 @@ notebooks
 
 # Specific keeps
 !.gitkeep
+

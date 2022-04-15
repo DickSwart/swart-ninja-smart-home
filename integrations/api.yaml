@@ -1,0 +1,11 @@
+---
+##################################################################################################################
+# Home Assistant API
+# The api integration exposes a RESTful API and allows one to interact with a Home Assistant instance
+# that is running headless.
+#
+# URL:
+# - https://www.home-assistant.io/integrations/api/
+# - https://developers.home-assistant.io/docs/api/rest/
+##################################################################################################################
+api: ~

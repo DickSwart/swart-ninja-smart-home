@@ -1,9 +1,0 @@
----
-##################################################################################################################
-# Configuration
-# The config integration is designed to display panels in the frontend to configure and manage parts
-# of Home Assistant.
-#
-# URL: https://www.home-assistant.io/integrations/config/
-##################################################################################################################
-config: ~

@@ -1,0 +1,25 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: binary_sensor.proxmox_vm_home_assistant_status
+##############################################################################################
+
+name: "Proxmox VM: Home Assistant Status"
+unique_id: proxmox_vm_home_assistant_status
+device_class: running
+state: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/211') | map(attribute='status') | first == 'running' }}"
+attributes:
+  id: "qemu/211"
+  name: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/211') | map(attribute='name') | first }}"
+  status: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/211') | map(attribute='status') | first | title }}"
+  memory_size: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/211') | map(attribute='maxmem') | first | filesizeformat(True) }}"
+  hdd_size: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/211') | map(attribute='maxdisk') | first | filesizeformat(True) }}"
+  uptime: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/211') | map(attribute='uptime') | first | timestamp_custom('%H:%M:%S', 0) }}"
+
+availability: >
+  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') %}
+  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", 'qemu/211') | first != null }}

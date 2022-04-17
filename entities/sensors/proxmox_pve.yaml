@@ -1,0 +1,23 @@
+---
+##############################################################################################
+# RESTful Sensor
+# The rest sensor platform is consuming a given endpoint which is exposed by a RESTful API
+# of a device, an application, or a web service.
+#
+# URL:
+# - https://www.home-assistant.io/integrations/rest
+# - https://www.home-assistant.io/integrations/sensor.rest/
+#
+# name: sensor.proxmox_pve
+# info: This sensor will collect all VM's on the proxmox server.
+##############################################################################################
+
+platform: rest
+name: Proxmox - PVE
+resource: https://192.168.1.200:8006/api2/json/nodes/pve/status
+verify_ssl: false
+headers:
+  Authorization: !secret proxmoxve_pve_token
+value_template: "{{ value_json.data | is_defined | length > 0 }}"
+json_attributes:
+  - data

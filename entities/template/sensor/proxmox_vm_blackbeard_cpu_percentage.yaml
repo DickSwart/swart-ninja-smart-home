@@ -1,0 +1,19 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.proxmox_vm_blackbeard_cpu_percentage
+##############################################################################################
+
+name: "Proxmox VM: Blackbeard CPU Percentage"
+unique_id: c449f4ed-098e-4db1-93d3-60bed8772845
+unit_of_measurement: "%"
+state: >
+  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', '==','qemu/202') | first %}
+  {{ data.cpu | multiply(100) | round(2) if data != null}}
+availability: >
+  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') %}
+  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", "qemu/202") | first != null }}

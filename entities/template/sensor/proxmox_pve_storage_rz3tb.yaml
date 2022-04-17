@@ -1,0 +1,26 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.proxmox_pve_storage_rz3tb
+##############################################################################################
+
+name: "Proxmox PVE Storage: rz3TB"
+unique_id: proxmox_pve_storage_rz3tb
+unit_of_measurement: "%"
+icon: mdi:harddisk
+state: >
+  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', '==','storage/pve/rz3TB') | first %}
+  {{ (data.disk / data.maxdisk) | multiply(100) | round(2) if data != null }}
+attributes:
+  id: "storage/pve/rz3TB"
+  status: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','storage/pve/rz3TB') | map(attribute='status') | first | title }}"
+  used: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','storage/pve/rz3TB') | map(attribute='disk') | first | filesizeformat() }}"
+  size: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','storage/pve/rz3TB') | map(attribute='maxdisk') | first | filesizeformat() }}"
+
+availability: >
+  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') %}
+  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", 'storage/pve/rz3TB') | first != null }}

@@ -1,0 +1,5 @@
+---
+proxmox_cpu_temperature:
+  name: Proxmox CPU Temperature
+  min: 0
+  max: 200000

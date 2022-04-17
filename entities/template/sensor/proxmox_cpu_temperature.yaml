@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.proxmox_cpu_temperature
+##############################################################################################
+
+name: Proxmox CPU Temperature
+unique_id: proxmox_cpu_temperature
+device_class: temperature
+unit_of_measurement: °C
+state: >
+  {{ states("input_number.proxmox_cpu_temperature") | multiply(0.001) | round(1) }}

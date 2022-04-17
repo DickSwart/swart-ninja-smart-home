@@ -1,0 +1,25 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.proxmox_pve_hdd_percentage
+##############################################################################################
+
+name: "Proxmox PVE: HDD Percentage"
+unique_id: proxmox_pve_hdd_percentage
+unit_of_measurement: "%"
+icon: mdi:harddisk
+state: >
+  {% set data = state_attr('sensor.proxmox_pve', 'data') %}
+  {{ (data.rootfs.used / data.rootfs.total) | multiply(100) | round(2) }}
+attributes:
+  used: "{{ state_attr('sensor.proxmox_pve', 'data').rootfs.used | filesizeformat() }}"
+  free: "{{ state_attr('sensor.proxmox_pve', 'data').rootfs.free | filesizeformat() }}"
+  total: "{{ state_attr('sensor.proxmox_pve', 'data').rootfs.total | filesizeformat() }}"
+
+availability: >
+  {% set data = state_attr('sensor.proxmox_pve', 'data') %}
+  {{ data != null and data.rootfs != null and data.rootfs.total != null and data.rootfs.used != null and data.rootfs.free != null }}

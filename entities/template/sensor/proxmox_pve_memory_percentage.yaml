@@ -1,0 +1,24 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.proxmox_pve_memory_percentage
+##############################################################################################
+
+name: "Proxmox PVE: Memory Percentage"
+unique_id: proxmox_pve_memory_percentage
+unit_of_measurement: "%"
+state: >
+  {% set data = state_attr('sensor.proxmox_pve', 'data') %}
+  {{ (data.memory.used / data.memory.total) | multiply(100) | round(2) }}
+attributes:
+  used: "{{ state_attr('sensor.proxmox_pve', 'data').memory.used | filesizeformat() }}"
+  free: "{{ state_attr('sensor.proxmox_pve', 'data').memory.free | filesizeformat() }}"
+  total: "{{ state_attr('sensor.proxmox_pve', 'data').memory.total | filesizeformat() }}"
+
+availability: >
+  {% set data = state_attr('sensor.proxmox_pve', 'data') %}
+  {{ data != null and data.memory != null and data.memory.total != null and data.memory.used != null and data.memory.free != null }}

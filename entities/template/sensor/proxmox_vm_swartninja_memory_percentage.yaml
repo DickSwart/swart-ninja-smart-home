@@ -1,0 +1,19 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.proxmox_vm_swartninja_memory_percentage
+##############################################################################################
+
+name: "Proxmox VM: SwartNinja Memory Percentage"
+unique_id: 0a5cbf04-7b2e-470a-8de8-b5302f63116b
+unit_of_measurement: "%"
+state: >
+  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', '==','qemu/201') | first %}
+  {{ (data.mem / data.maxmem * 100) | float | round(2) if data != null }}
+availability: >
+  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') %}
+  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", "qemu/201") | first != null }}

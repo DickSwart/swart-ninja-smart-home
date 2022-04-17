@@ -1,26 +1,27 @@
-- id: '1649267960272'
-  alias: System Shutdown Notification
-  description: Send notification on Home Assistant stop
-  trigger:
-  - platform: homeassistant
-    event: shutdown
-  condition: []
-  action:
-  - service: notify.telegram_chat_id_swart_ninja_smart_home_group
-    data:
-      message: 👋 Home Assistant is shutting down... Bye!
-  mode: single
 - id: '1649268089255'
-  alias: System Start Notification
-  description: Send notification on Home Assistant start
+  alias: System Start/Shutdown Notification
+  description: Send notification on Home Assistant start and shutdown
   trigger:
   - platform: homeassistant
     event: start
+    id: hass-startup
+  - platform: homeassistant
+    event: shutdown
+    id: hass-shutdown
   condition: []
   action:
-  - service: notify.telegram_chat_id_swart_ninja_smart_home_group
-    data:
-      message: 🥳 Home Assistant is starting up again.
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: hass-startup
+      sequence:
+      - service: notify.telegram_chat_id_swart_ninja_smart_home_group
+        data:
+          message: 🥳 Home Assistant is starting up again.
+    default:
+    - service: notify.telegram_chat_id_swart_ninja_smart_home_group
+      data:
+        message: 👋 Home Assistant is shutting down... Bye!
   mode: single
 - id: '1649357383872'
   alias: 'Office Light On: Motion'
@@ -303,7 +304,7 @@
       switch: switch.d1mini_4_channel_relay_03
       phone_battery: sensor.dick_iphone_battery_level
       person_home: person.dick
-      discharged_percent: 30
+      discharged_percent: 45
 - id: '1649841335537'
   alias: Man Cave Light Off
   description: ''

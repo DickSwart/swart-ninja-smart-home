@@ -1,5 +1,5 @@
 blueprint:
-  name: Turn on light, switch, scene, script or group based on motion and illuminance.
+  name: Motion Illuminance Activated Entity.
   description: >
     Turn on a light, switch, scene, script or group based on motion detection, and low light level.
 

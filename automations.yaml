@@ -352,3 +352,40 @@
       target:
         entity_id: light.man_cave_bathroom_ceiling
   mode: single
+- id: '1650267675380'
+  alias: 'Man Cave Kitchen Light On: Motion'
+  description: ''
+  use_blueprint:
+    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    input:
+      motion_sensor: binary_sensor.man_cave_kitchen_zw100_multisensor_motion
+      target_entity: light.man_cave_kitchen_2gang_switch_one
+      illuminance_sensor: sensor.man_cave_kitchen_zw100_multisensor_luminance
+      illuminance_cutoff: 20
+      no_motion_wait: 10
+      blocker_entity: input_boolean.house_mode_away
+- id: '1650269467211'
+  alias: 'Ender 3: Auto Off'
+  description: Turn off the 3D Printer after 10 minutes when printing is done.
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.octoprint_printing
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  - platform: state
+    entity_id: binary_sensor.ender_3_octoprint
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  condition: []
+  action:
+  - service: script.shutdown_ender_3
+    data: {}
+  mode: single

@@ -1,7 +1,0 @@
----
-man_cave_kitchen_light_on_motion_automation_illuminance_cutoff:
-  name: "Man Cave Kitchen light on motion automation: Illuminance cutoff"
-  min: 0
-  max: 250
-  step: 1
-  unit_of_measurement: "lx"

@@ -1,87 +1,113 @@
 bathroom_lights_on_dimmed_or_full:
   alias: Bathroom Lights On Dimmed or Full
   sequence:
-    - choose:
-        - conditions:
-            - condition: time
-              after: input_datetime.bathroom_light_on_motion_automation_dim_after
-              before: input_datetime.bathroom_light_on_motion_automation_dim_before
-          sequence:
-            - service: light.turn_on
-              data:
-                brightness_pct: 30
-              target:
-                entity_id: light.bathroom_zw111_nano_dimmer
-      default:
-        - service: light.turn_on
-          data:
-            brightness_pct: 100
-          target:
-            entity_id: light.bathroom_zw111_nano_dimmer
+  - choose:
+    - conditions:
+      - condition: time
+        after: input_datetime.bathroom_light_on_motion_automation_dim_after
+        before: input_datetime.bathroom_light_on_motion_automation_dim_before
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness_pct: 30
+        target:
+          entity_id: light.bathroom_zw111_nano_dimmer
+    default:
+    - service: light.turn_on
+      data:
+        brightness_pct: 100
+      target:
+        entity_id: light.bathroom_zw111_nano_dimmer
   mode: single
   max_exceeded: silent
 hall_lights_on_dimmed_or_full:
   alias: Hall Lights On Dimmed or Full
   sequence:
-    - choose:
-        - conditions:
-            - condition: time
-              after: input_datetime.hall_light_on_motion_automation_dim_after
-              before: input_datetime.hall_light_on_motion_automation_dim_before
-          sequence:
-            - service: light.turn_on
-              data:
-                brightness_pct: 30
-              target:
-                entity_id: light.hall_zw111_nano_dimmer
-      default:
-        - service: light.turn_on
-          data:
-            brightness_pct: 100
-          target:
-            entity_id: light.hall_zw111_nano_dimmer
+  - choose:
+    - conditions:
+      - condition: time
+        after: input_datetime.hall_light_on_motion_automation_dim_after
+        before: input_datetime.hall_light_on_motion_automation_dim_before
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness_pct: 30
+        target:
+          entity_id: light.hall_zw111_nano_dimmer
+    default:
+    - service: light.turn_on
+      data:
+        brightness_pct: 100
+      target:
+        entity_id: light.hall_zw111_nano_dimmer
   mode: single
   max_exceeded: silent
 living_room_lights_on_main_or_secondary:
   alias: Living Room Lights On Main or Secondary
   sequence:
-    - choose:
-        - conditions:
-            - condition: time
-              after: input_datetime.living_room_light_on_motion_automation_secondary_after
-              before: input_datetime.living_room_light_on_motion_automation_secondary_before
-          sequence:
-            - service: light.turn_on
-              data:
-                brightness_pct: 30
-                transition: 10
-                color_temp: 365
-              target:
-                entity_id: light.living_room_mood
-      default:
-        - service: light.turn_on
-          data: {}
-          target:
-            entity_id: light.living_room_ceiling
+  - choose:
+    - conditions:
+      - condition: time
+        after: input_datetime.living_room_light_on_motion_automation_secondary_after
+        before: input_datetime.living_room_light_on_motion_automation_secondary_before
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness_pct: 30
+          transition: 10
+          color_temp: 365
+        target:
+          entity_id: light.living_room_mood
+    default:
+    - service: light.turn_on
+      data: {}
+      target:
+        entity_id: light.living_room_ceiling
   mode: single
   max_exceeded: silent
 kitchen_lights_on_main_or_secondary:
   alias: Kitchen Lights On Main or Secondary
   sequence:
-    - choose:
-        - conditions:
-            - condition: time
-              after: input_datetime.kitchen_light_on_motion_automation_secondary_after
-              before: input_datetime.kitchen_light_on_motion_automation_secondary_before
-          sequence:
-            - service: light.turn_on
-              data: {}
-              target:
-                entity_id: light.kitchen_side
-      default:
-        - service: light.turn_on
-          data: {}
-          target:
-            entity_id: light.kitchen_ceiling
+  - choose:
+    - conditions:
+      - condition: time
+        after: input_datetime.kitchen_light_on_motion_automation_secondary_after
+        before: input_datetime.kitchen_light_on_motion_automation_secondary_before
+      sequence:
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.kitchen_side
+    default:
+    - service: light.turn_on
+      data: {}
+      target:
+        entity_id: light.kitchen_ceiling
   mode: single
   max_exceeded: silent
+shutdown_ender_3:
+  alias: Shutdown Ender 3
+  sequence:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: switch.ender_3
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.octoprint_printing
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.octoprint_printing
+        state: unavailable
+  - service: rest_command.shutdown_octoprint
+    data:
+      ip: 192.168.1.204
+  - wait_template: '{{ is_state(''binary_sensor.ender_3_octoprint'', ''off'') }}'
+    timeout: 00:05:00
+    continue_on_timeout: false
+  - delay: 00:00:05
+  - service: switch.turn_off
+    entity_id: switch.ender_3
+  mode: single

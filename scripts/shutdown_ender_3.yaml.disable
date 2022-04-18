@@ -6,9 +6,14 @@ sequence:
       - condition: state
         entity_id: switch.ender_3
         state: "on"
-      - condition: state
-        entity_id: binary_sensor.octoprint_printing
-        state: "off"
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: binary_sensor.octoprint_printing
+            state: "off"
+          - condition: state
+            entity_id: binary_sensor.octoprint_printing
+            state: unavailable
   - service: rest_command.shutdown_octoprint
     data:
       ip: !secret octoprint_host

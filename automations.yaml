@@ -364,6 +364,9 @@
       illuminance_cutoff: 20
       no_motion_wait: 10
       blocker_entity: input_boolean.house_mode_away
+      target_off_entity:
+      - light.man_cave_kitchen_2gang_switch_one
+      - light.man_cave_kitchen_3gang_switch_two
 - id: '1650269467211'
   alias: 'Ender 3: Auto Off'
   description: Turn off the 3D Printer after 10 minutes when printing is done.
@@ -388,4 +391,83 @@
   action:
   - service: script.shutdown_ender_3
     data: {}
+  mode: single
+- id: '1650322245522'
+  alias: 'Man Cave Kitchen Light Two: Auto Off'
+  description: Turn Off kitchen light two if light one has been on for 10min
+  trigger:
+  - platform: state
+    entity_id: light.man_cave_kitchen_2gang_switch_one
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  - platform: state
+    entity_id: light.man_cave_kitchen_3gang_switch_two
+    to: 'on'
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: light.man_cave_kitchen_3gang_switch_two
+    state: 'on'
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.man_cave_kitchen_3gang_switch_two
+  mode: single
+- id: '1650329838216'
+  alias: Office Door
+  description: Lock Office Door When Everyone Leaves and unlock when home
+  trigger:
+  - platform: state
+    entity_id: input_boolean.house_mode_away
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.house_mode_away
+        state: 'on'
+      sequence:
+      - service: cover.close_cover
+        data: {}
+        target:
+          entity_id: cover.office_door_system_cover
+      - wait_for_trigger:
+        - platform: state
+          entity_id: cover.office_door_system_cover
+          to: closed
+          for:
+            hours: 0
+            minutes: 0
+            seconds: 5
+        timeout: '30'
+      - service: lock.lock
+        data: {}
+        target:
+          entity_id: lock.office_door_system_lock
+    default:
+    - service: lock.unlock
+      data: {}
+      target:
+        entity_id: lock.office_door_system_lock
+    - wait_for_trigger:
+      - platform: state
+        entity_id: lock.office_door_system_lock
+        to: unlocked
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 5
+      timeout: '30'
+      continue_on_timeout: false
+    - service: cover.open_cover
+      data: {}
+      target:
+        entity_id: cover.office_door_system_cover
   mode: single

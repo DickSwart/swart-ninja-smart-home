@@ -3,13 +3,15 @@ blueprint:
   description: >
     Turn on a light, switch, scene, script or group based on motion detection, and low light level.
 
-    This blueprint uses helper entities you have to create yourself for some input values, to be able to dynamically set limits.
+    This blueprint uses helper entities you have to create yourself for some input values, to be able to dynamically set limits. 
     For instructions on creating the helper entities take a look in the Home Assistant Community forum topic:
     https://community.home-assistant.io/t/turn-on-light-switch-scene-or-script-based-on-motion-and-illuminance-more-conditions/257085
+
 
     Required entities:
       - Motion sensor (single sensor or group)
       - Target entity (light, switch, scene or script)
+
 
     Optional features:
 
@@ -21,13 +23,22 @@ blueprint:
     - If you want another entity than the target_entity to turn off after the delay, you can define a separate Turn-off entity.
     - If you do not enable the optional entities the automation will skip these conditions.
 
+
+
     Optional entities:
+
     - Illuminance sensor (sensor in illuminance class)
+
     - Illuminance cutoff value  (input_number)
+
     - Blocking entity (any entity with state on/off)
+
     - Time limit before (input_datetime)
+
     - Time limit after (input_datetime)
+
     - Turn off wait time (input_number defining amount in minutes)
+
     - Turn off entity (any entity_id that needs to be turned off after wait)
 
   domain: automation
@@ -143,7 +154,8 @@ condition:
       ( target_entity_domain_supports_on_state_check and is_state(target_entity, 'on') ) or
       ( target_entity_domain_supports_on_state_check and is_state(target_entity, 'off') and not illuminance_defined) or
       ( target_entity_domain_supports_on_state_check and is_state(target_entity, 'off') and illuminance_defined_and_low) or
-      (not target_entity_domain_supports_on_state_check and illuminance_defined_and_low)
+      ( not target_entity_domain_supports_on_state_check and illuminance_defined_and_low ) or
+      ( not target_entity_domain_supports_on_state_check and not illuminance_defined )
       }}
   - condition: template
     value_template: "{{ (blocker_entity == none) or is_state(blocker_entity, 'off') }}"

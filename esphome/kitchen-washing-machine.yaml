@@ -1,0 +1,20 @@
+---
+# Device: Sonoff POW 374EE5
+
+### substitutions values ###
+# switch_restore_mode:
+# - RESTORE_DEFAULT_OFF (Default) - Attempt to restore state and default to OFF if not possible to restore.
+# - RESTORE_DEFAULT_ON - Attempt to restore state and default to ON.
+# - ALWAYS_OFF - Always initialize the pin as OFF on bootup.
+# - ALWAYS_ON - Always initialize the pin as ON on bootup.
+
+substitutions:
+  node_id: "374EE5"
+  node_name: kitchen-washing-machine
+  device_verbose_name: Kitchen Washing Machine
+  switch_icon: mdi:washing-machine
+  switch_restore_mode: ALWAYS_ON
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/sonoff_pow_r1_base_switch.yaml

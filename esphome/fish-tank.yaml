@@ -1,0 +1,91 @@
+---
+substitutions:
+  device_verbose_name: Fish Tank
+  node_comment: "Fish Tank"
+  node_name: fish-tank
+  switch_icon: mdi:fishbowl
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/esp32_base.yaml
+
+switch:
+  # Relay 4 - GPIO32
+  - platform: gpio
+    icon: mdi:light-switch
+    name: ${device_verbose_name} Relay 04
+    pin: GPIO32
+    id: switch_relay04
+    restore_mode: RESTORE_DEFAULT_OFF
+  # Relay 3 - GPIO33
+  - platform: gpio
+    icon: mdi:light-switch
+    name: ${device_verbose_name} Relay 03
+    pin: GPIO33
+    id: switch_relay03
+    restore_mode: RESTORE_DEFAULT_OFF
+  # Relay 2 - GPIO25
+  - platform: gpio
+    icon: mdi:light-switch
+    name: ${device_verbose_name} Relay 02
+    pin: GPIO25
+    id: switch_relay02
+    restore_mode: ALWAYS_ON
+  # Relay 1 - GPIO26
+  - platform: gpio
+    icon: mdi:light-switch
+    name: ${device_verbose_name} Relay 01
+    pin: GPIO26
+    id: switch_relay01
+    restore_mode: ALWAYS_ON
+
+binary_sensor:
+  # Light Toggle Switch - GPIO23
+  - platform: gpio
+    id: switch_light_toggle
+    pin:
+      number: GPIO23
+      inverted: true
+      mode: INPUT_PULLUP
+    name: ${device_verbose_name} Switch
+    internal: true
+    on_state:
+      then:
+        - light.toggle: light_main_led_strip
+  # Water Level - GPIO21
+  - platform: gpio
+    name: ${device_verbose_name} Water Level
+    device_class: safety
+    pin:
+      number: GPIO21
+      mode: INPUT_PULLUP
+      inverted: true
+
+light:
+  # White Leds
+  - platform: monochromatic
+    name: ${device_verbose_name} Main Light
+    output: output_main_led_strip
+    id: light_main_led_strip
+  # # Colour Leds
+  # - platform: fastled_clockless
+  #   chipset: WS2811
+  #   pin: GPIO14
+  #   num_leds: 20
+  #   rgb_order: BRG
+  #   name: ${device_verbose_name} Colour Light
+  #   effects:
+  #     - random:
+
+output:
+  - platform: ledc
+    id: output_main_led_strip
+    pin: GPIO27
+
+dallas:
+  - pin: GPIO22
+
+sensor:
+  - platform: dallas
+    address: 0x9F0300A279252C28
+    name: ${device_verbose_name} Temperature

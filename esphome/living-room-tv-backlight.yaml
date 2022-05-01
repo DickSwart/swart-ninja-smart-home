@@ -1,0 +1,29 @@
+---
+substitutions:
+  node_id: "53474A"
+  node_name: living-room-tv-backlight
+  device_verbose_name: Living Room TV Backlight
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/nodemcu_base.yaml
+
+light:
+  - platform: neopixelbus
+    type: BRG
+    variant: WS2811
+    pin: D5
+    num_leds: 76
+    name: ${device_verbose_name}
+    effects:
+      - random:
+      - strobe:
+  # - platform: fastled_clockless
+  #   chipset: WS2811
+  #   pin: D5
+  #   num_leds: 76
+  #   rgb_order: BRG
+  #   name: ${device_verbose_name}
+  #   effects:
+  #     - random:
+  #     - strobe:

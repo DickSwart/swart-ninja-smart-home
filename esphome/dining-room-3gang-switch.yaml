@@ -1,0 +1,193 @@
+---
+# Top Button
+#   - Tripple:  Restart
+#   - Double:   Send event (BTN_TOP_DOUBLE)
+#   - Long:     Send event (BTN_TOP_LONG)
+#   - Single:   Toggle Relay 1
+# Middle Button
+#   - Double:   Send event (BTN_MIDDLE_DOUBLE)
+#   - Long:     Send event (BTN_MIDDLE_LONG)
+#   - Single:   Toggle Relay 2
+# Bottom Button
+#   - Double:   Open Dining Room Curtains
+#   - Long:     Close Dining Room Curtains
+#   - Single:   Stop Dining Room Curtains or Toggle Relay 3, if API not available
+
+# Available Outputs
+# - relay01
+# - relay02
+# - relay03
+
+substitutions:
+  node_name: dining-room-3gang-switch
+  node_id: "48A182"
+  device_verbose_name: Dining Room 3Gang Switch
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/zemismart_ks811_3gang_basic.yaml
+
+binary_sensor:
+  # Top
+  - platform: gpio
+    id: button_top
+    pin:
+      number: GPIO16
+      mode: INPUT
+      inverted: true
+    on_multi_click:
+      - timing:
+          - ON for at most 1s
+          - OFF for at most 1s
+          - ON for at most 1s
+          - OFF for at most 1s
+          - ON for at most 1s
+          - OFF for at least 0.2s
+        then:
+          - logger.log: "Tripple Clicked"
+          - switch.toggle: switch_restart
+      - timing:
+          - ON for at most 1s
+          - OFF for at most 1s
+          - ON for at most 1s
+          - OFF for at least 0.2s
+        then:
+          - logger.log: "Double Clicked"
+          - if:
+              condition:
+                api.connected:
+              then:
+                - homeassistant.event:
+                    event: esphome.${node_name}
+                    data:
+                      data: BTN_TOP_DOUBLE
+      - timing:
+          - ON for at least 1.1s
+          - OFF for at least 0.5s
+        then:
+          - logger.log: "Single Long Clicked"
+          - if:
+              condition:
+                api.connected:
+              then:
+                - homeassistant.event:
+                    event: esphome.${node_name}
+                    data:
+                      data: BTN_TOP_LONG
+      - timing:
+          - ON for at most 1s
+          - OFF for at least 0.5s
+        then:
+          - logger.log: "Single Short Clicked"
+          - light.toggle: light_top
+  # Middle
+  - platform: gpio
+    id: button_middle
+    pin:
+      number: GPIO5
+      mode: INPUT
+      inverted: true
+    on_multi_click:
+      - timing:
+          - ON for at most 1s
+          - OFF for at most 1s
+          - ON for at most 1s
+          - OFF for at least 0.2s
+        then:
+          - logger.log: "Double Clicked"
+          - if:
+              condition:
+                api.connected:
+              then:
+                - homeassistant.event:
+                    event: esphome.${node_name}
+                    data:
+                      data: BTN_MIDDLE_DOUBLE
+      - timing:
+          - ON for at least 1.1s
+          - OFF for at least 0.5s
+        then:
+          - logger.log: "Single Long Clicked"
+          - if:
+              condition:
+                api.connected:
+              then:
+                - homeassistant.event:
+                    event: esphome.${node_name}
+                    data:
+                      data: BTN_MIDDLE_LONG
+      - timing:
+          - ON for at most 1s
+          - OFF for at least 0.5s
+        then:
+          - logger.log: "Single Short Clicked"
+          - light.toggle: light_middle
+  # Bottom
+  - platform: gpio
+    id: button_bottom
+    pin:
+      number: GPIO4
+      mode: INPUT
+      inverted: true
+    on_multi_click:
+      - timing:
+          - ON for at most 1s
+          - OFF for at most 1s
+          - ON for at most 1s
+          - OFF for at least 0.2s
+        then:
+          - logger.log: "Double Clicked"
+          - if:
+              condition:
+                api.connected:
+              then:
+                # Open Dining Room Curtains
+                - homeassistant.service:
+                    service: cover.open_cover
+                    data:
+                      entity_id: cover.dining_room_curtains
+      - timing:
+          - ON for at least 1.1s
+          - OFF for at least 0.5s
+        then:
+          - logger.log: "Single Long Clicked"
+          - if:
+              condition:
+                api.connected:
+              then:
+                # Close Dining Room Curtains
+                - homeassistant.service:
+                    service: cover.close_cover
+                    data:
+                      entity_id: cover.dining_room_curtains
+      - timing:
+          - ON for at most 1s
+          - OFF for at least 0.5s
+        then:
+          - logger.log: "Single Short Clicked"
+          - if:
+              condition:
+                api.connected:
+              then:
+                # Stop Dining Room Curtains
+                - homeassistant.service:
+                    service: cover.stop_cover
+                    data:
+                      entity_id: cover.dining_room_curtains
+              else:
+                - switch.toggle: switch_relay03
+
+light:
+  - platform: binary
+    name: Dining Room Ceiling
+    output: relay01
+    id: light_top
+  - platform: binary
+    name: Backyard
+    output: relay02
+    id: light_middle
+
+switch:
+  - platform: output
+    id: switch_relay03
+    output: relay03

@@ -1,0 +1,42 @@
+---
+# Device: D1Mini 14B847
+substitutions:
+  node_id: "14C243"
+  node_name: door-window-sensors-14c243
+  device_verbose_name: Door and Window Sensors 14C243
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/d1mini_base.yaml
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: D1
+      inverted: true
+    name: Man Cave Back Door
+    device_class: door
+  - platform: gpio
+    pin:
+      number: D2
+      inverted: true
+    name: Man Cave Stairs Door
+    device_class: door
+  - platform: gpio
+    pin:
+      number: D5
+      inverted: true
+    name: Office Window One
+    device_class: window
+  - platform: gpio
+    pin:
+      number: D6
+      inverted: true
+    name: Office Window Two
+    device_class: window
+# - platform: gpio
+#   pin:
+#     number: D7
+#     inverted: true
+#   name: ${device_verbose_name} Door
+#   device_class: window

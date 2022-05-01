@@ -1,9 +1,0 @@
----
-substitutions:
-  node_id: 22FCC1
-  node_name: frontdoor_ceiling
-  device_verbose_name: Front Door Ceiling
-
-packages:
-  wifi: !include common/wifi/not.yaml
-  device_base: !include common/shelly_1_base.yaml

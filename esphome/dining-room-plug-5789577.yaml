@@ -1,0 +1,19 @@
+---
+### substitutions values ###
+# switch_restore_mode:
+# - RESTORE_DEFAULT_OFF (Default) - Attempt to restore state and default to OFF if not possible to restore.
+# - RESTORE_DEFAULT_ON - Attempt to restore state and default to ON.
+# - ALWAYS_OFF - Always initialize the pin as OFF on bootup.
+# - ALWAYS_ON - Always initialize the pin as ON on bootup.
+
+substitutions:
+  node_id: "5789577"
+  node_name: dining-room-plug-5789577
+  device_verbose_name: Dining Room Plug 5789577
+  switch_icon: mdi:power-socket-au
+  plug_01_restore_mode: RESTORE_DEFAULT_OFF
+  plug_02_restore_mode: RESTORE_DEFAULT_OFF
+
+packages:
+  wifi: !include common/wifi/not.yaml
+  device_base: !include common/delta_grid_smart_plug_base.yaml

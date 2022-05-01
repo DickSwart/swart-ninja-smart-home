@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-switch.bathroom_extractor_fan:
+fan.bathroom_fan:
   name: Bathroom Fan
   description: The extractor fan in the bathroom.
   display_categories: FAN

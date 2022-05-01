@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-cover.dining_room_curtains:
-  name: Dining Room Curtains
-  description: The dining room curtains.
+cover.dining_room_corner_curtain:
+  name: Dining Room Corner Curtain
+  description: The dining room corner curtain.
   display_categories: INTERIOR_BLIND

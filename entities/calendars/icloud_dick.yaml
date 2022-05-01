@@ -1,6 +1,14 @@
 ---
 ##############################################################################################
-# EntityID: camera.byc
+# CalDAV
+# The caldav platform allows you to connect to your WebDAV calendar and generate
+# binary sensors.
+#
+# URL: https://www.home-assistant.io/integrations/caldav/#basic-setup
+#
+# EntityID's:
+# - calendar.family_all
+# - calendar.family_school_holiday
 ##############################################################################################
 platform: caldav
 username: !secret icloud_dick_email

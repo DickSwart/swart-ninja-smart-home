@@ -114,7 +114,7 @@ blueprint:
     target_off_entity:
       name: (OPTIONAL) Turn-off entity
       description: If defined, this entity will be turned off instead of the default target entity. This can be helpful when using target entities of type scene or script.
-      default:
+      default: []
       selector:
         entity:
           domain:
@@ -136,6 +136,11 @@ variables:
   entity_domain: "{{ states[target_entity].domain }}"
   turn_off_blocker_entity: !input turn_off_blocker_entity
   target_off_entity: !input target_off_entity
+  target_off_entity_that_is_on: >
+    {{ expand(target_off_entity)
+      | selectattr("state", "eq", "on") 
+      | map(attribute='entity_id')
+      | list }}
 
 trigger:
   platform: state
@@ -143,7 +148,8 @@ trigger:
   to: "on"
 
 condition:
-  # First condition: When entity was already on because the automation ran recently, do not check illuminance because it could have increased above threshold because of a light that was just turned on.
+  # First condition: When entity was already on because the automation ran recently,
+  # do not check illuminance because it could have increased above threshold because of a light that was just turned on.
   - condition: template
     value_template: >
       {% set illuminance_defined = illuminance_currently != none and illuminance_cutoff != -1  %}
@@ -154,6 +160,7 @@ condition:
       ( target_entity_domain_supports_on_state_check and is_state(target_entity, 'on') ) or
       ( target_entity_domain_supports_on_state_check and is_state(target_entity, 'off') and not illuminance_defined) or
       ( target_entity_domain_supports_on_state_check and is_state(target_entity, 'off') and illuminance_defined_and_low) or
+      ( not target_entity_domain_supports_on_state_check and target_off_entity_that_is_on | length > 0 ) or
       ( not target_entity_domain_supports_on_state_check and illuminance_defined_and_low ) or
       ( not target_entity_domain_supports_on_state_check and not illuminance_defined )
       }}

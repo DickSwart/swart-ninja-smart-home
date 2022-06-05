@@ -27,68 +27,68 @@
   alias: 'Office Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity.yaml
+    path: swartninja/motion_illuminance_activated_entity_v2.yaml
     input:
       motion_sensor: binary_sensor.office_motion
       target_entity: light.office_ceiling
       illuminance_sensor: sensor.office_zw100_multisensor_luminance
-      illuminance_cutoff: input_number.office_light_on_motion_automation_illuminance_cutoff
+      illuminance_cutoff: 20
+      no_motion_wait: 5
       blocker_entity: input_boolean.house_mode_away
-      no_motion_wait: input_number.office_light_on_motion_automation_no_motion_wait
       target_off_entity: []
 - id: '1649365144329'
   alias: 'Hall Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity.yaml
+    path: swartninja/motion_illuminance_activated_entity_v2.yaml
     input:
       motion_sensor: binary_sensor.hall_motion
       target_entity: script.hall_lights_on_dimmed_or_full
       illuminance_sensor: sensor.hall_multisensor_luminance
-      illuminance_cutoff: input_number.hall_light_on_motion_automation_illuminance_cutoff
+      illuminance_cutoff: 6
       blocker_entity: input_boolean.house_mode_away
-      no_motion_wait: input_number.hall_light_on_motion_automation_no_motion_wait
+      no_motion_wait: 2
       target_off_entity:
       - light.hall_zw111_nano_dimmer
 - id: '1649366156716'
   alias: 'Bathroom Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity.yaml
+    path: swartninja/motion_illuminance_activated_entity_v2.yaml
     input:
       motion_sensor: binary_sensor.bathroom_motion
       target_entity: script.bathroom_lights_on_dimmed_or_full
       illuminance_sensor: sensor.bathroom_multisensor_luminance
-      illuminance_cutoff: input_number.bathroom_light_on_motion_automation_illuminance_cutoff
+      illuminance_cutoff: 20
       blocker_entity: input_boolean.house_mode_away
-      no_motion_wait: input_number.bathroom_light_on_motion_automation_no_motion_wait
+      no_motion_wait: 3
       target_off_entity:
       - light.bathroom_zw111_nano_dimmer
 - id: '1649376556972'
   alias: 'Man Cave Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity.yaml
+    path: swartninja/motion_illuminance_activated_entity_v2.yaml
     input:
       motion_sensor: binary_sensor.man_cave_motion
       target_entity: light.man_cave_ceiling
       illuminance_sensor: sensor.man_cave_multisensor_luminance
-      illuminance_cutoff: input_number.man_cave_light_on_motion_automation_illuminance_cutoff
+      illuminance_cutoff: 80
       blocker_entity: binary_sensor.man_cave_light_automation_blocking_entity
-      no_motion_wait: input_number.man_cave_light_on_motion_automation_no_motion_wait
+      no_motion_wait: 5
       turn_off_blocker_entity: binary_sensor.panasonic_tv
 - id: '1649491949914'
   alias: 'Living Room Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity.yaml
+    path: swartninja/motion_illuminance_activated_entity_v2.yaml
     input:
       motion_sensor: binary_sensor.living_room_motion
       target_entity: script.living_room_lights_on_main_or_secondary
       illuminance_sensor: sensor.living_room_luminance
-      illuminance_cutoff: input_number.living_room_light_on_motion_automation_illuminance_cutoff
+      illuminance_cutoff: 30
       blocker_entity: binary_sensor.living_room_light_automation_blocking_entity
-      no_motion_wait: input_number.living_room_light_on_motion_automation_no_motion_wait
+      no_motion_wait: 10
       turn_off_blocker_entity: media_player.living_room_television
       target_off_entity:
       - light.living_room_mood
@@ -97,21 +97,21 @@
   alias: 'Kitchen Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity.yaml
+    path: swartninja/motion_illuminance_activated_entity_v2.yaml
     input:
       motion_sensor: binary_sensor.kitchen_motion
       target_entity: script.kitchen_lights_on_main_or_secondary
       illuminance_sensor: sensor.kitchen_multisensor_luminance
-      illuminance_cutoff: input_number.kitchen_light_on_motion_automation_illuminance_cutoff
+      illuminance_cutoff: 30
       blocker_entity: input_boolean.house_mode_away
-      no_motion_wait: input_number.kitchen_light_on_motion_automation_no_motion_wait
+      no_motion_wait: 3
       turn_off_blocker_entity: media_player.kitchen_apple_tv
       target_off_entity:
       - light.kitchen_ceiling
       - light.kitchen_side
 - id: '1649530119015'
   alias: Kitchen Cupboard LED's
-  description: ''
+  description: 'Turn on and off kitchen cupboard LED''s '
   trigger:
   - platform: state
     entity_id: sun.sun
@@ -141,60 +141,14 @@
       target:
         entity_id: light.kitchen_cupboard
   mode: single
-- id: '1649540903378'
-  alias: .Automation Test
-  description: ''
-  trigger:
-  - platform: template
-    value_template: '{{ is_state(''binary_sensor.office_motion'', ''off'') }}'
-    for:
-      minutes: '{{ states[no_motion_wait].state | int(0) }}'
-  condition:
-  - condition: state
-    entity_id: automation.bathroom_light
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 0
-    state: 'on'
-  action:
-  - service: notify.mobile_app_dick_iphone
-    data:
-      message: Test Office No Motion
-  trigger_variables:
-    no_motion_wait: input_number.office_light_automation_turn_off_wait_time
-  variables:
-    target_entity: script.kitchen_lights_on_main_or_secondary
-    illuminance_currently: sensor.kitchen_multisensor_luminance
-    illuminance_cutoff: input_number.kitchen_light_automation_illuminance_cutoff
-    blocker_entity: input_boolean.house_mode_away
-    time_limit_before:
-    time_limit_after:
-    entity_domain: '{{ states[target_entity].domain }}'
-    turn_off_blocker_entity: media_player.kitchen_apple_tv
-    target_off_entity: script.kitchen_lights_off
-  mode: restart
-  max_exceeded: silent
-- id: '1649558220358'
-  alias: .BluePrint Test
-  description: ''
-  use_blueprint:
-    path: swartninja/lights_off_no_motion.yaml
-    input:
-      motion_entity: binary_sensor.office_motion
-      automation_entity: automation.office_light_on_motion
-      light_target:
-        entity_id:
-        - light.office_ceiling
-        - light.office_shelf
-      no_motion_wait: input_number.office_light_automation_turn_off_wait_time
 - id: '1649647741261'
   alias: Office Light Off
   description: ''
   use_blueprint:
-    path: swartninja/auto_light_off.yaml
+    path: swartninja/auto_light_off_illuminance.yaml
     input:
-      trigger_entity: binary_sensor.office_light_off_automation_trigger_entity
+      illuminance_sensor: sensor.office_zw100_multisensor_luminance
+      illuminance_cutoff: 80
       target_off_entities:
       - light.office_ceiling
       - light.office_shelf
@@ -210,8 +164,7 @@
   condition:
   - condition: template
     value_template: '{{ (states(''sensor.hall_multisensor_luminance'') | int(0) <
-      states(''input_number.hall_light_on_motion_automation_illuminance_cutoff'')
-      | int(0)) and is_state(''light.hall_zw111_nano_dimmer'', ''off'') }}'
+      10 ) and is_state(''light.hall_zw111_nano_dimmer'', ''off'') }}'
   action:
   - service: light.turn_on
     data:
@@ -219,8 +172,10 @@
     target:
       entity_id: light.hall_zw111_nano_dimmer
   - delay:
-      minutes: '{{ states(''input_number.hall_light_on_motion_automation_no_motion_wait'')
-        | int(0) }}'
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
   - wait_template: '{{ is_state(''binary_sensor.hall_motion'', ''off'') }}'
   - service: light.turn_off
     data: {}
@@ -231,19 +186,19 @@
   alias: 'Front Door Light On: Motion'
   description: ''
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity.yaml
+    path: swartninja/motion_illuminance_activated_entity_v2.yaml
     input:
       motion_sensor: binary_sensor.fdc_motion
       target_entity: light.front_door_ceiling
       blocker_entity: binary_sensor.front_door_light_on_motion_automation_blocking_entity
-      no_motion_wait: input_number.front_door_light_on_motion_automation_no_motion_wait
+      no_motion_wait: 2
 - id: '1649811322196'
   alias: Update notifications
   description: ''
   use_blueprint:
     path: swartninja/update_notifications.yaml
     input:
-      reminder_hours: '1'
+      reminder_hours: '12'
       update_entities:
       - update.home_assistant_supervisor_update
       - update.home_assistant_core_update
@@ -292,6 +247,13 @@
       - update.uptime_card_update
       - update.terminal_ssh_update
       - update.template_entity_row_update
+      - update.multiple_entity_row_update
+      - update.pi_hole_core_update_available
+      - update.pi_hole_fallback_core_update_available
+      - update.pi_hole_fallback_ftl_update_available
+      - update.pi_hole_fallback_web_update_available
+      - update.pi_hole_ftl_update_available
+      - update.pi_hole_web_update_available
       mobile_app_device: 53b65c3460f56fbb2eb507ff241c47e4
       send_to_ha: true
       run_config_check: true
@@ -470,4 +432,79 @@
       data: {}
       target:
         entity_id: cover.office_door_system_cover
+  mode: single
+- id: '1651262763041'
+  alias: Living room - TV
+  description: Turn on and off motion lights automation based on TV
+  trigger:
+  - platform: state
+    entity_id: media_player.living_room_television
+  condition:
+  - condition: state
+    entity_id: input_boolean.house_mode_away
+    state: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: media_player.living_room_television
+        state: 'on'
+      sequence:
+      - service: automation.turn_off
+        data: {}
+        target:
+          entity_id: automation.living_room_light_on_motion
+    default:
+    - service: automation.turn_on
+      data: {}
+      target:
+        entity_id: automation.living_room_light_on_motion
+  mode: single
+- id: '1651516698196'
+  alias: 'Front Door Light On: Presence'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.presence_location_dick
+    to: Home
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  - platform: state
+    entity_id: sensor.presence_location_tamara
+    to: Home
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition:
+  - condition: state
+    entity_id: binary_sensor.dark_outside
+    state: 'on'
+  - condition: state
+    entity_id: light.front_door_ceiling
+    state: 'off'
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.front_door_ceiling
+  - wait_for_trigger:
+    - platform: state
+      entity_id: binary_sensor.hall_multisensor_door
+      from: 'on'
+      to: 'off'
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 30
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.front_door_ceiling
   mode: single

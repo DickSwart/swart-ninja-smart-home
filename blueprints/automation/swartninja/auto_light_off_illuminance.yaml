@@ -1,0 +1,81 @@
+blueprint:
+  name: Turn off light, switch, based on illuminance.
+
+  domain: automation
+  input:
+    illuminance_sensor:
+      name: Illuminance sensor
+      description: This sensor will be used to determine the illumination.
+      default:
+      selector:
+        entity:
+          domain: sensor
+          device_class: illuminance
+    illuminance_cutoff:
+      name: Illuminance cutoff value
+      description: This value will be used to compare to the current illumination to determine if it is high.
+      selector:
+        number:
+          min: 0
+          max: 500
+          unit_of_measurement: lx
+    automation_entity:
+      name: (OPTIONAL) Linked Automation
+      default:
+      selector:
+        entity:
+          domain: automation
+    blocker_entity:
+      name: (OPTIONAL) Blocking entity
+      description: If this entity's state is on, it will prevent the automation from running. E.g. sleepmode or away mode.
+      default:
+      selector:
+        entity:
+          domain:
+            - binary_sensor
+            - input_boolean
+    target_off_entities:
+      name: Turn-off entity
+      description: If defined, this entity will be turned off instead of the default target entity. This can be helpful when using target entities of type scene or script.
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+          multiple: true
+
+mode: restart
+max_exceeded: silent
+
+variables:
+  blocker_entity: !input blocker_entity
+  automation_entity: !input automation_entity
+  target_off_entities: !input target_off_entities
+  target_off_entity_that_is_on: >
+    {{ expand(target_off_entities)
+      | selectattr("state", "eq", "on") 
+      | map(attribute='entity_id')
+      | list }}
+
+trigger:
+  - platform: numeric_state
+    entity_id: !input illuminance_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 20
+    above: !input illuminance_cutoff
+
+condition:
+  - condition: template
+    value_template: >
+      {{ target_off_entity_that_is_on | length > 0 }}
+  - condition: template
+    value_template: "{{ (blocker_entity == none) or is_state(blocker_entity, 'off') }}"
+  - condition: template
+    value_template: "{{ (automation_entity == none) or is_state(automation_entity, 'on') }}"
+
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: "{{ target_off_entity_that_is_on }}"

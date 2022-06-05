@@ -107,7 +107,7 @@ mode: parallel
 max: 100
 trigger_variables:
   _reminder_hours: !input reminder_hours
-  reminder_hours: "{{ _reminder_hours | default(0) | int }}"
+  reminder_hours: "{{ _reminder_hours | default(0) | int(0) }}"
   run_config_check: !input run_config_check
   update_entities: !input update_entities
 trigger:

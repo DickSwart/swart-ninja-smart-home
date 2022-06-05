@@ -8,8 +8,9 @@
 # Device: D1 Mini 14C243 door-window-sensor
 # EntityID: binary_sensor.downstairs_door_and_window_sensors_wifi
 ##############################################################################################
-platform: mqtt
+
 name: Downstairs Door And Window Sensors WiFi
+unique_id: downstairs_door_and_window_sensors_wifi
 state_topic: 14C243/sensor/wifi
 unit_of_measurement: "%"
 availability_topic: 14C243/status

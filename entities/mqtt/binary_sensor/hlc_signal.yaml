@@ -6,15 +6,16 @@
 #
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
-# Device: Backyard Camera
-# EntityID: binary_sensor.byc_signal
+# Device: Hall Camera
+# EntityID: binary_sensor.hlc_signal
 ##############################################################################################
-platform: mqtt
-name: BYC Signal
-state_topic: BlueIris/BYC/signal
+
+name: HLC Signal
+unique_id: hlc_signal
+state_topic: BlueIris/HLC/signal
 value_template: "{{ value_json.state }}"
 payload_on: "ON"
 payload_off: "OFF"
 device_class: connectivity
-json_attributes_topic: BlueIris/BYC/signal
+json_attributes_topic: BlueIris/HLC/signal
 json_attributes_template: "{{ value_json.attributes | tojson }}"

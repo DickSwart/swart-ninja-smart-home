@@ -4,17 +4,17 @@
 # The mqtt binary sensor platform uses an MQTT message received to set the binary sensor’s
 # state to on or off.
 #
-# Device: Man Cave IP Camera
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
-# EntityID: binary_sensor.mcc_signal
+# EntityID: binary_sensor.dec_signal
 ##############################################################################################
-platform: mqtt
-name: MCC Signal
-state_topic: BlueIris/MCC/signal
+
+name: DEC Signal
+unique_id: dec_signal
+state_topic: BlueIris/DEC/signal
 value_template: "{{ value_json.state }}"
 payload_on: "ON"
 payload_off: "OFF"
 device_class: connectivity
-json_attributes_topic: BlueIris/MCC/signal
+json_attributes_topic: BlueIris/DEC/signal
 json_attributes_template: "{{ value_json.attributes | tojson }}"

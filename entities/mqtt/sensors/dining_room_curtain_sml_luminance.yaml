@@ -3,12 +3,13 @@
 # MQTT Sensor
 # This mqtt sensor platform uses the MQTT message payload as the sensor value.
 #
-# EntityID: sensor.living_room_curtain_luminance
+# EntityID: sensor.dining_room_curtain_sml_luminance
 # URL: https://www.home-assistant.io/integrations/sensor.mqtt/
 ##############################################################################################
-platform: mqtt
-name: Living Room Curtain Luminance
-state_topic: wled/b0515f/luminance
+
+name: Dining Room Curtain Sml Luminance
+unique_id: dining_room_curtain_sml_luminance
+state_topic: wled/b05226/luminance
 icon: mdi:theme-light-dark
 unit_of_measurement: "lx"
 device_class: illuminance

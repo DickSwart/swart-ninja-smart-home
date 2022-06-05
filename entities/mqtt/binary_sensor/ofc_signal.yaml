@@ -7,14 +7,15 @@
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
 # Device: Office IP Camera
-# EntityID: binary_sensor.ofc_motion
+# EntityID: binary_sensor.ofc_signal
 ##############################################################################################
-platform: mqtt
-name: OFC Motion
-state_topic: BlueIris/OFC/motion
+
+name: OFC Signal
+unique_id: ofc_signal
+state_topic: BlueIris/OFC/signal
 value_template: "{{ value_json.state }}"
 payload_on: "ON"
 payload_off: "OFF"
-device_class: motion
-json_attributes_topic: BlueIris/OFC/motion
+device_class: connectivity
+json_attributes_topic: BlueIris/OFC/signal
 json_attributes_template: "{{ value_json.attributes | tojson }}"

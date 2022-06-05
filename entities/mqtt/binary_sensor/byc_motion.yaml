@@ -6,12 +6,16 @@
 #
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
-# Device: Sonoff RF Bridge
-# EntityID: binary_sensor.sonoff_rf_bridge_status
+# Device: Backyard Camera
+# EntityID: binary_sensor.byc_motion
 ##############################################################################################
-platform: mqtt
-name: Sonoff RF Bridge Status
-state_topic: tele/SonoffRFBridge_5AF955/LWT
-payload_on: "Online"
-payload_off: "Offline"
-device_class: connectivity
+
+name: BYC Motion
+unique_id: byc_motion
+state_topic: BlueIris/BYC/motion
+value_template: "{{ value_json.state }}"
+payload_on: "ON"
+payload_off: "OFF"
+device_class: motion
+json_attributes_topic: BlueIris/BYC/motion
+json_attributes_template: "{{ value_json.attributes | tojson }}"

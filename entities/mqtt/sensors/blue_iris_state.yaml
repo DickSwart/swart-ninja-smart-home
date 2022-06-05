@@ -3,11 +3,10 @@
 # MQTT Sensor
 # This mqtt sensor platform uses the MQTT message payload as the sensor value.
 #
-# EntityID: sensor.dining_room_curtain_sml_temperature
 # URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+#
+# EntityID: sensor.blue_iris_state
 ##############################################################################################
-platform: mqtt
-name: Dining Room Curtain Sml Temperature
-state_topic: wled/b05226/temperature
-unit_of_measurement: "°C"
-device_class: temperature
+name: Blue Iris State
+unique_id: blue_iris_state
+state_topic: BlueIris/app

@@ -6,15 +6,12 @@
 #
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
-# Device: Dining Room Door Camera
-# EntityID: binary_sensor.drc_signal
+# Device: Sonoff RF Bridge
+# EntityID: binary_sensor.sonoff_rf_bridge_status
 ##############################################################################################
-platform: mqtt
-name: DRC Signal
-state_topic: BlueIris/DRC/signal
-value_template: "{{ value_json.state }}"
-payload_on: "ON"
-payload_off: "OFF"
+name: Sonoff RF Bridge Status
+unique_id: sonoff_rf_bridge_status
+state_topic: tele/SonoffRFBridge_5AF955/LWT
+payload_on: "Online"
+payload_off: "Offline"
 device_class: connectivity
-json_attributes_topic: BlueIris/DRC/signal
-json_attributes_template: "{{ value_json.attributes | tojson }}"

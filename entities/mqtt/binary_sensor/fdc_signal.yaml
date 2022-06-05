@@ -6,15 +6,16 @@
 #
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
-# Device: House Side Camera
-# EntityID: binary_sensor.hsc_signal
+# Device: Front Door Camera
+# EntityID: binary_sensor.fdc_signal
 ##############################################################################################
-platform: mqtt
-name: HSC Signal
-state_topic: BlueIris/HSC/signal
+
+name: FDC Signal
+unique_id: fdc_signal
+state_topic: BlueIris/FDC/signal
 value_template: "{{ value_json.state }}"
 payload_on: "ON"
 payload_off: "OFF"
 device_class: connectivity
-json_attributes_topic: BlueIris/HSC/signal
+json_attributes_topic: BlueIris/FDC/signal
 json_attributes_template: "{{ value_json.attributes | tojson }}"

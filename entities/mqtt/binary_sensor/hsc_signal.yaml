@@ -6,15 +6,16 @@
 #
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
-# Device: Living Room IP Camera
-# EntityID: binary_sensor.lrc_motion
+# Device: House Side Camera
+# EntityID: binary_sensor.hsc_signal
 ##############################################################################################
-platform: mqtt
-name: LRC Motion
-state_topic: BlueIris/LRC/motion
+
+name: HSC Signal
+unique_id: hsc_signal
+state_topic: BlueIris/HSC/signal
 value_template: "{{ value_json.state }}"
 payload_on: "ON"
 payload_off: "OFF"
-device_class: motion
-json_attributes_topic: BlueIris/LRC/motion
+device_class: connectivity
+json_attributes_topic: BlueIris/HSC/signal
 json_attributes_template: "{{ value_json.attributes | tojson }}"

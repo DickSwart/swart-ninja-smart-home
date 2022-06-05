@@ -6,15 +6,16 @@
 #
 # URL: https://www.home-assistant.io/integrations/binary_sensor.mqtt/
 #
-# Device: Man Cave IP Camera
-# EntityID: binary_sensor.mcc_motion
+# Device: House Side Camera
+# EntityID: binary_sensor.hsc_motion
 ##############################################################################################
-platform: mqtt
-name: MCC Motion
-state_topic: BlueIris/MCC/motion
+
+name: HSC Motion
+unique_id: hsc_motion
+state_topic: BlueIris/HSC/motion
 value_template: "{{ value_json.state }}"
 payload_on: "ON"
 payload_off: "OFF"
 device_class: motion
-json_attributes_topic: BlueIris/MCC/motion
+json_attributes_topic: BlueIris/HSC/motion
 json_attributes_template: "{{ value_json.attributes | tojson }}"

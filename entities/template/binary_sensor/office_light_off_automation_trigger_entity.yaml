@@ -11,5 +11,4 @@
 name: "Office light off automation: Trigger entity"
 unique_id: 7e1c0b9e-7f4a-4d9a-92fd-b1891374b442
 state: >
-  {{ states('sensor.office_zw100_multisensor_luminance') | int >= 
-     states('input_number.office_light_off_automation_illuminance_cutoff') | int }}
+  {{ states('sensor.office_zw100_multisensor_luminance') | int >= 80 }}

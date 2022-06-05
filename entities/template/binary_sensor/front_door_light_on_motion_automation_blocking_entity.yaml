@@ -11,4 +11,4 @@
 name: "Front door light on motion automation: Blocking entity"
 unique_id: 7d4d66cb-c882-4e56-8620-ad333db93702
 state: >
-  {{ is_state('binary_sensor.dark_outside', 'off') }}
+  {{ is_state('binary_sensor.dark_outside', 'off') or is_state('light.front_door_ceiling', 'on') }}

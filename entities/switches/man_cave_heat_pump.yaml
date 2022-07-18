@@ -7,6 +7,7 @@
 #
 # EntityID: switch.man_cave_heat_pump
 ##################################################################################################################
+
 platform: template
 switches:
   man_cave_heat_pump:
@@ -14,7 +15,8 @@ switches:
     icon_template: mdi:air-conditioner
     value_template: >
       {{ is_state('climate.man_cave_heat_pump','heat') or is_state('climate.man_cave_heat_pump','cool') or
-         is_state('climate.man_cave_heat_pump','auto')  or is_state('climate.man_cave_heat_pump','fan_only') }}
+      is_state('climate.man_cave_heat_pump','dry') or is_state('climate.man_cave_heat_pump','fan_only') or
+      is_state('climate.man_cave_heat_pump','heat_cool') or is_state('climate.man_cave_heat_pump','auto')}}
     turn_on:
       service: climate.turn_on
       entity_id: climate.man_cave_heat_pump

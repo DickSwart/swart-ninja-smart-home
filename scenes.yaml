@@ -1,1 +1,23 @@
-[]
+- id: '1651390094177'
+  name: New Scene
+  entities:
+    light.office_ceiling:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Office Ceiling
+      supported_features: 8
+      icon: mdi:dome-light
+      state: 'on'
+    light.office_shelf:
+      supported_color_modes:
+      - onoff
+      friendly_name: Office Shelf
+      supported_features: 8
+      icon: mdi:coach-lamp
+      color_mode: onoff
+      state: 'on'
+    switch.office_3gang_switch_restart:
+      icon: mdi:restart
+      friendly_name: Office 3Gang Switch Restart
+      state: 'off'

@@ -1,0 +1,4 @@
+---
+sensor.presence_location_tamara:
+  entity_picture: /local/images/tamara.jpg
+  friendly_name: Tamara

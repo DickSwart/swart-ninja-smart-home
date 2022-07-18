@@ -7,31 +7,27 @@
 #
 # EntityID: sensor.presence_location_nico
 ##############################################################################################
-platform: template
-sensors:
-  presence_location_nico:
-    friendly_name: Nico
-    entity_picture_template: /local/images/nico.jpg
-    value_template: >-
-      {% if is_state('input_boolean.presence_location_away_nico', 'on') %}
-        Away (Override)
-      {% else %}
-        {% if is_state('input_boolean.nico', 'on') %}
-          Home
-        {% else %}
-          Away
-        {% endif %}
-      {% endif %}
-
-## For Phone (When older)
 # platform: template
 # sensors:
 #   presence_location_nico:
 #     friendly_name: Nico
-#     entity_picture_template: /local/images/misc/nico.jpeg
+#     entity_picture_template: /local/images/nico.jpg
 #     value_template: >-
 #       {% if is_state('input_boolean.presence_location_away_nico', 'on') %}
 #         Away (Override)
 #       {% else %}
-#         {{ states('person.nico') | replace("_", " ") | title }}
+#         {% if is_state('input_boolean.nico', 'on') %}
+#           Home
+#         {% else %}
+#           Away
+#         {% endif %}
 #       {% endif %}
+
+name: Presence Location Nico
+unique_id: presence_location_nico
+state: >-
+  {% if is_state('input_boolean.presence_location_away_nico', 'on') %}
+    Away
+  {% else %}
+    Home
+  {% endif %}

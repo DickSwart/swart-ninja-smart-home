@@ -1,0 +1,4 @@
+---
+sensor.presence_location_max:
+  entity_picture: /local/images/max.jpeg
+  friendly_name: Max

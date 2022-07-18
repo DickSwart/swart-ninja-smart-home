@@ -1,0 +1,4 @@
+---
+sensor.presence_location_dick:
+  entity_picture: /local/images/dick.jpg
+  friendly_name: Dick

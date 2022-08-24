@@ -14,7 +14,7 @@
 #   display_categories:
 #     (string) (Optional) The display category to use in Alexa. Available categories
 ##################################################################################################################
-light.man_cave_kitchen_2gang_switch_one:
-  name: Man Cave Kitchen Light One
-  description: The light at the desk
+light.man_cave_kitchen_3gang_switch_two:
+  name: Man Cave Kitchen Light Two
+  description: The light at the printer.
   display_categories: LIGHT

@@ -8,8 +8,8 @@
 #
 # EntityID: cover.bedroom_max_blinds
 ##############################################################################################
-platform: mqtt
 name: Bedroom Max Blinds
+object_id: bedroom_max_blinds
 command_topic: "cmnd/SonoffRFBridge_5AF955/Backlog"
 availability_topic: "tele/SonoffRFBridge_5AF955/LWT"
 payload_open: RfRaw AAB0350508128405DC015E02DA21B6481A3A3B2A3B2B2A3B2A3A3B2B2B2A3A3B2A3A3A3A3B2B2A3A3B2B2A3A3A3A3A3A3A3A3A3B2B2B2B2A55; RfRaw 0

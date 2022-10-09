@@ -17,11 +17,11 @@
           sequence:
             - service: notify.telegram_chat_id_swart_ninja_smart_home_group
               data:
-                message: 🥳 Home Assistant is starting up again.
+                message: "\U0001F973 Home Assistant is starting up again."
       default:
         - service: notify.telegram_chat_id_swart_ninja_smart_home_group
           data:
-            message: 👋 Home Assistant is shutting down... Bye!
+            message: "\U0001F44B Home Assistant is shutting down... Bye!"
   mode: single
 - id: "1649357383872"
   alias: "Office Light On: Motion"
@@ -105,10 +105,10 @@
       illuminance_cutoff: 30
       blocker_entity: input_boolean.house_mode_away
       no_motion_wait: 3
-      turn_off_blocker_entity: media_player.kitchen_apple_tv
       target_off_entity:
         - light.kitchen_ceiling
         - light.kitchen_side
+      turn_off_blocker_entity: binary_sensor.kitchen_motion_turn_off_blocker
 - id: "1649530119015"
   alias: Kitchen Cupboard LED's
   description: "Turn on and off kitchen cupboard LED's "
@@ -508,3 +508,14 @@
       target:
         entity_id: light.front_door_ceiling
   mode: single
+- id: "1664181003275"
+  alias: "Dining Room: Lights On Motion"
+  description: ""
+  use_blueprint:
+    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    input:
+      motion_sensor: binary_sensor.drc_motion
+      target_entity: light.dining_room_sml_window
+      illuminance_sensor: sensor.dining_room_curtain_sml_luminance
+      illuminance_cutoff: 30
+      blocker_entity: input_boolean.house_mode_away

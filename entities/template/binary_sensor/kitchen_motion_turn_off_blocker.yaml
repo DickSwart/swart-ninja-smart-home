@@ -1,0 +1,14 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.kitchen_motion
+##############################################################################################
+
+name: Kitchen Motion Turn-off Blocker
+unique_id: kitchen_motion_turn_off_blocker
+state: >
+  {{ is_state('media_player.kitchen_apple_tv', 'playing') }}

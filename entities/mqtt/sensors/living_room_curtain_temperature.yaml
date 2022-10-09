@@ -10,5 +10,6 @@
 name: Living Room Curtain Temperature
 unique_id: living_room_curtain_temperature
 state_topic: wled/b0515f/temperature
+availability_topic: wled/b0515f/status
 unit_of_measurement: "°C"
 device_class: temperature

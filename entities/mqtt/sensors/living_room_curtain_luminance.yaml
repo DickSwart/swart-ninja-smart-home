@@ -10,6 +10,7 @@
 name: Living Room Curtain Luminance
 unique_id: living_room_curtain_luminance
 state_topic: wled/b0515f/luminance
+availability_topic: wled/b0515f/status
 icon: mdi:theme-light-dark
 unit_of_measurement: "lx"
 device_class: illuminance

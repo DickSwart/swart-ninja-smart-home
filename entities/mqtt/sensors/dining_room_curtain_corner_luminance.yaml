@@ -10,6 +10,7 @@
 name: Dining Room Curtain Corner Luminance
 unique_id: dining_room_curtain_corner_luminance
 state_topic: wled/b0b368/luminance
+availability_topic: wled/b0b368/status
 icon: mdi:theme-light-dark
 unit_of_measurement: "lx"
 device_class: illuminance

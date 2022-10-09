@@ -10,5 +10,6 @@
 name: Dining Room Curtain Corner Temperature
 unique_id: dining_room_curtain_corner_temperature
 state_topic: wled/b0b368/temperature
+availability_topic: wled/b0b368/status
 unit_of_measurement: "°C"
 device_class: temperature

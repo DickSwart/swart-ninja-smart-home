@@ -9,3 +9,4 @@
 mqtt:
   sensor: !include_dir_list ../entities/mqtt/sensors
   binary_sensor: !include_dir_list ../entities/mqtt/binary_sensor
+  cover: !include_dir_list ../entities/mqtt/cover

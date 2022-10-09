@@ -1,0 +1,15 @@
+---
+##############################################################################################
+# MQTT Sensor
+# This mqtt sensor platform uses the MQTT message payload as the sensor value.
+#
+# EntityID: sensor.living_room_curtain_temperature
+# URL: https://www.home-assistant.io/integrations/sensor.mqtt/
+##############################################################################################
+
+name: Man Cave TV Backlight Temperature
+unique_id: man_cave_tv_backlight_temperature
+state_topic: wled/b08dc0/temperature
+availability_topic: wled/b08dc0/status
+unit_of_measurement: "°C"
+device_class: temperature

@@ -11,6 +11,5 @@
 name: "Man Cave light off automation: Trigger entity"
 unique_id: 77f13108-8040-4bb5-8b2c-910c8909e9f4
 state: >
-  {{ states('sensor.man_cave_multisensor_luminance') | int >= 
-     states('input_number.man_cave_light_off_automation_illuminance_cutoff') | int or 
+  {{ states('sensor.man_cave_multisensor_luminance') | int >= 80 or 
      is_state('sun.sun', 'above_horizon')}}

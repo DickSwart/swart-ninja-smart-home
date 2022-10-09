@@ -5,14 +5,14 @@
 #
 # URL: https://www.home-assistant.io/integrations/switch.mqtt/
 # Device: Office Camera
-# EntityID: switch.fdc
+# EntityID: switch.ofc
 ##################################################################################################################
 
-platform: mqtt
-name: FDC
+name: OFC
+object_id: ofc
 icon: mdi:light-switch
 command_topic: BlueIris/admin
-payload_on: camera=FDC&enable=1
-payload_off: camera=FDC&enable=0
+payload_on: camera=OFC&enable=1
+payload_off: camera=OFC&enable=0
 qos: 1
 retain: false

@@ -5,14 +5,14 @@
 #
 # URL: https://www.home-assistant.io/integrations/switch.mqtt/
 # Device: Office Camera
-# EntityID: switch.dec
+# EntityID: switch.lrc
 ##################################################################################################################
 
-platform: mqtt
-name: DEC
+name: LRC
+object_id: lrc
 icon: mdi:light-switch
 command_topic: BlueIris/admin
-payload_on: camera=DEC&enable=1
-payload_off: camera=DEC&enable=0
+payload_on: camera=LRC&enable=1
+payload_off: camera=LRC&enable=0
 qos: 1
 retain: false

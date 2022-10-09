@@ -5,14 +5,14 @@
 #
 # URL: https://www.home-assistant.io/integrations/switch.mqtt/
 # Device: Office Camera
-# EntityID: switch.hlc
+# EntityID: switch.hsc
 ##################################################################################################################
 
-platform: mqtt
-name: HLC
+name: HSC
+object_id: hsc
 icon: mdi:light-switch
 command_topic: BlueIris/admin
-payload_on: camera=HLC&enable=1
-payload_off: camera=HLC&enable=0
+payload_on: camera=HSC&enable=1
+payload_off: camera=HSC&enable=0
 qos: 1
 retain: false

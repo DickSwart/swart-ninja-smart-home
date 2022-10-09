@@ -15,6 +15,7 @@ from homeassistant.const import (
 )
 from homeassistant.components.sensor import ATTR_STATE_CLASS, SensorStateClass
 from pychonet.HomeAirConditioner import (
+    ENL_HVAC_MODE,
     ENL_FANSPEED,
     ENL_AIR_VERT,
     ENL_AIR_HORZ,
@@ -26,17 +27,30 @@ from pychonet.HomeAirConditioner import (
     AUTO_DIRECTION,
     SWING_MODE
 )
+from pychonet.EchonetInstance import (
+    ENL_STATUS,
+    ENL_ON,
+    ENL_OFF
+)
 
 DOMAIN = "echonetlite"
 CONF_STATE_CLASS = ATTR_STATE_CLASS
 CONF_ENSURE_ON = "ensureon"
+CONF_OTHER_MODE = "other_mode"
+CONF_FORCE_POLLING = 'force_polling'
+CONF_ON_VALUE = 'on_val'
+CONF_OFF_VALUE = 'off_val'
 DATA_STATE_ON = "On"
 DATA_STATE_OFF = "Off"
 TYPE_SWITCH = "switch"
 SERVICE_SET_ON_TIMER_TIME = "set_on_timer_time"
+SERVICE_SET_INT_1B = "set_value_int_1b"
+OPEN = "open"
+CLOSE = "close"
+STOP = "stop"
 SWITCH_POWER = {
-    DATA_STATE_ON: 0x30,
-    DATA_STATE_OFF: 0x31
+    DATA_STATE_ON: ENL_ON,
+    DATA_STATE_OFF: ENL_OFF
 }
 SWITCH_BINARY = {
     DATA_STATE_ON: 0x41,
@@ -53,6 +67,14 @@ HVAC_SELECT_OP_CODES = {
 
 FAN_SELECT_OP_CODES = {
     0xA0: FAN_SPEED
+}
+
+COVER_SELECT_OP_CODES = {
+    0xE0: {
+        OPEN: 0x41,
+        CLOSE: 0x42,
+        STOP: 0x43
+    }
 }
 
 ENL_OP_CODES = {
@@ -76,6 +98,12 @@ ENL_OP_CODES = {
                 CONF_ICON: "mdi:flash",
                 CONF_TYPE: DEVICE_CLASS_ENERGY,
                 CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING
+            },
+            0xB4: { # Humidity setting in dry mode
+                CONF_ICON: "mdi:water-percent",
+                CONF_TYPE: DEVICE_CLASS_HUMIDITY,
+                CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
+                CONF_SERVICE: [ SERVICE_SET_INT_1B ]
             },
             0xBA: {
                 CONF_ICON: "mdi:water-percent",
@@ -107,28 +135,49 @@ ENL_OP_CODES = {
         }
     },
     0x02: {
-        0x72: {
-            0x80: { # switch
-                CONF_ICON: "mdi:power-settings",
-                CONF_SERVICE_DATA: SWITCH_POWER,
+        0x6F: { # Electric lock
+            0xE0: {
+                CONF_ICON: "mdi:mdi:lock",
+                CONF_SERVICE_DATA: SWITCH_BINARY,
+                CONF_ENSURE_ON: ENL_STATUS,
+                CONF_ON_VALUE: "lock",
+                CONF_OFF_VALUE: 'unlock',
                 TYPE_SWITCH: True
             },
+            0xE1: {
+                CONF_ICON: "mdi:mdi:lock",
+                CONF_SERVICE_DATA: SWITCH_BINARY,
+                CONF_ENSURE_ON: ENL_STATUS,
+                CONF_ON_VALUE: "lock",
+                CONF_OFF_VALUE: 'unlock',
+                TYPE_SWITCH: True
+            },
+            0xE6: {
+                CONF_ICON: None,
+                CONF_SERVICE_DATA: SWITCH_BINARY,
+                CONF_ENSURE_ON: ENL_STATUS,
+                CONF_ON_VALUE: "on",
+                CONF_OFF_VALUE: 'off',
+                TYPE_SWITCH: True
+            }
+        },
+        0x72: { # Hot water generator
             0x90: {
                 CONF_ICON: "mdi:timer",
                 CONF_SERVICE_DATA: SWITCH_BINARY,
-                CONF_ENSURE_ON: 0x80,
+                CONF_ENSURE_ON: ENL_STATUS,
                 TYPE_SWITCH: True
             },
             0xE3: {
                 CONF_ICON: "mdi:bathtub-outline",
                 CONF_SERVICE_DATA: SWITCH_BINARY,
-                CONF_ENSURE_ON: 0x80,
+                CONF_ENSURE_ON: ENL_STATUS,
                 TYPE_SWITCH: True
             },
             0xE4: {
                 CONF_ICON: "mdi:heat-wave",
                 CONF_SERVICE_DATA: SWITCH_BINARY,
-                CONF_ENSURE_ON: 0x80,
+                CONF_ENSURE_ON: ENL_STATUS,
                 TYPE_SWITCH: True
             },
             0x91: { # Sensor with service
@@ -140,12 +189,14 @@ ENL_OP_CODES = {
             0xD1: { # Sensor
                 CONF_ICON: "mdi:thermometer",
                 CONF_TYPE: DEVICE_CLASS_TEMPERATURE,
-                CONF_STATE_CLASS: SensorStateClass.MEASUREMENT
+                CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
+                CONF_SERVICE: [ SERVICE_SET_INT_1B ]
             },
             0xE1: {
                 CONF_ICON: "mdi:thermometer",
                 CONF_TYPE: DEVICE_CLASS_TEMPERATURE,
-                CONF_STATE_CLASS: SensorStateClass.MEASUREMENT
+                CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
+                CONF_SERVICE: [ SERVICE_SET_INT_1B ]
             },
             0xE7: {
                 CONF_UNIT_OF_MEASUREMENT: "L"
@@ -308,12 +359,18 @@ SILENT_MODE_OPTIONS = {
     'silent':       'Silent',
 }
 
+HVAC_MODE_OPTIONS = {
+    'as_off':       'As Off',
+    'as_idle':      'As Idle'
+}
+
 USER_OPTIONS = {
     ENL_FANSPEED:   {'option': 'fan_settings', 'option_list': FAN_SPEED_OPTIONS},
     ENL_AIR_HORZ:   {'option': 'swing_horiz', 'option_list': AIRFLOW_HORIZ_OPTIONS},
     ENL_AIR_VERT:   {'option': 'swing_vert', 'option_list': AIRFLOW_VERT_OPTIONS},
     ENL_AUTO_DIRECTION: {'option': 'auto_direction', 'option_list': AUTO_DIRECTION_OPTIONS},
     ENL_SWING_MODE:     {'option': 'swing_mode', 'option_list': SWING_MODE_OPTIONS},
+    ENL_HVAC_MODE:  {'option': CONF_OTHER_MODE, 'option_list': [{'value': 'as_off', 'label': 'As Off'}, {'value': 'as_idle', 'label': 'As Idle'}]},
 }
 
 TEMP_OPTIONS = {"min_temp_heat": {"min":10, "max":25},
@@ -322,4 +379,11 @@ TEMP_OPTIONS = {"min_temp_heat": {"min":10, "max":25},
                 "max_temp_cool": {"min":18, "max":30},
                 "min_temp_auto": {"min":15, "max":25},
                 "max_temp_auto": {"min":18, "max":30},
+}
+
+MISC_OPTIONS = {
+    CONF_FORCE_POLLING: {
+        'type': bool,
+        'default': False
+    }
 }

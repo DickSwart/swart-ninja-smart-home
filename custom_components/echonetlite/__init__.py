@@ -3,14 +3,15 @@ from __future__ import annotations
 import logging
 import pychonet as echonet
 from pychonet.lib.epc import EPC_SUPER, EPC_CODE
-from pychonet.lib.const import VERSION
+from pychonet.lib.const import VERSION, ENL_STATMAP
 from datetime import timedelta
 import asyncio
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.util import Throttle
-from .const import DOMAIN, USER_OPTIONS, TEMP_OPTIONS
-from aioudp import UDPServer
+from homeassistant.const import Platform
+from .const import DOMAIN, USER_OPTIONS, TEMP_OPTIONS, CONF_FORCE_POLLING, MISC_OPTIONS
+from pychonet.lib.udpserver import UDPServer
 
 from pychonet import ECHONETAPIClient
 from pychonet.EchonetInstance import (
@@ -41,7 +42,7 @@ from pychonet.GeneralLighting import (
 )
 
 _LOGGER = logging.getLogger(__name__)
-PLATFORMS = ["sensor", 'climate', 'select', 'light', 'fan', 'switch']
+PLATFORMS = [Platform.SENSOR, Platform.CLIMATE, Platform.SELECT, Platform.LIGHT, Platform.FAN, Platform.SWITCH]
 PARALLEL_UPDATES = 0
 MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=60)
 MAX_UPDATE_BATCH_SIZE = 10
@@ -87,17 +88,23 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         udp = UDPServer()
         loop = asyncio.get_event_loop()
         udp.run("0.0.0.0", 3610, loop=loop)
-        server = ECHONETAPIClient(server=udp, loop=loop)
+        server = ECHONETAPIClient(udp)
+        server._debug_flag = True
+        server._logger = _LOGGER.debug
         server._message_timeout = 300
         hass.data[DOMAIN].update({"api": server})
 
 
     for instance in entry.data["instances"]:
+        # auto update to new style
+        if "ntfmap" not in instance:
+            instance["ntfmap"] = []
         echonetlite = None
         host = instance["host"]
         eojgc = instance["eojgc"]
         eojcc = instance["eojcc"]
         eojci = instance["eojci"]
+        ntfmap = instance["ntfmap"]
         getmap = instance["getmap"]
         setmap = instance["setmap"]
         uid = instance["uid"]
@@ -109,6 +116,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                     eojgc: {
                         eojcc: {
                             eojci: {
+                                ENL_STATMAP: ntfmap,
                                 ENL_SETMAP: setmap,
                                 ENL_GETMAP: getmap,
                                 ENL_UID: uid
@@ -122,6 +130,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 eojgc: {
                     eojcc: {
                         eojci: {
+                            ENL_STATMAP: ntfmap,
                             ENL_SETMAP: setmap,
                             ENL_GETMAP: getmap,
                             ENL_UID: uid
@@ -133,6 +142,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             server._state[host]["instances"][eojgc].update({
                 eojcc: {
                     eojci: {
+                        ENL_STATMAP: ntfmap,
                         ENL_SETMAP: setmap,
                         ENL_GETMAP: getmap,
                         ENL_UID: uid
@@ -142,6 +152,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         if eojci not in list(server._state[host]["instances"][eojgc][eojcc]):
             server._state[host]["instances"][eojgc][eojcc].update({
                 eojci: {
+                    ENL_STATMAP: ntfmap,
                     ENL_SETMAP: setmap,
                     ENL_GETMAP: getmap,
                     ENL_UID: uid
@@ -154,7 +165,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     _LOGGER.debug(f"Plaform entry data - {entry.data}")
 
-    hass.config_entries.async_setup_platforms(entry, PLATFORMS)
+    # this api is too recent (around April 2021): hass.config_entries.async_setup_platforms(entry, PLATFORMS)
+    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
 
@@ -173,13 +185,23 @@ async def update_listener(hass, entry):
         if instance['instance']['eojgc'] == 1 and instance['instance']['eojcc'] == 48:
             for option in USER_OPTIONS.keys():
                 if entry.options.get(USER_OPTIONS[option]["option"]) is not None:  # check if options has been created
-                    if len(entry.options.get(USER_OPTIONS[option]["option"])) > 0:  # if it has been created then check list length.
-                        instance["echonetlite"]._user_options.update({option: entry.options.get(USER_OPTIONS[option]["option"])})
+                    if isinstance(entry.options.get(USER_OPTIONS[option]["option"]), list):
+                        if len(entry.options.get(USER_OPTIONS[option]["option"])) > 0:  # if it has been created then check list length.
+                            instance["echonetlite"]._user_options.update({option: entry.options.get(USER_OPTIONS[option]["option"])})
+                        else:
+                            instance["echonetlite"]._user_options.update({option: False})
                     else:
-                        instance["echonetlite"]._user_options.update({option: False})
+                        instance["echonetlite"]._user_options.update({option: entry.options.get(USER_OPTIONS[option]["option"])})
             for option in TEMP_OPTIONS.keys():
                 if entry.options.get(option) is not None:
-                        instance["echonetlite"]._user_options.update({option: entry.options.get(option)})
+                    instance["echonetlite"]._user_options.update({option: entry.options.get(option)})
+
+        for key, option in MISC_OPTIONS.items():
+            if entry.options.get(key) is not None or option.get('default'):
+                instance["echonetlite"]._user_options.update({key: entry.options.get(key, option.get('default'))})
+
+        for func in instance["echonetlite"]._update_option_func:
+            func()
 
 class ECHONETConnector():
     """EchonetAPIConnector is used to centralise API calls for  Echonet devices.
@@ -193,11 +215,16 @@ class ECHONETConnector():
         self._update_flag_batches = []
         self._update_data = {}
         self._api = api
+        self._update_callbacks = []
+        self._update_option_func = []
+        self._ntfPropertyMap = self._api._state[self._host]["instances"][self._eojgc][self._eojcc][self._eojci][ENL_STATMAP]
         self._getPropertyMap = self._api._state[self._host]["instances"][self._eojgc][self._eojcc][self._eojci][ENL_GETMAP]
         self._setPropertyMap = self._api._state[self._host]["instances"][self._eojgc][self._eojcc][self._eojci][ENL_SETMAP]
         self._manufacturer = None
         if "manufacturer" in instance:
             self._manufacturer = instance["manufacturer"]
+        self._uid = instance.get('uid')
+        self._api.register_async_update_callbacks(self._host, self._eojgc, self._eojcc, self._eojci, self.async_update_callback)
 
         # Detect HVAC - eventually we will use factory here.
         self._update_flags_full_list = []
@@ -259,17 +286,20 @@ class ECHONETConnector():
             if entry.options.get(option) is not None:
                 self._user_options[option] = entry.options.get(option)
 
-        self._uid = self._api._state[self._host]["instances"][self._eojgc][self._eojcc][self._eojci][ENL_UID]
         _LOGGER.debug(f'UID for ECHONETLite instance at {self._host}  is {self._uid}.')
         if self._uid is None:
             self._uid = f"{self._host}-{self._eojgc}-{self._eojcc}-{self._eojci}"
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     async def async_update(self, **kwargs):
+        return await self.async_update_data(kwargs = kwargs)
+
+    async def async_update_data(self, kwargs):
         for retry in range(1, 4):
             update_data = {}
+            no_request = 'no_request' in kwargs and kwargs['no_request']
             for flags in self._update_flag_batches:
-                batch_data = await self._instance.update(flags)
+                batch_data = await self._instance.update(flags, no_request)
                 if batch_data is not False:
                     if isinstance(batch_data, dict):
                         update_data.update(batch_data)
@@ -292,3 +322,14 @@ class ECHONETConnector():
                 _LOGGER.debug(f"Number of missed ECHONETLite msssages since reboot is {len(self._api._message_list)}")
         self._update_data.update(update_data)
         return self._update_data
+
+    async def async_update_callback(self, isPush = False):
+        await self.async_update_data(kwargs = {"no_request": True})
+        for update_func in self._update_callbacks:
+            await update_func(isPush)
+
+    def register_async_update_callbacks(self, update_func):
+        self._update_callbacks.append(update_func)
+
+    def add_update_option_listener(self, update_func):
+        self._update_option_func.append(update_func)

@@ -65,7 +65,7 @@ class EchonetClimate(ClimateEntity):
         self._name = name
         self._device_name = name
         self._connector = connector  # new line
-        self._uid = self._connector._uid
+        self._uid = self._connector._uidi if self._connector._uidi else self._connector._uid
         self._unit_of_measurement = units.temperature_unit
         self._precision = 1.0
         self._target_temperature_step = 1
@@ -83,8 +83,6 @@ class EchonetClimate(ClimateEntity):
         self._olddata = {}
         self._should_poll = True
         self._last_mode = HVAC_MODE_OFF
-        self._connector.register_async_update_callbacks(self.async_update_callback)
-
 
     async def async_update(self):
         """Get the latest state from the HVAC."""
@@ -320,9 +318,15 @@ class EchonetClimate(ClimateEntity):
             self._max_temp = self._connector._user_options['max_temp_auto']
         return self._max_temp
 
+    async def async_added_to_hass(self):
+        """Register callbacks."""
+        self._connector.register_async_update_callbacks(self.async_update_callback)
+
     async def async_update_callback(self, isPush = False):
         changed = self._olddata != self._connector._update_data
         _LOGGER.debug(f"Called async_update_callback on {self._device_name}.\nChanged: {changed}\nUpdate data: {self._connector._update_data}\nOld data: {self._olddata}")
         if (changed):
-           self._olddata = self._connector._update_data.copy()
-           self.async_schedule_update_ha_state()
+            self._olddata = self._connector._update_data.copy()
+            self.async_schedule_update_ha_state()
+            if isPush:
+                await self._connector.async_update()

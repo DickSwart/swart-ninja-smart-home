@@ -6,6 +6,7 @@ from pychonet.lib.epc import EPC_SUPER, EPC_CODE
 from pychonet.lib.const import VERSION, ENL_STATMAP
 from datetime import timedelta
 import asyncio
+from homeassistant import config_entries
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.util import Throttle
@@ -30,10 +31,31 @@ from pychonet.HomeAirConditioner import (
     ENL_AIR_HORZ,
     ENL_HVAC_MODE,
     ENL_HVAC_SET_TEMP,
+    ENL_HVAC_SET_HUMIDITY,
     ENL_HVAC_ROOM_HUMIDITY,
     ENL_HVAC_ROOM_TEMP,
     ENL_HVAC_SILENT_MODE,
     ENL_HVAC_OUT_TEMP
+)
+
+from pychonet.DistributionPanelMeter import (
+    ENL_DPM_ENG_NOR,
+    ENL_DPM_ENG_REV,
+    ENL_DPM_ENG_UNIT,
+    ENL_DPM_DAY_GET_HISTORY,
+    ENL_DPM_INSTANT_ENG,
+    ENL_DPM_INSTANT_CUR,
+    ENL_DPM_INSTANT_VOL
+)
+
+from pychonet.LowVoltageSmartElectricEnergyMeter import (
+    ENL_LVSEEM_COEF,
+    ENL_LVSEEM_DIGITS,
+    ENL_LVSEEM_ENG_UNIT,
+    ENL_LVSEEM_ENG_NOR,
+    ENL_LVSEEM_ENG_REV,
+    ENL_LVSEEM_INSTANT_ENG,
+    ENL_LVSEEM_INSTANT_CUR
 )
 
 from pychonet.GeneralLighting import (
@@ -44,12 +66,12 @@ from pychonet.GeneralLighting import (
 _LOGGER = logging.getLogger(__name__)
 PLATFORMS = [Platform.SENSOR, Platform.CLIMATE, Platform.SELECT, Platform.LIGHT, Platform.FAN, Platform.SWITCH]
 PARALLEL_UPDATES = 0
-MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=60)
+MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=1)
 MAX_UPDATE_BATCH_SIZE = 10
 
 HVAC_API_CONNECTOR_DEFAULT_FLAGS = [
     ENL_STATUS, ENL_FANSPEED, ENL_AUTO_DIRECTION, ENL_SWING_MODE, ENL_AIR_VERT, ENL_AIR_HORZ, ENL_HVAC_MODE,
-    ENL_HVAC_SET_TEMP, ENL_HVAC_ROOM_HUMIDITY, ENL_HVAC_ROOM_TEMP, ENL_HVAC_OUT_TEMP, ENL_HVAC_SILENT_MODE,
+    ENL_HVAC_SET_TEMP, ENL_HVAC_SET_HUMIDITY, ENL_HVAC_ROOM_HUMIDITY, ENL_HVAC_ROOM_TEMP, ENL_HVAC_OUT_TEMP, ENL_HVAC_SILENT_MODE,
     ENL_INSTANTANEOUS_POWER, ENL_CUMULATIVE_POWER
 ]
 
@@ -57,8 +79,9 @@ LIGHT_API_CONNECTOR_DEFAULT_FLAGS = [
     ENL_STATUS, ENL_BRIGHTNESS, ENL_COLOR_TEMP
 ]
 
-# fix later
-_0287_API_CONNECTOR_DEFAULT_FLAGS = [ENL_STATUS, 0xC0, 0xC1, 0xC2, 0xC5, 0xC6, 0xC7, 0xC8]
+_0287_API_CONNECTOR_DEFAULT_FLAGS = [ENL_STATUS, ENL_DPM_ENG_NOR, ENL_DPM_ENG_REV, ENL_DPM_ENG_UNIT, ENL_DPM_DAY_GET_HISTORY, ENL_DPM_INSTANT_ENG, ENL_DPM_INSTANT_CUR, ENL_DPM_INSTANT_VOL]
+
+_0288_API_CONNECTOR_DEFAULT_FLAGS = [ENL_STATUS, ENL_LVSEEM_ENG_NOR, ENL_LVSEEM_ENG_REV, ENL_LVSEEM_INSTANT_ENG, ENL_LVSEEM_INSTANT_CUR, ENL_LVSEEM_COEF, ENL_LVSEEM_ENG_UNIT]
 
 def polling_update_debug_log(values, eojgc, eojcc):
     debug_log = f"\nECHONETlite polling update data:\n"
@@ -76,6 +99,15 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     loop = None
     server = None
 
+    async def discover_callback(host):
+        await config_entries.HANDLERS[DOMAIN].async_discover_newhost(hass, host)
+
+    def unload_config_entry():
+        _LOGGER.debug(f"Called unload_config_entry() try to remove {host} from server._state.")
+        server._state.pop(host)
+
+    entry.async_on_unload(unload_config_entry)
+
     if DOMAIN in hass.data:  # maybe set up by config entry?
         _LOGGER.debug(f"ECHONETlite platform is already started.")
         server = hass.data[DOMAIN]['api']
@@ -92,6 +124,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         server._debug_flag = True
         server._logger = _LOGGER.debug
         server._message_timeout = 300
+        server._discover_callback = discover_callback
         hass.data[DOMAIN].update({"api": server})
 
 
@@ -217,13 +250,14 @@ class ECHONETConnector():
         self._api = api
         self._update_callbacks = []
         self._update_option_func = []
-        self._ntfPropertyMap = self._api._state[self._host]["instances"][self._eojgc][self._eojcc][self._eojci][ENL_STATMAP]
-        self._getPropertyMap = self._api._state[self._host]["instances"][self._eojgc][self._eojcc][self._eojci][ENL_GETMAP]
-        self._setPropertyMap = self._api._state[self._host]["instances"][self._eojgc][self._eojcc][self._eojci][ENL_SETMAP]
+        self._ntfPropertyMap = instance["ntfmap"]
+        self._getPropertyMap = instance["getmap"]
+        self._setPropertyMap = instance["setmap"]
         self._manufacturer = None
         if "manufacturer" in instance:
             self._manufacturer = instance["manufacturer"]
         self._uid = instance.get('uid')
+        self._uidi = instance.get('uidi')
         self._api.register_async_update_callbacks(self._host, self._eojgc, self._eojcc, self._eojci, self.async_update_callback)
 
         # Detect HVAC - eventually we will use factory here.
@@ -238,6 +272,9 @@ class ECHONETConnector():
         elif self._eojgc == 0x02 and self._eojcc == 0x87:
             _LOGGER.debug(f"Starting ECHONETLite DistributionPanelMeter instance at {self._host}")
             flags = _0287_API_CONNECTOR_DEFAULT_FLAGS
+        elif self._eojgc == 0x02 and self._eojcc == 0x88:
+            _LOGGER.debug(f"Starting ECHONETLite LowVoltageSmartElectricEnergyMeter instance at {self._host}")
+            flags = _0288_API_CONNECTOR_DEFAULT_FLAGS
         else:
             _LOGGER.debug(f"Starting ECHONETLite Generic instance for {self._eojgc}-{self._eojcc}-{self._eojci} at {self._host}")
             flags = [ENL_STATUS]

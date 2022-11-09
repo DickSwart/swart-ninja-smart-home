@@ -48,7 +48,7 @@ class EchonetLight(LightEntity):
         """Initialize the climate device."""
         self._name = name
         self._connector = connector  # new line
-        self._uid = self._connector._uid
+        self._uid = self._connector._uidi if self._connector._uidi else self._connector._uid
         self._support_flags = SUPPORT_FLAGS
         self._supported_color_modes = set()
         self._supports_color = False
@@ -70,7 +70,6 @@ class EchonetLight(LightEntity):
         self._echonet_mireds_int = [68, 67, 66, 64, 65]  # coolest to warmest
         self._olddata = {}
         self._should_poll = True
-        self._connector.register_async_update_callbacks(self.async_update_callback)
 
     async def async_update(self):
         """Get the latest state from the Light."""
@@ -197,8 +196,14 @@ class EchonetLight(LightEntity):
         """Flag supported features."""
         return self._supported_color_modes
 
+    async def async_added_to_hass(self):
+        """Register callbacks."""
+        self._connector.register_async_update_callbacks(self.async_update_callback)
+
     async def async_update_callback(self, isPush = False):
         changed = self._olddata != self._connector._update_data
         if (changed):
             self._olddata = self._connector._update_data.copy()
             self.async_schedule_update_ha_state()
+            if isPush:
+                await self._connector.async_update()

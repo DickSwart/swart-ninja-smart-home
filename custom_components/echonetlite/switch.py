@@ -64,12 +64,10 @@ class EchonetSwitch(SwitchEntity):
         self._on_vals = [self._on_value, self._options[CONF_SERVICE_DATA][DATA_STATE_ON], hex(self._options[CONF_SERVICE_DATA][DATA_STATE_ON])[2:]]
         self._attr_name = f"{config.title} {EPC_CODE[self._connector._eojgc][self._connector._eojcc][self._code]}"
         self._attr_icon = options[CONF_ICON]
-        self._uid = f'{self._connector._uid}-{self._connector._eojgc}-{self._connector._eojcc}-{self._connector._eojci}-{self._code}'
+        self._uid = f'{self._connector._uidi}-{self._code}' if self._connector._uidi else f'{self._connector._uid}-{self._connector._eojgc}-{self._connector._eojcc}-{self._connector._eojci}-{self._code}'
         self._device_name = name
         self._should_poll = True
         self.update_option_listener()
-        self._connector.add_update_option_listener(self.update_option_listener)
-        self._connector.register_async_update_callbacks(self.async_update_callback)
 
     @property
     def unique_id(self):
@@ -129,6 +127,11 @@ class EchonetSwitch(SwitchEntity):
     async def async_update(self):
         """Retrieve latest state."""
         await self._connector.async_update()
+
+    async def async_added_to_hass(self):
+        """Register callbacks."""
+        self._connector.add_update_option_listener(self.update_option_listener)
+        self._connector.register_async_update_callbacks(self.async_update_callback)
 
     async def async_update_callback(self, isPush = False):
         self.async_schedule_update_ha_state()

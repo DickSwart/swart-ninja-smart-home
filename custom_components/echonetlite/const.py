@@ -10,6 +10,8 @@ from homeassistant.const import (
     DEVICE_CLASS_ENERGY,
     DEVICE_CLASS_HUMIDITY,
     DEVICE_CLASS_GAS,
+    DEVICE_CLASS_CURRENT,
+    DEVICE_CLASS_VOLTAGE,
     PERCENTAGE,
     VOLUME_CUBIC_METERS
 )
@@ -40,9 +42,11 @@ CONF_OTHER_MODE = "other_mode"
 CONF_FORCE_POLLING = 'force_polling'
 CONF_ON_VALUE = 'on_val'
 CONF_OFF_VALUE = 'off_val'
+CONF_DISABLED_DEFAULT = 'disabled_default'
 DATA_STATE_ON = "On"
 DATA_STATE_OFF = "Off"
 TYPE_SWITCH = "switch"
+TYPE_DATA_DICT = "type_data_dict"
 SERVICE_SET_ON_TIMER_TIME = "set_on_timer_time"
 SERVICE_SET_INT_1B = "set_value_int_1b"
 OPEN = "open"
@@ -55,6 +59,10 @@ SWITCH_POWER = {
 SWITCH_BINARY = {
     DATA_STATE_ON: 0x41,
     DATA_STATE_OFF: 0x42
+}
+SWITCH_BINARY_INVERT = {
+    DATA_STATE_ON: 0x42,
+    DATA_STATE_OFF: 0x41
 }
 
 HVAC_SELECT_OP_CODES = {
@@ -137,19 +145,19 @@ ENL_OP_CODES = {
     0x02: {
         0x6F: { # Electric lock
             0xE0: {
-                CONF_ICON: "mdi:mdi:lock",
-                CONF_SERVICE_DATA: SWITCH_BINARY,
+                CONF_ICON: "mdi:lock",
+                CONF_SERVICE_DATA: SWITCH_BINARY_INVERT,
                 CONF_ENSURE_ON: ENL_STATUS,
-                CONF_ON_VALUE: "lock",
-                CONF_OFF_VALUE: 'unlock',
+                CONF_ON_VALUE: "unlock",
+                CONF_OFF_VALUE: "lock",
                 TYPE_SWITCH: True
             },
             0xE1: {
-                CONF_ICON: "mdi:mdi:lock",
-                CONF_SERVICE_DATA: SWITCH_BINARY,
+                CONF_ICON: "mdi:lock",
+                CONF_SERVICE_DATA: SWITCH_BINARY_INVERT,
                 CONF_ENSURE_ON: ENL_STATUS,
-                CONF_ON_VALUE: "lock",
-                CONF_OFF_VALUE: 'unlock',
+                CONF_ON_VALUE: "unlock",
+                CONF_OFF_VALUE: "lock",
                 TYPE_SWITCH: True
             },
             0xE6: {
@@ -273,14 +281,51 @@ ENL_OP_CODES = {
                 CONF_ICON: "mdi:flash",
                 CONF_TYPE: DEVICE_CLASS_POWER,
                 CONF_STATE_CLASS: SensorStateClass.MEASUREMENT
-            }
+            },
+            0xC7: {
+                CONF_TYPE: DEVICE_CLASS_CURRENT,
+                CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
+                TYPE_DATA_DICT: ["r_phase_amperes", "t_phase_amperes"],
+                CONF_DISABLED_DEFAULT: True
+            },
+            0xC8: {
+                CONF_TYPE: DEVICE_CLASS_VOLTAGE,
+                CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
+                TYPE_DATA_DICT: ["r_sn_voltage", "sn_t_voltage"],
+                CONF_DISABLED_DEFAULT: True
+            },
         },
         0x88: {
             0xE0: {
-                CONF_ICON: "mdi:flash",
+                CONF_ICON: None,
                 CONF_TYPE: DEVICE_CLASS_ENERGY,
-                CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING
-            }
+                CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+                CONF_UNIT_OF_MEASUREMENT: "kWh"
+            },
+            0xE3: {
+                CONF_ICON: None,
+                CONF_TYPE: DEVICE_CLASS_ENERGY,
+                CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+                CONF_UNIT_OF_MEASUREMENT: "kWh"
+            },
+            0xE7: {
+                CONF_ICON: None,
+                CONF_TYPE: DEVICE_CLASS_POWER,
+                CONF_STATE_CLASS: SensorStateClass.MEASUREMENT
+            },
+            0xE8: {
+                CONF_ICON: None,
+                CONF_TYPE: DEVICE_CLASS_CURRENT,
+                CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
+                TYPE_DATA_DICT: ["r_phase_amperes", "t_phase_amperes"]
+            },
+            0xD3: {
+                CONF_DISABLED_DEFAULT: True
+            },
+            0xE1: {
+                CONF_DISABLED_DEFAULT: True
+            },
+
         },
     },
     'default':  {

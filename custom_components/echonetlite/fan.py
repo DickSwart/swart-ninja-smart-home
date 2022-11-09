@@ -35,18 +35,13 @@ class EchonetFan(FanEntity):
         self._name = name
         self._device_name = name
         self._connector = connector  # new line
-        self._uid = self._connector._uid
-        if self._uid == "":
-            self.uid = self._connector._instance._eojgc + self._connector._instance._eojcc + \
-                       self._connector._instance._eojci + self._connector._instance._host
+        self._uid = self._connector._uidi if self._connector._uidi else self._connector._uid
         self._precision = 1.0
         self._target_temperature_step = 1
         self._support_flags = SUPPORT_FLAGS
         self._support_flags = self._support_flags |  SUPPORT_PRESET_MODE
         self._olddata = {}
         self._should_poll = True
-        self._connector.register_async_update_callbacks(self.async_update_callback)
-
 
     async def async_update(self):
         await self._connector.async_update()
@@ -127,8 +122,14 @@ class EchonetFan(FanEntity):
         await self._connector._instance.setFanSpeed(preset_mode)
         self._connector._update_data[ENL_FANSPEED] = preset_mode
 
+    async def async_added_to_hass(self):
+        """Register callbacks."""
+        self._connector.register_async_update_callbacks(self.async_update_callback)
+
     async def async_update_callback(self, isPush = False):
         changed = self._olddata != self._connector._update_data
         if (changed):
             self._olddata = self._connector._update_data.copy()
             self.async_schedule_update_ha_state()
+            if isPush:
+                await self._connector.async_update()

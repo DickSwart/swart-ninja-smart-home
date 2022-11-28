@@ -1,8 +1,8 @@
 ---
 substitutions:
   node_id: 22F3C2
-  node_name: shelly1_22f3c2
-  device_verbose_name: Shelly 1 22F3C2
+  node_name: stairs-ceiling
+  device_verbose_name: Stairs Ceiling
 
 packages:
   wifi: !include common/wifi/not.yaml

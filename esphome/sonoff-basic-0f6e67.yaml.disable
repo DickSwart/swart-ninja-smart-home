@@ -1,8 +1,8 @@
 ---
 substitutions:
-  node_id: 0FBC52
-  node_name: sonoff_basic_0fbc52
-  device_verbose_name: Sonoff Basic 0FBC52
+  node_id: 0F6E67
+  node_name: sonoff-basic-0f6e67
+  device_verbose_name: Sonoff Basic 0F6E67
   switch_icon: mdi:light-switch
 
 packages:

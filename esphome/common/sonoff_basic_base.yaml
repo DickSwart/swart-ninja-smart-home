@@ -6,7 +6,7 @@ esphome:
   board: esp8285
   build_path: ./build/${node_name}
 
-captive_portal:
+# captive_portal:
 
 # Enable logging
 logger:

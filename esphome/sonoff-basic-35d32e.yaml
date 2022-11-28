@@ -1,7 +1,7 @@
 ---
 substitutions:
   node_id: 35D32E
-  node_name: sonoff_basic_35d32e
+  node_name: sonoff-basic-35d32e
   device_verbose_name: Sonoff Basic 35D32E
   switch_icon: mdi:light-switch
 

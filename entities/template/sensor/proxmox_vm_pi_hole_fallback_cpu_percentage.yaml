@@ -12,8 +12,8 @@ name: "Proxmox VM: Pi-Hole Fallback CPU Percentage"
 unique_id: 4b4dc21d-c65c-44bf-85ad-950667c7ffaa
 unit_of_measurement: "%"
 state: >
-  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', '==','qemu/100') | first %}
+  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', '==','lxc/300') | first %}
   {{ data.cpu | multiply(100) | round(2) if data != null}}
 availability: >
   {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') %}
-  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", "qemu/100") | first != null }}
+  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", "lxc/300") | first != null }}

@@ -1,2 +1,12 @@
 ---
-proxmox_vm_commands: "/usr/bin/curl -k -X POST 'https://192.168.1.200:8006/api2/json/nodes/pve/qemu/{{vmid}}/status/{{command}}' -H 'Authorization: Bearer {{token}}' -H 'Content-Type: application/x-www-form-urlencoded'"
+##################################################################################################################
+# Shell Command
+# This integration can expose regular shell commands as services. Services can be called from a script or
+# in automation.
+#
+# URL: https://www.home-assistant.io/integrations/shell_command/
+#
+# EntityID: shell_command.proxmox_vm_commands
+##################################################################################################################
+
+proxmox_vm_commands: "/usr/bin/curl -k -X POST 'https://192.168.1.200:8006/api2/json/nodes/pve/qemu/{{vmid}}/status/{{command}}' -H 'Authorization: {{token}}' -H 'Content-Type: application/x-www-form-urlencoded'"

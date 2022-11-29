@@ -1,0 +1,22 @@
+---
+##################################################################################################################
+# RESTful Command
+# This integration can expose regular shell commands as services. Services can be called from a script or
+# in automation.
+#
+# URL: https://www.home-assistant.io/integrations/rest_command/
+#
+# EntityID: rest_command.proxmox
+# Data:
+# - type (qemu | lxc)
+# - id
+# - command (reboot | reset | resume | shutdown | start | stop | suspend)
+##################################################################################################################
+
+proxmox:
+  url: https://192.168.1.200:8006/api2/json/nodes/pve/{{type}}/{{id}}/status/{{command}}
+  method: POST
+  content_type: application/x-www-form-urlencoded
+  verify_ssl: false
+  headers:
+    authorization: !secret proxmoxve_pve_token

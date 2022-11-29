@@ -11,15 +11,15 @@
 name: "Proxmox VM: Pi-Hole Fallback Status"
 unique_id: proxmox_vm_pi_hole_fallback_status
 device_class: running
-state: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/100') | map(attribute='status') | first == 'running' }}"
+state: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','lxc/300') | map(attribute='status') | first == 'running' }}"
 attributes:
   id: "qemu/100"
-  name: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/100') | map(attribute='name') | first }}"
-  status: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/100') | map(attribute='status') | first | title }}"
-  memory_size: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/100') | map(attribute='maxmem') | first | filesizeformat(True) }}"
-  hdd_size: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/100') | map(attribute='maxdisk') | first | filesizeformat(True) }}"
-  uptime: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','qemu/100') | map(attribute='uptime') | first | timestamp_custom('%H:%M:%S', 0) }}"
+  name: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','lxc/300') | map(attribute='name') | first }}"
+  status: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','lxc/300') | map(attribute='status') | first | title }}"
+  memory_size: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','lxc/300') | map(attribute='maxmem') | first | filesizeformat(True) }}"
+  hdd_size: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','lxc/300') | map(attribute='maxdisk') | first | filesizeformat(True) }}"
+  uptime: "{{ state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', 'defined') | selectattr('id', '==','lxc/300') | map(attribute='uptime') | first | timestamp_custom('%H:%M:%S', 0) }}"
 
 availability: >
   {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') %}
-  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", 'qemu/100') | first != null }}
+  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", 'lxc/300') | first != null }}

@@ -12,8 +12,8 @@ name: "Proxmox VM: Pi-Hole Fallback Memory Percentage"
 unique_id: e2be335c-b861-4167-ba5b-2a39c5dce6b5
 unit_of_measurement: "%"
 state: >
-  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', '==','qemu/202') | first %}
+  {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') | selectattr('id', '==','lxc/300') | first %}
   {{ (data.mem / data.maxmem * 100) | float | round(2) if data != null }}
 availability: >
   {% set data = state_attr('sensor.proxmox_cluster_resources', 'data') %}
-  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", "qemu/202") | first != null }}
+  {{ data is iterable and data is not string and data | selectattr('id', 'defined') | selectattr("id", "==", "lxc/300") | first != null }}

@@ -11,59 +11,59 @@ switches:
     unique_id: ba9c3efd-d103-48a7-86de-42193cc48b44
     value_template: "{{ is_state('binary_sensor.proxmox_vm_blackbeard_status', 'on') }}"
     turn_on:
-      service: shell_command.proxmox_vm_commands
+      service: rest_command.proxmox
       data_template:
-        vmid: 202
+        id: 202
         command: "start"
-        token: !secret proxmoxve_pve_token
+        type: "qemu"
     turn_off:
-      service: shell_command.proxmox_vm_commands
+      service: rest_command.proxmox
       data_template:
-        vmid: 202
+        id: 202
         command: "stop"
-        token: !secret proxmoxve_pve_token
+        type: "qemu"
   proxmox_vm_home_assistant:
     unique_id: 639d217a-13ba-48b2-82bb-398c144fae61
     value_template: "{{ is_state('binary_sensor.proxmox_vm_home_assistant_status', 'on') }}"
     turn_on:
-      service: shell_command.proxmox_vm_commands
+      service: rest_command.proxmox
       data_template:
-        vmid: 211
+        id: 211
         command: "start"
-        token: !secret proxmoxve_pve_token
+        type: "qemu"
     turn_off:
-      service: shell_command.proxmox_vm_commands
+      service: rest_command.proxmox
       data_template:
-        vmid: 211
+        id: 211
         command: "stop"
-        token: !secret proxmoxve_pve_token
+        type: "qemu"
   proxmox_vm_pi_hole_fallback:
     unique_id: 84b4afe1-bf32-4408-ad84-f704d5deb211
     value_template: "{{ is_state('binary_sensor.proxmox_vm_pi_hole_fallback_status', 'on') }}"
     turn_on:
-      service: shell_command.proxmox_vm_commands
+      service: rest_command.proxmox
       data_template:
-        vmid: 100
+        id: 300
         command: "start"
-        token: !secret proxmoxve_pve_token
+        type: "lxc"
     turn_off:
-      service: shell_command.proxmox_vm_commands
+      service: rest_command.proxmox
       data_template:
-        vmid: 100
+        id: 300
         command: "stop"
-        token: !secret proxmoxve_pve_token
+        type: "lxc"
   proxmox_vm_swartninja:
     unique_id: c9e9c6bf-73f3-4081-b484-8e2ad763abe1
     value_template: "{{ is_state('binary_sensor.proxmox_vm_swartninja_status', 'on') }}"
     turn_on:
-      service: shell_command.proxmox_vm_commands
-      data_template:
-        vmid: 201
+      service: rest_command.proxmox
+      data:
+        id: 201
         command: "start"
-        token: !secret proxmoxve_pve_token
+        type: "qemu"
     turn_off:
-      service: shell_command.proxmox_vm_commands
-      data_template:
-        vmid: 201
+      service: rest_command.proxmox
+      data:
+        id: 201
         command: "stop"
-        token: !secret proxmoxve_pve_token
+        type: "qemu"

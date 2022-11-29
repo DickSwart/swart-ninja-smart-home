@@ -1,4 +1,14 @@
 ---
+##################################################################################################################
+# Shell Command
+# This integration can expose regular shell commands as services. Services can be called from a script or
+# in automation.
+#
+# URL: https://www.home-assistant.io/integrations/shell_command/
+#
+# EntityID: shell_command.genius_swhf51_3000_command
+##################################################################################################################
+
 genius_swhf51_3000_command:
   url: http://192.168.1.216:8080/api/v1/remote/{{command}}
   method: POST

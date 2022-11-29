@@ -1,4 +1,14 @@
 ---
+##################################################################################################################
+# Shell Command
+# This integration can expose regular shell commands as services. Services can be called from a script or
+# in automation.
+#
+# URL: https://www.home-assistant.io/integrations/shell_command/
+#
+# EntityID: shell_command.genius_swhf51_3000_command
+##################################################################################################################
+
 shutdown_octoprint:
   url: http://{{ip}}/api/system/commands/core/shutdown
   method: POST

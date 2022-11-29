@@ -30,4 +30,4 @@ homeassistant:
     camera_snapshots: !secret internal_snapshot_path
 
   # Load packages
-  packages: !include_dir_named integrations
+  packages: !include_dir_named packages

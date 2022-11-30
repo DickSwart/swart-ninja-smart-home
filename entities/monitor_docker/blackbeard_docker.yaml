@@ -19,3 +19,11 @@ rename:
   radarr: Radarr
   sonarr: Sonarr
   watchtower: Watchtower
+monitored_conditions:
+  - version
+  - containers_total
+  - containers_running
+  - containers_paused
+  - containers_stopped
+  - state
+  - status

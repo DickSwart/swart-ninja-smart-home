@@ -23,3 +23,11 @@ rename:
   mariadb: MariaDB
   phpmyadmin: phpMyAdmin
   portainer: Portainer
+monitored_conditions:
+  - version
+  - containers_total
+  - containers_running
+  - containers_paused
+  - containers_stopped
+  - state
+  - status

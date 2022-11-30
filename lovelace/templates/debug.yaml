@@ -1,7 +1,0 @@
-# lovelace_gen
-type: markdown
-title: Debug
-content: |
-  value 01 : {{ debug_value01 }}
-  value 02 : {{ debug_value02 }}
-  value 03 : {{ debug_value03 }}

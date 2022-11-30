@@ -27,7 +27,7 @@
   alias: "Office Light On: Motion"
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    path: swartninja/motion_illuminance_activated_entity.yaml
     input:
       motion_sensor: binary_sensor.office_motion
       target_entity: light.office_ceiling
@@ -40,7 +40,7 @@
   alias: "Hall Light On: Motion"
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    path: swartninja/motion_illuminance_activated_entity.yaml
     input:
       motion_sensor: binary_sensor.hall_motion
       target_entity: script.hall_lights_on_dimmed_or_full
@@ -54,7 +54,7 @@
   alias: "Bathroom Light On: Motion"
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    path: swartninja/motion_illuminance_activated_entity.yaml
     input:
       motion_sensor: binary_sensor.bathroom_motion
       target_entity: script.bathroom_lights_on_dimmed_or_full
@@ -68,7 +68,7 @@
   alias: "Man Cave Light On: Motion"
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    path: swartninja/motion_illuminance_activated_entity.yaml
     input:
       motion_sensor: binary_sensor.man_cave_motion
       target_entity: light.man_cave_ceiling
@@ -81,7 +81,7 @@
   alias: "Living Room Light On: Motion"
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    path: swartninja/motion_illuminance_activated_entity.yaml
     input:
       motion_sensor: binary_sensor.living_room_motion
       target_entity: script.living_room_lights_on_main_or_secondary
@@ -97,7 +97,7 @@
   alias: "Kitchen Light On: Motion"
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    path: swartninja/motion_illuminance_activated_entity.yaml
     input:
       motion_sensor: binary_sensor.kitchen_motion
       target_entity: script.kitchen_lights_on_main_or_secondary
@@ -186,7 +186,7 @@
   alias: "Front Door Light On: Motion"
   description: ""
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    path: swartninja/motion_illuminance_activated_entity.yaml
     input:
       motion_sensor: binary_sensor.fdc_motion
       target_entity: light.front_door_ceiling
@@ -318,7 +318,7 @@
   alias: "Man Cave Kitchen Light On: Motion"
   description: ""
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    path: swartninja/motion_illuminance_activated_entity.yaml
     input:
       motion_sensor: binary_sensor.man_cave_kitchen_zw100_multisensor_motion
       target_entity: light.man_cave_kitchen_2gang_switch_one
@@ -512,7 +512,7 @@
   alias: "Dining Room: Light On Motion"
   description: ""
   use_blueprint:
-    path: swartninja/motion_illuminance_activated_entity_v2.yaml
+    path: swartninja/motion_illuminance_activated_entity.yaml
     input:
       motion_sensor: binary_sensor.dining_room_motion
       target_entity: light.dining_room_sml_window

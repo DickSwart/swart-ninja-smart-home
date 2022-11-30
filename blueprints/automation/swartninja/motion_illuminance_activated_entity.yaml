@@ -1,5 +1,5 @@
 blueprint:
-  name: Motion Illuminance Activated Entity.
+  name: Motion Illuminance Activated Entity V2.
   description: >
     Turn on a light, switch, scene, script or group based on motion detection, and low light level.
 
@@ -70,12 +70,14 @@ blueprint:
           domain: sensor
           device_class: illuminance
     illuminance_cutoff:
-      name: (OPTIONAL) Illuminance cutoff value
+      name: Illuminance cutoff value
       description: This input_number will be used to compare to the current illumination to determine if it is low.
-      default:
+      default: -1
       selector:
-        entity:
-          domain: input_number
+        number:
+          min: -1
+          max: 300
+          unit_of_measurement: lx
     blocker_entity:
       name: (OPTIONAL) Blocking entity
       description: If this entity's state is on, it will prevent the automation from running. E.g. sleepmode or away mode.
@@ -87,22 +89,22 @@ blueprint:
       description: Automation will only run when time is later than this input_datetime value.
       default:
       selector:
-        entity:
-          domain: input_datetime
+        time:
     time_limit_before:
       name: (OPTIONAL) Only run before time.
       description: Automation will only run when time is earlier than this input_datetime value.
       default:
       selector:
-        entity:
-          domain: input_datetime
+        time:
     no_motion_wait:
-      name: (OPTIONAL) Turn off wait time (minutes)
-      description: Time in minutes to leave the target entity on after last motion is detected. If not used entity will not auto turn off.
-      default:
+      name: Wait time
+      description: Time to leave the light on after last motion is detected.
+      default: 2
       selector:
-        entity:
-          domain: input_number
+        number:
+          min: 0
+          max: 60
+          unit_of_measurement: minutes
     turn_off_blocker_entity:
       name: (OPTIONAL) Turn-off Blocking entity
       description: If this entity's state is on, it will prevent the target entity from turning off after the set delay.
@@ -150,11 +152,11 @@ condition:
   # do not check illuminance because it could have increased above threshold because of a light that was just turned on.
   - condition: template
     value_template: >
-      {% set illuminance_defined = illuminance_currently != none and illuminance_cutoff != none  %}
-      {% set illuminance_defined_and_low = (illuminance_defined and (states(illuminance_currently) | int(0) < states(illuminance_cutoff) | int(0)))  %}
+      {% set illuminance_defined = illuminance_currently != none and illuminance_cutoff != -1  %}
+      {% set illuminance_defined_and_low = (illuminance_defined and (states(illuminance_currently) | int(0) < illuminance_cutoff | int(0)))  %}
 
       {% set target_entity_domain_supports_on_state_check = entity_domain != 'scene' and entity_domain != 'script' %}
-      {{ 
+      {{
       ( target_entity_domain_supports_on_state_check and is_state(target_entity, 'on') ) or
       ( target_entity_domain_supports_on_state_check and is_state(target_entity, 'off') and not illuminance_defined) or
       ( target_entity_domain_supports_on_state_check and is_state(target_entity, 'off') and illuminance_defined_and_low) or
@@ -173,18 +175,18 @@ condition:
       {% endif %}
 
       {% if time_limit_before != none and time_limit_after == none %}
-      {% set current_time_is_before_limit = current_time < states(time_limit_before)  %}
+      {% set current_time_is_before_limit = current_time < time_limit_before  %}
       {{ current_time_is_before_limit }}
       {% elif time_limit_before == none and time_limit_after != none %}
-      {% set current_time_is_after_limit = current_time > states(time_limit_after)  %}
+      {% set current_time_is_after_limit = current_time > time_limit_after  %}
       {{ current_time_is_after_limit }}
       {% endif %}
 
       {% if time_limit_before != none and time_limit_after != none %}
-      {% set before_limit_is_tomorrow = states(time_limit_before) < states(time_limit_after)  %}
-      {% set current_time_is_before_limit = current_time < states(time_limit_before)  %}
-      {% set current_time_is_after_limit = current_time > states(time_limit_after)  %}
-      {% set time_window_spans_midnight = states(time_limit_after) > states(time_limit_before)  %}
+      {% set before_limit_is_tomorrow = time_limit_before < time_limit_after  %}
+      {% set current_time_is_before_limit = current_time < time_limit_before  %}
+      {% set current_time_is_after_limit = current_time > time_limit_after  %}
+      {% set time_window_spans_midnight = time_limit_after > time_limit_before  %}
         {% if time_window_spans_midnight != none and time_window_spans_midnight and before_limit_is_tomorrow %}
         {{ current_time_is_after_limit or current_time_is_before_limit }}
         {% elif time_window_spans_midnight != none and not time_window_spans_midnight %}
@@ -195,15 +197,13 @@ condition:
 action:
   - service: homeassistant.turn_on
     entity_id: !input target_entity
-  - condition: template
-    value_template: "{{ no_motion_wait != none }}"
   - wait_for_trigger:
       platform: state
       entity_id: !input motion_sensor
       from: "on"
       to: "off"
   - delay:
-      minutes: "{{ states(no_motion_wait) | int(0) }}"
+      minutes: !input no_motion_wait
   - condition: template
     value_template: "{{ (turn_off_blocker_entity == none) or is_state(turn_off_blocker_entity, 'off') }}"
   - choose:

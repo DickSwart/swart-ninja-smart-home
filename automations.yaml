@@ -45,7 +45,7 @@
       motion_sensor: binary_sensor.hall_motion
       target_entity: script.hall_lights_on_dimmed_or_full
       illuminance_sensor: sensor.hall_multisensor_luminance
-      illuminance_cutoff: 6
+      illuminance_cutoff: 15
       blocker_entity: input_boolean.house_mode_away
       no_motion_wait: 2
       target_off_entity:
@@ -509,13 +509,13 @@
         entity_id: light.front_door_ceiling
   mode: single
 - id: "1664181003275"
-  alias: "Dining Room: Lights On Motion"
+  alias: "Dining Room: Light On Motion"
   description: ""
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity_v2.yaml
     input:
-      motion_sensor: binary_sensor.drc_motion
+      motion_sensor: binary_sensor.dining_room_motion
       target_entity: light.dining_room_sml_window
-      illuminance_sensor: sensor.dining_room_curtain_sml_luminance
+      illuminance_sensor: sensor.dining_room_luminance
       illuminance_cutoff: 30
       blocker_entity: input_boolean.house_mode_away

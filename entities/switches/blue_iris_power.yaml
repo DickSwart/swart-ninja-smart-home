@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# Wake on LAN
+# The wake_on_lan integration enables the ability to send magic packets to Wake on LAN
+# capable devices to turn them on.
+#
+# URL: https://www.home-assistant.io/integrations/wake_on_lan/
+##############################################################################################
+platform: wake_on_lan
+name: Blue Iris Power
+host: 192.168.1.203
+mac: BC:5F:F4:F9:BD:F8
+turn_off:
+  service: button.press
+  target:
+    entity_id: button.blueiris_satellite_shutdown

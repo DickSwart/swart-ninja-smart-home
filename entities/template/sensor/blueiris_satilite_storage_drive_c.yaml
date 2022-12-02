@@ -1,0 +1,16 @@
+---
+##############################################################################################
+# Template
+# The template platform supports sensors which get their values from other entities.
+#
+# URL: https://www.home-assistant.io/integrations/template
+#
+# EntityID: sensor.blueiris_satilite_storage_drive_c
+##############################################################################################
+
+name: BlueIris-Satellite_cpuload
+unique_id: blueiris_satilite_storage_drive_c
+device_class: temperature
+unit_of_measurement: "%"
+state: >
+  {{ '%.2f' | format(states('sensor.blueiris_satellite_cpuload_wmi_value') | float ) }}

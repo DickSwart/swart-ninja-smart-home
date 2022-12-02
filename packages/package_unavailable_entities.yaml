@@ -22,7 +22,7 @@ template:
             {% set ignore_seconds = 60 %}
             {% set ignored = state_attr('group.ignored_unavailable_entities','entity_id') %}
             {% set ignore_ts = (now().timestamp() - ignore_seconds)|as_datetime %}
-            {% set entities = states|rejectattr('domain','in',['group','select','image_processing','scene'])
+            {% set entities = states|rejectattr('domain','in',['group','select','image_processing','scene', 'button'])
                 |rejectattr('last_changed','ge',ignore_ts)
                 |selectattr('state','in',['unavailable','unknown']) %}
             {% if ignored != none %}
@@ -33,7 +33,6 @@ template:
 group:
   ignored_unavailable_entities:
     entities:
-      # - sensor.unavailable_entities
       - automation.system_updater_notification_addon
       - automation.system_updater_notification_hacs
 

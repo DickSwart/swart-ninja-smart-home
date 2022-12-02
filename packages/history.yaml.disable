@@ -1,9 +1,0 @@
----
-##################################################################################################################
-# History
-# The history integration will track everything that is going on within Home Assistant and allows the
-# user to browse through it.
-#
-# URL: https://www.home-assistant.io/integrations/history/
-##################################################################################################################
-history: ~

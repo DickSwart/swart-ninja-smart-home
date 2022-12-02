@@ -1,8 +1,0 @@
----
-##################################################################################################################
-# Proxmox VE
-# Proxmox VE is an open-source server virtualization environment.
-#
-# URL: https://www.home-assistant.io/integrations/proxmoxve/
-##################################################################################################################
-proxmoxve: !include_dir_list ../entities/proxmoxve

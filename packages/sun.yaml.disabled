@@ -1,8 +1,0 @@
----
-##################################################################################################################
-# Sun
-# The sun integration will use your current location to track if the sun is above or below the horizon.
-#
-# URL: https://www.home-assistant.io/integrations/sun/
-##################################################################################################################
-sun: ~

@@ -1,0 +1,99 @@
+###################################################################################################
+## Package - Holiday Lighting - Replay Historical Lighting
+## A blueprint to replay the same lighting behavior from the previous week.
+## For each light that will be controlled as part of your holiday/away lighting,
+## a ‘history_stats’ sensor should be created to track the historical behavior. The blueprint
+## maps each ‘history_stats’ sensor to its corresponding light entity then replays the on/off
+## behavior on sensor state changes.
+## https://community.home-assistant.io/t/vacation-lighting-replay-historical-lighting/282435
+###################################################################################################
+
+##########
+# Sensors
+##########
+sensor:
+  # Replay Sensor - Make a new one for each light to monitor
+  # All sensors will have naming convention "sensor.holiday_xxxxx"
+  - platform: history_stats
+    name: "holiday_office_ceiling"
+    entity_id: light.office_ceiling
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30
+  - platform: history_stats
+    name: "holiday_living_room_ceiling"
+    entity_id: light.living_room_ceiling
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30
+  - platform: history_stats
+    name: "holiday_man_cave_ceiling"
+    entity_id: light.man_cave_ceiling
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30
+  - platform: history_stats
+    name: "holiday_kitchen_ceiling"
+    entity_id: light.kitchen_ceiling
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30
+  - platform: history_stats
+    name: "holiday_kitchen_side"
+    entity_id: light.kitchen_side
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30
+  # Hall
+  - platform: history_stats
+    name: "holiday_hall_zw111_nano_dimmer"
+    entity_id: light.hall_zw111_nano_dimmer
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30
+  # Top Bathroom
+  - platform: history_stats
+    name: "holiday_bathroom_zw111_nano_dimmer"
+    entity_id: light.bathroom_zw111_nano_dimmer
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30
+  # Bedrooms
+  - platform: history_stats
+    name: "holiday_bedroom_master_3gang_switch_one"
+    entity_id: light.bedroom_master_3gang_switch_one
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30
+  - platform: history_stats
+    name: "holiday_bedroom_nico_2gang_switch_ceiling"
+    entity_id: light.bedroom_nico_2gang_switch_ceiling
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30
+  - platform: history_stats
+    name: "holiday_bedroom_max_2gang_switch_ceiling"
+    entity_id: light.bedroom_max_2gang_switch_ceiling
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30

@@ -1,30 +1,30 @@
-- id: "1649268089255"
+- id: '1649268089255'
   alias: System Start/Shutdown Notification
   description: Send notification on Home Assistant start and shutdown
   trigger:
-    - platform: homeassistant
-      event: start
-      id: hass-startup
-    - platform: homeassistant
-      event: shutdown
-      id: hass-shutdown
+  - platform: homeassistant
+    event: start
+    id: hass-startup
+  - platform: homeassistant
+    event: shutdown
+    id: hass-shutdown
   condition: []
   action:
-    - choose:
-        - conditions:
-            - condition: trigger
-              id: hass-startup
-          sequence:
-            - service: notify.telegram_chat_id_swart_ninja_smart_home_group
-              data:
-                message: "\U0001F973 Home Assistant is starting up again."
-      default:
-        - service: notify.telegram_chat_id_swart_ninja_smart_home_group
-          data:
-            message: "\U0001F44B Home Assistant is shutting down... Bye!"
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: hass-startup
+      sequence:
+      - service: notify.telegram_chat_id_swart_ninja_smart_home_group
+        data:
+          message: "\U0001F973 Home Assistant is starting up again."
+    default:
+    - service: notify.telegram_chat_id_swart_ninja_smart_home_group
+      data:
+        message: "\U0001F44B Home Assistant is shutting down... Bye!"
   mode: single
-- id: "1649357383872"
-  alias: "Office Light On: Motion"
+- id: '1649357383872'
+  alias: 'Office Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity.yaml
@@ -36,8 +36,8 @@
       no_motion_wait: 5
       blocker_entity: input_boolean.house_mode_away
       target_off_entity: []
-- id: "1649365144329"
-  alias: "Hall Light On: Motion"
+- id: '1649365144329'
+  alias: 'Hall Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity.yaml
@@ -49,9 +49,9 @@
       blocker_entity: input_boolean.house_mode_away
       no_motion_wait: 2
       target_off_entity:
-        - light.hall_zw111_nano_dimmer
-- id: "1649366156716"
-  alias: "Bathroom Light On: Motion"
+      - light.hall_zw111_nano_dimmer
+- id: '1649366156716'
+  alias: 'Bathroom Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity.yaml
@@ -63,9 +63,9 @@
       blocker_entity: input_boolean.house_mode_away
       no_motion_wait: 3
       target_off_entity:
-        - light.bathroom_zw111_nano_dimmer
-- id: "1649376556972"
-  alias: "Man Cave Light On: Motion"
+      - light.bathroom_zw111_nano_dimmer
+- id: '1649376556972'
+  alias: 'Man Cave Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity.yaml
@@ -77,8 +77,8 @@
       blocker_entity: binary_sensor.man_cave_light_automation_blocking_entity
       no_motion_wait: 5
       turn_off_blocker_entity: binary_sensor.panasonic_tv
-- id: "1649491949914"
-  alias: "Living Room Light On: Motion"
+- id: '1649491949914'
+  alias: 'Living Room Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity.yaml
@@ -91,10 +91,10 @@
       no_motion_wait: 10
       turn_off_blocker_entity: media_player.living_room_television
       target_off_entity:
-        - light.living_room_mood
-        - light.living_room_ceiling
-- id: "1649529348038"
-  alias: "Kitchen Light On: Motion"
+      - light.living_room_mood
+      - light.living_room_ceiling
+- id: '1649529348038'
+  alias: 'Kitchen Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity.yaml
@@ -106,85 +106,85 @@
       blocker_entity: input_boolean.house_mode_away
       no_motion_wait: 3
       target_off_entity:
-        - light.kitchen_ceiling
-        - light.kitchen_side
+      - light.kitchen_ceiling
+      - light.kitchen_side
       turn_off_blocker_entity: binary_sensor.kitchen_motion_turn_off_blocker
-- id: "1649530119015"
+- id: '1649530119015'
   alias: Kitchen Cupboard LED's
-  description: "Turn on and off kitchen cupboard LED's "
+  description: 'Turn on and off kitchen cupboard LED''s '
   trigger:
-    - platform: state
-      entity_id: sun.sun
-    - platform: state
-      entity_id: light.kitchen_ceiling
+  - platform: state
+    entity_id: sun.sun
+  - platform: state
+    entity_id: light.kitchen_ceiling
   condition: []
   action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: sun.sun
-              state: below_horizon
-            - condition: state
-              entity_id: light.kitchen_ceiling
-              state: "off"
-          sequence:
-            - service: light.turn_on
-              data:
-                transition: 10
-                brightness_pct: 50
-              target:
-                entity_id: light.kitchen_cupboard
-      default:
-        - service: light.turn_off
-          data:
-            transition: 10
-          target:
-            entity_id: light.kitchen_cupboard
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sun.sun
+        state: below_horizon
+      - condition: state
+        entity_id: light.kitchen_ceiling
+        state: 'off'
+      sequence:
+      - service: light.turn_on
+        data:
+          transition: 10
+          brightness_pct: 50
+        target:
+          entity_id: light.kitchen_cupboard
+    default:
+    - service: light.turn_off
+      data:
+        transition: 10
+      target:
+        entity_id: light.kitchen_cupboard
   mode: single
-- id: "1649647741261"
+- id: '1649647741261'
   alias: Office Light Off
-  description: ""
+  description: ''
   use_blueprint:
     path: swartninja/auto_light_off_illuminance.yaml
     input:
       illuminance_sensor: sensor.office_zw100_multisensor_luminance
       illuminance_cutoff: 80
       target_off_entities:
-        - light.office_ceiling
-        - light.office_shelf
+      - light.office_ceiling
+      - light.office_shelf
       automation_entity: automation.office_light_on_motion
       blocker_entity: input_boolean.house_mode_away
-- id: "1649703754954"
-  alias: "Hall Light On: Front Door Open"
+- id: '1649703754954'
+  alias: 'Hall Light On: Front Door Open'
   description: Turn on hall light if it is dark and the front door opens
   trigger:
-    - platform: state
-      entity_id: binary_sensor.hall_multisensor_door
-      to: "on"
+  - platform: state
+    entity_id: binary_sensor.hall_multisensor_door
+    to: 'on'
   condition:
-    - condition: template
-      value_template: "{{ (states('sensor.hall_multisensor_luminance') | int(0) <
-        10 ) and is_state('light.hall_zw111_nano_dimmer', 'off') }}"
+  - condition: template
+    value_template: '{{ (states(''sensor.hall_multisensor_luminance'') | int(0) <
+      10 ) and is_state(''light.hall_zw111_nano_dimmer'', ''off'') }}'
   action:
-    - service: light.turn_on
-      data:
-        brightness_pct: 100
-      target:
-        entity_id: light.hall_zw111_nano_dimmer
-    - delay:
-        hours: 0
-        minutes: 2
-        seconds: 0
-        milliseconds: 0
-    - wait_template: "{{ is_state('binary_sensor.hall_motion', 'off') }}"
-    - service: light.turn_off
-      data: {}
-      target:
-        entity_id: light.hall_zw111_nano_dimmer
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+    target:
+      entity_id: light.hall_zw111_nano_dimmer
+  - delay:
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
+  - wait_template: '{{ is_state(''binary_sensor.hall_motion'', ''off'') }}'
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.hall_zw111_nano_dimmer
   mode: single
-- id: "1649738077769"
-  alias: "Front Door Light On: Motion"
-  description: ""
+- id: '1649738077769'
+  alias: 'Front Door Light On: Motion'
+  description: ''
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity.yaml
     input:
@@ -192,74 +192,85 @@
       target_entity: light.front_door_ceiling
       blocker_entity: binary_sensor.front_door_light_on_motion_automation_blocking_entity
       no_motion_wait: 2
-- id: "1649811322196"
+- id: '1649811322196'
   alias: Update notifications
-  description: ""
+  description: ''
   use_blueprint:
     path: swartninja/update_notifications.yaml
     input:
-      reminder_hours: "12"
+      reminder_hours: '12'
       update_entities:
-        - update.home_assistant_supervisor_update
-        - update.home_assistant_core_update
-        - update.atomic_calendar_revive_update
-        - update.alexa_media_player_update
-        - update.auto_entities_update
-        - update.bar_card_update
-        - update.browser_mod_update
-        - update.button_card_update
-        - update.card_mod_update
-        - update.card_tools_update
-        - update.fold_entity_row_update
-        - update.glances_update
-        - update.chrony_update
-        - update.cover_control_button_row_update
-        - update.home_assistant_google_drive_backup_update
-        - update.ics_update
-        - update.home_assistant_operating_system_update
-        - update.influxdb_update
-        - update.layout_card_update
-        - update.living_room_curtains_firmware
-        - update.hacs_update
-        - update.ftp_update
-        - update.mariadb_update
-        - update.mini_graph_card_update
-        - update.monitor_docker_update
-        - update.mini_media_player_update
-        - update.node_red_companion_update
-        - update.samba_share_update
-        - update.mosquitto_broker_update
-        - update.node_red_update
-        - update.simple_thermostat_update
-        - update.esphome_update
-        - update.state_switch_update
-        - update.echonetlite_platform_update
-        - update.studio_code_server_update
-        - update.sun_card_update
-        - update.swart_ninja_dark_theme_update
-        - update.swartninjanas_dsm_update
-        - update.dining_room_sml_window_firmware
-        - update.deepstack_object_custom_integration_update
-        - update.dining_room_corner_window_firmware
-        - update.weather_card_update
-        - update.z_wave_js_update
-        - update.vertical_stack_in_card_update
-        - update.uptime_card_update
-        - update.terminal_ssh_update
-        - update.template_entity_row_update
-        - update.multiple_entity_row_update
-        - update.pi_hole_core_update_available
-        - update.pi_hole_fallback_core_update_available
-        - update.pi_hole_fallback_ftl_update_available
-        - update.pi_hole_fallback_web_update_available
-        - update.pi_hole_ftl_update_available
-        - update.pi_hole_web_update_available
+      - update.home_assistant_supervisor_update
+      - update.home_assistant_core_update
+      - update.atomic_calendar_revive_update
+      - update.alexa_media_player_update
+      - update.auto_entities_update
+      - update.bar_card_update
+      - update.browser_mod_update
+      - update.button_card_update
+      - update.card_mod_update
+      - update.card_tools_update
+      - update.fold_entity_row_update
+      - update.glances_update
+      - update.chrony_update
+      - update.cover_control_button_row_update
+      - update.home_assistant_google_drive_backup_update
+      - update.ics_update
+      - update.home_assistant_operating_system_update
+      - update.influxdb_update
+      - update.layout_card_update
+      - update.living_room_curtains_firmware
+      - update.hacs_update
+      - update.ftp_update
+      - update.mariadb_update
+      - update.mini_graph_card_update
+      - update.monitor_docker_update
+      - update.mini_media_player_update
+      - update.node_red_companion_update
+      - update.samba_share_update
+      - update.mosquitto_broker_update
+      - update.node_red_update
+      - update.simple_thermostat_update
+      - update.esphome_update
+      - update.state_switch_update
+      - update.echonetlite_platform_update
+      - update.studio_code_server_update
+      - update.sun_card_update
+      - update.swart_ninja_dark_theme_update
+      - update.swartninjanas_dsm_update
+      - update.dining_room_sml_window_firmware
+      - update.deepstack_object_custom_integration_update
+      - update.dining_room_corner_window_firmware
+      - update.weather_card_update
+      - update.z_wave_js_update
+      - update.vertical_stack_in_card_update
+      - update.uptime_card_update
+      - update.terminal_ssh_update
+      - update.template_entity_row_update
+      - update.multiple_entity_row_update
+      - update.pi_hole_core_update_available
+      - update.pi_hole_fallback_core_update_available
+      - update.pi_hole_fallback_ftl_update_available
+      - update.pi_hole_fallback_web_update_available
+      - update.pi_hole_ftl_update_available
+      - update.pi_hole_web_update_available
+      - update.16_port_switch
+      - update.8_port_switch
+      - update.ap_hall
+      - update.ap_man_cave
+      - update.hass_agent_update
+      - update.mc_tv_wled_firmware
+      - update.multisensor_6_firmware
+      - update.multisensor_6_firmware_2
+      - update.usg
+      - update.zw111_nano_dimmer_firmware
+      - update.zw111_nano_dimmer_firmware_2
       mobile_app_device: 53b65c3460f56fbb2eb507ff241c47e4
       send_to_ha: true
       run_config_check: true
-- id: "1649837563554"
-  alias: "Phone Charger On: Battery Low"
-  description: ""
+- id: '1649837563554'
+  alias: 'Phone Charger On: Battery Low'
+  description: ''
   use_blueprint:
     path: swartninja/phone_charger.yaml
     input:
@@ -267,9 +278,9 @@
       phone_battery: sensor.dick_iphone_battery_level
       person_home: person.dick
       discharged_percent: 45
-- id: "1649841335537"
+- id: '1649841335537'
   alias: Man Cave Light Off
-  description: ""
+  description: ''
   use_blueprint:
     path: swartninja/auto_light_off.yaml
     input:
@@ -277,46 +288,46 @@
       automation_entity: automation.man_cave_light_on_motion
       blocker_entity: input_boolean.house_mode_away
       target_off_entities:
-        - light.man_cave_ceiling
-        - light.man_cave_kitchen_2gang_switch_one
-        - light.man_cave_kitchen_3gang_switch_two
-- id: "1649873592073"
+      - light.man_cave_ceiling
+      - light.man_cave_kitchen_2gang_switch_one
+      - light.man_cave_kitchen_3gang_switch_two
+- id: '1649873592073'
   alias: Man Cave Bathroom Light Off
   description: Turn off the light after 15min if it is day or 1hour if it is night
   trigger:
-    - platform: state
-      entity_id: light.man_cave_bathroom_ceiling
-      to: "on"
-      for:
-        hours: 0
-        minutes: 15
-        seconds: 0
+  - platform: state
+    entity_id: light.man_cave_bathroom_ceiling
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
   condition: []
   action:
-    - choose:
-        - conditions:
-            - condition: sun
-              after: sunrise
-              before: sunset
-          sequence:
-            - delay:
-                hours: 0
-                minutes: 45
-                seconds: 0
-                milliseconds: 0
-            - service: light.turn_off
-              data: {}
-              target:
-                entity_id: light.man_cave_bathroom_ceiling
-      default:
-        - service: light.turn_off
-          data: {}
-          target:
-            entity_id: light.man_cave_bathroom_ceiling
+  - choose:
+    - conditions:
+      - condition: sun
+        after: sunrise
+        before: sunset
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 45
+          seconds: 0
+          milliseconds: 0
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: light.man_cave_bathroom_ceiling
+    default:
+    - service: light.turn_off
+      data: {}
+      target:
+        entity_id: light.man_cave_bathroom_ceiling
   mode: single
-- id: "1650267675380"
-  alias: "Man Cave Kitchen Light On: Motion"
-  description: ""
+- id: '1650267675380'
+  alias: 'Man Cave Kitchen Light On: Motion'
+  description: ''
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity.yaml
     input:
@@ -327,190 +338,190 @@
       no_motion_wait: 10
       blocker_entity: input_boolean.house_mode_away
       target_off_entity:
-        - light.man_cave_kitchen_2gang_switch_one
-        - light.man_cave_kitchen_3gang_switch_two
-- id: "1650269467211"
-  alias: "Ender 3: Auto Off"
+      - light.man_cave_kitchen_2gang_switch_one
+      - light.man_cave_kitchen_3gang_switch_two
+- id: '1650269467211'
+  alias: 'Ender 3: Auto Off'
   description: Turn off the 3D Printer after 10 minutes when printing is done.
   trigger:
-    - platform: state
-      entity_id: binary_sensor.octoprint_printing
-      from: "on"
-      to: "off"
-      for:
-        hours: 0
-        minutes: 10
-        seconds: 0
-    - platform: state
-      entity_id: binary_sensor.ender_3_octoprint
-      from: "on"
-      to: "off"
-      for:
-        hours: 0
-        minutes: 2
-        seconds: 0
+  - platform: state
+    entity_id: binary_sensor.octoprint_printing
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  - platform: state
+    entity_id: binary_sensor.ender_3_octoprint
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
   condition: []
   action:
-    - service: script.shutdown_ender_3
-      data: {}
+  - service: script.shutdown_ender_3
+    data: {}
   mode: single
-- id: "1650322245522"
-  alias: "Man Cave Kitchen Light Two: Auto Off"
+- id: '1650322245522'
+  alias: 'Man Cave Kitchen Light Two: Auto Off'
   description: Turn Off kitchen light two if light one has been on for 10min
   trigger:
-    - platform: state
-      entity_id: light.man_cave_kitchen_2gang_switch_one
-      to: "on"
-      for:
-        hours: 0
-        minutes: 10
-        seconds: 0
-    - platform: state
-      entity_id: light.man_cave_kitchen_3gang_switch_two
-      to: "on"
-      for:
-        hours: 1
-        minutes: 0
-        seconds: 0
+  - platform: state
+    entity_id: light.man_cave_kitchen_2gang_switch_one
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  - platform: state
+    entity_id: light.man_cave_kitchen_3gang_switch_two
+    to: 'on'
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
   condition:
-    - condition: state
-      entity_id: light.man_cave_kitchen_3gang_switch_two
-      state: "on"
+  - condition: state
+    entity_id: light.man_cave_kitchen_3gang_switch_two
+    state: 'on'
   action:
-    - service: light.turn_off
-      data: {}
-      target:
-        entity_id: light.man_cave_kitchen_3gang_switch_two
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.man_cave_kitchen_3gang_switch_two
   mode: single
-- id: "1650329838216"
+- id: '1650329838216'
   alias: Office Door
   description: Lock Office Door When Everyone Leaves and unlock when home
   trigger:
-    - platform: state
-      entity_id: input_boolean.house_mode_away
+  - platform: state
+    entity_id: input_boolean.house_mode_away
   condition: []
   action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: input_boolean.house_mode_away
-              state: "on"
-          sequence:
-            - service: cover.close_cover
-              data: {}
-              target:
-                entity_id: cover.office_door_system_cover
-            - wait_for_trigger:
-                - platform: state
-                  entity_id: cover.office_door_system_cover
-                  to: closed
-                  for:
-                    hours: 0
-                    minutes: 0
-                    seconds: 5
-              timeout: "30"
-            - service: lock.lock
-              data: {}
-              target:
-                entity_id: lock.office_door_system_lock
-      default:
-        - service: lock.unlock
-          data: {}
-          target:
-            entity_id: lock.office_door_system_lock
-        - wait_for_trigger:
-            - platform: state
-              entity_id: lock.office_door_system_lock
-              to: unlocked
-              for:
-                hours: 0
-                minutes: 0
-                seconds: 5
-          timeout: "30"
-          continue_on_timeout: false
-        - service: cover.open_cover
-          data: {}
-          target:
-            entity_id: cover.office_door_system_cover
-  mode: single
-- id: "1651262763041"
-  alias: Living room - TV
-  description: Turn on and off motion lights automation based on TV
-  trigger:
-    - platform: state
-      entity_id: media_player.living_room_television
-  condition:
-    - condition: state
-      entity_id: input_boolean.house_mode_away
-      state: "off"
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 0
-  action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: media_player.living_room_television
-              state: "on"
-          sequence:
-            - service: automation.turn_off
-              data: {}
-              target:
-                entity_id: automation.living_room_light_on_motion
-      default:
-        - service: automation.turn_on
-          data: {}
-          target:
-            entity_id: automation.living_room_light_on_motion
-  mode: single
-- id: "1651516698196"
-  alias: "Front Door Light On: Presence"
-  description: ""
-  trigger:
-    - platform: state
-      entity_id: sensor.presence_location_dick
-      to: Home
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 10
-    - platform: state
-      entity_id: sensor.presence_location_tamara
-      to: Home
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 10
-  condition:
-    - condition: state
-      entity_id: binary_sensor.dark_outside
-      state: "on"
-    - condition: state
-      entity_id: light.front_door_ceiling
-      state: "off"
-  action:
-    - service: light.turn_on
-      data: {}
-      target:
-        entity_id: light.front_door_ceiling
-    - wait_for_trigger:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.house_mode_away
+        state: 'on'
+      sequence:
+      - service: cover.close_cover
+        data: {}
+        target:
+          entity_id: cover.office_door_system_cover
+      - wait_for_trigger:
         - platform: state
-          entity_id: binary_sensor.hall_multisensor_door
-          from: "on"
-          to: "off"
+          entity_id: cover.office_door_system_cover
+          to: closed
           for:
             hours: 0
             minutes: 0
-            seconds: 30
-    - service: light.turn_off
+            seconds: 5
+        timeout: '30'
+      - service: lock.lock
+        data: {}
+        target:
+          entity_id: lock.office_door_system_lock
+    default:
+    - service: lock.unlock
       data: {}
       target:
-        entity_id: light.front_door_ceiling
+        entity_id: lock.office_door_system_lock
+    - wait_for_trigger:
+      - platform: state
+        entity_id: lock.office_door_system_lock
+        to: unlocked
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 5
+      timeout: '30'
+      continue_on_timeout: false
+    - service: cover.open_cover
+      data: {}
+      target:
+        entity_id: cover.office_door_system_cover
   mode: single
-- id: "1664181003275"
-  alias: "Dining Room: Light On Motion"
-  description: ""
+- id: '1651262763041'
+  alias: Living room - TV
+  description: Turn on and off motion lights automation based on TV
+  trigger:
+  - platform: state
+    entity_id: media_player.living_room_television
+  condition:
+  - condition: state
+    entity_id: input_boolean.house_mode_away
+    state: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: media_player.living_room_television
+        state: 'on'
+      sequence:
+      - service: automation.turn_off
+        data: {}
+        target:
+          entity_id: automation.living_room_light_on_motion
+    default:
+    - service: automation.turn_on
+      data: {}
+      target:
+        entity_id: automation.living_room_light_on_motion
+  mode: single
+- id: '1651516698196'
+  alias: 'Front Door Light On: Presence'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.presence_location_dick
+    to: Home
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  - platform: state
+    entity_id: sensor.presence_location_tamara
+    to: Home
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition:
+  - condition: state
+    entity_id: binary_sensor.dark_outside
+    state: 'on'
+  - condition: state
+    entity_id: light.front_door_ceiling
+    state: 'off'
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.front_door_ceiling
+  - wait_for_trigger:
+    - platform: state
+      entity_id: binary_sensor.hall_multisensor_door
+      from: 'on'
+      to: 'off'
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 30
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.front_door_ceiling
+  mode: single
+- id: '1664181003275'
+  alias: 'Dining Room: Light On Motion'
+  description: ''
   use_blueprint:
     path: swartninja/motion_illuminance_activated_entity.yaml
     input:
@@ -519,3 +530,83 @@
       illuminance_sensor: sensor.dining_room_luminance
       illuminance_cutoff: 30
       blocker_entity: input_boolean.house_mode_away
+- &id001
+  id: '1670082290508'
+  alias: Holiday Lighting
+  description: Replay Historical Lighting
+  use_blueprint:
+    path: swartninja/holiday_lighting.yaml
+    input:
+      vacation_mode_toggle: input_boolean.house_mode_holiday
+      blocker_entity: binary_sensor.holiday_lighting_automation_blocking_entity
+      history_sensor_1: sensor.holiday_bathroom_zw111_nano_dimmer
+      light_target_1: light.bathroom_zw111_nano_dimmer
+      history_sensor_2: sensor.holiday_office_ceiling
+      light_target_2: light.office_ceiling
+      history_sensor_3: sensor.holiday_living_room_ceiling
+      light_target_3: light.living_room_ceiling
+      history_sensor_4: sensor.holiday_man_cave_ceiling
+      light_target_4: light.man_cave_ceiling
+      history_sensor_5: sensor.holiday_kitchen_ceiling
+      light_target_5: light.kitchen_ceiling
+      history_sensor_6: sensor.holiday_hall_zw111_nano_dimmer
+      light_target_6: light.hall_zw111_nano_dimmer
+      history_sensor_7: sensor.holiday_bathroom_zw111_nano_dimmer
+      light_target_7: light.bathroom_zw111_nano_dimmer
+      history_sensor_8: sensor.holiday_bedroom_master_3gang_switch_one
+      light_target_8: light.bedroom_master_3gang_switch_one
+      history_sensor_9: sensor.holiday_bedroom_nico_2gang_switch_ceiling
+      light_target_9: light.bedroom_nico_2gang_switch_ceiling
+      history_sensor_10: sensor.holiday_bedroom_max_2gang_switch_ceiling
+      light_target_10: light.bedroom_max_2gang_switch_ceiling
+      history_sensor_11: sensor.holiday_kitchen_side
+      light_target_11: light.kitchen_side
+- *id001
+- id: '1670088575216'
+  alias: Test Automation
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_button.test_automation
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  condition: []
+  action:
+  - service: notify.persistent_notification
+    data:
+      message: This is a test
+  - service: automation.turn_off
+    data:
+      entity_id: '{% set automation_entities = states|selectattr(''domain'',''eq'',''automation'')|rejectattr(''entity_id'',''search'',''light'')%}
+        {{ automation_entities|map(attribute=''entity_id'')|list }}'
+  mode: single
+- id: '1670229400048'
+  alias: Turn All Lights Off
+  description: Turn all lights off when it's not dark, and away or on holiday
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.dark_outside
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: input_boolean.house_mode_away
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.house_mode_holiday
+      state: 'on'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: '{% set all_lights = states|selectattr(''domain'',''eq'',''light'')%}
+        {{ all_lights|map(attribute=''entity_id'')|list }}'
+  mode: single

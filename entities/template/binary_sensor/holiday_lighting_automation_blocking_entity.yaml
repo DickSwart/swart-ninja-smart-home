@@ -1,0 +1,13 @@
+---
+###############################################################################################
+# Template
+# The template integration allows creating entities which derive their values from other data.
+#
+# URL: https://www.home-assistant.io/integrations/template/
+#
+# EntityID: binary_sensor.holiday_lighting_automation_blocking_entity
+##############################################################################################
+
+name: "Holiday Lighting automation: Blocking entity"
+unique_id: holiday_lighting_automation_blocking_entity
+state: "{{ is_state('input_boolean.dark_outside', 'off') }}"

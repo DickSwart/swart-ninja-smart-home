@@ -1,0 +1,267 @@
+blueprint:
+  name: Holiday Lighting
+  description: Holiday Lighting - History Sensors to Light Behavior
+  domain: automation
+  input:
+    vacation_mode_toggle:
+      name: Holiday Mode
+      selector:
+        entity:
+          domain: input_boolean
+
+    blocker_entity:
+      name: (OPTIONAL) Blocking entity
+      description: If this entity's state is on, it will prevent the automation from running. E.g. sleepmode or away mode.
+      default:
+      selector:
+        entity:
+
+    history_sensor_1:
+      name: History Sensor 1
+      selector:
+        entity:
+          domain: sensor
+    light_target_1:
+      name: Light Target 1
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_2:
+      name: History Sensor 2
+      selector:
+        entity:
+          domain: sensor
+    light_target_2:
+      name: Light Target 2
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_3:
+      name: History Sensor 3
+      selector:
+        entity:
+          domain: sensor
+    light_target_3:
+      name: Light Target 3
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_4:
+      name: History Sensor 4
+      selector:
+        entity:
+          domain: sensor
+    light_target_4:
+      name: Light Target 4
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_5:
+      name: History Sensor 5
+      selector:
+        entity:
+          domain: sensor
+    light_target_5:
+      name: Light Target 5
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_6:
+      name: History Sensor 6
+      selector:
+        entity:
+          domain: sensor
+    light_target_6:
+      name: Light Target 6
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_7:
+      name: History Sensor 7
+      selector:
+        entity:
+          domain: sensor
+    light_target_7:
+      name: Light Target 7
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_8:
+      name: History Sensor 8
+      selector:
+        entity:
+          domain: sensor
+    light_target_8:
+      name: Light Target 8
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_9:
+      name: History Sensor 9
+      selector:
+        entity:
+          domain: sensor
+    light_target_9:
+      name: Light Target 9
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_10:
+      name: History Sensor 10
+      selector:
+        entity:
+          domain: sensor
+    light_target_10:
+      name: Light Target 10
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+    history_sensor_11:
+      name: History Sensor 11
+      selector:
+        entity:
+          domain: sensor
+    light_target_11:
+      name: Light Target 11
+      selector:
+        entity:
+          domain:
+            - light
+            - switch
+# Declare blueprint inputs as variables for use in {{templates}}
+variables:
+  blocker_entity: !input blocker_entity
+  history_sensor_1: !input history_sensor_1
+  light_target_1: !input light_target_1
+  history_sensor_2: !input history_sensor_2
+  light_target_2: !input light_target_2
+  history_sensor_3: !input history_sensor_3
+  light_target_3: !input light_target_3
+  history_sensor_4: !input history_sensor_4
+  light_target_4: !input light_target_4
+  history_sensor_5: !input history_sensor_5
+  light_target_5: !input light_target_5
+  history_sensor_6: !input history_sensor_6
+  light_target_6: !input light_target_6
+  history_sensor_7: !input history_sensor_7
+  light_target_7: !input light_target_7
+  history_sensor_8: !input history_sensor_8
+  light_target_8: !input light_target_8
+  history_sensor_9: !input history_sensor_9
+  light_target_9: !input light_target_9
+  history_sensor_10: !input history_sensor_10
+  light_target_10: !input light_target_10
+  history_sensor_11: !input history_sensor_11
+  light_target_11: !input light_target_11
+
+# Automation Mode - Parallel
+mode: parallel
+
+# Trigger when replay sensor changes state
+trigger:
+  - platform: state
+    entity_id: !input history_sensor_1
+  - platform: state
+    entity_id: !input history_sensor_2
+  - platform: state
+    entity_id: !input history_sensor_3
+  - platform: state
+    entity_id: !input history_sensor_4
+  - platform: state
+    entity_id: !input history_sensor_5
+  - platform: state
+    entity_id: !input history_sensor_6
+  - platform: state
+    entity_id: !input history_sensor_7
+  - platform: state
+    entity_id: !input history_sensor_8
+  - platform: state
+    entity_id: !input history_sensor_9
+  - platform: state
+    entity_id: !input history_sensor_10
+  - platform: state
+    entity_id: !input history_sensor_11
+
+# As long as Holiday Mode is on
+condition:
+  - condition: state
+    entity_id: !input vacation_mode_toggle
+    state: "on"
+  - condition: template
+    value_template: "{{ (blocker_entity == none) or is_state(blocker_entity, 'off') }}"
+
+action:
+  - variables:
+      corresponding_light: >
+        {% if trigger.entity_id == history_sensor_1 %}
+          {{ light_target_1 }}
+        {% elif trigger.entity_id == history_sensor_2 %}
+          {{ light_target_2 }}
+        {% elif trigger.entity_id == history_sensor_3 %}
+          {{ light_target_3 }}
+        {% elif trigger.entity_id == history_sensor_4 %}
+          {{ light_target_4 }}
+        {% elif trigger.entity_id == history_sensor_5 %}
+          {{ light_target_5 }}
+        {% elif trigger.entity_id == history_sensor_6 %}
+          {{ light_target_6 }}
+        {% elif trigger.entity_id == history_sensor_7 %}
+          {{ light_target_7 }}
+        {% elif trigger.entity_id == history_sensor_8 %}
+          {{ light_target_8 }}
+        {% elif trigger.entity_id == history_sensor_9 %}
+          {{ light_target_9 }}
+        {% elif trigger.entity_id == history_sensor_10 %}
+          {{ light_target_10 }}
+        {% elif trigger.entity_id == history_sensor_11 %}
+          {{ light_target_11 }}
+        {% endif %}
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: '{{ trigger.to_state.state  == "1" }}'
+        sequence:
+          - service: homeassistant.turn_on
+            data:
+              entity_id: "{{ corresponding_light }}"
+          - service: logbook.log
+            data:
+              domain: light
+              entity_id: "{{ corresponding_light }}"
+              message: "{{trigger.to_state.entity_id}}, turning on: {{ corresponding_light }}"
+              name: "Blueprint: Holiday Lighting"
+
+      # Replay turned off
+      - conditions:
+          - condition: template
+            value_template: '{{ trigger.to_state.state == "0" }}'
+        sequence:
+          - service: homeassistant.turn_off
+            data:
+              entity_id: "{{ corresponding_light }}"
+          - service: logbook.log
+            data:
+              domain: switch
+              entity_id: "{{ corresponding_light }}"
+              message: "{{trigger.to_state.entity_id}}, turning on: {{ corresponding_light }}"
+              name: "Blueprint: Holiday Lighting"

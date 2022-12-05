@@ -607,6 +607,6 @@
   action:
   - service: light.turn_off
     data:
-      entity_id: '{% set all_lights = states|selectattr(''domain'',''eq'',''light'')%}
-        {{ all_lights|map(attribute=''entity_id'')|list }}'
+      entity_id: '{% set all_lights = states|selectattr(''domain'',''eq'',''light'')|rejectattr(''entity_id'',''in'',[''light.alarm_lights_group'',''light.fish_tank_main_light''])
+        %} {{ all_lights|map(attribute=''entity_id'')|list }}'
   mode: single

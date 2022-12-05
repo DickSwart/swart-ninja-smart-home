@@ -9,9 +9,9 @@ blueprint:
         entity:
           domain: input_boolean
 
-    blocker_entity:
-      name: (OPTIONAL) Blocking entity
-      description: If this entity's state is on, it will prevent the automation from running. E.g. sleepmode or away mode.
+    on_blocker_entity:
+      name: (OPTIONAL) Turn On Blocking Entity
+      description: If this entity's state is on, it will prevent the automation turning on lights or switches. E.g. is it dark outside
       default:
       selector:
         entity:
@@ -150,7 +150,7 @@ blueprint:
             - switch
 # Declare blueprint inputs as variables for use in {{templates}}
 variables:
-  blocker_entity: !input blocker_entity
+  on_blocker_entity: !input on_blocker_entity
   history_sensor_1: !input history_sensor_1
   light_target_1: !input light_target_1
   history_sensor_2: !input history_sensor_2
@@ -207,8 +207,6 @@ condition:
   - condition: state
     entity_id: !input vacation_mode_toggle
     state: "on"
-  - condition: template
-    value_template: "{{ (blocker_entity == none) or is_state(blocker_entity, 'off') }}"
 
 action:
   - variables:
@@ -236,22 +234,20 @@ action:
         {% elif trigger.entity_id == history_sensor_11 %}
           {{ light_target_11 }}
         {% endif %}
+
   - choose:
       - conditions:
-          - condition: template
-            value_template: '{{ trigger.to_state.state  == "1" }}'
+          - condition: and
+            conditions:
+              - condition: template
+                value_template: "{{ (on_blocker_entity == none) or is_state(on_blocker_entity, 'off') }}"
+              - condition: template
+                value_template: '{{ trigger.to_state.state  == "1" }}'
         sequence:
           - service: homeassistant.turn_on
             data:
               entity_id: "{{ corresponding_light }}"
-          - service: logbook.log
-            data:
-              domain: light
-              entity_id: "{{ corresponding_light }}"
-              message: "{{trigger.to_state.entity_id}}, turning on: {{ corresponding_light }}"
-              name: "Blueprint: Holiday Lighting"
 
-      # Replay turned off
       - conditions:
           - condition: template
             value_template: '{{ trigger.to_state.state == "0" }}'
@@ -259,9 +255,3 @@ action:
           - service: homeassistant.turn_off
             data:
               entity_id: "{{ corresponding_light }}"
-          - service: logbook.log
-            data:
-              domain: switch
-              entity_id: "{{ corresponding_light }}"
-              message: "{{trigger.to_state.entity_id}}, turning on: {{ corresponding_light }}"
-              name: "Blueprint: Holiday Lighting"

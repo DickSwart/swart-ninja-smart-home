@@ -5,9 +5,9 @@
 #
 # URL: https://www.home-assistant.io/integrations/template/
 #
-# EntityID: binary_sensor.holiday_lighting_automation_blocking_entity
+# EntityID: binary_sensor.holiday_lighting_turn_on_blocking_entity
 ##############################################################################################
 
-name: "Holiday Lighting automation: Blocking entity"
-unique_id: holiday_lighting_automation_blocking_entity
+name: "Holiday Lighting: Turn On Blocking entity"
+unique_id: holiday_lighting_turn_on_blocking_entity
 state: "{{ is_state('input_boolean.dark_outside', 'off') }}"

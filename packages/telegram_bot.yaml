@@ -13,3 +13,4 @@ telegram_bot:
     allowed_chat_ids:
       - !secret telegram_chat_id_dick
       - !secret telegram_chat_id_swart_ninja_smart_home_group
+      - !secret telegram_chat_id_house_alerts

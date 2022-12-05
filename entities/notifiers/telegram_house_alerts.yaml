@@ -1,0 +1,11 @@
+---
+##############################################################################################
+# Telegram
+# The telegram platform uses Telegram to deliver notifications from Home Assistant to
+# your Android device, your Windows phone, or your iOS device.
+#
+# URL: https://www.home-assistant.io/integrations/telegram/
+##############################################################################################
+platform: telegram
+name: Telegram House Alerts Group
+chat_id: !secret telegram_chat_id_house_alerts

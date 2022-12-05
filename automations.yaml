@@ -530,15 +530,14 @@
       illuminance_sensor: sensor.dining_room_luminance
       illuminance_cutoff: 30
       blocker_entity: input_boolean.house_mode_away
-- &id001
-  id: '1670082290508'
+- id: '1670082290508'
   alias: Holiday Lighting
   description: Replay Historical Lighting
   use_blueprint:
     path: swartninja/holiday_lighting.yaml
     input:
       vacation_mode_toggle: input_boolean.house_mode_holiday
-      blocker_entity: binary_sensor.holiday_lighting_automation_blocking_entity
+      on_blocker_entity: binary_sensor.holiday_lighting_turn_on_blocking_entity
       history_sensor_1: sensor.holiday_bathroom_zw111_nano_dimmer
       light_target_1: light.bathroom_zw111_nano_dimmer
       history_sensor_2: sensor.holiday_office_ceiling
@@ -561,28 +560,6 @@
       light_target_10: light.bedroom_max_2gang_switch_ceiling
       history_sensor_11: sensor.holiday_kitchen_side
       light_target_11: light.kitchen_side
-- *id001
-- id: '1670088575216'
-  alias: Test Automation
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - input_button.test_automation
-    for:
-      hours: 0
-      minutes: 10
-      seconds: 0
-  condition: []
-  action:
-  - service: notify.persistent_notification
-    data:
-      message: This is a test
-  - service: automation.turn_off
-    data:
-      entity_id: '{% set automation_entities = states|selectattr(''domain'',''eq'',''automation'')|rejectattr(''entity_id'',''search'',''light'')%}
-        {{ automation_entities|map(attribute=''entity_id'')|list }}'
-  mode: single
 - id: '1670229400048'
   alias: Turn All Lights Off
   description: Turn all lights off when it's not dark, and away or on holiday
@@ -595,6 +572,7 @@
       hours: 0
       minutes: 10
       seconds: 0
+    alias: When Dark Outside Change to Off for 10 minutes
   condition:
   - condition: or
     conditions:
@@ -609,4 +587,174 @@
     data:
       entity_id: '{% set all_lights = states|selectattr(''domain'',''eq'',''light'')|rejectattr(''entity_id'',''in'',[''light.alarm_lights_group'',''light.fish_tank_main_light''])
         %} {{ all_lights|map(attribute=''entity_id'')|list }}'
+  mode: single
+- id: '1670253843467'
+  alias: 'House Mode: Set'
+  description: Set house away mode to on if no one is home for 3 min and turn holiday
+    mode on if no one is still home after 8 hours. Turn off house modes when someone
+    gets home.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.presence_anyone_home
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+    id: Away for 3 minutes
+  - platform: state
+    entity_id:
+    - binary_sensor.presence_anyone_home
+    to: 'off'
+    for:
+      hours: 8
+      minutes: 0
+      seconds: 0
+    id: Away for 8 hours
+  - platform: state
+    entity_id:
+    - binary_sensor.presence_anyone_home
+    to: 'on'
+    id: Returned home
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: Away for 3 minutes
+      sequence:
+      - service: input_boolean.turn_on
+        data: {}
+        target:
+          entity_id: input_boolean.house_mode_away
+    - conditions:
+      - condition: trigger
+        id: Away for 8 hours
+      sequence:
+      - service: input_boolean.turn_on
+        data: {}
+        target:
+          entity_id: input_boolean.house_mode_holiday
+    - conditions:
+      - condition: trigger
+        id: Returned home
+      sequence:
+      - service: input_boolean.turn_off
+        data: {}
+        target:
+          entity_id:
+          - input_boolean.house_mode_away
+          - input_boolean.house_mode_holiday
+  mode: single
+- id: '1670260292755'
+  alias: 'House Mode: Away'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.house_mode_away
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.house_mode_away
+        state: 'on'
+      sequence:
+      - parallel:
+        - service: switch.turn_off
+          data: {}
+          target:
+            entity_id:
+            - switch.d1mini_4_channel_relay_01
+            - switch.d1mini_4_channel_relay_02
+          alias: Turn Off electric blankets
+        - service: light.turn_off
+          data:
+            entity_id: '{% set all_lights = states|selectattr(''domain'',''eq'',''light'')|rejectattr(''entity_id'',''in'',[''light.fish_tank_main_light''])
+              %} {{ all_lights|map(attribute=''entity_id'')|list }}'
+          alias: Turn Off All Lights
+        - service: input_boolean.turn_on
+          data: {}
+          target:
+            entity_id: input_boolean.blue_iris
+          alias: Turn on Blue Iris - Away
+        - if:
+          - condition: or
+            conditions:
+            - condition: state
+              entity_id: switch.man_cave_heat_pump
+              state: 'on'
+            - condition: state
+              entity_id: switch.living_room_heat_pump
+              state: 'on'
+          then:
+          - service: notify.mobile_app_dick_iphone
+            data:
+              message: Everyone left home and the heat pump is on.
+              data:
+                actions:
+                - action: HEAT_PUMP_OFF
+                  title: Turn off
+            alias: Notify Dick
+          alias: Send Notification if any heat pump is on
+        - if:
+          - condition: state
+            entity_id: input_boolean.house_mode_guest
+            state: 'on'
+          then:
+          - service: notify.mobile_app_dick_iphone
+            data:
+              message: Everyone left home and the guest mode is on.
+              data:
+                actions:
+                - action: GUEST_MODE_OFF
+                  title: Turn off
+            alias: Notify Dick
+          alias: Send Notification if guest mode is on
+        - if:
+          - condition: state
+            entity_id: input_boolean.house_mode_guest
+            state: 'on'
+          then:
+          - service: notify.mobile_app_parents
+            data:
+              message: Everyone left home, and alarm was not automatically enabled,
+                because 'Guest Mode' is on.
+              title: Alarm Not Enabled
+              data:
+                actions:
+                - action": ALARM_ARM_AWAY
+                  title": Arm Away
+                  activationMode": background
+                  authenticationRequired": false
+                  destructive": false
+                - action": ALARM_ARM_HOME
+                  title": Arm Home
+                  activationMode": background
+                  authenticationRequired": false
+                  destructive": false
+          else:
+          - service: alarm_control_panel.alarm_arm_away
+            data:
+              code: '1981'
+            target:
+              entity_id: alarm_control_panel.home_alarm
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.house_mode_away
+        state: 'off'
+      sequence:
+      - parallel:
+        - service: input_boolean.turn_off
+          data: {}
+          target:
+            entity_id: input_boolean.blue_iris
+          alias: Turn off Blue Iris - Away
+        - service: alarm_control_panel.alarm_disarm
+          data:
+            code: '1981'
+          target:
+            entity_id: alarm_control_panel.home_alarm
   mode: single

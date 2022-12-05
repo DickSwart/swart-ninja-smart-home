@@ -97,3 +97,11 @@ sensor:
     start: >
       {{ as_timestamp(now()) - (7*86400) }}
     duration: 00:00:30
+  - platform: history_stats
+    name: "holiday_bedroom_master_2gang_switch_two"
+    entity_id: light.bedroom_master_2gang_switch_two
+    state: "on"
+    type: count
+    start: >
+      {{ as_timestamp(now()) - (7*86400) }}
+    duration: 00:00:30

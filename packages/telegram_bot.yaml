@@ -4,7 +4,9 @@
 # Use Telegram on your mobile or desktop device to send and receive messages or commands
 # to/from your Home Assistant.
 #
-# URL: https://www.home-assistant.io/integrations/telegram_bot/
+# URL:
+#  - https://www.home-assistant.io/integrations/telegram_bot/
+#  - https://www.home-assistant.io/integrations/telegram_webhooks/
 ##################################################################################################################
 telegram_bot:
   - platform: webhooks
@@ -14,3 +16,7 @@ telegram_bot:
       - !secret telegram_chat_id_dick
       - !secret telegram_chat_id_swart_ninja_smart_home_group
       - !secret telegram_chat_id_house_alerts
+    trusted_networks:
+      - 149.154.160.0/20
+      - 91.108.4.0/22
+      - 127.0.0.1/32

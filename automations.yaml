@@ -550,8 +550,8 @@
       light_target_5: light.kitchen_ceiling
       history_sensor_6: sensor.holiday_hall_zw111_nano_dimmer
       light_target_6: light.hall_zw111_nano_dimmer
-      history_sensor_7: sensor.holiday_bathroom_zw111_nano_dimmer
-      light_target_7: light.bathroom_zw111_nano_dimmer
+      history_sensor_7: sensor.holiday_bedroom_master_2gang_switch_two
+      light_target_7: light.bedroom_master_2gang_switch_two
       history_sensor_8: sensor.holiday_bedroom_master_3gang_switch_one
       light_target_8: light.bedroom_master_3gang_switch_one
       history_sensor_9: sensor.holiday_bedroom_nico_2gang_switch_ceiling

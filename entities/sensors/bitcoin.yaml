@@ -1,0 +1,14 @@
+---
+##############################################################################################
+# Bitcoin
+# The bitcoin sensor platform displays various details about the Bitcoin network.
+#
+# URL: https://www.home-assistant.io/integrations/bitcoin/
+#
+# EntityID: sensor.bitcoin
+##############################################################################################
+platform: bitcoin
+display_options:
+  - exchangerate
+  - trade_volume_btc
+  - market_price_usd

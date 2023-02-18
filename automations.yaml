@@ -277,7 +277,7 @@
       switch: switch.d1mini_4_channel_relay_03
       phone_battery: sensor.dick_iphone_battery_level
       person_home: person.dick
-      discharged_percent: 45
+      discharged_percent: 80
 - id: '1649841335537'
   alias: Man Cave Light Off
   description: ''
@@ -757,4 +757,46 @@
             code: '1981'
           target:
             entity_id: alarm_control_panel.home_alarm
+  mode: single
+- id: '1676697224603'
+  alias: 'Man Cave - Night light: ON'
+  description: Kids sleep in man cave, turn mood light on if TV goes off.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.panasonic_tv
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.dark_outside
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.house_mode_people_sleeping_in_man_cave
+      state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      color_temp: 320
+      brightness: 80
+    target:
+      entity_id: light.hue_light_01
+  mode: single
+- id: '1676697444527'
+  alias: 'Man Cave - Night light: OFF'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.dark_outside
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.hue_light_01
   mode: single

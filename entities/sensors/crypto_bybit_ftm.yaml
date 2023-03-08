@@ -1,0 +1,48 @@
+---
+##############################################################################################
+# RESTful Sensor
+# The rest sensor platform is consuming a given endpoint which is exposed by a RESTful API
+# of a device, an application, or a web service.
+#
+# URL:
+# - https://www.home-assistant.io/integrations/rest
+# - https://www.home-assistant.io/integrations/sensor.rest/
+#
+# name: sensor.crypto_bybit_ftm
+##############################################################################################
+
+platform: rest
+name: Crypto Bybit FTM
+unique_id: crypto_bybit_ftm
+unit_of_measurement: USDT
+resource: https://api.bybit.com/v5/market/tickers
+params:
+  category: linear
+  symbol: FTMUSDT
+value_template: >
+  {{ "%.8f"|format(value_json.result.list[0].lastPrice|float) }}
+json_attributes_path: "$.result.list[0]"
+json_attributes:
+  - symbol
+  - lastPrice
+  - indexPrice
+  - markPrice
+  - prevPrice24h
+  - price24hPcnt
+  - highPrice24h
+  - lowPrice24h
+  - prevPrice1h
+  - openInterest
+  - openInterestValue
+  - turnover24h
+  - volume24h
+  - fundingRate
+  - nextFundingTime
+  - predictedDeliveryPrice
+  - basisRate
+  - deliveryFeeRate
+  - deliveryTime
+  - ask1Size
+  - bid1Price
+  - ask1Price
+  - bid1Size

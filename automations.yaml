@@ -766,7 +766,6 @@
     entity_id:
     - binary_sensor.panasonic_tv
     from: 'on'
-    to: 'off'
   condition:
   - condition: and
     conditions:

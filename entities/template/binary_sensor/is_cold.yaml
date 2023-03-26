@@ -61,4 +61,4 @@ state: >
     {% set insideTemp = insideSensor | float | default(0) %}
   {% endif %}
 
-  {{ (outsideTemp < 13) or (insideTemp < 17.5) }}
+  {{ (outsideTemp < 15) or (insideTemp < 17.5) }}

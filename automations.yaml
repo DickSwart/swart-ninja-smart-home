@@ -1217,3 +1217,74 @@
           target:
             entity_id: cover.bedroom_max_blinds
   mode: single
+- id: '1679876999923'
+  alias: Bedroom Master Blinds
+  description: Open and Close Master bedroom blinds.
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -00:30
+    alias: 30 min before sunset
+    id: closeIfCold
+  - platform: sun
+    event: sunset
+    offset: 0
+    id: closeIfCold
+  - platform: state
+    entity_id:
+    - sun.sun
+    to: below_horizon
+    id: sunBelowHorizon
+  - platform: time
+    at: input_datetime.bedroom_master_blinds_time_open
+    id: openCurtains
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: and
+          conditions:
+          - condition: trigger
+            id: closeIfCold
+          - condition: state
+            entity_id: binary_sensor.is_cold
+            state: 'on'
+        - condition: trigger
+          id: sunBelowHorizon
+      sequence:
+      - service: cover.close_cover
+        data: {}
+        target:
+          entity_id:
+          - cover.bedroom_master_blinds
+    - conditions:
+      - condition: trigger
+        id: openCurtains
+      sequence:
+      - service: cover.open_cover
+        data: {}
+        target:
+          entity_id:
+          - cover.bedroom_master_blinds
+      - if:
+        - condition: state
+          entity_id: binary_sensor.workday_today
+          state: 'on'
+        then:
+        - service: cover.open_cover
+          data: {}
+          target:
+            entity_id: cover.bedroom_master_blinds
+        else:
+        - delay:
+            hours: 2
+            minutes: 0
+            seconds: 0
+            milliseconds: 0
+        - service: cover.open_cover
+          data: {}
+          target:
+            entity_id: cover.bedroom_master_blinds
+  mode: single

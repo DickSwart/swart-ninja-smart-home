@@ -1122,20 +1122,36 @@
         target:
           entity_id:
           - cover.bedroom_nico_blinds
-    - conditions:
-      - condition: trigger
-        id: openCurtains
-      sequence:
-      - service: cover.open_cover
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: '{{ range(1, 120)|random|int }}'
+          milliseconds: 0
+        alias: Delay Random 1 -120 seconds
+      - service: cover.close_cover
         data: {}
         target:
           entity_id:
           - cover.bedroom_nico_blinds
+    - conditions:
+      - condition: trigger
+        id: openCurtains
+      sequence:
       - if:
         - condition: state
           entity_id: binary_sensor.workday_today
           state: 'on'
         then:
+        - service: cover.open_cover
+          data: {}
+          target:
+            entity_id: cover.bedroom_nico_blinds
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ range(1, 120)|random|int }}'
+            milliseconds: 0
+          alias: Delay Random 1 -120 seconds
         - service: cover.open_cover
           data: {}
           target:
@@ -1146,6 +1162,16 @@
             minutes: 0
             seconds: 0
             milliseconds: 0
+        - service: cover.open_cover
+          data: {}
+          target:
+            entity_id: cover.bedroom_nico_blinds
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ range(1, 120)|random|int }}'
+            milliseconds: 0
+          alias: Delay Random 1 -120 seconds
         - service: cover.open_cover
           data: {}
           target:
@@ -1193,6 +1219,17 @@
         target:
           entity_id:
           - cover.bedroom_max_blinds
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: '{{ range(1, 120)|random|int }}'
+          milliseconds: 0
+        alias: Delay Random 1 -120 seconds
+      - service: cover.close_cover
+        data: {}
+        target:
+          entity_id:
+          - cover.bedroom_max_blinds
     - conditions:
       - condition: trigger
         id: openCurtains
@@ -1206,12 +1243,32 @@
           data: {}
           target:
             entity_id: cover.bedroom_max_blinds
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ range(1, 120)|random|int }}'
+            milliseconds: 0
+          alias: Delay Random 1 -120 seconds
+        - service: cover.open_cover
+          data: {}
+          target:
+            entity_id: cover.bedroom_max_blinds
         else:
         - delay:
             hours: 2
             minutes: 0
             seconds: 0
             milliseconds: 0
+        - service: cover.open_cover
+          data: {}
+          target:
+            entity_id: cover.bedroom_max_blinds
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ range(1, 120)|random|int }}'
+            milliseconds: 0
+          alias: Delay Random 1 -120 seconds
         - service: cover.open_cover
           data: {}
           target:
@@ -1259,20 +1316,36 @@
         target:
           entity_id:
           - cover.bedroom_master_blinds
-    - conditions:
-      - condition: trigger
-        id: openCurtains
-      sequence:
-      - service: cover.open_cover
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: '{{ range(1, 120)|random|int }}'
+          milliseconds: 0
+        alias: Delay Random 1 -120 seconds
+      - service: cover.close_cover
         data: {}
         target:
           entity_id:
           - cover.bedroom_master_blinds
+    - conditions:
+      - condition: trigger
+        id: openCurtains
+      sequence:
       - if:
         - condition: state
           entity_id: binary_sensor.workday_today
           state: 'on'
         then:
+        - service: cover.open_cover
+          data: {}
+          target:
+            entity_id: cover.bedroom_master_blinds
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ range(1, 120)|random|int }}'
+            milliseconds: 0
+          alias: Delay Random 1 -120 seconds
         - service: cover.open_cover
           data: {}
           target:
@@ -1287,4 +1360,81 @@
           data: {}
           target:
             entity_id: cover.bedroom_master_blinds
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ range(1, 120)|random|int }}'
+            milliseconds: 0
+          alias: Delay Random 1 -120 seconds
+        - service: cover.open_cover
+          data: {}
+          target:
+            entity_id: cover.bedroom_master_blinds
+  mode: single
+- id: '1680299390973'
+  alias: Test
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.dick
+    zone: zone.tawa_rugby_club
+    event: leave
+  condition: []
+  action:
+  - service: notify.telegram_dick
+    data:
+      message: Dick left the rugby club
+      title: Rugby title
+  - service: notify.alexa_media
+    data:
+      target: media_player.everywhere
+      data:
+        type: announce
+      message: Hallo My Love of my life
+  mode: single
+- id: '1680323702508'
+  alias: Notify - Dick Location
+  description: Notify when Dick arrive and Leave work.
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.dick_swart
+    zone: zone.work_dick
+    event: enter
+    id: arrivedAtWork
+    variables:
+      message: Dick arrived at work.
+  - platform: zone
+    entity_id: device_tracker.dick_swart
+    zone: zone.work_dick
+    event: leave
+    id: leaveAtWork
+    variables:
+      message: Dick left work.
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_today
+    state: 'on'
+  action:
+  - if:
+    - condition: state
+      entity_id: input_boolean.notifications_audio
+      state: 'on'
+    then:
+    - service: notify.alexa_media
+      data:
+        target: media_player.everywhere
+        data:
+          type: announce
+        message:
+          '[object Object]':
+  - service: notify.telegram_dick
+    data:
+      title: Dick's Location Update
+      message:
+        '[object Object]':
+  - service: notify.telegram_tamara
+    data:
+      title: Dick's Location Update
+      message:
+        '[object Object]':
   mode: single

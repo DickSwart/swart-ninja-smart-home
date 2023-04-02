@@ -14,6 +14,7 @@ telegram_bot:
     parse_mode: markdown
     allowed_chat_ids:
       - !secret telegram_chat_id_dick
+      - !secret telegram_chat_id_tamara
       - !secret telegram_chat_id_swart_ninja_smart_home_group
       - !secret telegram_chat_id_house_alerts
     trusted_networks:

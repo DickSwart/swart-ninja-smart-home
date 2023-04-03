@@ -1,8 +1,8 @@
 """
-Component that will perform object detection and identification via deepstack.
+Component that will perform object detection and identification via CodeProject.AI Server.
 
 For more details about this platform, please refer to the documentation at
-https://home-assistant.io/components/image_processing.deepstack_object
+https://home-assistant.io/components/image_processing.codeproject_ai_object
 """
 from collections import namedtuple, Counter
 import datetime
@@ -14,12 +14,13 @@ from datetime import timedelta
 from typing import Tuple, Dict, List
 from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, UnidentifiedImageError
+import voluptuous as vol
 
-import deepstack.core as ds
+import codeprojectai.core as cpai
+
 import homeassistant.helpers.config_validation as cv
 import homeassistant.util.dt as dt_util
-import voluptuous as vol
 from homeassistant.util.pil import draw_box
 from homeassistant.components.image_processing import (
     ATTR_CONFIDENCE,
@@ -62,7 +63,6 @@ VEHICLES = ["bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck"]
 OBJECT_TYPES = [ANIMAL, OTHER, PERSON, VEHICLE]
 
 
-CONF_API_KEY = "api_key"
 CONF_TARGET = "target"
 CONF_TARGETS = "targets"
 CONF_TIMEOUT = "timeout"
@@ -80,7 +80,6 @@ CONF_CUSTOM_MODEL = "custom_model"
 CONF_CROP_ROI = "crop_to_roi"
 
 DATETIME_FORMAT = "%Y-%m-%d_%H-%M-%S-%f"
-DEFAULT_API_KEY = ""
 DEFAULT_TARGETS = [{CONF_TARGET: PERSON}]
 DEFAULT_TIMEOUT = 10
 DEFAULT_ROI_Y_MIN = 0.0
@@ -95,7 +94,7 @@ DEFAULT_ROI = (
     DEFAULT_ROI_X_MAX,
 )
 
-EVENT_OBJECT_DETECTED = "deepstack.object_detected"
+EVENT_OBJECT_DETECTED = "codeproject_ai.object_detected"
 BOX = "box"
 FILE = "file"
 OBJECT = "object"
@@ -121,7 +120,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         vol.Required(CONF_IP_ADDRESS): cv.string,
         vol.Required(CONF_PORT): cv.port,
-        vol.Optional(CONF_API_KEY, default=DEFAULT_API_KEY): cv.string,
+        # vol.Optional(CONF_API_KEY, default=DEFAULT_API_KEY): cv.string,
         vol.Optional(CONF_TIMEOUT, default=DEFAULT_TIMEOUT): cv.positive_int,
         vol.Optional(CONF_CUSTOM_MODEL, default=""): cv.string,
         vol.Optional(CONF_TARGETS, default=DEFAULT_TARGETS): vol.All(
@@ -224,7 +223,6 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
         object_entity = ObjectClassifyEntity(
             ip_address=config.get(CONF_IP_ADDRESS),
             port=config.get(CONF_PORT),
-            api_key=config.get(CONF_API_KEY),
             timeout=config.get(CONF_TIMEOUT),
             custom_model=config.get(CONF_CUSTOM_MODEL),
             targets=config.get(CONF_TARGETS),
@@ -254,7 +252,6 @@ class ObjectClassifyEntity(ImageProcessingEntity):
         self,
         ip_address,
         port,
-        api_key,
         timeout,
         custom_model,
         targets,
@@ -275,10 +272,9 @@ class ObjectClassifyEntity(ImageProcessingEntity):
     ):
         """Init with the API key and model id."""
         super().__init__()
-        self._dsobject = ds.DeepstackObject(
+        self._cpai_object = cpai.CodeProjectAIObject(
             ip=ip_address,
             port=port,
-            api_key=api_key,
             timeout=timeout,
             min_confidence=MIN_CONFIDENCE,
             custom_model=custom_model,
@@ -298,7 +294,7 @@ class ObjectClassifyEntity(ImageProcessingEntity):
             self._name = name
         else:
             camera_name = split_entity_id(camera_entity)[1]
-            self._name = "deepstack_object_{}".format(camera_name)
+            self._name = "codeproject_ai_object_{}".format(camera_name)
 
         self._state = None
         self._objects = []  # The parsed raw data
@@ -366,9 +362,9 @@ class ObjectClassifyEntity(ImageProcessingEntity):
         saved_image_path = None
 
         try:
-            predictions = self._dsobject.detect(image)
-        except ds.DeepstackException as exc:
-            _LOGGER.error("Deepstack error : %s", exc)
+            predictions = self._cpai_object.detect(image)
+        except cpai.CodeProjectAIServerException as exc:
+            _LOGGER.error("CodeProject.AI Server error : %s", exc)
             return
 
         self._objects = get_objects(predictions, self._image_width, self._image_height)
@@ -474,7 +470,7 @@ class ObjectClassifyEntity(ImageProcessingEntity):
         try:
             img = self._image.convert("RGB")
         except UnidentifiedImageError:
-            _LOGGER.warning("Deepstack unable to process image, bad data")
+            _LOGGER.warning("CodeProject.AI Server unable to process image, bad data")
             return
         draw = ImageDraw.Draw(img)
 
@@ -520,7 +516,7 @@ class ObjectClassifyEntity(ImageProcessingEntity):
             / f"{get_valid_filename(self._name).lower()}_latest.{self._save_file_format}"
         )
         img.save(latest_save_path)
-        _LOGGER.info("Deepstack saved file %s", latest_save_path)
+        _LOGGER.info("CodeProject.AI saved file %s", latest_save_path)
         saved_image_path = latest_save_path
 
         if self._save_timestamped_file:
@@ -529,6 +525,6 @@ class ObjectClassifyEntity(ImageProcessingEntity):
                 / f"{self._name}_{self._last_detection}.{self._save_file_format}"
             )
             img.save(timestamp_save_path)
-            _LOGGER.info("Deepstack saved file %s", timestamp_save_path)
+            _LOGGER.info("CodeProject.AI saved file %s", timestamp_save_path)
             saved_image_path = timestamp_save_path
         return str(saved_image_path)

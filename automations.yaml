@@ -1397,14 +1397,14 @@
   description: Notify when Dick arrive and Leave work.
   trigger:
   - platform: zone
-    entity_id: device_tracker.dick_swart
+    entity_id: person.dick
     zone: zone.work_dick
     event: enter
     id: arrivedAtWork
     variables:
       message: Dick arrived at work.
   - platform: zone
-    entity_id: device_tracker.dick_swart
+    entity_id: person.dick
     zone: zone.work_dick
     event: leave
     id: leaveAtWork
@@ -1425,16 +1425,139 @@
         target: media_player.everywhere
         data:
           type: announce
-        message:
-          '[object Object]':
+        message: '{{message}}'
   - service: notify.telegram_dick
     data:
       title: Dick's Location Update
-      message:
-        '[object Object]':
+      message: '{{message}}'
   - service: notify.telegram_tamara
     data:
       title: Dick's Location Update
-      message:
-        '[object Object]':
+      message: '{{message}}'
   mode: single
+- id: '1680474688939'
+  alias: Notify - Tamara Location
+  description: Notify when Tamara arrives and leave at specific locations.
+  trigger:
+  - platform: zone
+    entity_id: person.tamara
+    zone: zone.train_station_wellington
+    event: enter
+    variables:
+      message: Tamara arrived at Wellington train station.
+  - platform: zone
+    entity_id: person.tamara
+    zone: zone.train_station_wellington
+    event: leave
+    variables:
+      message: Tamara left Wellington train station.
+  - platform: zone
+    entity_id: person.tamara
+    zone: zone.train_station_tawa
+    event: enter
+    variables:
+      message: Tamara arrived at Tawa train station.
+  - platform: zone
+    entity_id: person.tamara
+    zone: zone.train_station_tawa
+    event: leave
+    variables:
+      message: Tamara left Tawa train station.
+  condition: []
+  action:
+  - if:
+    - condition: state
+      entity_id: input_boolean.notifications_audio
+      state: 'on'
+    then:
+    - service: notify.alexa_media
+      data:
+        target: media_player.everywhere
+        data:
+          type: announce
+        message: '{{message}}'
+  - service: notify.telegram_dick
+    data:
+      title: Tamara's Location Update
+      message: '{{message}}'
+  mode: single
+- id: '1120092824622'
+  alias: AI - On Object Detection Notify
+  description: ''
+  trigger:
+  - platform: event
+    event_type: codeproject_ai.object_detected
+    event_data:
+      name: person
+  condition: []
+  action:
+  - service: telegram_bot.send_photo
+    data_template:
+      caption: '{{trigger.event.data.name | title}} detected - {{ trigger.event.data.confidence
+        | round(2) }}% Confidence'
+      file: '{{ trigger.event.data.saved_file  }}'
+      target:
+      - 1082374373
+  mode: parallel
+- id: '1680480627333'
+  alias: AI - On Motion Scan Image
+  description: On motion process image through CodeProject.AI
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.office_motion
+    variables:
+      entity_id: image_processing.codeproject_ai_object_ofc
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.hall_motion
+    variables:
+      entity_id: image_processing.codeproject_ai_object_hlc
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.living_room_motion
+    variables:
+      entity_id: image_processing.codeproject_ai_object_lrc
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.man_cave_motion
+    variables:
+      entity_id: image_processing.codeproject_ai_object_mcc
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.dining_room_motion
+    variables:
+      entity_id: image_processing.codeproject_ai_object_drc
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.deck_motion
+    variables:
+      entity_id: image_processing.codeproject_ai_object_dec
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.front_door_motion
+    variables:
+      entity_id: image_processing.codeproject_ai_object_fdc
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.back_door_motion
+    variables:
+      entity_id: image_processing.codeproject_ai_object_byc
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.presence_anyone_home
+    state: 'off'
+  action:
+  - service: image_processing.scan
+    data: {}
+    target:
+      entity_id: '{{entity_id}}'
+  mode: parallel

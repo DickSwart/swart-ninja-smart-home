@@ -1,0 +1,17 @@
+---
+##############################################################################################
+# CodeProject.AI Home Assistant Object Detection custom component
+# CodeProject.AI Server is a service which runs either in a Docker container or as a
+# Windows Service and exposes various an API for many AI inferencing operations via a REST API.
+#
+# URL: https://github.com/codeproject/CodeProject.AI-HomeAssist-ObjectDetect
+##############################################################################################
+platform: codeproject_ai_object
+ip_address: !secret codeproject_ai_ip
+port: !secret codeproject_ai_port
+save_file_folder: !secret internal_snapshot_path
+confidence: 60
+targets:
+  - target: person
+source:
+  - entity_id: camera.lrc

@@ -8,30 +8,13 @@
 #
 # EntityID: binary_sensor.is_cold
 ##############################################################################################
-# platform: template
-# sensors:
-#   is_cold:
-#     friendly_name: Is it cold?
-#     value_template: >-
-#       {{ ( (states('sensor.dark_sky_temperature')|float < 13) or
-#       (states('sensor.bedrooms_temperature')|float < 17.5) ) }}
-#     icon_template: >-
-#       {% if ( (states('sensor.dark_sky_temperature') | float < 5 ) or
-#       (states('sensor.bedrooms_temperature') | float < 10) ) %}
-#         mdi:snowflake-alert
-#       {% elif ( (states('sensor.dark_sky_temperature')|float < 13) or
-#       (states('sensor.bedrooms_temperature')|float < 17.5) ) %}
-#         mdi:snowflake
-#       {% else %}
-#         mdi:weather-sunny
-#       {% endif %}
 
 name: Is cold
 availability: >
-  {{ states('sensor.dark_sky_temperature') not in ['unavailable', 'unknown', 'none'] and
+  {{ states('sensor.openweathermap_feels_like_temperature') not in ['unavailable', 'unknown', 'none'] and
      states('sensor.bedrooms_temperature') not in ['unavailable', 'unknown', 'none'] }}
 icon: >
-  {% set outsideSensor = states('sensor.dark_sky_temperature') %}
+  {% set outsideSensor = states('sensor.openweathermap_feels_like_temperature') %}
   {% set insideSensor = states('sensor.bedrooms_temperature') %}
   {% set outsideTemp = 30 %}
   {% set insideTemp = 30 %}
@@ -50,7 +33,7 @@ icon: >
     mdi:weather-sunny
   {% endif %}
 state: >
-  {% set outsideSensor = states('sensor.dark_sky_temperature') %}
+  {% set outsideSensor = states('sensor.openweathermap_feels_like_temperature') %}
   {% set insideSensor = states('sensor.bedrooms_temperature') %}
   {% set outsideTemp = 30 %}
   {% set insideTemp = 30 %}

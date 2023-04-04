@@ -12,7 +12,7 @@ logbook:
       - sensor.date
     entity_globs:
       - sensor.deluge_*
-      - sensor.dark_sky_*
+      - sensor.openweathermap_*
       - sensor.weather_*
     domains:
       - sun

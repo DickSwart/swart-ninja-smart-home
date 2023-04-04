@@ -799,91 +799,6 @@
     target:
       entity_id: light.hue_light_01
   mode: single
-- id: '1678314288624'
-  alias: General Curtains
-  description: Open and Close Living room and Dining room curtains.
-  trigger:
-  - platform: sun
-    event: sunset
-    offset: -00:30
-    alias: 30 min before sunset
-    id: closeIfCold
-  - platform: sun
-    event: sunset
-    offset: 0
-    id: closeIfCold
-  - platform: state
-    entity_id:
-    - sun.sun
-    to: below_horizon
-    id: sunBelowHorizon
-  - platform: sun
-    event: sunrise
-    offset: 00:10
-    alias: 10 min after sunrise
-    id: openCurtains
-  - platform: sun
-    event: sunrise
-    offset: 00:15
-    alias: 15 min after sunrise
-    id: openCurtains
-  condition:
-  - condition: or
-    conditions:
-    - condition: and
-      conditions:
-      - condition: or
-        conditions:
-        - condition: trigger
-          id: closeIfCold
-        - condition: trigger
-          id: sunBelowHorizon
-      - condition: template
-        value_template: '{{ states(''cover.living_room_sliding_door_curtain'') ==
-          ''open'' or states(''cover.dining_room_curtains'') == ''open'' }}'
-        alias: Is Curtains Open
-      alias: Test If Triggered by Close
-    - condition: and
-      conditions:
-      - condition: trigger
-        id: openCurtains
-      - condition: template
-        value_template: '{{ states(''cover.living_room_sliding_door_curtain'') ==
-          ''closed'' or states(''cover.dining_room_curtains'') == ''closed'' }}'
-        alias: Is Curtains Closed
-      alias: Test If Triggered by Open
-  action:
-  - choose:
-    - conditions:
-      - condition: or
-        conditions:
-        - condition: and
-          conditions:
-          - condition: trigger
-            id: closeIfCold
-          - condition: state
-            entity_id: binary_sensor.is_cold
-            state: 'on'
-        - condition: trigger
-          id: sunBelowHorizon
-      sequence:
-      - service: cover.close_cover
-        data: {}
-        target:
-          entity_id:
-          - cover.living_room_sliding_door_curtain
-          - cover.dining_room_curtains
-    - conditions:
-      - condition: trigger
-        id: openCurtains
-      sequence:
-      - service: cover.open_cover
-        data: {}
-        target:
-          entity_id:
-          - cover.living_room_sliding_door_curtain
-          - cover.dining_room_curtains
-  mode: single
 - id: '1678318027427'
   alias: Living room curtains
   description: Open and Close Living room curtains.
@@ -1371,27 +1286,6 @@
           target:
             entity_id: cover.bedroom_master_blinds
   mode: single
-- id: '1680299390973'
-  alias: Test
-  description: ''
-  trigger:
-  - platform: zone
-    entity_id: person.dick
-    zone: zone.tawa_rugby_club
-    event: leave
-  condition: []
-  action:
-  - service: notify.telegram_dick
-    data:
-      message: Dick left the rugby club
-      title: Rugby title
-  - service: notify.alexa_media
-    data:
-      target: media_player.everywhere
-      data:
-        type: announce
-      message: Hallo My Love of my life
-  mode: single
 - id: '1680323702508'
   alias: Notify - Dick Location
   description: Notify when Dick arrive and Leave work.
@@ -1403,6 +1297,7 @@
     id: arrivedAtWork
     variables:
       message: Dick arrived at work.
+    enabled: false
   - platform: zone
     entity_id: person.dick
     zone: zone.work_dick
@@ -1410,30 +1305,54 @@
     id: leaveAtWork
     variables:
       message: Dick left work.
+    enabled: false
+  - platform: state
+    entity_id:
+    - person.dick
+    to: Work Dick
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Arrive at work
+    variables:
+      message: Dick arrived at work.
+  - platform: state
+    entity_id:
+    - person.dick
+    from: Work Dick
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Leave Work
+    variables:
+      message: Dick left work.
   condition:
   - condition: state
     entity_id: binary_sensor.workday_today
     state: 'on'
   action:
-  - if:
-    - condition: state
-      entity_id: input_boolean.notifications_audio
-      state: 'on'
-    then:
-    - service: notify.alexa_media
-      data:
-        target: media_player.everywhere
+  - parallel:
+    - if:
+      - condition: state
+        entity_id: input_boolean.notifications_audio
+        state: 'on'
+      then:
+      - service: notify.alexa_media
         data:
-          type: announce
+          target: media_player.everywhere
+          data:
+            type: announce
+          message: Location Update, {{message}}
+    - service: notify.telegram_dick
+      data:
+        title: Location Update
         message: '{{message}}'
-  - service: notify.telegram_dick
-    data:
-      title: Dick's Location Update
-      message: '{{message}}'
-  - service: notify.telegram_tamara
-    data:
-      title: Dick's Location Update
-      message: '{{message}}'
+    - service: notify.telegram_tamara
+      data:
+        title: Location Update
+        message: '{{message}}'
   mode: single
 - id: '1680474688939'
   alias: Notify - Tamara Location
@@ -1441,25 +1360,25 @@
   trigger:
   - platform: zone
     entity_id: person.tamara
-    zone: zone.train_station_wellington
+    zone: zone.wellington_train_station
     event: enter
     variables:
       message: Tamara arrived at Wellington train station.
   - platform: zone
     entity_id: person.tamara
-    zone: zone.train_station_wellington
+    zone: zone.wellington_train_station
     event: leave
     variables:
       message: Tamara left Wellington train station.
   - platform: zone
     entity_id: person.tamara
-    zone: zone.train_station_tawa
+    zone: zone.tawa_train_station
     event: enter
     variables:
       message: Tamara arrived at Tawa train station.
   - platform: zone
     entity_id: person.tamara
-    zone: zone.train_station_tawa
+    zone: zone.tawa_train_station
     event: leave
     variables:
       message: Tamara left Tawa train station.
@@ -1497,7 +1416,7 @@
         | round(2) }}% Confidence'
       file: '{{ trigger.event.data.saved_file  }}'
       target:
-      - 1082374373
+      - -896383178
   mode: parallel
 - id: '1680480627333'
   alias: AI - On Motion Scan Image
@@ -1555,9 +1474,57 @@
   - condition: state
     entity_id: binary_sensor.presence_anyone_home
     state: 'off'
+    enabled: true
   action:
   - service: image_processing.scan
     data: {}
     target:
       entity_id: '{{entity_id}}'
   mode: parallel
+- id: '1680498203737'
+  alias: Doorbell
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.doorbell
+    to: 'on'
+  condition: []
+  action:
+  - parallel:
+    - service: script.alexa_doorbell
+      data: {}
+    - service: image_processing.scan
+      data: {}
+      target:
+        entity_id: image_processing.codeproject_ai_object_fdc
+  mode: single
+- id: '1680501181787'
+  alias: 'Living Room: Fix Mood Light'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - light.living_room_mood
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    to: unavailable
+  - platform: state
+    entity_id:
+    - light.living_room_mood
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    to: unknown
+  condition:
+  - condition: template
+    value_template: '{{ not is_state("light.living_room_2gang_switch_two", "on") }}'
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.living_room_2gang_switch_two
+  mode: single

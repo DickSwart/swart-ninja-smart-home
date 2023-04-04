@@ -111,3 +111,45 @@ shutdown_ender_3:
   - service: switch.turn_off
     entity_id: switch.ender_3
   mode: single
+alexa_doorbell:
+  alias: Alexa Doorbell
+  sequence:
+  - service: media_player.volume_set
+    data:
+      volume_level: 1
+    target:
+      entity_id: media_player.man_cave_echo_dot
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.man_cave_echo_dot
+    data:
+      media_content_type: sound
+      media_content_id: amzn_sfx_doorbell_chime_02
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.man_cave_echo_dot
+    data:
+      media_content_type: sound
+      media_content_id: amzn_sfx_doorbell_chime_02
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.5
+    target:
+      entity_id: media_player.man_cave_echo_dot
+  mode: single
+  icon: mdi:doorbell

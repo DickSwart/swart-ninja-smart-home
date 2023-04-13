@@ -52,18 +52,35 @@ switches:
         id: 300
         command: "stop"
         type: "lxc"
-  proxmox_vm_swartninja:
-    unique_id: c9e9c6bf-73f3-4081-b484-8e2ad763abe1
-    value_template: "{{ is_state('binary_sensor.proxmox_vm_swartninja_status', 'on') }}"
+
+  proxmox_vm_ragnar:
+    unique_id: proxmox_vm_ragnar
+    value_template: "{{ is_state('binary_sensor.proxmox_vm_ragnar_status', 'on') }}"
     turn_on:
       service: rest_command.proxmox
-      data:
-        id: 201
+      data_template:
+        id: 301
         command: "start"
-        type: "qemu"
+        type: "lxc"
     turn_off:
       service: rest_command.proxmox
-      data:
-        id: 201
+      data_template:
+        id: 301
         command: "stop"
-        type: "qemu"
+        type: "lxc"
+
+  # proxmox_vm_swartninja:
+  #   unique_id: c9e9c6bf-73f3-4081-b484-8e2ad763abe1
+  #   value_template: "{{ is_state('binary_sensor.proxmox_vm_swartninja_status', 'on') }}"
+  #   turn_on:
+  #     service: rest_command.proxmox
+  #     data:
+  #       id: 201
+  #       command: "start"
+  #       type: "qemu"
+  #   turn_off:
+  #     service: rest_command.proxmox
+  #     data:
+  #       id: 201
+  #       command: "stop"
+  #       type: "qemu"

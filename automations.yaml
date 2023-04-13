@@ -34,8 +34,9 @@
       illuminance_sensor: sensor.office_zw100_multisensor_luminance
       illuminance_cutoff: 20
       no_motion_wait: 5
-      blocker_entity: input_boolean.house_mode_away
       target_off_entity: []
+      turn_off_blocker_entity: binary_sensor.dicks_macbook_pro_active
+      blocker_entity: input_boolean.house_mode_away
 - id: '1649365144329'
   alias: 'Hall Light On: Motion'
   description: Turn on a light, based on motion detection, and low light level.
@@ -260,11 +261,11 @@
       - update.ap_man_cave
       - update.hass_agent_update
       - update.mc_tv_wled_firmware
-      - update.multisensor_6_firmware
-      - update.multisensor_6_firmware_2
+      - update.office_zw100_multisensor_firmware
+      - update.man_cave_kitchen_zw100_multisensor_firmware
       - update.usg
-      - update.zw111_nano_dimmer_firmware
-      - update.zw111_nano_dimmer_firmware_2
+      - update.hall_zw111_nano_dimmer_firmware
+      - update.bathroom_zw111_nano_dimmer
       mobile_app_device: 53b65c3460f56fbb2eb507ff241c47e4
       send_to_ha: true
       run_config_check: true
@@ -996,7 +997,7 @@
             entity_id: cover.dining_room_small_curtain
   mode: single
 - id: '1679264315394'
-  alias: Bedroom Nico Blinds
+  alias: 'Bedroom Nico: Blinds'
   description: Open and Close Nico's bedroom blinds.
   trigger:
   - platform: sun
@@ -1093,7 +1094,7 @@
             entity_id: cover.bedroom_nico_blinds
   mode: single
 - id: '1679265383473'
-  alias: Bedroom Max Blinds
+  alias: 'Bedroom Max: Blinds'
   description: Open and Close Max's bedroom blinds.
   trigger:
   - platform: sun
@@ -1190,7 +1191,7 @@
             entity_id: cover.bedroom_max_blinds
   mode: single
 - id: '1679876999923'
-  alias: Bedroom Master Blinds
+  alias: 'Bedroom Master: Blinds'
   description: Open and Close Master bedroom blinds.
   trigger:
   - platform: sun
@@ -1324,14 +1325,33 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 30
+      seconds: 15
     alias: Leave Work
     variables:
       message: Dick left work.
-  condition:
-  - condition: state
-    entity_id: binary_sensor.workday_today
-    state: 'on'
+  - platform: state
+    entity_id:
+    - person.dick
+    to: Wilken House
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 15
+    alias: Arrive at Wilken's House
+    variables:
+      message: Dick arrive at Wilken's House
+  - platform: state
+    entity_id:
+    - person.dick
+    from: Work Dick
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 15
+    alias: Left Wilken's House
+    variables:
+      message: Dick left Wilken's House
+  condition: []
   action:
   - parallel:
     - if:
@@ -1364,24 +1384,138 @@
     event: enter
     variables:
       message: Tamara arrived at Wellington train station.
+    enabled: false
   - platform: zone
     entity_id: person.tamara
     zone: zone.wellington_train_station
     event: leave
     variables:
       message: Tamara left Wellington train station.
+    enabled: false
   - platform: zone
     entity_id: person.tamara
     zone: zone.tawa_train_station
     event: enter
     variables:
       message: Tamara arrived at Tawa train station.
+    enabled: false
   - platform: zone
     entity_id: person.tamara
     zone: zone.tawa_train_station
     event: leave
     variables:
       message: Tamara left Tawa train station.
+    enabled: false
+  - platform: state
+    entity_id:
+    - person.tamara
+    to: Wellington Train Station
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara arrived at Wellington train station.
+    variables:
+      message: Tamara arrived at Wellington train station.
+  - platform: state
+    entity_id:
+    - person.tamara
+    from: Wellington Train Station
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara left Wellington train station.
+    variables:
+      message: Tamara left Wellington train station.
+  - platform: state
+    entity_id:
+    - person.tamara
+    to: Tawa Train Station
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara arrived at Tawa train station.
+    variables:
+      message: Tamara arrived at Tawa train station.
+  - platform: state
+    entity_id:
+    - person.tamara
+    from: Tawa Train Station
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara left Tawa train station.
+    variables:
+      message: Tamara left Tawa train station.
+  - platform: state
+    entity_id:
+    - person.tamara
+    to: Tawa Intermediate School
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara arrived at Tawa Intermediate School.
+    variables:
+      message: Tamara arrived at Tawa Intermediate School.
+  - platform: state
+    entity_id:
+    - person.tamara
+    from: Tawa Intermediate School
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara left Tawa Intermediate School.
+    variables:
+      message: Tamara left Tawa Intermediate School.
+  - platform: state
+    entity_id:
+    - person.tamara
+    to: Hampton Hill School
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara arrived at Hampton Hill School.
+    variables:
+      message: Tamara arrived at Hampton Hill School.
+  - platform: state
+    entity_id:
+    - person.tamara
+    from: Hampton Hill School
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara left Hampton Hill School.
+    variables:
+      message: Tamara left Hampton Hill School.
+  - platform: state
+    entity_id:
+    - person.tamara
+    to: Porirua Pak 'n Save
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara arrived at Porirua Pak 'n Save.
+    variables:
+      message: Tamara arrived at Porirua Pak 'n Save.
+  - platform: state
+    entity_id:
+    - person.tamara
+    from: Porirua Pak 'n Save
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    alias: Tamara left Porirua Pak 'n Save.
+    variables:
+      message: Tamara left Porirua Pak 'n Save.
   condition: []
   action:
   - if:
@@ -1394,10 +1528,10 @@
         target: media_player.everywhere
         data:
           type: announce
-        message: '{{message}}'
+        message: Location Update, {{message}}
   - service: notify.telegram_dick
     data:
-      title: Tamara's Location Update
+      title: Location Update
       message: '{{message}}'
   mode: single
 - id: '1120092824622'
@@ -1528,3 +1662,22 @@
     target:
       entity_id: light.living_room_2gang_switch_two
   mode: single
+- id: '1680636772978'
+  alias: 'Bedroom Max: Lights Off'
+  description: ''
+  use_blueprint:
+    path: swartninja/auto_light_off.yaml
+    input:
+      trigger_entity: binary_sensor.bedroom_max_light_off_automation_trigger_entity
+      target_off_entities:
+      - switch.sonoff_basic_324ada
+      - light.bedroom_max_2gang_switch_ceiling
+- id: '1680636905677'
+  alias: 'Bedroom Nico: Lights Off'
+  description: ''
+  use_blueprint:
+    path: swartninja/auto_light_off.yaml
+    input:
+      trigger_entity: binary_sensor.bedroom_nico_light_off_automation_trigger_entity
+      target_off_entities:
+      - light.bedroom_nico_2gang_switch_ceiling

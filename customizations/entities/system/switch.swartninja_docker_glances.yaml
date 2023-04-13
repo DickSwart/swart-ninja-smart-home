@@ -1,3 +1,0 @@
----
-switch.swartninja_docker_glances:
-  entity_picture: /local/images/docker-container-images/glances.png

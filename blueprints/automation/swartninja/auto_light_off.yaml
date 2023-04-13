@@ -5,7 +5,7 @@ blueprint:
   input:
     trigger_entity:
       name: Trigger Entity
-      description: This sensor will trigger the turning on of the target entity.
+      description: This sensor will trigger the turning off of the target entity.
       selector:
         entity:
           domain:
@@ -13,6 +13,7 @@ blueprint:
             - input_boolean
     automation_entity:
       name: (OPTIONAL) Linked Automation
+      description: If defined, the linked automation will require to be ON for this automation to run.
       default:
       selector:
         entity:

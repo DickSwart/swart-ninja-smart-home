@@ -1,0 +1,27 @@
+---
+name: Ragnar Docker
+url: tcp://192.168.1.215:2375
+containers:
+  - garbage-collection
+  - guacamole
+  - guacamole-daemon
+  - mariadb
+  - phpmyadmin
+  - portainer
+  - watchtower
+rename:
+  garbage-collection: Garbage
+  watchtower: Watchtower
+  guacamole: Guacamole
+  guacamole-daemon: Guacamole Daemon
+  mariadb: MariaDB
+  phpmyadmin: phpMyAdmin
+  portainer: Portainer
+monitored_conditions:
+  - version
+  - containers_total
+  - containers_running
+  - containers_paused
+  - containers_stopped
+  - state
+  - status
